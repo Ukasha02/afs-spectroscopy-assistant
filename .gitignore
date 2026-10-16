@@ -1,0 +1,34 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# AFS materials: not redistributed until AFS confirms publishing is allowed
+materials/*
+!materials/README.md
+
+# Local-only source documents
+MASTER_PROMPT.md
+AI-based molecular media analysis by process-spectroscopy in-line.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Build / cache
+dist/
+build/
+.cache/
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
