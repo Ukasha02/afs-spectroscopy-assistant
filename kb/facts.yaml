@@ -4,6 +4,17 @@
 # - General domain knowledge only. Nothing here may be specific to an evaluation case.
 # - Wavelengths are stored in micrometres (um); display strings keep the source's own units.
 
+sources:
+  # Scope of each source. A source may only be cited within its scope (prompt rule + verifier check).
+  S01: {scope: "Overview of optical methods, measurement kits and application cases (medical, pharma, bioprocess, dairy) from a laboratory/system integrator", evidence: "main technical source; application cases are reasons to test, not proof for a new customer", technical: true}
+  S02: {scope: "AFS slides on in-line process control: fiber types and ranges, probes, industrial application examples (water in petroleum, polymer extrusion), combi probes, architectures", evidence: "technical source; application slides are examples, not validated performance for a new customer", technical: true}
+  S03: {scope: "Research paper: LED-based NIR sensor for kidney tumor diagnostics, in vitro (ex vivo) samples, 14 samples from 7 patients", evidence: "in-vitro medical proof of concept only; not evidence for in-vivo or clinical readiness, nor for industrial processes", technical: true}
+  S04: {scope: "Research paper: combined MIR-ATR + fluorescence fiber probe, demonstrated on model biological tissues (chicken) and test liquids in the laboratory", evidence: "laboratory demonstration on model tissues; not evidence for clinical use or for a specific industrial process", technical: true}
+  S05: {scope: "AFS company flyer", evidence: "business context only; not evidence of technical performance", technical: false}
+  S06: {scope: "Link to the laboratory website", evidence: "business context only", technical: false}
+  TABLE: {scope: "S01 Table 1 (p.6): qualitative ratings of methods and measurement techniques", evidence: "qualitative ratings from the source, not measured values or product specs", technical: true}
+  DOCX: {scope: "Challenge reference: answer structure, good practice, method overview, worked examples D01/D02", evidence: "guidance on answer quality and a method overview compiled from the sources", technical: true}
+
 methods:
   - id: NIR
     name: NIR spectroscopy

@@ -88,10 +88,13 @@ def resolve_ref(ref: str) -> list[KBChunk]:
 
 def render_corpus() -> str:
     """All evidence chunks as tagged blocks. Stable order and content, so it can be prompt-cached."""
+    scopes = load_facts().get("sources", {})
     parts = []
     for c in load_chunks():
         if not c.in_corpus:
             continue
         title = f' title="{c.title}"' if c.title else ""
-        parts.append(f'<source cite="{c.cite}"{title}>\n{c.text}\n</source>')
+        scope = scopes.get(c.source, {}).get("evidence")
+        scope_attr = f' scope="{scope}"' if scope else ""
+        parts.append(f'<source cite="{c.cite}"{title}{scope_attr}>\n{c.text}\n</source>')
     return "\n\n".join(parts)
