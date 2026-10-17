@@ -99,7 +99,9 @@ Style: SHORT. The rendered report must be 250-450 words in total. Word budgets: 
 requirements_stated <= 35 in total; key_unknowns <= 30 in total; each report question <= 18; each recommendation \
 reason + caveat <= 40 together; measurement concept items <= 50 in total; spectral range notes <= 15; each risk \
 <= 15; each plan step <= 22; decision basis <= 25. Do not write citations inside the text; put them in the \
-citations field. No repetition between sections. Hedged, precise verbs ('supports', 'comparison candidate', 'hypothesis to test', 'needs confirmation', \
+citations field. No repetition between sections. List caps: requirements_stated max 4 items; key_unknowns max 4; \
+report_questions 4-5; measurement_concept items max 3; needs_afs_confirmation max 3 items of max 5 words; \
+risks max 5. Count before answering: if the report would exceed 450 words, shorten the longest items. Hedged, precise verbs ('supports', 'comparison candidate', 'hypothesis to test', 'needs confirmation', \
 'must be built and tested'); never 'will work', 'ensures', 'guarantees'."""
 
 INTAKE_RULES = """Task: read the enquiry and produce (a) a faithful extraction and (b) a short diagnostic questionnaire.

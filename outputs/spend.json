@@ -1,0 +1,72 @@
+[
+ {
+  "timestamp": "2026-10-17T20:26:49+00:00",
+  "phase": "dev",
+  "case": "D02",
+  "stage": "intake",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "input_tokens": 130,
+  "cache_read_tokens": 0,
+  "cache_write_tokens": 10356,
+  "output_tokens": 2132,
+  "duration_s": 14.9,
+  "cost_usd": 0.002374
+ },
+ {
+  "timestamp": "2026-10-17T20:27:51+00:00",
+  "phase": "dev",
+  "case": "D02",
+  "stage": "intake",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "input_tokens": 130,
+  "cache_read_tokens": 10356,
+  "cache_write_tokens": 0,
+  "output_tokens": 1878,
+  "duration_s": 8.7,
+  "cost_usd": 0.001056
+ },
+ {
+  "timestamp": "2026-10-17T20:28:35+00:00",
+  "phase": "dev",
+  "case": "D02",
+  "stage": "assess",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "input_tokens": 10558,
+  "cache_read_tokens": 0,
+  "cache_write_tokens": 84014,
+  "output_tokens": 10410,
+  "duration_s": 43.7,
+  "cost_usd": 0.016763
+ },
+ {
+  "timestamp": "2026-10-17T20:28:42+00:00",
+  "phase": "dev",
+  "case": "D02",
+  "stage": "critic",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "input_tokens": 8332,
+  "cache_read_tokens": 0,
+  "cache_write_tokens": 744,
+  "output_tokens": 1484,
+  "duration_s": 7.5,
+  "cost_usd": 0.001668
+ },
+ {
+  "timestamp": "2026-10-17T20:29:00+00:00",
+  "phase": "dev",
+  "case": "D02",
+  "stage": "revise",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "input_tokens": 9341,
+  "cache_read_tokens": 84014,
+  "cache_write_tokens": 0,
+  "output_tokens": 5162,
+  "duration_s": 17.8,
+  "cost_usd": 0.004355
+ }
+]

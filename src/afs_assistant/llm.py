@@ -62,35 +62,104 @@ def _anthropic():
     return anthropic.Anthropic(max_retries=6)
 
 
-def _call_anthropic(system: list[str], user_prompt: str, schema: type[BaseModel], stage: str) -> tuple[BaseModel, dict]:
-    model, effort = stage_model(stage), stage_effort(stage)
-    costs.check_budget(model, sum(map(len, system)) + len(user_prompt), MAX_OUTPUT_TOKENS)
-    blocks = [{"type": "text", "text": system[0], "cache_control": {"type": "ephemeral"}}]
-    blocks += [{"type": "text", "text": t} for t in system[1:]]
-    started = time.monotonic()
-    response = _anthropic().messages.parse(
+_GRAMMAR_TOO_LARGE: set[str] = set()  # schemas the API cannot compile into a decoding grammar
+
+
+def _anthropic_request(model: str, effort: str, blocks: list[dict], user_prompt: str, schema: type[BaseModel] | None):
+    kwargs = dict(
         model=model,
         max_tokens=MAX_OUTPUT_TOKENS,
         system=blocks,
         messages=[{"role": "user", "content": user_prompt}],
-        output_format=schema,
         output_config={"effort": effort},  # adaptive thinking is on by default; effort sets its depth
     )
-    duration = round(time.monotonic() - started, 1)
-    usage = {
-        k: getattr(response.usage, k, 0) or 0
-        for k in ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
-    }
-    cost = costs.record(model, "anthropic", stage, usage, duration)
+    if schema is not None:
+        return _anthropic().messages.parse(output_format=schema, **kwargs)
+    return _anthropic().messages.create(**kwargs)
+
+
+def _check_stop(response, model: str) -> None:
     if response.stop_reason == "refusal":
         raise RuntimeError(f"{model} declined the request ({getattr(response.stop_details, 'category', None)})")
     if response.stop_reason == "max_tokens":
         raise RuntimeError(f"{model} hit max_tokens={MAX_OUTPUT_TOKENS}; output truncated")
-    if response.parsed_output is None:
-        raise RuntimeError(f"{model} returned no parsable output (stop_reason={response.stop_reason})")
+
+
+def _usage(response) -> dict:
+    return {
+        k: getattr(response.usage, k, 0) or 0
+        for k in ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
+    }
+
+
+def _json_from_text(response) -> str:
+    text = "".join(b.text for b in response.content if b.type == "text")
+    start, end = text.find("{"), text.rfind("}")
+    return text[start : end + 1] if start >= 0 and end > start else text
+
+
+def _call_anthropic(system: list[str], user_prompt: str, schema: type[BaseModel], stage: str) -> tuple[BaseModel, dict]:
+    """Structured output via constrained decoding (messages.parse). For schemas too large for the
+    decoding grammar (the full Assessment), the JSON schema goes into the user message instead and
+    Pydantic validates the reply; one repair call sends back any validation errors."""
+    import anthropic
+    from pydantic import ValidationError
+
+    model, effort = stage_model(stage), stage_effort(stage)
+    blocks = [{"type": "text", "text": system[0], "cache_control": {"type": "ephemeral"}}]
+    blocks += [{"type": "text", "text": t} for t in system[1:]]
+    started = time.monotonic()
+    usage_total: dict[str, int] = {}
+    mode = "prompted_json" if schema.__name__ in _GRAMMAR_TOO_LARGE else "constrained"
+
+    def _billed(response) -> None:
+        for k, v in _usage(response).items():
+            usage_total[k] = usage_total.get(k, 0) + v
+
+    parsed = None
+    if mode == "constrained":
+        costs.check_budget(model, sum(map(len, system)) + len(user_prompt), MAX_OUTPUT_TOKENS)
+        try:
+            response = _anthropic_request(model, effort, blocks, user_prompt, schema)
+            _billed(response)
+            _check_stop(response, model)
+            parsed = response.parsed_output
+        except anthropic.BadRequestError as e:
+            if "grammar is too large" not in str(e):
+                raise
+            _GRAMMAR_TOO_LARGE.add(schema.__name__)
+            mode = "prompted_json"
+
+    if mode == "prompted_json":
+        schema_json = json.dumps(schema.model_json_schema(), separators=(",", ":"))
+        prompt = (
+            f"{user_prompt}\n\nReturn ONLY one JSON object (no prose, no code fences) that validates against this "
+            f"JSON schema:\n{schema_json}"
+        )
+        for attempt in range(2):  # first try + one repair
+            costs.check_budget(model, sum(map(len, system)) + len(prompt), MAX_OUTPUT_TOKENS)
+            response = _anthropic_request(model, effort, blocks, prompt, None)
+            _billed(response)
+            _check_stop(response, model)
+            raw = _json_from_text(response)
+            try:
+                parsed = schema.model_validate_json(raw)
+                break
+            except ValidationError as err:
+                if attempt == 1:
+                    raise
+                prompt = (
+                    f"{user_prompt}\n\nYour previous JSON did not validate:\n{err}\n\nPrevious JSON:\n{raw}\n\n"
+                    f"Return ONLY the corrected JSON object for this JSON schema:\n{schema_json}"
+                )
+
+    duration = round(time.monotonic() - started, 1)
+    cost = costs.record(model, "anthropic", stage, usage_total, duration)
+    if parsed is None:
+        raise RuntimeError(f"{model} returned no parsable output")
     meta = {"provider": "anthropic", "model": model, "effort": effort, "thinking_level": effort, "duration_s": duration,
-            "stop_reason": response.stop_reason, "usage": usage, "cost_usd": cost}
-    return response.parsed_output, meta
+            "structured_output": mode, "usage": usage_total, "cost_usd": cost}
+    return parsed, meta
 
 
 # ---------------------------------------------------------------------------
