@@ -1,23 +1,18 @@
 """
-LLM wrapper for the AFS Spectroscopy Assistant.
+LLM gateway for the AFS Spectroscopy Assistant: call_llm() is the single entry point.
 
-- Gemini via the google-genai SDK (generate_content API)
-- No web search: AFS materials are passed in the prompt as the knowledge base
-- Structured JSON output validated with Pydantic
-- Model + settings read from .env so you can swap models without code changes
+Providers (LLM_PROVIDER):
+  anthropic  Claude via the Anthropic SDK (default). Structured output with messages.parse
+             (Pydantic schema), adaptive thinking with per-stage effort, prompt caching of the
+             static system block (AFS corpus + facts + rules + exemplars).
+  gemini     fallback: Gemini via google-genai (free tier is limited to 20 requests/day).
 
-Setup:
-    pip install -r requirements.txt
+Per-stage settings (.env): MODEL_INTAKE / MODEL_ASSESS / MODEL_CRITIC / MODEL_REVISE and
+EFFORT_<STAGE> (low | medium | high). Every call is priced and logged in outputs/spend.json, and
+refused if it could exceed BUDGET_LIMIT_USD (see costs.py). No web or search tools: the AFS
+materials in the prompt are the knowledge base.
 
-.env:
-    GEMINI_API_KEY=...
-    LLM_MODEL=gemini-3.8-flash
-    LLM_THINKING_LEVEL=medium     # minimal | low | medium | high  (try high for final runs)
-    LLM_MAX_OUTPUT_TOKENS=16384
-    LLM_SEED=42
-
-Run the smoke test (needs `make kb` and a key):
-    python -m afs_assistant.llm
+Smoke test (needs `make kb` and a key):  python -m afs_assistant.llm
 """
 
 import json
@@ -26,102 +21,152 @@ import sys
 import time
 from datetime import datetime, timezone
 from functools import lru_cache
-from google import genai
-from google.genai import errors, types
+
 from pydantic import BaseModel
 
 from afs_assistant import config  # noqa: F401  (loads .env from the repo root)
+from afs_assistant import costs
 from afs_assistant.schema import Assessment
 
-PROVIDER = os.getenv("LLM_PROVIDER", "gemini")
-MODEL = os.getenv("LLM_MODEL", "gemini-3.8-flash")
-THINKING_LEVEL = os.getenv("LLM_THINKING_LEVEL", "medium")
-MAX_OUTPUT_TOKENS = int(os.getenv("LLM_MAX_OUTPUT_TOKENS", "16384"))
-SEED = int(os.getenv("LLM_SEED", "42"))
+PROVIDER = os.getenv("LLM_PROVIDER", "anthropic")
+MAX_OUTPUT_TOKENS = int(os.getenv("LLM_MAX_OUTPUT_TOKENS", "16000"))
+_DEFAULT_EFFORT = {"intake": "low", "revise_intake": "low", "critic": "low", "assess": "medium", "revise": "medium"}
 
+# Gemini fallback settings
+GEMINI_MODEL = os.getenv("LLM_MODEL", "gemini-3.8-flash")
+SEED = int(os.getenv("LLM_SEED", "42"))
+GEMINI_RETRY_DELAYS_S = (20, 60, 120)  # 5xx only; quota errors (429) are not retried
+
+
+def _env_key(stage: str) -> str:
+    return {"revise_intake": "INTAKE"}.get(stage, stage.upper())
+
+
+def stage_model(stage: str) -> str:
+    return os.getenv(f"MODEL_{_env_key(stage)}", "claude-haiku-5-5")
+
+
+def stage_effort(stage: str) -> str:
+    return os.getenv(f"EFFORT_{_env_key(stage)}", _DEFAULT_EFFORT.get(stage, "medium"))
+
+
+# ---------------------------------------------------------------------------
+# Anthropic
+# ---------------------------------------------------------------------------
 
 @lru_cache(maxsize=1)
-def _client() -> genai.Client:
-    # Created on first use, so the module can be imported (tests, UI) without a key.
+def _anthropic():
+    import anthropic
+
+    # The SDK retries 408/409/429/5xx/529 with exponential backoff and honours retry-after.
+    return anthropic.Anthropic(max_retries=6)
+
+
+def _call_anthropic(system: list[str], user_prompt: str, schema: type[BaseModel], stage: str) -> tuple[BaseModel, dict]:
+    model, effort = stage_model(stage), stage_effort(stage)
+    costs.check_budget(model, sum(map(len, system)) + len(user_prompt), MAX_OUTPUT_TOKENS)
+    blocks = [{"type": "text", "text": system[0], "cache_control": {"type": "ephemeral"}}]
+    blocks += [{"type": "text", "text": t} for t in system[1:]]
+    started = time.monotonic()
+    response = _anthropic().messages.parse(
+        model=model,
+        max_tokens=MAX_OUTPUT_TOKENS,
+        system=blocks,
+        messages=[{"role": "user", "content": user_prompt}],
+        output_format=schema,
+        output_config={"effort": effort},  # adaptive thinking is on by default; effort sets its depth
+    )
+    duration = round(time.monotonic() - started, 1)
+    usage = {
+        k: getattr(response.usage, k, 0) or 0
+        for k in ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
+    }
+    cost = costs.record(model, "anthropic", stage, usage, duration)
+    if response.stop_reason == "refusal":
+        raise RuntimeError(f"{model} declined the request ({getattr(response.stop_details, 'category', None)})")
+    if response.stop_reason == "max_tokens":
+        raise RuntimeError(f"{model} hit max_tokens={MAX_OUTPUT_TOKENS}; output truncated")
+    if response.parsed_output is None:
+        raise RuntimeError(f"{model} returned no parsable output (stop_reason={response.stop_reason})")
+    meta = {"provider": "anthropic", "model": model, "effort": effort, "thinking_level": effort, "duration_s": duration,
+            "stop_reason": response.stop_reason, "usage": usage, "cost_usd": cost}
+    return response.parsed_output, meta
+
+
+# ---------------------------------------------------------------------------
+# Gemini (fallback)
+# ---------------------------------------------------------------------------
+
+@lru_cache(maxsize=1)
+def _gemini():
+    from google import genai
+
     return genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 
-# ---------------------------------------------------------------------------
-# LLM call
-# ---------------------------------------------------------------------------
+def _call_gemini(system: list[str], user_prompt: str, schema: type[BaseModel], stage: str) -> tuple[BaseModel, dict]:
+    from google.genai import errors, types
 
-RETRY_DELAYS_S = (20, 60, 120)  # temporary server errors (503 high demand, 500); quota errors are not retried
-
-
-def _generate_with_retry(user_prompt: str, config: types.GenerateContentConfig):
-    for attempt, delay in enumerate((*RETRY_DELAYS_S, None)):
-        try:
-            return _client().models.generate_content(model=MODEL, contents=user_prompt, config=config)
-        except errors.ServerError as e:
-            if delay is None:
-                raise
-            print(f"[llm] {e.code} from {MODEL}, retry {attempt + 1}/{len(RETRY_DELAYS_S)} in {delay}s", file=sys.stderr, flush=True)
-            time.sleep(delay)
-
-
-def call_llm(system_prompt: str, user_prompt: str, schema: type[BaseModel] = Assessment, thinking_level: str | None = None) -> dict:
-    """Call the model and return parsed, schema-validated output plus run metadata.
-
-    Single entry point for every pipeline stage. Other providers (OpenRouter, Claude) are
-    added behind LLM_PROVIDER here, so callers never change.
-    """
-    if PROVIDER != "gemini":
-        raise NotImplementedError(f"LLM_PROVIDER={PROVIDER!r} is not implemented yet (only 'gemini').")
-
-    config = types.GenerateContentConfig(
-        system_instruction=system_prompt,
-        # No tools: no google_search. The knowledge base goes into the prompt.
+    level = stage_effort(stage)
+    cfg = types.GenerateContentConfig(
+        system_instruction="\n\n".join(system),
         response_mime_type="application/json",
         response_schema=schema,
         max_output_tokens=MAX_OUTPUT_TOKENS,
-        thinking_config=types.ThinkingConfig(thinking_level=types.ThinkingLevel((thinking_level or THINKING_LEVEL).upper())),
-        seed=SEED,
-        # Temperature left at the default: Google recommends keeping the
-        # default (1.0) for Gemini 3 models, since lowering it can cause looping.
+        thinking_config=types.ThinkingConfig(thinking_level=types.ThinkingLevel(level.upper())),
+        seed=SEED,  # temperature left at the Gemini 3 default
     )
+    started = time.monotonic()
+    for attempt, delay in enumerate((*GEMINI_RETRY_DELAYS_S, None)):
+        try:
+            response = _gemini().models.generate_content(model=GEMINI_MODEL, contents=user_prompt, config=cfg)
+            break
+        except errors.ServerError as e:
+            if delay is None:
+                raise
+            print(f"[llm] {e.code} from {GEMINI_MODEL}, retry {attempt + 1} in {delay}s", file=sys.stderr, flush=True)
+            time.sleep(delay)
+    duration = round(time.monotonic() - started, 1)
+    parsed = response.parsed or schema.model_validate_json(response.text)
+    um = response.usage_metadata
+    usage = {"input_tokens": um.prompt_token_count or 0,
+             "output_tokens": (um.candidates_token_count or 0) + (um.thoughts_token_count or 0)} if um else {}
+    cost = costs.record(GEMINI_MODEL, "gemini", stage, usage, duration)
+    meta = {"provider": "gemini", "model": GEMINI_MODEL, "effort": level, "thinking_level": level, "seed": SEED,
+            "duration_s": duration, "stop_reason": str(response.candidates[0].finish_reason) if response.candidates else None,
+            "usage": usage, "cost_usd": cost}
+    return parsed, meta
 
-    started = datetime.now(timezone.utc)
-    response = _generate_with_retry(user_prompt, config)
 
-    parsed = response.parsed  # Pydantic object when response_schema is set
-    if parsed is None:  # fall back to raw text if parsing failed
-        parsed = schema.model_validate_json(response.text)
+# ---------------------------------------------------------------------------
+# Single entry point
+# ---------------------------------------------------------------------------
 
-    return {
-        "output": parsed.model_dump(),
-        "meta": {  # logged for reproducibility
-            "provider": PROVIDER,
-            "model": MODEL,
-            "thinking_level": thinking_level or THINKING_LEVEL,
-            "max_output_tokens": MAX_OUTPUT_TOKENS,
-            "seed": SEED,
-            "timestamp": started.isoformat(),
-            "duration_s": round((datetime.now(timezone.utc) - started).total_seconds(), 1),
-            "finish_reason": str(response.candidates[0].finish_reason) if response.candidates else None,
-            "usage": response.usage_metadata.model_dump(exclude_none=True) if response.usage_metadata else None,
-        },
-    }
+def call_llm(system: str | list[str], user_prompt: str, schema: type[BaseModel] = Assessment, stage: str = "assess") -> dict:
+    """Call the configured provider; return schema-validated output plus run metadata.
+
+    system: one string, or a list whose FIRST element is the static, cacheable block (AFS corpus,
+    facts, rules, exemplars) followed by stage-specific instructions.
+    """
+    system = [system] if isinstance(system, str) else list(system)
+    started = datetime.now(timezone.utc).isoformat()
+    if PROVIDER == "anthropic":
+        parsed, meta = _call_anthropic(system, user_prompt, schema, stage)
+    elif PROVIDER == "gemini":
+        parsed, meta = _call_gemini(system, user_prompt, schema, stage)
+    else:
+        raise NotImplementedError(f"LLM_PROVIDER={PROVIDER!r} (use 'anthropic' or 'gemini')")
+    return {"output": parsed.model_dump(), "meta": {"stage": stage, "timestamp": started, "max_output_tokens": MAX_OUTPUT_TOKENS, **meta}}
 
 
 if __name__ == "__main__":
-    from afs_assistant.kb.load import render_corpus
+    from afs_assistant import prompts
+    from afs_assistant.schema import Intake
 
-    SYSTEM = (
-        "You are an assistant that helps an Art Fiber Systems (AFS) expert make a first technical "
-        "assessment of a customer's in-line spectroscopy problem. Use ONLY the supplied AFS materials "
-        "as your source. Never invent figures, specs, results or customer facts. Check the customer's "
-        "premise. If information is insufficient, say so.\n\n"
-        "=== AFS KNOWLEDGE BASE ===\n"
-        + render_corpus()
-    )
-    ENQUIRY = (
+    enquiry = (
         "We need to monitor moisture and hydrocarbon contamination in soil. Measurements should be "
         "remote and the environment may be humid and dirty."
     )
-    result = call_llm(SYSTEM, ENQUIRY)
+    result = call_llm(prompts.intake_system(), prompts.intake_user(enquiry), Intake, stage="intake")
     print(json.dumps(result, indent=2, ensure_ascii=False))
+    print(costs.summary(), file=sys.stderr)

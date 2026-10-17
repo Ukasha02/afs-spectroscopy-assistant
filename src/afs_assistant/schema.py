@@ -240,6 +240,7 @@ class RunMeta(BaseModel):
     git_commit: str
     timestamp: str
     duration_s: float
+    cost_usd: float = 0.0
 
 
 class CaseResult(BaseModel):

@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "AI assistant for in-line spectroscopy solution design (SchubKI Hackathon 2026, Art Fiber Systems challenge)"
 requires-python = ">=3.11"
 dependencies = [
+    "anthropic>=1.15",
     "google-genai>=2.31",
     "pydantic>=2.14",
     "pypdf>=6.0",

@@ -102,6 +102,6 @@ def to_markdown(r: CaseResult) -> str:
     failed = [i for i in r.rubric if not i.passed]
     if failed:
         footer += ["", "Rubric not met: " + "; ".join(f"{i.check} ({i.detail})" for i in failed)]
-    models = ", ".join(sorted({f"{c.get('model')} ({c.get('thinking_level')})" for c in m.calls}))
-    footer += ["", f"<sub>afs-assistant {m.pipeline_version} · {models} · prompt {m.prompt_hash} · commit {m.git_commit} · {m.timestamp} · {m.duration_s} s</sub>", ""]
+    models = ", ".join(f"{c.get('stage')}: {c.get('model')} ({c.get('effort', c.get('thinking_level'))})" for c in m.calls)
+    footer += ["", f"<sub>afs-assistant {m.pipeline_version} · {models} · prompt {m.prompt_hash} · commit {m.git_commit} · {m.timestamp} · {m.duration_s} s · ${m.cost_usd:.4f}</sub>", ""]
     return body + "\n".join(footer)

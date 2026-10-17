@@ -19,7 +19,7 @@ from rapidfuzz import fuzz
 from afs_assistant import config
 from afs_assistant.cli import _run_and_save
 from afs_assistant.kb.load import load_cases, load_chunks
-from afs_assistant.render import RANGE_CAVEAT, sources_used, word_count
+from afs_assistant.render import RANGE_CAVEAT, report_body, sources_used, word_count
 from afs_assistant.schema import CaseResult
 
 SECTIONS = [
@@ -70,7 +70,11 @@ def main() -> int:
     ap.add_argument("--set", choices=["D", "H"])
     ap.add_argument("--cases")
     ap.add_argument("--no-run", action="store_true")
+    ap.add_argument("--phase", help="label for the spend ledger")
     args = ap.parse_args()
+    if args.phase:
+        import os
+        os.environ["SPEND_PHASE"] = args.phase
     cases = load_cases()
     ids = args.cases.split(",") if args.cases else sorted(c for c in cases if c.startswith(args.set or "D"))
     if any(c.startswith("H") for c in ids) and not args.no_run:
@@ -94,6 +98,8 @@ def main() -> int:
     lines.append("| flags fixed by revision | " + " | ".join(str(len(results[c].verification.flags_before_revision)) for c in ids) + " |")
     lines.append("| status | " + " | ".join(results[c].assessment.decision_status.replace("_", " ") for c in ids) + " |")
     lines.append("| duration (s) | " + " | ".join(str(results[c].run_meta.duration_s) for c in ids) + " |")
+    lines.append("| cost (USD) | " + " | ".join(f"{results[c].run_meta.cost_usd:.4f}" for c in ids) + " |")
+    lines.append("| words | " + " | ".join(str(word_count(report_body(results[c].assessment, c))) for c in ids) + " |")
     lines += ["", "Failures:", ""]
     for c in ids:
         for i in results[c].rubric:
@@ -120,6 +126,8 @@ def main() -> int:
     (out / "eval_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n" + "\n".join(lines))
     print(f"\nSaved {out / 'eval_report.md'}")
+    from afs_assistant import costs
+    print(costs.summary())
     return 0
 
 

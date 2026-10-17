@@ -15,8 +15,7 @@ from afs_assistant.critic import critique
 from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
-PIPELINE_VERSION = "0.4.0"
-FAST_THINKING = "low"  # intake and critic; the assessment uses LLM_THINKING_LEVEL
+PIPELINE_VERSION = "0.5.0"
 _REVISE_ON = {"quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage"}
 
 
@@ -31,14 +30,14 @@ def _git_commit() -> str:
 
 def run_intake(enquiry: str) -> tuple[Intake, list[dict]]:
     """Extraction + questionnaire, verified; one revision if a question invents numbers or breaks the order."""
-    res = call_llm(prompts.intake_system(), prompts.intake_user(enquiry), Intake, thinking_level=FAST_THINKING)
+    res = call_llm(prompts.intake_system(), prompts.intake_user(enquiry), Intake, stage="intake")
     intake = Intake.model_validate(res["output"])
-    calls = [{"stage": "intake", **res["meta"]}]
+    calls = [res["meta"]]
     flags = verify_questions(intake.questions, enquiry)
     if flags:
-        res = call_llm(prompts.revise_intake_system(), prompts.revise_intake_user(intake.model_dump(), [f.model_dump() for f in flags]), Intake)
+        res = call_llm(prompts.revise_intake_system(), prompts.revise_intake_user(intake.model_dump(), [f.model_dump() for f in flags]), Intake, stage="revise_intake")
         intake = Intake.model_validate(res["output"])
-        calls.append({"stage": "revise_intake", "flags_fixed": len(flags), **res["meta"]})
+        calls.append({"flags_fixed": len(flags), **res["meta"]})
     return intake, calls
 
 
@@ -59,8 +58,8 @@ def run_assessment(
     intake_dict = intake.model_dump()
     calls = list(intake_calls)
 
-    res = call_llm(prompts.assess_system(), prompts.assess_user(enquiry, intake_dict, pre), Assessment)
-    calls.append({"stage": "assess", **res["meta"]})
+    res = call_llm(prompts.assess_system(), prompts.assess_user(enquiry, intake_dict, pre), Assessment, stage="assess")
+    calls.append(res["meta"])
     assessment = Assessment.model_validate(res["output"])
     required = pre["required_risk_categories"]
 
@@ -72,8 +71,8 @@ def run_assessment(
     to_fix = [f for f in report.flags if f.kind in _REVISE_ON] + context_flags + rubric_flags(checks)
 
     if to_fix:
-        res = call_llm(prompts.revise_system(), prompts.revise_user(assessment.model_dump(), [f.model_dump() for f in to_fix]), Assessment)
-        calls.append({"stage": "revise", "flags_sent": len(to_fix), **res["meta"]})
+        res = call_llm(prompts.revise_system(), prompts.revise_user(assessment.model_dump(), [f.model_dump() for f in to_fix]), Assessment, stage="revise")
+        calls.append({"flags_sent": len(to_fix), **res["meta"]})
         assessment = Assessment.model_validate(res["output"])
         new_report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"])
         new_report.revised = True
@@ -99,6 +98,7 @@ def run_assessment(
             git_commit=_git_commit(),
             timestamp=timestamp,
             duration_s=round(time.monotonic() - started + sum(c.get("duration_s", 0) for c in intake_calls), 1),
+            cost_usd=round(sum(c.get("cost_usd", 0) for c in calls), 4),
         ),
     )
 

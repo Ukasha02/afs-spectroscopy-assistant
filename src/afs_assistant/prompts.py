@@ -90,12 +90,16 @@ AND the relevant physical and process variation; for insufficient_information us
 multi-method lab screening to identify the target and spectral range first; (2) spectra_with_reference: spectra \
 from each candidate with independent reference measurements and timing information; (3) models_and_validation: \
 single-method models first, a combined model only if justified, validated on held-out runs, batches or independent \
-material; (4) comparison: prediction error, bias and the ability to follow changes against the client's requirements.
+material; (4) comparison: compare prediction error, bias and the ability to follow changes against the client's \
+requirements (always name all three).
 10. decision_basis: numerical acceptance criteria are agreed with the client before the test, never invented; \
 choose the simplest configuration that meets them on independent material.
 
-Style: SHORT. The whole report must read in 250-450 words: one or two sentences per item, no repetition between \
-sections. Hedged, precise verbs ('supports', 'comparison candidate', 'hypothesis to test', 'needs confirmation', \
+Style: SHORT. The rendered report must be 250-450 words in total. Word budgets: status_reason <= 15; \
+requirements_stated <= 35 in total; key_unknowns <= 30 in total; each report question <= 18; each recommendation \
+reason + caveat <= 40 together; measurement concept items <= 50 in total; spectral range notes <= 15; each risk \
+<= 15; each plan step <= 22; decision basis <= 25. Do not write citations inside the text; put them in the \
+citations field. No repetition between sections. Hedged, precise verbs ('supports', 'comparison candidate', 'hypothesis to test', 'needs confirmation', \
 'must be built and tested'); never 'will work', 'ensures', 'guarantees'."""
 
 INTAKE_RULES = """Task: read the enquiry and produce (a) a faithful extraction and (b) a short diagnostic questionnaire.
@@ -145,8 +149,8 @@ def _facts_text() -> str:
     return yaml.safe_dump(facts, sort_keys=False, allow_unicode=True, width=120)
 
 
-def intake_system() -> str:
-    return f"{ROLE}\n\n{PRINCIPLES}\n\n{INTAKE_RULES}\n\n=== AFS CURATED FACTS (for orientation) ===\n{_facts_text()}"
+def intake_system() -> list[str]:
+    return [f"{ROLE}\n\n{PRINCIPLES}\n\n{INTAKE_RULES}\n\n=== AFS CURATED FACTS (for orientation) ===\n{_facts_text()}"]
 
 
 def _exemplars() -> str:
@@ -160,7 +164,8 @@ def _exemplars() -> str:
     )
 
 
-def assess_system() -> str:
+def assess_static() -> str:
+    """Static, cacheable block shared by the assessment and the revision of every answer."""
     return (
         f"{ROLE}\n\n{PRINCIPLES}\n\n{ANSWER_RULES}\n\n{RECIPE}\n\n{_exemplars()}\n\n"
         f"=== AFS CURATED FACTS (team summary with citations; cite the underlying pages, not this list) ===\n"
@@ -168,8 +173,12 @@ def assess_system() -> str:
     )
 
 
-def revise_intake_system() -> str:
-    return f"{intake_system()}\n\n{REVISE_INTAKE_RULES}"
+def assess_system() -> list[str]:
+    return [assess_static()]
+
+
+def revise_intake_system() -> list[str]:
+    return intake_system() + [REVISE_INTAKE_RULES]
 
 
 def revise_intake_user(intake: dict, flags: list[dict]) -> str:
@@ -179,8 +188,8 @@ def revise_intake_user(intake: dict, flags: list[dict]) -> str:
     )
 
 
-def revise_system() -> str:
-    return f"{assess_system()}\n\n{REVISE_RULES}"
+def revise_system() -> list[str]:
+    return [assess_static(), REVISE_RULES]
 
 
 def intake_user(enquiry: str) -> str:
@@ -206,5 +215,5 @@ def revise_user(assessment: dict, flags: list[dict]) -> str:
 
 
 def prompt_hash() -> str:
-    text = intake_system() + assess_system() + REVISE_RULES + REVISE_INTAKE_RULES
+    text = "".join(intake_system()) + assess_static() + REVISE_RULES + REVISE_INTAKE_RULES
     return hashlib.sha256(text.encode()).hexdigest()[:12]
