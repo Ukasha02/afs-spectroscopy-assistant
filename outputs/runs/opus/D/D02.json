@@ -1,0 +1,1233 @@
+{
+  "case_id": "D02",
+  "mode": "one_shot",
+  "enquiry": "We produce an opaque, concentrated milk product that flows through a processing line. We currently sample it for fat and protein analysis and would like earlier information about composition changes. Product temperature and texture vary during production. We want an initial spectroscopy concept and a practical comparison experiment, while retaining our laboratory checks.",
+  "facts_stated": [
+    {
+      "fact": "The product is an opaque, concentrated milk product.",
+      "enquiry_quote": "We produce an opaque, concentrated milk product"
+    },
+    {
+      "fact": "The product flows through a processing line.",
+      "enquiry_quote": "that flows through a processing line"
+    },
+    {
+      "fact": "The client currently samples the product for fat and protein analysis.",
+      "enquiry_quote": "We currently sample it for fat and protein analysis"
+    },
+    {
+      "fact": "The client wants earlier information about composition changes.",
+      "enquiry_quote": "would like earlier information about composition changes"
+    },
+    {
+      "fact": "Product temperature varies during production.",
+      "enquiry_quote": "Product temperature and texture vary during production."
+    },
+    {
+      "fact": "Product texture varies during production.",
+      "enquiry_quote": "Product temperature and texture vary during production."
+    },
+    {
+      "fact": "The client wants an initial spectroscopy concept and a practical comparison experiment.",
+      "enquiry_quote": "We want an initial spectroscopy concept and a practical comparison experiment"
+    },
+    {
+      "fact": "The client wants to retain its laboratory checks.",
+      "enquiry_quote": "while retaining our laboratory checks"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today when fat or protein drifts between samples, and what decision would earlier information about composition changes allow you to make?",
+      "why": "Defines the decision the real-time data must support and the value of earlier information.",
+      "assumption_if_unanswered": "Decision and value unknown; the first step is to clarify the production decision before choosing a method.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What are the target fat and protein levels and the size of the composition changes you need to detect, in % or ppm?",
+      "why": "Determines whether the method needs major-component or trace sensitivity and what precision is relevant.",
+      "assumption_if_unanswered": "Concentration level and required change size unknown; lab screening will establish the level needed.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "Can you describe the physical form of the product (liquid, paste, or soft solid) and how opaque or viscous it is at the measurement point?",
+      "why": "Sample form and optical properties decide the probe geometry (diffuse reflection, transflection or ATR).",
+      "assumption_if_unanswered": "Form unknown; treated as opaque, flowing and possibly paste-like until confirmed.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "What is the product temperature range, and how does texture vary, and does the product foul or require cleaning or sterilization at the measurement point?",
+      "why": "Temperature, texture variation and fouling affect calibration stability and probe design.",
+      "assumption_if_unanswered": "Temperature range and fouling behaviour unknown; the lab screening will include temperature and texture variation.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where would the measurement point be on the line, and how far would the analyzer be from it, and do you have existing optical fibers?",
+      "why": "Installation point and distance decide between a local sensor and a fiber-coupled or remote analyzer, and what fibers are feasible.",
+      "assumption_if_unanswered": "Measurement point and distance unknown; a local, short-distance layout is assumed for planning until confirmed.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "What is your current laboratory reference method for fat and protein, its accuracy, and how often and where are samples taken?",
+      "why": "The reference method and its accuracy set the benchmark for comparing spectroscopy results and the time alignment of samples.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the comparison will be designed once the existing lab method is defined.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget do you require for the earlier composition information?",
+      "why": "These requirements decide whether a simple few-wavelength sensor or a broader system is appropriate.",
+      "assumption_if_unanswered": "Accuracy, response time and budget unknown; the simplest method that meets the stated need is proposed first.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "provisional_assessment",
+    "status_reason": "Targets and matrix defined; ranges and requirements open.",
+    "requirements_stated": [
+      "Opaque concentrated milk product in a processing line",
+      "Fat and protein sampled; earlier composition information wanted",
+      "Temperature and texture vary",
+      "Concept and comparison experiment; lab checks retained"
+    ],
+    "key_unknowns": [
+      "Product form, fat/protein ranges",
+      "Reference method, uncertainty, timing",
+      "Installation point, cleaning, analyzer distance",
+      "Accuracy, response time"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "Spectroscopy can give earlier composition information for this product.",
+        "verdict": "supported",
+        "explanation": [
+          {
+            "text": "The dairy example describes inline NIR reflection for opaque or concentrated dairy products, with PLS for fat and protein. Transfer to this client's product is not established.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.17",
+                "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "This application example is a reason to test. It is not proof of performance for this product.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §3",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "A spectroscopy concept and comparison experiment are the appropriate next step.",
+        "verdict": "supported",
+        "explanation": [
+          {
+            "text": "The AFS pathway starts with multi-method lab trials on the customer process, before a solution is chosen.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.20",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which product forms, fat and protein ranges and change sizes matter?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference methods, uncertainty and sampling timing apply?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do temperature, texture, homogenisation and bubbles vary?",
+        "covers": "variation"
+      },
+      {
+        "question": "What accuracy, delay, installation point and cleaning regime apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "Which production decision should earlier results support?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "diffuse reflection probe",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The dairy example supports inline NIR reflection for opaque, concentrated products.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.17",
+              "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Light penetrates shallowly, so the signal is sensitive to surface and fat globule size.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.17",
+              "quote": "Because the light does not penetrate deeply, the method is sensitive to the surface characteristics and fat globule size.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Same application type exists, but nothing is measured and ranges and requirements are unknown."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "transflection probe",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "In some dairy cases, transflection is described as a combined solution for low- and high-fat milk products; to be tested.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "In some cases, a Transflection probe can already be a combined solution working well for low-fat and high-fat containing milk products.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Transmission-type paths can fail when the product is too thick or fat-rich.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "The geometry may not suit a concentrated opaque product; this needs sample spectra."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "NIR spectroscopy / diffuse reflection probe",
+        "decision": "recommended",
+        "reason": "Scattering media; supported by the inline example for opaque dairy products."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "Colloidal liquids; comparison only if the product's optical density allows."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "alternative",
+        "reason": "Non-contact option only if probe contact or fouling is a problem."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline; usable for lab screening of samples."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "lab_screening_only",
+        "reason": "Offline solid/powder technique; lab use at most."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "Suits pastes and soft samples, but high cost and a shallow, fouling-sensitive interface; consider only if NIR is insufficient."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab ATR useful for spectral understanding, not in-line."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Thin offline liquid cell; lab screening only."
+      },
+      {
+        "table_row": "IR spectroscopy / sample layer",
+        "decision": "rejected",
+        "reason": "Solid film geometry does not match a flowing product."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "rejected",
+        "reason": "Solid surface technique; not suited to a flowing milk product."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "High selectivity but high cost; reserve for cases where NIR misses needed specificity."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline lab screening only."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Low selectivity; no support for fat and protein quantification here."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "rejected",
+        "reason": "Low selectivity; an opaque product limits transmission."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Low sensitivity and selectivity for these targets."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / probe, lens",
+        "decision": "rejected",
+        "reason": "Intended for radiating samples; not applicable."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "Low selectivity; offline; not targeted at fat and protein."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "rejected",
+        "reason": "Low selectivity; fat and protein are not a defined fluorescent indicator here."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "rejected",
+        "reason": "Offline and low selectivity for these targets."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "Compare NIR diffuse reflection and transflection probes on representative samples.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Flush mounting in pipe or vat, per the dairy example; point depends on access.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.17",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link stated; Vis-NIR silica transmits 350–2400 nm, below the 2500 nm NIR limit.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG).",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Vis-NIR silica (to be confirmed)",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe geometry",
+        "Hygienic installation",
+        "Fiber link"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780–2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": "Nominal; select bands only from sample spectra."
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "Product or formulation changes can invalidate a calibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Surface characteristics and fat globule size affect reflection signals.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.17",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "fouling_interface",
+        "text": "Window deposits could distort spectra between cleanings.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither geometry is guaranteed to meet requirements.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §3",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate, ratings and compatibility are unconfirmed.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §3",
+            "quote": null,
+            "url": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Product is a flowing, opaque liquid or paste that a probe can contact.",
+      "Lab fat and protein results can be time-aligned with spectra.",
+      "Temperature and texture effects on spectra are unknown and must be tested."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect samples across agreed fat and protein ranges and production variation, including temperature and texture.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record both geometries with time-aligned independent fat and protein reference results.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models per geometry and target first; validate on held-out production runs.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "The choice between a chemometric model and a simplified sensor depends on the lab results and requirements."
+    },
+    "decision_basis": {
+      "text": "Agree numerical criteria with the client beforehand; choose the simplest geometry meeting them on independent runs.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.17",
+        "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S02 p.20",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.17",
+        "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 p.17",
+        "quote": "Because the light does not penetrate deeply, the method is sensitive to the surface characteristics and fat globule size.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "In some cases, a Transflection probe can already be a combined solution working well for low-fat and high-fat containing milk products.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.18",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[1].citations[0]",
+        "ref": "S01 p.17",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[1]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S01 p.17",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[3].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[4].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 4,
+      "citations_page_only": 13
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.17 describes inline NIR reflection for opaque or highly concentrated dairy products and PLS for fat and protein, so this is supported as a description. However the page presents this as a lab-based multispectral suite ('in a lab environment') and the claim's inline framing is consistent with the page, so the claim itself is largely accurate; the only transfer is the dairy setting to this client, which the claim does not make explicit. Fix: State that this is the dairy example from S01 p.17 and that transfer to the client's product is not established."
+      },
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "context",
+        "detail": "not_supported: S01 p.10 concerns ATR fiber probes and general NIR spectroscopy; it does not discuss signal depth, surface sensitivity or fat globule size for NIR reflection. Those statements come from S01 p.17 only, and the calibration requirement is a general inference not stated on either page. Fix: Cite only S01 p.17 for shallow penetration and fat globule sensitivity, and label the calibration advice as a recommendation rather than a source finding."
+      },
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "overstated: The page says only 'in some cases' a transflection probe can already be a combined solution for low-fat and high-fat milk. The claim presents this as a general option working for both product types. Fix: Write that in some dairy cases a transflection probe has been described as a combined solution for low-fat and high-fat milk products, to be tested."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: S02 p.6 gives Vis-NIR silica fiber transmission as 350-2400 nm. The NIR nominal range on DOCX §5 is 780-2500 nm, so the fiber covers only part of it at the long end, but 'most of the NIR range' is an unsupported quantitative judgement that is not stated on the page. Fix: State the fiber transmission range 350-2400 nm and compare it explicitly with the 780-2500 nm NIR range, without characterising the coverage as 'most'."
+      },
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "context",
+        "detail": "not_supported: The rule-check classification of fibers as full or partial coverage of NIR is not stated on S02 p.6, which only gives transmission ranges. The 'full range' label for indium and zirconium fluoride fibers (0.3-5.5 and 0.3-4.5 um) is an inference that is not supported for the 780-2500 nm range by that page alone, and the claim also does not reference the NIR definition used. Fix: Report only the transmission ranges from S02 p.6 and state that matching them against the required NIR band is a separate check."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.17 mentions fat globule size and surface characteristics, and physical interference from scattering, but does not say that temperature or texture mimic composition changes. Fix: Limit the risk to the sensitivity to surface characteristics and fat globule size stated on S01 p.17, and treat temperature and texture as assumptions to test."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "464 words; over budget: Requirements stated 29/28, Measurement concept 86/45 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants earlier, real-time information about composition changes (fat and protein) in an opaque, concentrated milk product on a processing line, and an initial spectroscopy concept with a practical comparison experiment while keeping laboratory checks.",
+    "stated_facts": [
+      {
+        "fact": "The product is an opaque, concentrated milk product.",
+        "enquiry_quote": "We produce an opaque, concentrated milk product"
+      },
+      {
+        "fact": "The product flows through a processing line.",
+        "enquiry_quote": "that flows through a processing line"
+      },
+      {
+        "fact": "The client currently samples the product for fat and protein analysis.",
+        "enquiry_quote": "We currently sample it for fat and protein analysis"
+      },
+      {
+        "fact": "The client wants earlier information about composition changes.",
+        "enquiry_quote": "would like earlier information about composition changes"
+      },
+      {
+        "fact": "Product temperature varies during production.",
+        "enquiry_quote": "Product temperature and texture vary during production."
+      },
+      {
+        "fact": "Product texture varies during production.",
+        "enquiry_quote": "Product temperature and texture vary during production."
+      },
+      {
+        "fact": "The client wants an initial spectroscopy concept and a practical comparison experiment.",
+        "enquiry_quote": "We want an initial spectroscopy concept and a practical comparison experiment"
+      },
+      {
+        "fact": "The client wants to retain its laboratory checks.",
+        "enquiry_quote": "while retaining our laboratory checks"
+      }
+    ],
+    "targets": [
+      "fat",
+      "protein"
+    ],
+    "sample_description": "Opaque, concentrated milk product flowing through a processing line.",
+    "sample_state": "unknown",
+    "process_context": "production",
+    "conditions": [
+      "Product temperature varies during production",
+      "Product texture varies during production"
+    ],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "Spectroscopy is a suitable way to obtain earlier composition information for this product.",
+        "enquiry_quote": "would like earlier information about composition changes"
+      },
+      {
+        "claim": "A spectroscopy concept and comparison experiment are the appropriate next step.",
+        "enquiry_quote": "We want an initial spectroscopy concept and a practical comparison experiment"
+      }
+    ],
+    "requested_decision": "Whether an in-line spectroscopy approach can give earlier fat and protein composition information, and how to design a practical comparison experiment alongside existing laboratory checks.",
+    "unknowns": [
+      "Physical sample state beyond opaque and concentrated (liquid, paste, or semi-solid) is not stated",
+      "Concentration levels of fat and protein (ppm or %) are not stated",
+      "Measurement point and distance to the analyzer are not stated",
+      "Whether contact with the product is possible is not stated",
+      "Current laboratory reference method and its accuracy are not stated",
+      "Required accuracy, response time and budget are not stated",
+      "Temperature and texture ranges are not stated",
+      "Process cleaning or sterilization requirements are not stated",
+      "Existing fibers or optical equipment are not stated",
+      "Which decision real-time data would drive is not stated",
+      "Size of composition changes and how often they occur is not stated"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / probe, lens",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "radiating sample",
+        "optical_path_or_depth": "any",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "scattering media, powder",
+        "optical_path_or_depth": "0.5-1 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample layer",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid film",
+        "optical_path_or_depth": "5-50 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:29:04.884087+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.4,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 130,
+          "output_tokens": 2021,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001128
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:29:14.262263+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 42.6,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10756,
+          "output_tokens": 4876,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.157417
+      },
+      {
+        "claims_checked": 15,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:29:56.869298+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 5.9,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 9308,
+          "output_tokens": 1093,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001485
+      },
+      {
+        "flags_sent": 8,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:30:02.772589+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 48.2,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10637,
+          "output_tokens": 6300,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.185421
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "27e2824",
+    "timestamp": "2026-10-17T21:29:14.244489+00:00",
+    "duration_s": 106.3,
+    "cost_usd": 0.3455
+  }
+}

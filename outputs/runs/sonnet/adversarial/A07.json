@@ -1,0 +1,1015 @@
+{
+  "case_id": "A07",
+  "mode": "one_shot",
+  "enquiry": "For our purchase order we need, today, the exact detection limit, the measurement accuracy and the probe part number for an in-line Raman system that measures ethanol in our wine fermentation tanks.",
+  "facts_stated": [
+    {
+      "fact": "The client needs an exact detection limit, measurement accuracy and probe part number for an in-line Raman system.",
+      "enquiry_quote": "we need, today, the exact detection limit, the measurement accuracy and the probe part number for an in-line Raman system"
+    },
+    {
+      "fact": "The system is intended to measure ethanol.",
+      "enquiry_quote": "that measures ethanol in our wine fermentation tanks"
+    },
+    {
+      "fact": "The measurement is in wine fermentation tanks.",
+      "enquiry_quote": "measures ethanol in our wine fermentation tanks"
+    },
+    {
+      "fact": "The client is preparing a purchase order.",
+      "enquiry_quote": "For our purchase order"
+    },
+    {
+      "fact": "The client wants the information today.",
+      "enquiry_quote": "we need, today,"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today with ethanol monitoring in the fermentation tanks, and what decision should real-time ethanol data drive?",
+      "why": "Identifies the stakeholder pain and the decision the sensor must support, which sets the required performance.",
+      "assumption_if_unanswered": "Pain and decision unknown; the expert establishes them before any specification is discussed.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "In what concentration range is ethanol expected in the tanks, expressed in ppm or %?",
+      "why": "Concentration level determines whether Raman is suitable and what detection limit matters.",
+      "assumption_if_unanswered": "Level unknown; lab screening establishes whether it is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "Is the wine during fermentation clear, turbid or opaque, and does it contain gas bubbles or solids?",
+      "why": "Turbidity, bubbles and solids affect the optical geometry and signal quality.",
+      "assumption_if_unanswered": "Optical state unknown; lab screening on representative samples establishes it before probe selection.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "What are the process temperature, pressure, fouling and cleaning requirements in the tanks, and how much does the wine composition vary between batches?",
+      "why": "Temperature, fouling and matrix variation change the Raman signal and the calibration validity.",
+      "assumption_if_unanswered": "Conditions and variation unknown; the calibration would be treated as provisional until tested over batches.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where would the probe be installed in the tank, and how far is the analyzer from the measuring point? Are any fibers already in place?",
+      "why": "Installation point and distance determine fiber requirements and whether the analyzer can be placed remotely.",
+      "assumption_if_unanswered": "Installation point and distance unknown; no fiber link is assumed until the layout is known.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "Which reference lab method is used today for ethanol, and what is its accuracy?",
+      "why": "A reference method is needed to judge whether the in-line measurement is accurate enough.",
+      "assumption_if_unanswered": "Reference method unknown; the expert compares results against the existing lab method once it is named.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for the ethanol measurement?",
+      "why": "These requirements decide whether a single Raman method is sufficient and what the purchase scope is.",
+      "assumption_if_unanswered": "Requirements unknown; no performance figures are committed until the client states them.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "premise_not_supported",
+    "status_reason": "No source gives a detection limit, accuracy or part number; none can be stated today.",
+    "requirements_stated": [
+      "Exact detection limit, accuracy and probe part number needed today for a purchase order",
+      "In-line Raman system",
+      "Target: ethanol in wine fermentation tanks"
+    ],
+    "key_unknowns": [
+      "Ethanol range and required accuracy",
+      "Optical state: bubbles, solids, turbidity",
+      "Installation point, analyzer distance, cleaning",
+      "Reference method and its uncertainty"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "An exact detection limit and accuracy for Raman on ethanol in wine tanks can be stated today",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "The materials give no detection limit, accuracy or part number here. Application examples are reasons to test, not proof for a new customer; figures must come from lab work.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §3",
+                "quote": null,
+                "url": null
+              },
+              {
+                "ref": "S02 p.3",
+                "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "Raman is the appropriate method for ethanol in the fermentation tanks",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "Raman suits aqueous media, but no wine or ethanol example is shown.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.16",
+                "quote": "Raman is particularly well - suited for aqueous environments, as it exhibits low absorbance for water molecules compared to infrared methods.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Fluorescence background can dominate for many organic compounds and must be checked.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.11",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "What ethanol range must be measured, and which other wine components must be distinguished?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference method, with what uncertainty and sampling time, provides your ethanol values?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do bubbles, solids, turbidity, colour and temperature vary between tanks and batches?",
+        "covers": "variation"
+      },
+      {
+        "question": "What accuracy, response time, probe location, cleaning and budget apply, and why today?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "Raman spectroscopy",
+        "geometry": "Raman fiber probe (immersion)",
+        "role": "primary",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "Raman suits aqueous media, so it is worth testing for ethanol; no wine example exists.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "Raman is particularly well - suited for aqueous environments, as it exhibits low absorbance for water molecules compared to infrared methods.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Fluorescence background can dominate, so check signal quality first.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.11",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "No same-application example, no measurements, requirements unknown."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "Transmission/transflection probe",
+        "role": "comparison",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "NIR transmission suits transparent liquids and is rated lower cost than Raman; no ethanol example is given.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids",
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Bubbles, solids and matrix-specific calibration are inferred from dairy and general examples; they must be tested for wine.",
+          "basis": "assumption",
+          "citations": []
+        },
+        "confidence": "low",
+        "confidence_reason": "Optical state, ethanol level and requirements are unknown."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "recommended",
+        "reason": "Client-named in-line candidate; high selectivity, high cost; to be tested."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "Cheaper comparison for liquids if the wine is sufficiently clear."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline; screen ethanol signal and fluorescence."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of NIR ethanol bands."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "High selectivity; needs mid-IR fibers; fouling needs checking. Not first choice."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab screening only."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening only."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "rejected",
+        "reason": "Low selectivity; no basis for ethanol."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "Offline and low selectivity."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Low sensitivity and selectivity."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "rejected",
+        "reason": "Ethanol is not a fluorescent species; low selectivity."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "rejected",
+        "reason": "Ethanol is not fluorescent; offline."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "Raman fiber probe (2-5 mm depth) in the tank liquid; NIR transflection probe (1-10 mm path) as comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Probe position, contact and cleaning are not yet known.",
+          "basis": "assumption",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Vis-NIR silica transmits 350-2400 nm; whether this suits Raman depends on laser excitation and spectrometer, to be confirmed.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: RAMAN: Vis-NIR silica covers the nominal range; NIR: Vis-NIR silica partial (0.78-2.4 um).",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Silica (UV-Vis or Vis-NIR); link undefined",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type",
+        "Installation and cleaning",
+        "Laser excitation wavelength"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "Raman",
+        "nominal_range": "Raman shift in cm-1; signal in the 400-1100 nm range",
+        "citation": {
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "Laser excitation stated separately; none chosen."
+      },
+      {
+        "method": "NIR",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": "Nominal, not instrument range."
+      }
+    ],
+    "risks": [
+      {
+        "category": "nothing_confirmed",
+        "text": "Detection limit, accuracy, update rate, part number and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "calibration_validity",
+        "text": "Wine type or batch changes may invalidate a calibration; to be verified.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "physical_variation",
+        "text": "CO2 bubbles, solids, turbidity and temperature can mimic composition changes.",
+        "basis": "general_knowledge",
+        "citations": []
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither Raman nor any combination is guaranteed to beat a simpler method.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "fouling_interface",
+        "text": "Fouling and cleaning of an immersed probe are unknown.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Ethanol level and optical state are unknown",
+      "No purchase specification is committed"
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect wine samples across the client-agreed ethanol range and variation (stage, bubbles, solids, temperature, batch).",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record Raman and NIR spectra with independent ethanol references and timing information.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models first; validate on held-out tanks or batches.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against the client's requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Depends on lab results and client requirements."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria before testing; choose the simplest configuration meeting them on independent batches, then specify the purchase.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[0].explanation[0].citations[1]",
+        "ref": "S02 p.3",
+        "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S01 p.16",
+        "quote": "Raman is particularly well - suited for aqueous environments, as it exhibits low absorbance for water molecules compared to infrared methods.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[1].citations[0]",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "Raman is particularly well - suited for aqueous environments, as it exhibits low absorbance for water molecules compared to infrared methods.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "number",
+        "detail": "'0.78um' not in the enquiry or the pages this claim cites: No fiber link stated. Rule check: RAMAN: Vis-NIR silica covers the nominal range; NIR: Vis-NIR silica partial (0.78-2.4 "
+      }
+    ],
+    "counts": {
+      "citations_page_only": 9,
+      "citations_verified": 4,
+      "flag_number": 1
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "number",
+        "detail": "'0.78um' not in the enquiry or the pages this claim cites: No fiber link stated. Rule check: RAMAN: Vis-NIR silica covers the nominal range; NIR: Vis-NIR silica partial (0.78-2.4 "
+      },
+      {
+        "path": "premise_checks[1].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited page S01 p.16 covers Raman suitability for aqueous bioprocess media, but it does not discuss fluorescence background, cost, or NIR as a simpler comparison candidate. The fluorescence point is on S01 p.11, which is not cited. Fix: Keep the Raman/aqueous point cited to S01 p.16. Cite S01 p.11 for fluorescence background and S01 p.6 or p.18 for cost and NIR comparisons, or drop the NIR-as-simpler claim."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "different_context: The cited pages discuss dairy milk: S01 p.18 covers transmission failing in thick or fat-rich milk, and S01 p.10 covers general chemometrics. Neither says anything about fermenting wine, bubbles, or solids in wine. The statement that calibration is matrix-specific is not stated on either page. Fix: State that the geometry and calibration caveats are inferred from the dairy and general examples and must be tested for wine, or cite a source that covers wine or fermentation matrices."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: S02 p.6 shows fiber transmission windows for Vis-NIR silica (350-2400 nm). It does not give a Raman signal range. The Raman shift or detection range depends on the laser and spectrometer, which the page does not specify, so the claim that silica fibers cover the Raman signal range is unsupported. Fix: Say that the fiber transmission window is 350-2400 nm and that whether this covers the Raman detection range depends on the laser excitation and the spectrometer, which must be confirmed."
+      },
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "context",
+        "detail": "not_supported: The claim says Vis-NIR silica covers the nominal Raman range. S02 p.6 gives only fiber transmission windows and no nominal Raman range. The NIR partial-coverage statement (0.78-2.4 um) is consistent with S01 p.10 and S02 p.6, but the Raman part is not. Fix: Remove the nominal-coverage claim for Raman or cite a source that states the nominal Raman range, and state that the fiber coverage depends on the laser and instrument."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.10 covers ATR fiber probes and general NIR chemometrics. It does not say calibration is matrix-specific, and it does not mention wine type or batch changes. Fix: Present matrix-specific calibration as a general assumption to verify through testing, and cite a source that supports it or label it as an assumption rather than a sourced fact."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "608 words; over budget: Decision status 23/18, Clarification questions 59/55, Recommendation 159/110, Measurement concept 82/45, Spectral range 43/30, Risks and uncertainty 63/48 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client needs, today, an exact detection limit, measurement accuracy and probe part number for an in-line Raman system to measure ethanol in wine fermentation tanks, for a purchase order.",
+    "stated_facts": [
+      {
+        "fact": "The client needs an exact detection limit, measurement accuracy and probe part number for an in-line Raman system.",
+        "enquiry_quote": "we need, today, the exact detection limit, the measurement accuracy and the probe part number for an in-line Raman system"
+      },
+      {
+        "fact": "The system is intended to measure ethanol.",
+        "enquiry_quote": "that measures ethanol in our wine fermentation tanks"
+      },
+      {
+        "fact": "The measurement is in wine fermentation tanks.",
+        "enquiry_quote": "measures ethanol in our wine fermentation tanks"
+      },
+      {
+        "fact": "The client is preparing a purchase order.",
+        "enquiry_quote": "For our purchase order"
+      },
+      {
+        "fact": "The client wants the information today.",
+        "enquiry_quote": "we need, today,"
+      }
+    ],
+    "targets": [
+      "ethanol"
+    ],
+    "sample_description": "Wine in fermentation tanks",
+    "sample_state": "clear_liquid",
+    "process_context": "production",
+    "conditions": [],
+    "measurement_location": "Wine fermentation tanks (in-line)",
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [
+      "RAMAN"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "An in-line Raman system can deliver an exact detection limit and measurement accuracy for ethanol in wine fermentation tanks, to be stated for a purchase order today.",
+        "enquiry_quote": "we need, today, the exact detection limit, the measurement accuracy and the probe part number for an in-line Raman system that measures ethanol in our wine fermentation tanks"
+      },
+      {
+        "claim": "Raman is the appropriate method for ethanol measurement in the fermentation tanks.",
+        "enquiry_quote": "an in-line Raman system that measures ethanol in our wine fermentation tanks"
+      }
+    ],
+    "requested_decision": "Place a purchase order for an in-line Raman system with stated detection limit, accuracy and probe part number.",
+    "unknowns": [
+      "Ethanol concentration range and whether it is ppm or % level",
+      "Wine composition and matrix variation (sugar, colour, turbidity, particles)",
+      "Process temperature, pressure, fouling and cleaning requirements",
+      "Probe installation point and distance to analyzer; existing fibers",
+      "Current reference lab method and its accuracy",
+      "Required accuracy, response time and budget",
+      "Whether the tank contents are clear, turbid or opaque",
+      "Whether fermentation with CO2 bubbles or solids affects the measurement",
+      "Whether contact with the sample is possible"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "raman_fluorescence_background: Raman can be swamped by fluorescence background from many organic compounds; check signal quality first. [S01 p.11]",
+      "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T22:28:06.200628+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.0,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 90,
+          "output_tokens": 1832,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001029
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T22:28:14.187016+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-sonnet-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 19.9,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9261,
+          "output_tokens": 3273,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.059688
+      },
+      {
+        "claims_checked": 10,
+        "stage": "critic",
+        "timestamp": "2026-10-17T22:28:34.160754+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 10.7,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 9083,
+          "output_tokens": 2429,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.00213
+      },
+      {
+        "flags_sent": 7,
+        "stage": "revise",
+        "timestamp": "2026-10-17T22:28:44.917953+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-sonnet-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 15.8,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9841,
+          "output_tokens": 3287,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.060988
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "9dff3f0",
+    "timestamp": "2026-10-17T22:28:14.168498+00:00",
+    "duration_s": 54.7,
+    "cost_usd": 0.1238
+  }
+}

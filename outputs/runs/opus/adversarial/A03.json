@@ -1,0 +1,1061 @@
+{
+  "case_id": "A03",
+  "mode": "one_shot",
+  "enquiry": "We read the supplied paper on the combined mid-infrared ATR and fluorescence fiber probe tested on chicken tissue. We plan to mount that probe over our meat-processing conveyor to grade every carcass by fat content, and we want to tell our customers that the method is already validated.",
+  "facts_stated": [
+    {
+      "fact": "The client read a supplied paper on a combined mid-infrared ATR and fluorescence fiber probe.",
+      "enquiry_quote": "We read the supplied paper on the combined mid-infrared ATR and fluorescence fiber probe tested on chicken tissue."
+    },
+    {
+      "fact": "The paper's probe was tested on chicken tissue.",
+      "enquiry_quote": "tested on chicken tissue"
+    },
+    {
+      "fact": "The client plans to mount the probe over a meat-processing conveyor.",
+      "enquiry_quote": "We plan to mount that probe over our meat-processing conveyor"
+    },
+    {
+      "fact": "The client wants to grade every carcass by fat content.",
+      "enquiry_quote": "to grade every carcass by fat content"
+    },
+    {
+      "fact": "The client intends to tell its customers that the method is already validated.",
+      "enquiry_quote": "we want to tell our customers that the method is already validated"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today with carcass grading by fat content, and what decision should the real-time data drive on the line?",
+      "why": "Defines the decision and whether a sensor is the right answer.",
+      "assumption_if_unanswered": "Decision and current grading practice unknown; the feasibility plan starts with clarifying the grading decision.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What fat content levels and range must be distinguished for grading, and is this expressed as a percentage of the carcass or otherwise?",
+      "why": "Sets the concentration level and whether the method's sensitivity is sufficient.",
+      "assumption_if_unanswered": "Fat level unknown; lab screening establishes the concentration level and grading resolution required.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "What is the carcass surface like at measurement (skin, feathers, moisture, color, cut surface) and how much does it vary between carcasses?",
+      "why": "Surface state and variability decide whether ATR contact or another optical geometry is workable.",
+      "assumption_if_unanswered": "Surface condition unknown; lab screening on representative carcass surfaces is needed before any probe choice.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "What are the line conditions: conveyor speed, cleaning or sanitation regime, and temperature or humidity at the measuring point?",
+      "why": "Speed and cleaning determine whether contact-based ATR is feasible and how fouling affects the probe.",
+      "assumption_if_unanswered": "Line conditions unknown; in-line trial design cannot be fixed until they are known.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "What is the planned distance from the probe to the carcass and would the carcass touch the probe face?",
+      "why": "Contact or stand-off distance determines whether ATR, diffuse reflection or another geometry applies.",
+      "assumption_if_unanswered": "Contact and distance unknown; the paper's ATR configuration cannot be assumed to transfer to a conveyor.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "What reference method is used today to determine fat content, and what is its accuracy?",
+      "why": "A reference is required to show whether any sensor agrees with lab practice.",
+      "assumption_if_unanswered": "Reference method unknown; no accuracy comparison is possible until it is provided.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for the grading system, and what does 'validated' need to mean for your customers?",
+      "why": "Defines acceptance criteria and whether a validation claim can be supported.",
+      "assumption_if_unanswered": "Requirements unknown; no validation claim can be made until acceptance criteria and evidence are agreed.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "premise_not_supported",
+    "status_reason": "Paper shows lab model-tissue results only; no carcass grading validation.",
+    "requirements_stated": [
+      "Mount the paper's MIR-ATR + fluorescence probe over the conveyor",
+      "Grade every carcass by fat content",
+      "Tell customers the method is validated"
+    ],
+    "key_unknowns": [
+      "Fat range and grade classes",
+      "Reference method and uncertainty",
+      "Contact or stand-off, conveyor speed",
+      "Accuracy, response time, cleaning"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "The combined probe shown on chicken tissue will grade carcasses by fat content.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "In the lab chicken study, IR worked better than fluorescence for discriminating fat, but did not fully separate the three tissue classes on its own. This is tissue classification, not fat-content grading.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S04 p.4",
+                "quote": "IR spectroscopy works better for the discrimination of fat",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "A published application is a reason to test, not proof for a new customer.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §3",
+                "quote": "a published application is a reason to test a method, not proof that it will work for a new customer",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The method is already validated and can be presented to customers as validated.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "The probe was demonstrated only on model tissue samples in the laboratory, with no industrial or grading validation.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S04 p.1",
+                "quote": "has been illustrated using model samples of biological tissue.",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The probe can be mounted over the conveyor and grade every carcass.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "The paper states that ATR measurement requires samples allowing tight contact with the probe head. The ATR probe rows list liquid, paste and soft samples at 1-6 um optical depth.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S04 p.4",
+                "quote": "which is true for liquid or soft solid samples and their components, allowing a tight contact with the probe head.",
+                "url": null
+              },
+              {
+                "ref": "S01 Table 1 (p.6)",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which fat measure, range and grade classes, on which carcass region?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference fat method, uncertainty and sampling time exist?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do surface, moisture, temperature and size vary between carcasses?",
+        "covers": "variation"
+      },
+      {
+        "question": "What conveyor speed, contact options, sanitation, accuracy and response time apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "What must 'validated' mean for your customers?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "diffuse reflection, surface at a distance",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The dairy example uses a flush-mounted reflection probe for opaque products; at-a-distance diffuse reflectance is a general NIR capability.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.17",
+              "quote": "the probe is flush -mounted into a pipe or vat to interact directly with the flowing medium.",
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": "enables measurements using diffuse reflectance, including measurements without direct contact with the sample, at a distance.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Dairy is another matrix and reflection is surface-sensitive; a meat calibration must be built and tested.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.17",
+              "quote": "the method is sensitive to the surface characteristics and fat globule size.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "No meat or carcass example in the materials; nothing measured."
+      },
+      {
+        "method": "MIR (FTIR) spectroscopy",
+        "geometry": "ATR probe, lab comparison on cut samples",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "In a lab chicken study, IR discriminated fat via the ester carbonyl band, but alone did not fully separate all classes.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.4",
+              "quote": "IR spectroscopy works better for the discrimination of fat",
+              "url": null
+            },
+            {
+              "ref": "S04 p.3",
+              "quote": "is related to the stretching vibration band of the ester carbonyl",
+              "url": null
+            },
+            {
+              "ref": "S04 p.4",
+              "quote": "none of the individual techniques was su fficient to completely separate the three sample classes",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "ATR needs tight contact and probes 1–6 µm deep; use it for lab comparison only.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S04 p.4",
+              "quote": "allowing a tight contact with the probe head.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Model-tissue lab study only; surface depth may not represent carcass fat."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Low selectivity; no fat example in the materials."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "rejected",
+        "reason": "No defined fluorophore for fat; in the paper, fluorescence separated liver, not fat."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "lab_screening_only",
+        "reason": "Mid-IR on solids; useful for lab screening, needs mid-IR fibers in-line."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "recommended",
+        "reason": "Non-contact geometry fits a moving conveyor; simplest candidate."
+      },
+      {
+        "table_row": "IR spectroscopy / sample layer",
+        "decision": "lab_screening_only",
+        "reason": "Offline thin-layer technique for band identification."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "lab_screening_only",
+        "reason": "Offline reference spectra of cut samples."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "High cost and possible fluorescence background; consider only if NIR proves insufficient."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "NIR diffuse reflection at a distance; MIR-ATR probe on cut lab samples.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Over the conveyor, as the client requested.",
+          "basis": "client_fact",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link stated. Approximate ranges: Vis-NIR silica 350–2400 nm; CIR 1.1–6.5 µm, PIR 3–17 µm; coverage needs checking.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG); MIR full range: no single fiber; partial: Chalcogenide As-S IR fiber (CIR), Polycrystalline silver halide IR fiber (PIR), Hollow glass waveguide (HWG), Indium fluoride fiber, Zirconium fluoride fiber.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Vis-NIR silica (NIR); CIR or PIR (MIR-ATR lab comparison)",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Stand-off reflection probe type",
+        "Installation and hygiene rating",
+        "Optical configuration"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780–2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": "Nominal; usable band set by fiber and instrument."
+      },
+      {
+        "method": "MIR (FTIR) spectroscopy",
+        "nominal_range": "4000–400 cm-1",
+        "citation": {
+          "ref": "S01 p.9",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "evidence_scope",
+        "text": "Model-tissue lab results cannot back a customer validation claim.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S04 p.1",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "calibration_validity",
+        "text": "Breed, cut or feed changes can invalidate a calibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Surface condition can mimic fat changes in reflection.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.17",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither NIR nor a combination is guaranteed to grade adequately.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, speed, hygiene ratings and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Grading decision, fat range and reference method are unknown until the client answers.",
+      "Carcasses do not touch a probe on the conveyor."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect carcasses across the agreed fat range and surface, temperature and size variation.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record NIR and lab MIR-ATR spectra with time-matched independent reference fat results.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models first; validate on held-out batches; combine only if justified.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against grading requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Grading need and feasibility must be established first."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria with the client first; choose the simplest configuration meeting them on independent carcasses.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S04 p.4",
+        "quote": "IR spectroscopy works better for the discrimination of fat",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "DOCX §3",
+        "quote": "a published application is a reason to test a method, not proof that it will work for a new customer",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S04 p.1",
+        "quote": "has been illustrated using model samples of biological tissue.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[2].explanation[0].citations[0]",
+        "ref": "S04 p.4",
+        "quote": "which is true for liquid or soft solid samples and their components, allowing a tight contact with the probe head.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[2].explanation[0].citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.17",
+        "quote": "the probe is flush -mounted into a pipe or vat to interact directly with the flowing medium.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[1]",
+        "ref": "S01 p.10",
+        "quote": "enables measurements using diffuse reflectance, including measurements without direct contact with the sample, at a distance.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 p.17",
+        "quote": "the method is sensitive to the surface characteristics and fat globule size.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S04 p.4",
+        "quote": "IR spectroscopy works better for the discrimination of fat",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[1]",
+        "ref": "S04 p.3",
+        "quote": "is related to the stretching vibration band of the ester carbonyl",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[2]",
+        "ref": "S04 p.4",
+        "quote": "none of the individual techniques was su fficient to completely separate the three sample classes",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S04 p.4",
+        "quote": "allowing a tight contact with the probe head.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "S04 p.1",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "S01 p.17",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 11,
+      "citations_page_only": 10
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "context",
+        "detail": "different_context: The paper uses IR to discriminate fat in lab chicken tissue samples; the claim says 'the MIR signal separated fat', which is accurate for that context, but the source says fat discrimination was partial and PCA on IR alone did not fully separate the classes. Stating it as separation overstates the result. Fix: Say that in the lab study, IR spectroscopy worked better than fluorescence for discriminating fat, but did not fully separate the three tissue classes on its own."
+      },
+      {
+        "path": "premise_checks[2].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages do not state that ATR requires tight contact and a micrometre-scale depth while excluding stand-off mounting; the S01 p.6 table gives ATR depth of 1-6 um, but the claim that stand-off mounting over a conveyor does not match the principle is an inference not stated in the sources (and the NIR rows are cited as if they were ATR evidence). Fix: Limit the claim to the cited table values: ATR platform/probe rows list optical depth 1-6 um and liquid, paste, soft samples; state the contact requirement only as the S04 p.4 'tight contact with the probe head' statement."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "not_supported: S01 p.17 describes inline NIR reflection for opaque dairy products such as yogurt, butter and whole milk concentrates. It does not say fat in opaque food is measured or that the method can measure without contact; the non-contact statement is from S01 p.10 about NIR at a distance, and it refers to probe-based diffuse reflection flush-mounted in a pipe, which is contact with the flow. Fix: Cite the dairy example as a reflection probe flush-mounted into a pipe or vat for opaque dairy products, and cite S01 p.10 separately for the general at-a-distance diffuse reflectance capability."
+      },
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "overstated: The S04 p.4 text says IR works better for fat discrimination in the lab chicken study; it does not identify the ester carbonyl band as the separating feature in that claim (that is at p.3), and it does not say the separation was complete. Fix: Quote the p.4 statement and note that the ester carbonyl band near 1740 cm-1 (S04 p.3) is the basis, while acknowledging that IR alone did not fully separate the classes."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: S02 p.6 lists Vis-NIR silica fibers as 350-2400 nm, which covers the NIR range 780-2500 nm only partially, and the chalcogenide and polycrystalline fibers as covering MIR partially; the 'MIR needs' wording turns partial coverage into a requirement that the figure does not state. Fix: State that Vis-NIR silica fibers cover only part of the NIR range listed on S02 p.6, and that the figure lists chalcogenide (1.1-6.5 um) and polycrystalline (3-17 um) fibers for the infrared range."
+      },
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "context",
+        "detail": "overstated: The fiber coverage classification (full versus partial) is the model's own rule and is not stated on S02 p.6, which only gives approximate transmission ranges; calling the coverage full or partial for NIR and MIR is an interpretation presented as a source fact. Fix: Present the fiber ranges as approximate values from S02 p.6 and mark the full/partial classification as an interpretation to be checked against the figure and the actual fiber specification."
+      },
+      {
+        "path": "risks[3]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.7 discusses synergy of combined spectral methods in general and gives examples of successful combinations; it does not state that NIR or a method combination is not guaranteed to grade adequately. The claim reframes a general synergy statement as a risk statement with a different meaning. Fix: Cite S01 p.7 only for the statement that combinations can give synergy in some problems, and state the grading risk as an assumption to test rather than a source finding."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "700 words; over budget: Recommendation 231/110, Measurement concept 117/45, Spectral range 36/30, Risks and uncertainty 49/48 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to know whether a combined mid-infrared ATR and fluorescence fiber probe, shown on chicken tissue in a paper, can grade carcasses by fat content on a meat-processing conveyor, and plans to tell customers the method is validated.",
+    "stated_facts": [
+      {
+        "fact": "The client read a supplied paper on a combined mid-infrared ATR and fluorescence fiber probe.",
+        "enquiry_quote": "We read the supplied paper on the combined mid-infrared ATR and fluorescence fiber probe tested on chicken tissue."
+      },
+      {
+        "fact": "The paper's probe was tested on chicken tissue.",
+        "enquiry_quote": "tested on chicken tissue"
+      },
+      {
+        "fact": "The client plans to mount the probe over a meat-processing conveyor.",
+        "enquiry_quote": "We plan to mount that probe over our meat-processing conveyor"
+      },
+      {
+        "fact": "The client wants to grade every carcass by fat content.",
+        "enquiry_quote": "to grade every carcass by fat content"
+      },
+      {
+        "fact": "The client intends to tell its customers that the method is already validated.",
+        "enquiry_quote": "we want to tell our customers that the method is already validated"
+      }
+    ],
+    "targets": [
+      "fat content"
+    ],
+    "sample_description": "Carcasses on a meat-processing conveyor",
+    "sample_state": "solid",
+    "process_context": "production",
+    "conditions": [
+      "Carcasses move on a conveyor"
+    ],
+    "measurement_location": "Over the meat-processing conveyor",
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [
+      "MIR",
+      "FLUO"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "The combined MIR-ATR and fluorescence probe, shown on chicken tissue in the paper, will work for grading carcasses by fat content.",
+        "enquiry_quote": "We read the supplied paper on the combined mid-infrared ATR and fluorescence fiber probe tested on chicken tissue. We plan to mount that probe over our meat-processing conveyor to grade every carcass by fat content"
+      },
+      {
+        "claim": "The method is already validated and can be presented to customers as validated.",
+        "enquiry_quote": "we want to tell our customers that the method is already validated"
+      },
+      {
+        "claim": "The probe can be mounted over the conveyor and used to grade every carcass.",
+        "enquiry_quote": "We plan to mount that probe over our meat-processing conveyor to grade every carcass by fat content"
+      }
+    ],
+    "requested_decision": "Whether to adopt the probe for carcass grading by fat content and to present the method to customers as validated.",
+    "unknowns": [
+      "Fat content level and range in carcasses",
+      "Carcass surface condition and variability",
+      "Conveyor speed and distance from probe to carcass",
+      "Whether the carcass surface is in contact with the probe",
+      "Reference method for fat content and its accuracy",
+      "Required accuracy, response time and budget",
+      "Whether the paper's study covers industrial or in-vivo conditions",
+      "Fiber and analyzer setup, including mid-IR fiber compatibility",
+      "Whether fluorescence is linked to a defined fluorescent species relevant to fat"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample layer",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid film",
+        "optical_path_or_depth": "5-50 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "fluorescence_needs_fluorophore: Fluorescence only measures a defined fluorescent species or a justified indicator; most chemicals do not fluoresce. [S01 p.5; S04 p.4; DOCX §5]",
+      "sensitivity_not_selectivity: High sensitivity does not imply selectivity. Fluorimetry and UV/Vis are rated high sensitivity but low selectivity. [S01 Table 1 (p.6); DOCX §5]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "combination_is_hypothesis: Combining methods can add complementary information, but the gain is a hypothesis to test against the best single method. [S01 p.7-8; DOCX §5]",
+      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1; DOCX §5]",
+      "remote_measurement_nir_silica: NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist. [S01 p.5; S02 p.7]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:44:55.535998+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.1,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 120,
+          "output_tokens": 1984,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001108
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:45:04.613837+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 48.5,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9044,
+          "output_tokens": 5503,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.163109
+      },
+      {
+        "claims_checked": 15,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:45:53.178327+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 7.4,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 13447,
+          "output_tokens": 1441,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.002073
+      },
+      {
+        "flags_sent": 8,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:46:00.615229+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 43.1,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10637,
+          "output_tokens": 5815,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.175721
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "27e2824-dirty",
+    "timestamp": "2026-10-17T21:45:04.595252+00:00",
+    "duration_s": 108.4,
+    "cost_usd": 0.342
+  }
+}

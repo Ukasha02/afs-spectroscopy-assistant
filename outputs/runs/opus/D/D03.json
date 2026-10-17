@@ -1,0 +1,976 @@
+{
+  "case_id": "D03",
+  "mode": "one_shot",
+  "enquiry": "Our dairy process includes a relatively clear whey stream before a concentration stage. We want to investigate whether spectroscopy can track protein concentration as the stream changes, with laboratory results used as the reference. The stream can become more turbid under some operating conditions. We need a first measurement concept that handles this change rather than assuming the liquid always remains clear.",
+  "facts_stated": [
+    {
+      "fact": "The process is a dairy process that includes a relatively clear whey stream before a concentration stage.",
+      "enquiry_quote": "Our dairy process includes a relatively clear whey stream before a concentration stage."
+    },
+    {
+      "fact": "The client wants to investigate whether spectroscopy can track protein concentration as the stream changes.",
+      "enquiry_quote": "We want to investigate whether spectroscopy can track protein concentration as the stream changes, with laboratory results used as the reference."
+    },
+    {
+      "fact": "Laboratory results are to be used as the reference.",
+      "enquiry_quote": "with laboratory results used as the reference"
+    },
+    {
+      "fact": "The stream can become more turbid under some operating conditions.",
+      "enquiry_quote": "The stream can become more turbid under some operating conditions."
+    },
+    {
+      "fact": "The client needs a first measurement concept that handles the change in turbidity rather than assuming the liquid always remains clear.",
+      "enquiry_quote": "We need a first measurement concept that handles this change rather than assuming the liquid always remains clear."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today with protein concentration in the whey stream before concentration, and what decision would real-time protein data drive?",
+      "why": "Defines the operational pain and the decision the measurement must support, which sets the required performance.",
+      "assumption_if_unanswered": "Pain and decision unknown; the first step is to clarify the decision before choosing a method.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What is the protein level range in the whey stream, expressed in ppm or %, and over what range must it be tracked?",
+      "why": "Ppm versus % level decides whether a sensitive or a bulk-sensitive method is appropriate.",
+      "assumption_if_unanswered": "Level unknown; lab screening establishes whether it is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "How does the stream turbidity change: how clear is it normally, how turbid does it become, and under which operating conditions?",
+      "why": "Turbidity determines the probe geometry (transmission, transflection or diffuse reflection) and whether one geometry can cover the full range.",
+      "assumption_if_unanswered": "Clear liquid at normal operation; turbid excursions unquantified, so a geometry covering both states must be tested in lab screening.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "What temperature, pressure, fouling, cleaning or sterilization conditions apply at the measuring point, and how do formulation, particle size or bubbles vary in the stream?",
+      "why": "These factors affect probe contact, fouling resistance and calibration stability.",
+      "assumption_if_unanswered": "Conditions unknown; probe fouling and matrix variation are treated as open risks to test during trial.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where would the analyzer be installed relative to the measuring point, and what is the distance between them? Are any optical fibers already in place?",
+      "why": "Distance and existing fibers decide whether a standard silica fiber link can be used or whether a different fiber is needed.",
+      "assumption_if_unanswered": "Installation point and distance unknown; a remote link is not assumed until confirmed.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "Which laboratory method is used today to determine protein concentration, and what is its accuracy and sampling frequency?",
+      "why": "The reference method sets the benchmark for any spectroscopic comparison and the achievable model accuracy.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; lab method and its uncertainty must be documented before calibration.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for a first measurement concept?",
+      "why": "These requirements limit which method or probe combination is justified as simplest adequate option.",
+      "assumption_if_unanswered": "Requirements unknown; a single-method lab screening is proposed first to establish achievable performance.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "provisional_assessment",
+    "status_reason": "Target and matrix defined; protein level, turbidity and requirements remain open.",
+    "requirements_stated": [
+      "Relatively clear whey stream before a concentration stage.",
+      "Track protein concentration as the stream changes; lab results are the reference.",
+      "Stream becomes more turbid under some operating conditions.",
+      "Concept must handle turbidity."
+    ],
+    "key_unknowns": [
+      "Protein range and acceptance limits",
+      "Reference method, uncertainty, sampling time",
+      "Turbidity extent and causes",
+      "Installation, cleaning, response time"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "Spectroscopy can track protein concentration in the whey stream as it changes.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "The dairy example names NIR transmission for whey, but whey protein tracking is not shown, so this must be tested.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.18",
+                "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The stream remains relatively clear, so a clear-liquid concept may apply.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "The client reports turbid states, and transmission can fail when the liquid becomes too thick; the turbidity extent is unknown.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.18",
+                "quote": "it fails when the milk becomes too \"thick\" or fat -rich, as the light cannot penetrate the sample.",
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which protein range (ppm or %) and which changes must be tracked?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which lab method, uncertainty and sampling time give the reference values?",
+        "covers": "reference"
+      },
+      {
+        "question": "How turbid does the stream become, when, and do temperature or bubbles vary?",
+        "covers": "variation"
+      },
+      {
+        "question": "What accuracy, response time, installation access and cleaning apply?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "transmission / transflection probe",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The dairy example names whey: \"NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.\"",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Pathlength must be controlled, usually 1-10 mm, so signal is neither absorbed nor from negligible volume; verify for clear and turbid states.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "if the pathlength is too wide, the signal is lost to absorption; if too narrow, the sample represents a negligible volume.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Whey is named in the example, but protein level, turbidity and requirements are unknown and nothing is measured."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "diffuse reflection probe",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "Reflection suits scattering dairy products: \"Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.\"",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.17",
+              "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Test only if turbid states defeat transmission; reflection can be less representative for clear liquids.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "reflection can work well in hig hly scattering environments but can be less representative for clear liquids.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Whey turbidity may never reach the scattering level for which reflection is shown."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "rejected",
+        "reason": "Rated low selectivity; not supported as a protein method for whey in the materials."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "lab_screening_only",
+        "reason": "Low selectivity; only a justified fluorescent indicator could be screened."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline technique; optional lab screening only."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline technique; optional lab screening of an indicator."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "recommended",
+        "reason": "The dairy example names this geometry for whey and transflection for varied products."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Rated low sensitivity and low selectivity for this target."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline technique; may help identify informative bands in the lab."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline lab screening of the clear and turbid states."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab platform; useful for spectral insight, not in-line."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "Shallow depth limits turbidity effects, but cost is high and mid-IR fibers and fouling apply."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "Suits aqueous media, but cost is high and the signal is weak; consider only if NIR is insufficient."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline technique; lab screening only."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "NIR transmission/transflection probe; diffuse reflection probe as comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Whey line before the concentration stage; exact point unknown.",
+          "basis": "client_fact",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link stated; Vis-NIR silica covers only part of the nominal NIR range.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG).",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Vis-NIR silica (partial coverage of nominal NIR range)",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type, pathlength",
+        "Installation, cleaning",
+        "Fiber link"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780–2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": "Nominal; usable range depends on fiber and spectrometer."
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "Whey type or composition changes can invalidate calibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Turbidity changes can mimic or mask protein changes.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.17",
+            "quote": null,
+            "url": null
+          },
+          {
+            "ref": "S01 p.18",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither geometry is guaranteed to handle all turbidity.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate, ratings and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "fouling_interface",
+        "text": "Protein fouling may drift the signal.",
+        "basis": "general_knowledge",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Normal operation is clear; turbid excursions are unquantified.",
+      "Contact probe installation in the line is possible."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect whey samples across the client-agreed protein range, covering clear and turbid operating states and temperatures.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record transflection and reflection spectra with time-aligned laboratory protein references.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-geometry models first; validate on held-out runs that include turbid conditions.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and the ability to follow changes against the client's requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "The path depends on the lab screening results and on the client's goals."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest geometry meeting them on independent runs.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.18",
+        "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S01 p.18",
+        "quote": "it fails when the milk becomes too \"thick\" or fat -rich, as the light cannot penetrate the sample.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "if the pathlength is too wide, the signal is lost to absorption; if too narrow, the sample represents a negligible volume.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.17",
+        "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "reflection can work well in hig hly scattering environments but can be less representative for clear liquids.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S01 p.17",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[1]",
+        "ref": "S01 p.18",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 6,
+      "citations_page_only": 7
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "context",
+        "detail": "not_supported: The claim says the pathlength 'is set from sample spectra'. S01 p.18 only states that pathlength must be precisely controlled (usually 1-10 mm), that too wide loses signal to absorption and too narrow gives a negligible sample volume. It does not say how the pathlength is chosen. Fix: Rewrite as: the optical pathlength must be controlled within the usual 1-10 mm range so the signal is neither lost to absorption nor too small a sample volume; the exact value for clear and turbid states must be verified experimentally."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "568 words; over budget: Requirements stated 34/28, Recommendation 167/110, Measurement concept 79/45 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to investigate whether spectroscopy can track protein concentration in a relatively clear whey stream before a concentration stage, using laboratory results as reference, and needs a first measurement concept that handles turbidity changes.",
+    "stated_facts": [
+      {
+        "fact": "The process is a dairy process that includes a relatively clear whey stream before a concentration stage.",
+        "enquiry_quote": "Our dairy process includes a relatively clear whey stream before a concentration stage."
+      },
+      {
+        "fact": "The client wants to investigate whether spectroscopy can track protein concentration as the stream changes.",
+        "enquiry_quote": "We want to investigate whether spectroscopy can track protein concentration as the stream changes, with laboratory results used as the reference."
+      },
+      {
+        "fact": "Laboratory results are to be used as the reference.",
+        "enquiry_quote": "with laboratory results used as the reference"
+      },
+      {
+        "fact": "The stream can become more turbid under some operating conditions.",
+        "enquiry_quote": "The stream can become more turbid under some operating conditions."
+      },
+      {
+        "fact": "The client needs a first measurement concept that handles the change in turbidity rather than assuming the liquid always remains clear.",
+        "enquiry_quote": "We need a first measurement concept that handles this change rather than assuming the liquid always remains clear."
+      }
+    ],
+    "targets": [
+      "protein concentration"
+    ],
+    "sample_description": "relatively clear whey stream in a dairy process, before a concentration stage; can become more turbid under some operating conditions",
+    "sample_state": "clear_liquid",
+    "process_context": "production",
+    "conditions": [
+      "stream can become more turbid under some operating conditions"
+    ],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "Spectroscopy can track protein concentration in the whey stream as it changes.",
+        "enquiry_quote": "We want to investigate whether spectroscopy can track protein concentration as the stream changes"
+      },
+      {
+        "claim": "The stream remains relatively clear, so a clear-liquid measurement concept may apply.",
+        "enquiry_quote": "Our dairy process includes a relatively clear whey stream before a concentration stage."
+      }
+    ],
+    "requested_decision": "A first measurement concept for tracking protein concentration in the whey stream that handles turbidity changes, to be investigated with laboratory reference results.",
+    "unknowns": [
+      "Protein concentration level (ppm or % level) and required accuracy",
+      "Lab reference method and its accuracy",
+      "Degree and conditions of turbidity change",
+      "Temperature, pressure, fouling and cleaning or sterilization conditions",
+      "Installation point and distance from analyzer to measuring point",
+      "Existing fibers or analyzer equipment",
+      "Sample variation (formulation, particle size, bubbles)",
+      "Response time and budget requirements",
+      "Whether contact with the sample is possible",
+      "Operating conditions that cause turbidity"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:30:51.107360+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.2,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 142,
+          "output_tokens": 1971,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001104
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:31:00.321035+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 43.1,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9401,
+          "output_tokens": 5227,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.159017
+      },
+      {
+        "claims_checked": 11,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:31:43.674420+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.0,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 7149,
+          "output_tokens": 1622,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001533
+      },
+      {
+        "flags_sent": 2,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:31:51.652292+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 34.5,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9089,
+          "output_tokens": 4725,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.147729
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "27e2824",
+    "timestamp": "2026-10-17T21:31:00.303113+00:00",
+    "duration_s": 95.1,
+    "cost_usd": 0.3094
+  }
+}
