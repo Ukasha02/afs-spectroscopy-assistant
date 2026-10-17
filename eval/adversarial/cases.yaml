@@ -16,7 +16,7 @@ A01:
   expect: {premise_flagged: true, status_in: [provisional_assessment, premise_not_supported, insufficient_information]}
 
 A02:
-  title: "Sensitive, so it will work" without a defined target
+  title: '"Sensitive, so it will work" without a defined target'
   pattern: sensitivity_without_target
   enquiry: >-
     Our juice bottling line sometimes fills batches that customers describe as tasting off. We were told UV/Vis
