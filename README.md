@@ -27,14 +27,21 @@ Built for **Challenge 01** of the SchubKI National AI Hackathon 2026, with Art F
 
 ## Setup
 
-_Coming soon: full instructions once the stack is set up._
+Requires Python 3.11.
 
 ```bash
 git clone https://github.com/Ukasha02/afs-spectroscopy-assistant.git
 cd afs-spectroscopy-assistant
-cp .env.example .env          # add your API key
+make setup                    # venv + dependencies + package (editable)
+cp .env.example .env          # add your API key (see .env.example)
 # put the AFS materials into materials/ (see materials/README.md)
+make kb                       # build the knowledge-base cache into kb/cache/
+make test
 ```
+
+`make kb` extracts every PDF page, the method table and the docx into `kb/cache/` (gitignored, because the materials may not be redistributed). Content that exists only as images (the S02 slides, S01 figures, S05 flyer) is covered by our own transcriptions in [kb/figure_notes.yaml](kb/figure_notes.yaml). Curated facts and general rules with page references are in [kb/facts.yaml](kb/facts.yaml).
+
+_Running the assistant: coming soon._
 
 ## Contributing
 

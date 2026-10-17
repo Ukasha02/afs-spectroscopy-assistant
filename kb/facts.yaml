@@ -1,0 +1,214 @@
+# Curated facts and general rules from the AFS materials, written by the team.
+# - Short paraphrases with citations in the format the assistant uses (S01 p.10, S02 p.6, DOCX §3).
+# - Drives the deterministic pre-analysis (rules.py) and is shown to the model next to the corpus.
+# - General domain knowledge only. Nothing here may be specific to an evaluation case.
+# - Wavelengths are stored in micrometres (um); display strings keep the source's own units.
+
+methods:
+  - id: NIR
+    name: NIR spectroscopy
+    table_method: NIR spectroscopy
+    range_um: [0.78, 2.5]
+    range_display: "780-2500 nm (nominal method range)"
+    range_src: S01 p.10
+    physics: overtone and combination bands of molecular vibrations (-OH, -NH, -CH)
+    strengths:
+      - "Penetrates up to several millimetres even into dense solids; ordinary glass optics and lamps; ideal for online and remote measurement via fiber probes [S01 p.5]"
+      - "Most common online method with fiber probes; diffuse reflectance allows measurement without contact, at a distance [S01 p.10]"
+    limitations:
+      - "Broad overlapping bands; needs chemometrics for quantitative analysis [S01 p.10]"
+      - "Calibration is matrix-specific; physical variation (particle size, temperature, scattering) changes the signal [DOCX §5]"
+      - "May lack sensitivity for trace compounds below about 0.1 percent [S01 p.16]"
+    typical_samples: "powders, dairy; diffuse reflection for scattering samples, transmission/transflection for clear liquids [DOCX §5; S01 p.17-18]"
+
+  - id: MIR
+    name: MIR (FTIR) spectroscopy, usually ATR
+    table_method: IR spectroscopy
+    range_um: [2.5, 25.0]
+    range_display: "4000-400 cm-1 (2.5-25 um)"
+    range_src: S01 p.9
+    physics: fundamental molecular vibrations; well-defined absorption bands
+    strengths:
+      - "One of the most informative methods; high extinction coefficients, highly sensitive [S01 p.9]"
+      - "High selectivity [S01 Table 1 (p.6)]"
+      - "ATR fiber probes allow analysis of liquids and soft solids at a distance from the spectrometer [S01 p.10]"
+    limitations:
+      - "Strong absorption limits transmission to very thin samples (usually below 50 um); hence ATR [S01 p.5]"
+      - "ATR samples only about 1-6 um deep; contact, fouling and chemical compatibility matter [S01 Table 1 (p.6); DOCX §5]"
+      - "Needs mid-IR fibers (chalcogenide or polycrystalline silver halide), not silica [S04 p.1; S02 p.6]"
+      - "Water absorbs strongly in the IR compared with Raman [S01 p.16]"
+    typical_samples: "liquids, pastes, soft solids in contact with the ATR crystal; leads: water in petroleum, API in polymer extrusion [DOCX §5; S02 p.13-14]"
+
+  - id: RAMAN
+    name: Raman spectroscopy
+    table_method: Raman spectroscopy
+    range_um: [0.4, 1.1]
+    range_display: "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately"
+    range_src: S01 p.11
+    physics: inelastic scattering of laser light by molecular vibrations
+    strengths:
+      - "High selectivity [S01 Table 1 (p.6)]; complementary to MIR (some bands appear in only one of the two) [S01 p.11]"
+      - "Low water absorbance, well suited to aqueous media [S01 p.16]"
+      - "Signal linear with concentration over a wide range; supports calibration models [S01 p.12]"
+    limitations:
+      - "Weak signal; fluorescence background can dominate for many organic compounds [S01 p.11]"
+      - "High cost [S01 Table 1 (p.6)]"
+      - "Calibration specific to the matrix [DOCX §5]"
+    typical_samples: "powders and liquids; pharmaceutical blends (785 nm excitation example), bioprocess metabolites [S01 p.15-16]"
+
+  - id: FLUO
+    name: Fluorescence spectroscopy (fluorimetry)
+    table_method: Fluorimetry
+    range_um: [0.19, 0.74]
+    range_display: "UV/Vis excitation and emission; depends on the fluorescent species"
+    range_src: S01 p.12
+    physics: emission after electronic excitation, shifted to longer wavelength
+    strengths:
+      - "High sensitivity [S01 Table 1 (p.6)]; nM-uM detection of cofactors and amino acids such as NADH, tryptophan, riboflavin [S01 p.16]"
+      - "Key method for online analysis of biotechnological processes [S01 p.12]"
+    limitations:
+      - "Low selectivity [S01 Table 1 (p.6)]"
+      - "Most chemicals do not fluoresce; mainly used in medicine, biology, biotechnology [S01 p.5]"
+      - "Only for a defined fluorescent species or a justified indicator; not a direct measurement of every analyte [DOCX §5]"
+    typical_samples: "liquids and solids containing a fluorescent component [S01 Table 1 (p.6); S04 p.4]"
+
+  - id: UVVIS
+    name: UV/Vis spectroscopy
+    table_method: UV/Visible spectroscopy
+    range_um: [0.19, 0.74]
+    range_display: "UV 190-360 nm and visible; depends on target and setup"
+    range_src: S01 p.5
+    physics: electronic transitions (absorption)
+    strengths:
+      - "Very high sensitivity, especially in the UV [S01 p.5]; low cost [S01 Table 1 (p.6)]"
+      - "Low-cost, robust real-time biomass trend via turbidity [S01 p.16]"
+    limitations:
+      - "Strong overlap of signals in mixtures; chemometrics needed [S01 p.5]; low selectivity [S01 Table 1 (p.6)]"
+      - "Optical density is not a viable cell count [DOCX §5]"
+    typical_samples: "defined absorbers; cell suspensions; probe choice by optical density: transmission/transflection for clear, UV-ATR for opaque or 'black' fluids [S01 p.16]"
+
+fibers:
+  # S02 p.6 (figure; values as transcribed in DOCX §5). Check the figure before relying on exact numbers.
+  - {id: UV_SILICA, name: "UV-Vis silica fiber (standard or Al/Cu-coated)", range_um: [0.19, 1.2], src: S02 p.6}
+  - {id: VISNIR_SILICA, name: "Vis-NIR silica fiber (standard or Al/Cu-coated)", range_um: [0.35, 2.4], src: S02 p.6}
+  - {id: CIR, name: "Chalcogenide As-S IR fiber (CIR)", range_um: [1.1, 6.5], src: S02 p.6}
+  - {id: PIR, name: "Polycrystalline silver halide IR fiber (PIR)", range_um: [3.0, 17.0], src: S02 p.6}
+  - {id: HWG, name: "Hollow glass waveguide (HWG)", range_um: [2.0, 18.0], src: S02 p.6, note: "Low NA, poor coupling to FTIR compared with PIR [S02 p.10]"}
+  - {id: INF3, name: "Indium fluoride fiber", range_um: [0.3, 5.5], src: S02 p.6}
+  - {id: ZRF4, name: "Zirconium fluoride fiber", range_um: [0.3, 4.5], src: S02 p.6}
+
+fiber_facts:
+  - "Robust 100-300 m cables with low-OH silica fibers enable remote industrial process control [S02 p.7]"
+  - "Al/Cu-coated silica fibers: high temperature resistance, hermetic, no polymer-jacket fluorescence for Raman and fluorescence [S02 p.7]"
+  - "PIR fibers: 3-16 um, flexible, non-brittle, non-toxic, best coupling with FTIR [S02 p.8, p.10]"
+  - "No link lengths for CIR, PIR or HWG fibers are given in the materials: ask, do not state one."
+
+probes:
+  - {id: ATR, name: "ATR probe (e.g. diamond or ZrO2 tip)", samples: "liquid, paste, soft solid", depth: "MIR 1-6 um; UV 0.1-1 um", src: "S01 Table 1 (p.6); S02 p.13"}
+  - {id: DIFFUSE_REFLECTION, name: "Diffuse reflection probe (Reflex / DRS)", samples: "scattering media, powder, solid", depth: "NIR 0.5-1 mm", src: "S01 Table 1 (p.6); S02 p.11"}
+  - {id: TRANSMISSION, name: "Transmission or transflection probe (TransFlex)", samples: "liquid, colloidal", depth: "1-10 mm path", src: "S01 Table 1 (p.6); S01 p.18"}
+  - {id: RAMAN_PROBE, name: "Raman fiber probe", samples: "liquid, powder, solid", depth: "2-5 mm", src: "S01 Table 1 (p.6); S01 p.12"}
+  - {id: FLUO_PROBE, name: "Fluorescence fiber probe", samples: "liquid, solid", depth: "1-5 mm", src: "S01 Table 1 (p.6); S01 p.12"}
+  - {id: COMBI, name: "Combi probe (same measurement spot)", samples: "heterogeneous or fast-changing samples", depth: "per method", src: "S01 p.8, p.14-15; S02 p.15-16; S04 p.2", note: "MIR-ATR + fluorescence and MIR-ATR + Raman demonstrated; NIR + Raman for feed frame; a four-method probe is under development [S01 p.8]"}
+
+sample_state_map:
+  # Extraction classifies the sample; Table 1 sample_type values that fit each class.
+  clear_liquid: ["liquid", "colloidal"]
+  turbid_liquid: ["liquid", "colloidal", "scattering media"]
+  opaque_liquid: ["scattering media", "liquid"]
+  paste_or_soft_solid: ["paste", "soft"]
+  powder: ["powder", "scattering media"]
+  solid: ["solid", "solid film", "pill"]
+  tissue: ["soft", "solid"]
+  gas: []
+  unknown: []
+
+applications:
+  - {topic: "Tumor margin and tissue classification", methods: "MIR-ATR + fluorescence; NIR + fluorescence; NIR + MIR", src: "S01 p.13-14; S04", scope: "laboratory and ex vivo research"}
+  - {topic: "Blend potency in a tablet press feed frame", methods: "NIR reflection and Raman (785 nm); low-level data fusion with PLS", src: "S01 p.14-15"}
+  - {topic: "Bioprocess monitoring", methods: "UV/Vis turbidity for biomass; Raman for glucose, acetate, lactate; NIR for major components; fluorescence for NADH, tryptophan, riboflavin", src: "S01 p.16-17"}
+  - {topic: "Inline milk analysis", methods: "NIR reflection for opaque/concentrated products; NIR transmission/transflection for clear liquids such as whey; transflection may suit both", src: "S01 p.17-18"}
+  - {topic: "Yeast fermentation biomass", methods: "NIR + fluorescence improved biomass determination", src: "S01 p.7"}
+  - {topic: "Pellet coating in a fluidized bed", methods: "NIR + Raman best", src: "S01 p.7"}
+  - {topic: "Water in petroleum", methods: "MIR-ATR probe (ZrO2 or diamond tip, PEEK shaft)", src: "S02 p.13"}
+  - {topic: "API in hot polymer extrusion", methods: "NIR reflection probe at the die; diamond ATR probe with PIR-fiber FTIR", src: "S02 p.14"}
+  - {topic: "Moisture in bulk materials", methods: "NIR-LED fiber sensor (few wavelengths, IoT)", src: "S02 p.12; S01 p.9"}
+  - {topic: "Kidney tumor detection with an LED NIR sensor", methods: "4 LEDs 0.94-1.44 um, diffuse reflectance", src: "S03", scope: "in vitro proof of concept, 14 samples from 7 patients"}
+
+architectures:
+  - {id: centralized, name: "Central process analyzer + multiplexer + long fibers", advantage: "higher accuracy from a full-spectrum analyzer", src: S02 p.18}
+  - {id: iot, name: "Distributed spectral IoT fiber sensors", advantage: "lower installation cost", src: S02 p.18}
+
+afs_pathway:
+  src: "S02 p.20; S05 p.1"
+  steps:
+    - "1. Multi-method lab trials with the multi-spectral fiber system"
+    - "2. Identify key spectral features"
+    - "3. Choose a path"
+  paths:
+    A: "Chemometric model: spectral data to real-time concentration for process automation"
+    B: "Customized multi-spectral fiber system for R&D in the customer's own lab"
+    C: "Customized IoT spectral fiber sensors for volume process control"
+
+rules:
+  # General rules. 'applies_when' is a hint for the pre-analysis and the model, not a case trigger.
+  - id: fluorescence_needs_fluorophore
+    statement: "Fluorescence only measures a defined fluorescent species or a justified indicator; most chemicals do not fluoresce."
+    applies_when: "fluorescence is proposed or requested"
+    src: "S01 p.5; S04 p.4; DOCX §5"
+  - id: sensitivity_not_selectivity
+    statement: "High sensitivity does not imply selectivity. Fluorimetry and UV/Vis are rated high sensitivity but low selectivity."
+    applies_when: "a method is justified by its sensitivity"
+    src: "S01 Table 1 (p.6); DOCX §5"
+  - id: calibration_matrix_specific
+    statement: "Chemometric calibrations are specific to the matrix; a change of API, excipients or formulation can invalidate them."
+    applies_when: "reuse or transfer of an existing calibration or model; a new product or formulation"
+    src: "S01 p.10; DOCX §2 D01; DOCX §5"
+  - id: optical_density_not_viability
+    statement: "Turbidity / optical density tracks cell density but is not a viable cell count."
+    applies_when: "biomass, viable cells or growth are targets"
+    src: "S01 p.16; DOCX §5"
+  - id: evidence_scope
+    statement: "A published application or a laboratory / in-vitro study is a reason to test a method, not proof that it works for a new customer, a process, or clinical use."
+    applies_when: "the client cites a study or application as proof; clinical, in-vivo or production readiness is claimed"
+    src: "DOCX §3; S03 p.3, p.10, p.14"
+  - id: nominal_range_not_instrument_range
+    statement: "A nominal method range is not the usable range of a specific instrument, fiber or probe."
+    applies_when: "a spectral range is stated"
+    src: "DOCX §3; DOCX §5"
+  - id: combination_is_hypothesis
+    statement: "Combining methods can add complementary information, but the gain is a hypothesis to test against the best single method."
+    applies_when: "two or more methods are considered"
+    src: "S01 p.7-8; DOCX §2 D01; DOCX §5"
+  - id: fiber_limits_wavelength
+    statement: "The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers."
+    applies_when: "a fiber link, remote analyzer, or reuse of existing fiber is mentioned; MIR is considered"
+    src: "S02 p.6; S04 p.1; DOCX §5"
+  - id: remote_measurement_nir_silica
+    statement: "NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist."
+    applies_when: "the analyzer must be far from the measuring point"
+    src: "S01 p.5; S02 p.7"
+  - id: raman_fluorescence_background
+    statement: "Raman can be swamped by fluorescence background from many organic compounds; check signal quality first."
+    applies_when: "Raman is considered for organic or biological samples"
+    src: "S01 p.11; DOCX §2 D01"
+  - id: geometry_follows_optics
+    statement: "Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR."
+    applies_when: "choosing a probe geometry; optical properties vary between streams or over time"
+    src: "S01 Table 1 (p.6); S01 p.16; S01 p.17-18"
+  - id: same_spot_for_heterogeneous
+    statement: "For heterogeneous or fast-changing samples, methods should measure the same spot at the same time, e.g. with a combi probe."
+    applies_when: "sample is heterogeneous (tissue, powders) or changes fast and more than one method is used"
+    src: "S01 p.8; S04 p.2"
+  - id: simplify_after_lab
+    statement: "Full-spectrum lab work identifies the few informative wavelengths; a simple few-wavelength sensor can then be adequate in production."
+    applies_when: "planning scale-up or a production sensor"
+    src: "S01 p.9; S02 p.4; S03 p.2; S04 p.4"
+  - id: do_not_invent
+    statement: "Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees."
+    applies_when: "always"
+    src: "DOCX §3"
+  - id: insufficient_information_is_valid
+    statement: "If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step."
+    applies_when: "target, matrix or contaminant is undefined"
+    src: "DOCX §3"

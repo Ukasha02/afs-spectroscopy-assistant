@@ -1,0 +1,257 @@
+# Team-written transcriptions of figures and image-only slides in the AFS materials.
+# PDF text extraction misses this content (S02 is mostly images). Each note is appended to its
+# page in the KB, labelled as a team transcription, so a page citation covers it.
+# Rules: describe only what is visibly on the page; no interpretation; values copied as shown.
+# Key format: "<source>:p<page>" with 1-based PDF page numbers.
+
+S01:p6:
+  title: "Table 1: comparative characteristics of spectral methods and measurement techniques"
+  replace_text: true
+  note: >-
+    Table 1. Comparative characteristics of spectral methods and measurement techniques
+    (method, measurement method, physical phenomenon, sample type, optical path or depth,
+    sensitivity, selectivity, cost). PDF text extraction scrambles the columns; the rows are
+    available individually as 'S01 Table 1 (p.6)' entries from AFS_method_comparison_table.xlsx.
+
+S01:p7:
+  title: "Multispectral Fiber System diagram"
+  note: >-
+    Figure: a 'Multispectral Fiber System' as a modular system with four spectrometer modules
+    (Raman, FTIR, Fluorescence, NIR) connected to one 'multispectral fiber probe of customised
+    structure' in a reactor; data flow to 'Chemometric analysis of data fusion', then 'Feedback'
+    to a laptop.
+
+S01:p14:
+  title: "Fig. 5: multispectral examples in tissue diagnostics"
+  note: >-
+    Fig. 5 shows three method pairs: 'Mid-IR + Fluorescence: better distinguish kidney
+    RC-carcinoma tumor'; 'Near-IR + Fluorescence: higher sensitivity in discrimination between
+    malignant and benign colorectal tissue'; 'Near-IR + Mid-IR: increasing the accuracy of
+    abdominal cancer detection' (spectra of colon, stomach, rectum, 1800-1000 cm-1).
+
+S01:p15:
+  title: "Fig. 6: NIRaman combi fiber probe in a tablet press feed frame"
+  note: >-
+    Fig. 6 schematic: a 'NIRaman Combi Fiber Probe' inserted into the feed frame of a tablet
+    press, with separate NIR and Raman light paths (input and output fibers) to their own
+    spectrometers.
+
+S01:p17:
+  title: "Fig. 7: spectral ranges for bioprocess monitoring"
+  note: >-
+    Fig. 7 shows spectral regions labelled UV 10-400 nm, VIS 400-740 nm, NIR 740 nm-1.3 um,
+    MIR 1.3-15 um, with Raman spanning VIS to NIR and Fluorescence spanning UV to VIS.
+    Accessible variables by method: UV - BSA, cell debris, toxic substances. Raman - glutamine,
+    glutamate, acetate, phenylalanine, TCD/VCD. NIR - glucose, lactate, glutamine, ammonium, pH,
+    biomass. Fluorescence - proteins, vitamins, pyruvate, ATP, NAD(P)H, cell mass,
+    ethanol/metabolic changes. MIR - glucose, lactate, antibodies, pH, fructose, acetic acid,
+    ethanol. (Region boundaries in this figure differ from S01 p.10, which gives NIR as
+    780-2500 nm.)
+
+S01:p18:
+  title: "Fig. 8: multispectral lab for milk analysis"
+  note: >-
+    Fig. 8 shows example milk spectra from four techniques: normalized NIR reflection
+    (900-1700 nm), fluorescence (200-1000 nm), MIR ATR, and Raman with 785 nm excitation; and
+    the probes used: Raman probe, ATR probe, NIR reflection probe, fluorescence probe.
+
+S02:p1:
+  title: "Title slide: Process-Control in-line with Spectral Fiber Systems"
+  note: >-
+    Title slide (BioProScale Symposium 2026, Berlin). Shows a lab reactor with fiber probes and
+    an FTIR spectral time series (1250-625 cm-1) annotated 'Excess polyamine'.
+
+S02:p2:
+  title: "Spectroscopy market forecast"
+  note: >-
+    Market drivers: food safety concerns; growth of pharmaceutical and biotechnology industry;
+    advances in molecular spectroscopy and environmental screening. Chart: global molecular
+    spectroscopy market about 5 billion USD (2019) to 10 billion USD (2027), CAGR 7.46%.
+    Business context only.
+
+S02:p3:
+  title: "Choice of optimal system and method for in-line process control"
+  note: >-
+    Cartoon of vendors pushing a customer ('Buy our NIR!', 'Buy our Raman!', 'Invest in our
+    product!'). Text: Multi-Spectral Fiber Systems allow testing 4 spectroscopy methods in the
+    0.3-16 um range using robust fiber probes for remote in-line monitoring; comparing spectral
+    data for the customer process enables selecting the best process-control solution. Probe
+    wheel 'Fiber probes compatible with any spectrometer': Diamond ATR, TransFlex, ATR-Loop,
+    Fluorescence, Reflex, Raman.
+
+S02:p4:
+  title: "20 years history of multi-spectral fiber systems (Martin Warman)"
+  note: >-
+    Quote attributed to Martin Warman (Pfizer), 2004: use of live process spectroscopy is often
+    for development; when the process is stable it is not needed, as a simple sensor version is
+    adequate in commercial production. Photo: flow cell with a 254 nm LED and detector in C276
+    stainless steel housing used for transmission control.
+
+S02:p5:
+  title: "Multi-spectral fiber systems to select the best process control method"
+  note: >-
+    Attenuation curves for UV-silica and NIR-silica fibers (up to about 2.75 um) and for CIR and
+    PIR fibers (up to about 18 um); the probe wheel (Diamond ATR, TransFlex, ATR-Loop,
+    Fluorescence, Reflex, Raman); the modular Raman / FTIR / Fluorescence / NIR system with data
+    fusion and a multispectral probe in a reactor.
+
+S02:p6:
+  title: "Transmission ranges of fiber types (0.2-18 um)"
+  note: >-
+    Chart of fiber transmission ranges: Standard and Al/Cu-coated UV-VIS silica fibers
+    190-1200 nm; Standard and Al/Cu-coated VIS-NIR silica fibers 350-2400 nm; Chalcogenide As-S
+    IR fibers 1100-6500 nm; Polycrystalline infrared fibers 3000 nm-17 um; Hollow glass
+    waveguides 2000 nm-18 um; Indium fluoride fibers 300-5500 nm; Zirconium fluoride fibers
+    300-4500 nm. Also shows polycrystalline AgHal PIR fibers and a combi-probe from art
+    photonics.
+
+S02:p7:
+  title: "Spectral Vis-NIR cables for industrial process control"
+  note: >-
+    Robust 100-300 m cables made with silica fibers of low OH content (<0.1 ppm OH) enable remote
+    industrial process control. Al- and Cu-alloy coated fibers: high temperature resistance;
+    increased durability, high strength, hermetically sealed; enable soldering with connectors,
+    bundles and hermetic inlets; free of polymer jacket fluorescence for Raman and fluorescence
+    spectroscopy. Chart: optical loss of silica fiber 0.7-2.0 um.
+
+S02:p8:
+  title: "Mid-IR fibre optics; PIR-fiber transmission 3-16 um"
+  note: >-
+    'Global Leaders in Mid-IR Fibre Optics 2020' award to art photonics. Text: PIR-fiber
+    transmission range 3-16 um matches black body spectral radiance at 0-100 C and the
+    fingerprint region of molecular vibrations. Photos include an IR fiber probe immersed in a
+    liquid connected to a benchtop FTIR process instrument.
+
+S02:p9:
+  title: "CIR and PIR fibers vs hollow waveguides for mid-IR photonics"
+  note: >-
+    Transmission chart: AsS CIR fibre transmits up to about 6.5 um; AgHal PIR fibre across about
+    3-18 um. Second chart: PIR 600/700 2 m fiber has higher transmission than HWG-750 2 m across
+    3100-600 cm-1. Also: 19x PIR-fiber IR image bundle; fiber probes for FTIR process
+    spectroscopy; PIR fiber and HWG cables for QCL, OPO, CO and CO2 lasers.
+
+S02:p10:
+  title: "Selection of PIR fibers or hollow waveguides for FTIR spectroscopy"
+  note: >-
+    Hollow waveguides can be made with different transmission spectra but have low numerical
+    aperture, giving poor coupling efficiency with FTIR spectrometers; PIR fibers with NA > 0.3
+    couple much better to FTIR beams. Very flexible, non-brittle and non-toxic PIR fibers are the
+    best in coupling with FTIR spectrometers. Charts compare ATR probe single-beam and acetone
+    spectra with PIR fiber vs HWG.
+
+S02:p11:
+  title: "Test of silica fiber reflection probes with FT-NIR vs diffraction grating spectrometers"
+  note: >-
+    Comparison test of reflectance (Reflex) probes with an FT-NIR spectrometer (Bruker Matrix-F)
+    and a diffraction-grating NIR spectrometer (Ocean Insight NIRQuest) on a dysprosium oxide
+    reflectance standard, 5000-10000 cm-1. Probes shown: 12 mm reflexion probe; fish-eye DRS
+    probe with 2 side windows; DRS probe with 9 side-looking sapphire windows.
+
+S02:p12:
+  title: "IoT concept of NIR-LED fiber sensor to control moisture level"
+  note: >-
+    FlexiSens NIR-LED fiber sensor: optimal set of wavelengths to see moisture of media in
+    contact; customized calibration for high accuracy in fast data acquisition; IP address to
+    collect data from each sensor by LAN; trans-flex or diffuse reflection. Demo: water drop
+    drying on a wood surface over time. Also SNV-corrected NIR spectra of starch, flour and sugar
+    (about 1200-2100 nm).
+
+S02:p13:
+  title: "Application: measurement of water content in petroleum"
+  note: >-
+    ATR probes with ATR tips from ZrO2 (and diamond, etc.) sealed in a PEEK shaft and protected
+    by PEEK tubing can be used in microwave furnaces. Chart: ATR absorbance spectra 4000-2000
+    cm-1 of pure oil and oil with 0.1%, 0.5%, 1.0% and 2.0% water; absorbance in the
+    roughly 3800-3000 cm-1 region rises with water content.
+
+S02:p14:
+  title: "NIR-Reflex and MIR-ATR spectroscopy to control polymer extrusion in-line"
+  note: >-
+    Hot melt extruder schematic with an NIR probe at the die, a PAT console and feed-forward
+    control of a waste gate (good product vs waste). 'Control of API production with PIR-fiber
+    FTIR spectroscopy in pharma industry.' Spectra of API in hot polymer obtained with a diamond
+    cone ATR probe coupled to an iC10 FTIR. Photo: NIR probe mounted in the extruder barrel near
+    the die.
+
+S02:p15:
+  title: "Sensing with a combi-fiber probe to fuse mid-IR and fluorescence spectra"
+  note: >-
+    Summary of the S04 study: an ATR + autofluorescence combi probe on chicken fat, breast and
+    liver. IR alone separates fat, fluorescence alone separates liver, fused data separate all
+    three. 'Only 2 wavelengths!': IR absorbance at 1743 cm-1 vs fluorescence at 613 nm separates
+    the three tissue types.
+
+S02:p16:
+  title: "Combi-fiber systems for ATR + fluorescence / Raman spectroscopy"
+  note: >-
+    Combi probe with 2 IR fibers coupled to an FTIR spectrometer and 2 silica fibers coupled to
+    fluorescence or Raman spectrometers, working with 680 nm and 785 nm laser excitation; ATR
+    crystal used with liquid or solid samples. Chart: Raman and MIR spectra of refined rapeseed
+    oil (2600-3100 cm-1), standard Raman probe vs multispectral probe. Reference: Nature Sci.
+    Rep. 14, 7430 (2024), 'Multimodal fiber probe for simultaneous mid-infrared and Raman
+    spectroscopy'. Combi-ATR/Fluo and Raman fiber system with Bruker ALPHA, NLIR and Wasatch
+    spectrometers.
+
+S02:p17:
+  title: "IR-fiber coupled IC and QC lasers for biomedical diagnostics"
+  note: >-
+    Gas absorption lines between about 4 and 10 um (CO2, CO, NO, H2O, NO2, SO3, SO2, CH4, NH3).
+    Laser types by wavelength: diode lasers (below about 3 um), interband cascade lasers (about
+    3-6 um), quantum cascade lasers (about 6-14 um). PIR-fiber bundle combines radiation of 7
+    QC lasers into an arthro-probe (osteoarthritis, MIRACLE project); IR-fiber bundle combiner
+    for ICL or QCL; QCL with detachable IR-fiber cable.
+
+S02:p18:
+  title: "Spectral IoT sensors vs multiplexed spectral fiber analyzer"
+  note: >-
+    Spectral bands (um) and analytes: 0.85-1.1 fat, protein, moisture; 1.3-1.7 / 1.5-2.0 /
+    1.7-2.2 moisture, polymers, API, ethanol; 3.0-3.7 / 3.7-4.5 hydrocarbons, CO2; 6.0-8.0 /
+    8.0-10.5 ethanol, glucose, glutamine, organic acids, ammonium. Two architectures:
+    centralized installation with process analyzer, multiplexer and long fibers to the
+    measuring points (advantage: high accuracy due to the higher performance of a full-spectrum
+    process analyzer); sensors installed at the measuring points sending results via wires,
+    Ethernet or Wi-Fi (advantage: lower installation cost). Fabry-Perot tunable filters
+    (InfraTec), LEDs, filters, IR-LEDs (NanoPlus) and spectral chips (MantiSpectra) enable
+    compact spectral fiber sensors of customized design with data sent to the cloud.
+
+S02:p19:
+  title: "Market for photonics sensors and detectors"
+  note: >-
+    Market table (BCC Research) by application, 2015-2021. Text: spectral fiber sensors must be
+    developed for customized applications in industrial process control, installed at critical
+    points of a reactor for low-cost in-line control of reagent composition, transferring data
+    by Wi-Fi to the cloud for real-time treatment, matching IoT and Industry 4.0 concepts.
+
+S02:p20:
+  title: "The AFS guided pathway"
+  note: >-
+    The challenge: complex process spectroscopy, overwhelmed by too many options, high costs in
+    time and money. The AFS guided pathway: 1. Multi-method lab trials (AFS tests the process
+    using all key fiber-optic spectroscopy methods). 2. Identify key spectral features (pinpoint
+    the most information-rich data for the specific reaction). 3. Choose a custom solution:
+    Path A - chemometric model (transforming spectral data into real-time concentration changes
+    for process automation); Path B - customized MSF system (a tailored set of spectrometers for
+    R&D in the customer's own lab); Path C - customized IoT sensors (volume-ready spectral fiber
+    sensors for specific process control).
+
+S05:p1:
+  title: "AFS flyer: services and pathway"
+  note: >-
+    Services: test of customer process in-situ across the 0.3-16 um range; selection of the key
+    spectral features using multivariate data analysis and fusion; AI-driven chemometric model
+    development to control molecular changes in-line; development of customized MSF systems
+    tailored to specific process control; development of spectral fiber sensors for remote
+    process control via cloud. Pathway graphic: 1. multi-method lab test with the AFS
+    multi-spectral fiber system; 2. selection of key spectral features; 3. tailored solutions
+    (AI-driven chemometric model; design of MSF system with a budget-matching set of fiber
+    spectrometers; deploy spectral fiber sensors customised for a specific process with remote
+    cloud control).
+
+S05:p2:
+  title: "AFS flyer: industry challenges and how it works"
+  note: >-
+    Industry challenges: sampling delays, inconsistent yield, quality variances. AFS solution:
+    real-time monitoring, consistent yield, enhanced product quality. Offer: multi-spectral
+    fiber systems, AI-based test data, real-time data analysis. How it works: 1 assess your
+    process, 2 build your fiber system, 3 monitor in real time. Industries: pharma, chemicals,
+    food. Smart fiber spectroscopy in the 0.3-16 um range.

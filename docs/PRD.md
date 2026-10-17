@@ -185,4 +185,4 @@ The users are an AFS application expert preparing or running a first customer co
 5. A clean clone plus the README reproduces `run-all --set H`.
 
 ## Status
-Rev 1 approved Sat 17 Oct. Rev 2 (post-Q&A) pending approval.
+Rev 1 approved Sat 17 Oct. Rev 2 (post-Q&A) approved Sat 17 Oct.
