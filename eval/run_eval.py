@@ -99,6 +99,12 @@ def main() -> int:
             _run_and_save(cid, cases[cid]["enquiry"], out_dir)
 
     results = {cid: CaseResult.model_validate_json((out_dir / f"{cid}.json").read_text()) for cid in ids}
+    if args.no_run:  # re-score with the current rubric
+        from afs_assistant.rubric import rubric
+
+        for cid, r in results.items():
+            pre = r.pre_analysis
+            r.rubric = rubric(r.assessment, cid, pre["required_risk_categories"], pre.get("fiber_findings_required_in_premise_check", []))
     if expect:  # adversarial checks: does the premise check flag the issue? is the status right?
         from afs_assistant.schema import RubricItem
 

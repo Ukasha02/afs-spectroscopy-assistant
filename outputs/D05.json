@@ -4,20 +4,16 @@
   "enquiry": "We would like an optical measurement during yeast fermentation to help us follow growth and notice changes earlier. Our team has mentioned both a biomass signal and a metabolic signal, but these have not been defined as separate targets. The broth becomes more optically dense as the run develops. We need help turning this request into an initial feasibility study with useful reference measurements.",
   "facts_stated": [
     {
-      "fact": "The process is yeast fermentation.",
-      "enquiry_quote": "during yeast fermentation"
+      "fact": "The client wants an optical measurement during yeast fermentation.",
+      "enquiry_quote": "We would like an optical measurement during yeast fermentation"
     },
     {
-      "fact": "The purpose is to follow growth and notice changes earlier.",
+      "fact": "The measurement is meant to help follow growth and notice changes earlier.",
       "enquiry_quote": "to help us follow growth and notice changes earlier"
     },
     {
-      "fact": "The team has mentioned a biomass signal and a metabolic signal.",
-      "enquiry_quote": "Our team has mentioned both a biomass signal and a metabolic signal"
-    },
-    {
-      "fact": "The biomass and metabolic signals have not been defined as separate targets.",
-      "enquiry_quote": "these have not been defined as separate targets"
+      "fact": "The team has mentioned a biomass signal and a metabolic signal, not yet defined as separate targets.",
+      "enquiry_quote": "Our team has mentioned both a biomass signal and a metabolic signal, but these have not been defined as separate targets."
     },
     {
       "fact": "The broth becomes more optically dense as the run develops.",
@@ -32,102 +28,87 @@
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "What goes wrong today in the fermentation run, and which decision should earlier growth or change information support?",
-      "why": "Defines the decision the sensor must serve and the value of earlier detection.",
-      "assumption_if_unanswered": "Pain not stated; the feasibility study starts with a research question on growth tracking.",
+      "question": "What goes wrong today in the fermentation runs, and which decision should real-time data drive: when to feed, harvest, or intervene?",
+      "why": "Defines the decision the optical signal must support and therefore which signal matters first.",
+      "assumption_if_unanswered": "Decision unknown; the feasibility study will first test whether growth and metabolic changes are visible optically at all.",
       "answer": null
     },
     {
       "id": "Q2",
       "topic": "target_and_level",
-      "question": "Which metabolic changes do you want to detect, and which compounds or indicators do you use to track them today?",
-      "why": "The metabolic signal is not yet defined as a target; the analyte decides the method and whether a direct or indirect signal is possible.",
-      "assumption_if_unanswered": "Metabolic target undefined; lab screening identifies candidate analytes and whether their level is ppm or % range.",
+      "question": "Please define the biomass signal and the metabolic signal as separate targets: which variables (e.g. cell dry weight, viable cells, a specific metabolite or substrate) and at which levels, in ppm or %?",
+      "why": "Optical density tracks cell density but is not a viable cell count, and metabolic targets need a defined analyte or indicator; the choice of method depends on this.",
+      "assumption_if_unanswered": "Targets undefined and levels unknown; lab screening establishes whether the signals are ppm or % level before any method is chosen.",
       "answer": null
     },
     {
       "id": "Q3",
-      "topic": "target_and_level",
-      "question": "How do you measure biomass today, and what is the required level of detail (for example viable cell count, dry weight or optical density)?",
-      "why": "Optical density is not a viable cell count; the reference defines what the optical signal must track.",
-      "assumption_if_unanswered": "Biomass reference undefined; optical density alone is treated as an unvalidated trend signal.",
+      "topic": "sample_form_optics",
+      "question": "At the measurement point, is the broth clear, turbid or opaque, and how does its optical density vary across the run and between batches?",
+      "why": "Optical properties determine the probe geometry (transmission, transflection, diffuse reflection or ATR).",
+      "assumption_if_unanswered": "Optical properties unknown; lab screening on representative broth samples across the run establishes the probe geometry.",
       "answer": null
     },
     {
       "id": "Q4",
-      "topic": "sample_form_optics",
-      "question": "Is the broth clear, turbid or opaque during the run, and does its optical density change with cell density or with other components?",
-      "why": "Optical properties decide the probe geometry (transmission, transflection, diffuse reflection or ATR).",
-      "assumption_if_unanswered": "Broth optics unknown; lab screening measures the optical properties over the run before probe selection.",
+      "topic": "process_conditions",
+      "question": "What are the fermentation conditions (temperature, pressure, aeration, medium composition), are there gas bubbles or fouling, and how is the vessel cleaned or sterilised?",
+      "why": "Bubbles, fouling and sterilisation affect probe design, signal stability and the cleaning requirements for in-line use.",
+      "assumption_if_unanswered": "Conditions unknown; the lab trial records them and assumes an in-line probe must withstand the sterilisation used at the site.",
       "answer": null
     },
     {
       "id": "Q5",
-      "topic": "process_conditions",
-      "question": "What are the process conditions (temperature, pressure, aeration, foaming, fouling) and how does the broth vary between batches?",
-      "why": "Conditions change the optical signal and calibration; they also decide sterilization and cleaning requirements.",
-      "assumption_if_unanswered": "Conditions not stated; the study records temperature and aeration with each reference sample.",
+      "topic": "installation_distance",
+      "question": "Where would the sensor be installed (vessel port, loop, sampling line), how far is the analyzer from that point, and do you have existing optical fibers?",
+      "why": "Distance and fiber type determine which wavelengths can reach the probe and whether remote measurement is feasible.",
+      "assumption_if_unanswered": "Installation and distance unknown; the feasibility study starts with a bench setup and no reuse of existing fibers.",
       "answer": null
     },
     {
       "id": "Q6",
-      "topic": "process_conditions",
-      "question": "What is the fermentation scale and is this production, pilot or research work?",
-      "why": "Scale and setting determine whether a laboratory system or a simple production sensor is appropriate.",
-      "assumption_if_unanswered": "Setting unknown; treated as research-lab screening before any production sensor.",
+      "topic": "reference_method",
+      "question": "Which reference lab methods are used today for biomass and for the metabolic variables, and what are their accuracy and sampling frequency?",
+      "why": "Time-aligned reference data are needed to build and judge any optical model.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the study defines reference measurements together with the client before data collection.",
       "answer": null
     },
     {
       "id": "Q7",
-      "topic": "installation_distance",
-      "question": "Where would the measurement be installed (in-situ in the vessel, a bypass loop or an external sample line), and how far is the analyzer from that point? Are fibers already installed?",
-      "why": "Distance and fiber type determine which wavelengths can reach the probe; silica and mid-IR fibers differ.",
-      "assumption_if_unanswered": "Installation and distance unknown; the feasibility study is run at the laboratory bench first.",
-      "answer": null
-    },
-    {
-      "id": "Q8",
-      "topic": "reference_method",
-      "question": "Which laboratory reference method do you use for biomass and for the metabolic targets, and what is its accuracy and sampling frequency?",
-      "why": "The reference defines the calibration target and the accuracy the optical method must match.",
-      "assumption_if_unanswered": "Reference method and accuracy unknown; the first step is to define and document one reference per target.",
-      "answer": null
-    },
-    {
-      "id": "Q9",
       "topic": "requirements",
-      "question": "What accuracy, response time and budget do you need for the sensor and the feasibility study?",
-      "why": "Requirements decide how far the study must go and whether a simple sensor or a full spectral system is justified.",
-      "assumption_if_unanswered": "Requirements not stated; the study is scoped as a short lab screening with the cheapest adequate method first.",
+      "question": "What accuracy, response time and budget are required for the optical measurement?",
+      "why": "These set the acceptable simplicity and cost of the sensor and whether a few-wavelength sensor or a broader lab system is appropriate.",
+      "assumption_if_unanswered": "Requirements unknown; the study proceeds with lab screening and does not set a performance target.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "insufficient_information",
-    "status_reason": "Metabolic target and biomass reference are undefined; lab screening comes first.",
+    "status_reason": "Biomass and metabolic targets are undefined, so no method can be chosen yet.",
     "requirements_stated": [
-      "Optical measurement during yeast fermentation to follow growth and notice changes earlier.",
-      "Biomass and metabolic signals mentioned, not yet defined as targets.",
-      "Broth becomes more optically dense during the run."
+      "Optical measurement during yeast fermentation.",
+      "Follow growth and detect changes earlier.",
+      "Biomass and metabolic signals mentioned, not defined.",
+      "Broth gets denser; initial feasibility study with reference measurements requested."
     ],
     "key_unknowns": [
-      "Metabolic target and its level (ppm or %).",
-      "Biomass reference (viable count, dry weight, OD) and its accuracy.",
-      "Broth optics and batch-to-batch variation.",
-      "Installation point, cleaning, sterility, run scale."
+      "Biomass and metabolic targets, levels, and what 'earlier' means.",
+      "Broth clarity and its variation across runs.",
+      "Process conditions, fouling, sterilisation, probe location, fiber link.",
+      "Reference methods, accuracy, sampling times; required accuracy and response time."
     ],
     "premise_checks": [
       {
-        "client_claim": "Optical density of the broth can serve as the biomass signal.",
+        "client_claim": "Increasing optical density reflects growth and can serve as the biomass signal.",
         "verdict": "plausible_to_be_tested",
         "explanation": [
           {
-            "text": "Turbidity correlates well with cell density in a bioprocess example.",
+            "text": "Cell suspension turbidity correlates well with cell density in a bioprocess example.",
             "basis": "sourced",
             "citations": [
               {
                 "ref": "S01 p.16",
-                "quote": null,
+                "quote": "cell suspension turbidity correlates well with cell density",
                 "url": null
               }
             ]
@@ -142,9 +123,31 @@
                 "url": null
               }
             ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The optical measurement will reveal changes earlier than the current method.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "No source gives lead time for yeast fermentation; it must be measured against the reference method.",
+            "basis": "proposal",
+            "citations": []
+          }
+        ]
+      },
+      {
+        "client_claim": "A metabolic signal can be followed optically during fermentation.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "The metabolic target is not yet defined.",
+            "basis": "client_fact",
+            "citations": []
           },
           {
-            "text": "Transmission saturates in dense broth; UV-ATR is the cited option.",
+            "text": "S01 p.16 describes Raman as a molecular fingerprint for direct detection of glucose, acetate or lactate.",
             "basis": "sourced",
             "citations": [
               {
@@ -155,61 +158,50 @@
             ]
           }
         ]
-      },
-      {
-        "client_claim": "An optical measurement will reveal changes earlier than current practice.",
-        "verdict": "unverifiable",
-        "explanation": [
-          {
-            "text": "No source shows earlier detection here; test in lab screening.",
-            "basis": "assumption",
-            "citations": []
-          }
-        ]
       }
     ],
     "report_questions": [
       {
-        "question": "Which metabolic changes and biomass measure must the optical signal track, at which levels?",
+        "question": "Which biomass and metabolite variables, at which ppm or % levels, must be distinguished?",
         "covers": "measured"
       },
       {
-        "question": "Which lab methods, uncertainty and sampling times give the reference values?",
+        "question": "Which lab methods, with what accuracy and sampling times, give reference values for each variable?",
         "covers": "reference"
       },
       {
-        "question": "How do broth optics, temperature, aeration and foam vary between runs?",
+        "question": "How do broth clarity, bubbles, temperature and batch-to-batch differences change across the run?",
         "covers": "variation"
       },
       {
-        "question": "What response time, accuracy, installation point and cleaning apply?",
+        "question": "What accuracy, response time, lead time and cleaning or sterilisation limits apply?",
         "covers": "requirements"
       },
       {
-        "question": "Which current pain should earlier detection solve, and at what run scale?",
+        "question": "Which decision should the signal support, and where would the probe and fibers sit?",
         "covers": "context"
       }
     ],
     "recommendations": [
       {
         "method": "UV/Vis spectroscopy",
-        "geometry": "Transmission or transflection probe; UV-ATR if broth saturates",
+        "geometry": "Transmission or transflection probe for clear broth",
         "role": "primary",
         "simplicity_rank": 1,
         "cost_complexity": "low",
         "reason": {
-          "text": "A bioprocess example uses UV/Vis turbidity as a low-cost biomass trend.",
+          "text": "S01 p.16 describes UV/Vis turbidity as a possible low-cost biomass trend in cell suspensions.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 p.16",
-              "quote": null,
+              "quote": "cell suspension turbidity correlates well with cell density",
               "url": null
             }
           ]
         },
         "caveat": {
-          "text": "Transmission saturates in dense broth; UV-ATR is the cited option.",
+          "text": "Signal saturates in opaque broth; UV-ATR is the cited alternative at high optical density.",
           "basis": "sourced",
           "citations": [
             {
@@ -219,49 +211,60 @@
             }
           ]
         },
-        "confidence": "low",
-        "confidence_reason": "Bioprocess example, not yeast; OD is not a viable count."
+        "confidence": "medium",
+        "confidence_reason": "Application example exists for cell suspensions; yeast and target variable are unconfirmed."
       },
       {
-        "method": "NIR spectroscopy",
-        "geometry": "Transmission or transflection probe",
+        "method": "Raman spectroscopy",
+        "geometry": "Raman probe",
         "role": "comparison",
         "simplicity_rank": 2,
-        "cost_complexity": "average",
+        "cost_complexity": "high",
         "reason": {
-          "text": "A yeast fermentation example reports NIR with fluorescence for biomass.",
+          "text": "S01 p.16 describes Raman for glucose, acetate or lactate detection in aqueous media.",
           "basis": "sourced",
           "citations": [
             {
-              "ref": "S01 p.7",
-              "quote": null,
+              "ref": "S01 p.16",
+              "quote": "Raman spectroscopy can be used in the same reactor to provide a",
               "url": null
             }
           ]
         },
         "caveat": {
-          "text": "Calibration is matrix-specific and physical variation changes the signal.",
+          "text": "Luminescence (fluorescence) can overlap Raman bands for many organic compounds; specialised filters and probes are cited against it.",
           "basis": "sourced",
           "citations": [
             {
-              "ref": "DOCX §5",
-              "quote": null,
+              "ref": "S01 p.11",
+              "quote": "These effects can be eliminated by using specialized optical filters and probes of a special design",
               "url": null
             }
           ]
         },
         "confidence": "low",
-        "confidence_reason": "Yeast example only; no broth data."
+        "confidence_reason": "Metabolic target undefined and cost is high."
       },
       {
-        "method": "NIR spectroscopy with fluorescence",
-        "geometry": "Combined probe at one point, to be confirmed",
+        "method": "UV/Vis spectroscopy plus Raman spectroscopy",
+        "geometry": "Two probes in the same reactor",
         "role": "combination",
         "simplicity_rank": 3,
-        "cost_complexity": "average",
+        "cost_complexity": "high",
         "reason": {
-          "text": "The yeast example combines NIR and fluorescence for biomass and metabolites.",
+          "text": "S01 p.16 pairs UV/Vis growth tracking with Raman metabolite detection in one reactor.",
           "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "While UV/Vis tracks growth, Raman spectroscopy can be used in the same reactor",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Assess each method alone first; any synergy (described for complex samples, S01 p.7) is a hypothesis to test.",
+          "basis": "proposal",
           "citations": [
             {
               "ref": "S01 p.7",
@@ -270,123 +273,77 @@
             }
           ]
         },
-        "caveat": {
-          "text": "Compare with the best single method; the combined gain is a hypothesis to test.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "DOCX §5",
-              "quote": null,
-              "url": null
-            }
-          ]
-        },
         "confidence": "low",
-        "confidence_reason": "Gain is a hypothesis; target undefined."
+        "confidence_reason": "Depends on both single-method results and aligned sampling."
       }
     ],
     "method_table_screening": [
       {
-        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
-        "decision": "rejected",
-        "reason": "Solid or pill sample."
-      },
-      {
         "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
         "decision": "recommended",
-        "reason": "Liquid; primary candidate."
-      },
-      {
-        "table_row": "UV/Visible spectroscopy / probe, lens",
-        "decision": "rejected",
-        "reason": "Radiating-sample type."
+        "reason": "Low cost; clear broth, 1-10 mm path."
       },
       {
         "table_row": "Fluorimetry / fluorimetric probe",
         "decision": "alternative",
-        "reason": "Only if a fluorescent target is defined."
+        "reason": "Only for a defined fluorescent species."
       },
       {
         "table_row": "UV/Visible spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Offline reference."
+        "reason": "Offline lab screening."
       },
       {
         "table_row": "Fluorimetry / cuvette 90 deg",
         "decision": "lab_screening_only",
-        "reason": "Offline screening."
-      },
-      {
-        "table_row": "IR spectroscopy / sample surface",
-        "decision": "rejected",
-        "reason": "Solid sample."
+        "reason": "Offline lab screening."
       },
       {
         "table_row": "NIR spectroscopy / transmission or transflection probe",
         "decision": "alternative",
-        "reason": "Liquid; comparison candidate."
-      },
-      {
-        "table_row": "NIR spectroscopy / diffuse reflection probe",
-        "decision": "alternative",
-        "reason": "Only if broth scatters strongly."
-      },
-      {
-        "table_row": "NIR spectroscopy / surface at a distance",
-        "decision": "rejected",
-        "reason": "Solid or powder."
+        "reason": "Major components; trace below 0.1% not reached."
       },
       {
         "table_row": "UV/Visible spectroscopy / ATR probe",
         "decision": "alternative",
-        "reason": "Option at high optical density."
+        "reason": "Fallback for opaque broth; low sensitivity."
       },
       {
         "table_row": "IR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Offline; mid-IR fiber needed in-line."
-      },
-      {
-        "table_row": "IR spectroscopy / sample layer",
-        "decision": "rejected",
-        "reason": "Solid film sample."
+        "reason": "Offline lab screening."
       },
       {
         "table_row": "NIR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Offline NIR screening."
-      },
-      {
-        "table_row": "NIR spectroscopy / integrating sphere",
-        "decision": "lab_screening_only",
-        "reason": "Solid or powder reference."
+        "reason": "Offline lab screening."
       },
       {
         "table_row": "IR spectroscopy / ATR platform",
         "decision": "rejected",
-        "reason": "High cost; mid-IR fiber needed."
+        "reason": "High cost; water absorbs strongly in IR."
       },
       {
         "table_row": "IR spectroscopy / ATR probe*",
         "decision": "rejected",
-        "reason": "High cost; mid-IR fiber needed."
+        "reason": "High cost; water absorbs strongly in IR."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
         "decision": "alternative",
-        "reason": "High cost; fluorescence risk."
+        "reason": "Comparison candidate for metabolites; high cost."
       },
       {
         "table_row": "Raman spectroscopy / cuvette 90 deg",
         "decision": "lab_screening_only",
-        "reason": "Offline; high cost."
+        "reason": "Offline lab screening."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "UV/Vis transmission or transflection probe first; UV-ATR only if broth saturates.",
+          "text": "UV/Vis transmission or transflection probe for clear broth; UV-ATR only at high optical density.",
           "basis": "sourced",
           "citations": [
             {
@@ -403,13 +360,25 @@
         },
         {
           "aspect": "location",
-          "text": "Vessel, bypass or sample line not defined; bench study first.",
+          "text": "Installation point unknown; client to confirm vessel port or loop.",
           "basis": "assumption",
           "citations": []
         },
         {
           "aspect": "fiber_link",
-          "text": "UV silica fibers cover 190-1200 nm; link length not stated.",
+          "text": "UV-Vis silica fiber transmits about 190-1200 nm (S02 p.6 figure); link length and existing fibers unknown.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: UVVIS full range: UV-Vis silica fiber (standard or Al/Cu-coated); partial: Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber; RAMAN full range: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber; partial: -.",
           "basis": "sourced",
           "citations": [
             {
@@ -420,13 +389,13 @@
           ]
         }
       ],
-      "fiber_family": "UV-Vis silica fiber (UV_SILICA)",
+      "fiber_family": "UV-Vis silica (S02 p.6); link undefined",
       "fiber_compatible": null,
       "architecture": "undecided",
       "needs_afs_confirmation": [
-        "Probe type and path length",
-        "Installation point and cleaning",
-        "Optical configuration for broth"
+        "Probe type for OD range",
+        "Installation and optical configuration",
+        "Fiber link and length"
       ]
     },
     "spectral_ranges": [
@@ -441,10 +410,20 @@
         "note": null
       },
       {
-        "method": "NIR spectroscopy",
-        "nominal_range": "780-2500 nm",
+        "method": "Raman spectroscopy",
+        "nominal_range": "Raman shift in cm-1; signal recorded 400-1100 nm",
         "citation": {
-          "ref": "S01 p.10",
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "Excitation wavelength not yet defined; state separately from shift."
+      },
+      {
+        "method": "Fluorescence spectroscopy",
+        "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species",
+        "citation": {
+          "ref": "S01 p.12",
           "quote": null,
           "url": null
         },
@@ -454,7 +433,7 @@
     "risks": [
       {
         "category": "calibration_validity",
-        "text": "A change of medium or matrix can invalidate a calibration.",
+        "text": "Calibration is matrix-specific; medium or formulation changes may require recalibration.",
         "basis": "sourced",
         "citations": [
           {
@@ -466,11 +445,16 @@
       },
       {
         "category": "physical_variation",
-        "text": "Physical variation (temperature, scattering) changes the NIR signal.",
+        "text": "Rising turbidity saturates transmission (S01 p.16); process turbulence must be considered (S01 p.7).",
         "basis": "sourced",
         "citations": [
           {
-            "ref": "DOCX §5",
+            "ref": "S01 p.16",
+            "quote": null,
+            "url": null
+          },
+          {
+            "ref": "S01 p.7",
             "quote": null,
             "url": null
           }
@@ -478,36 +462,42 @@
       },
       {
         "category": "no_guaranteed_gain",
-        "text": "Neither a single method nor a combination is guaranteed to detect changes earlier.",
-        "basis": "assumption",
-        "citations": []
+        "text": "Neither a single method nor a combination is guaranteed; synergy 'often' occurs (S01 p.7).",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.7",
+            "quote": "This often provides a synergistic effect",
+            "url": null
+          }
+        ]
       },
       {
         "category": "nothing_confirmed",
-        "text": "Accuracy, response time, interface ratings and compatibility are unconfirmed.",
+        "text": "Accuracy, update rate, interface ratings and equipment compatibility are unconfirmed.",
         "basis": "assumption",
         "citations": []
       },
       {
-        "category": "fouling_interface",
-        "text": "Foam or fouling at the probe may alter the signal; cleaning is unknown.",
+        "category": "fiber_link",
+        "text": "Fiber link and distance unknown; probe placement and wavelength reach unverified.",
         "basis": "assumption",
         "citations": []
       }
     ],
     "assumptions": [
-      "Broth is a liquid cell suspension for first screening.",
-      "No metabolic method is primary until the target is defined."
+      "Bench or pilot yeast fermentation; scale unknown.",
+      "Targets defined before any model is built."
     ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "lab_screening",
-          "text": "Screen representative runs with several methods to identify target, range and OD limits.",
+          "text": "Multi-method lab screening on representative broth across runs, with reference assays, to define targets and ranges.",
           "basis": "proposal",
           "citations": [
             {
-              "ref": "S02 p.20",
+              "ref": "S01 p.9",
               "quote": null,
               "url": null
             }
@@ -515,34 +505,28 @@
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record spectra from each candidate with reference biomass and metabolite samples and timing.",
+          "text": "Record spectra from each candidate with time-aligned reference measurements at each sampling point.",
           "basis": "proposal",
-          "citations": [
-            {
-              "ref": "S01 p.8",
-              "quote": null,
-              "url": null
-            }
-          ]
+          "citations": []
         },
         {
           "element": "models_and_validation",
-          "text": "Build single-method models first; combine only if justified; validate on held-out runs.",
+          "text": "Build single-method models first; combine only if justified, validated on held-out batches.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "comparison",
-          "text": "Compare prediction error, bias and ability to follow changes against client-agreed requirements.",
+          "text": "Compare prediction error, bias and ability to follow changes against agreed requirements.",
           "basis": "proposal",
           "citations": []
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "Undecided until lab screening identifies key features and targets."
+      "afs_next_path_reason": "Path choice waits until targets and reference data exist."
     },
     "decision_basis": {
-      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest configuration meeting them on independent runs.",
+      "text": "Agree numerical acceptance criteria with the client before testing; none set here. Choose the simplest configuration meeting them on independent batches.",
       "basis": "proposal",
       "citations": []
     }
@@ -552,9 +536,9 @@
       {
         "path": "premise_checks[0].explanation[0].citations[0]",
         "ref": "S01 p.16",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "cell suspension turbidity correlates well with cell density",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "premise_checks[0].explanation[1].citations[0]",
@@ -564,7 +548,7 @@
         "score": null
       },
       {
-        "path": "premise_checks[0].explanation[2].citations[0]",
+        "path": "premise_checks[2].explanation[1].citations[0]",
         "ref": "S01 p.16",
         "quote": null,
         "status": "page_only",
@@ -573,9 +557,9 @@
       {
         "path": "recommendations[0].reason.citations[0]",
         "ref": "S01 p.16",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "cell suspension turbidity correlates well with cell density",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[0].caveat.citations[0]",
@@ -586,28 +570,28 @@
       },
       {
         "path": "recommendations[1].reason.citations[0]",
-        "ref": "S01 p.7",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.16",
+        "quote": "Raman spectroscopy can be used in the same reactor to provide a",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[1].caveat.citations[0]",
-        "ref": "DOCX §5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.11",
+        "quote": "These effects can be eliminated by using specialized optical filters and probes of a special design",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[2].reason.citations[0]",
-        "ref": "S01 p.7",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.16",
+        "quote": "While UV/Vis tracks growth, Raman spectroscopy can be used in the same reactor",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[2].caveat.citations[0]",
-        "ref": "DOCX §5",
+        "ref": "S01 p.7",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -634,6 +618,13 @@
         "score": null
       },
       {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "risks[0].citations[0]",
         "ref": "DOCX §5",
         "quote": null,
@@ -642,21 +633,28 @@
       },
       {
         "path": "risks[1].citations[0]",
-        "ref": "DOCX §5",
+        "ref": "S01 p.16",
         "quote": null,
         "status": "page_only",
         "score": null
+      },
+      {
+        "path": "risks[1].citations[1]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "S01 p.7",
+        "quote": "This often provides a synergistic effect",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "feasibility_plan.steps[0].citations[0]",
-        "ref": "S02 p.20",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "feasibility_plan.steps[1].citations[0]",
-        "ref": "S01 p.8",
+        "ref": "S01 p.9",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -670,7 +668,14 @@
       },
       {
         "path": "spectral_ranges[1].citation",
-        "ref": "S01 p.10",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[2].citation",
+        "ref": "S01 p.12",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -678,24 +683,70 @@
     ],
     "flags": [],
     "counts": {
-      "citations_page_only": 18
+      "citations_verified": 6,
+      "citations_page_only": 15
     },
     "revised": true,
     "flags_before_revision": [
       {
         "path": "premise_checks[0].explanation[1]",
         "kind": "context",
-        "detail": "not_supported: The DOCX §5 text says optical density is not a viable cell count, but it does not say OD 'defines a trend signal only'. The 'trend signal only' restriction is not on the cited page. Fix: Keep only the supported part: 'Optical density is not a viable cell count.'"
+        "detail": "not_supported: The cited DOCX §5 row says optical density is not a viable cell count, which is a general limitation; it does not mention yeast-specific calibration, so the claim's 'yeast-specific calibration is not shown' is not stated by the cited page, but the core statement is supported. The claim adds a yeast context not present in the cited source. Fix: Remove the yeast-specific clause or cite a page that discusses yeast calibration; keep only 'Optical density is not a viable cell count' as supported by DOCX §5."
+      },
+      {
+        "path": "premise_checks[2].explanation[1]",
+        "kind": "context",
+        "detail": "overstated: S01 p.16 says Raman 'can be used' to provide a molecular fingerprint for direct detection of glucose, acetate, or lactate; the claim states it is used in a bioprocess example as established fact, which is more certain than the page's stated possibility. Fix: Rephrase as: Raman can be used for direct detection of glucose, acetate or lactate in a bioprocess setting, per the cited example."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "overstated: S01 p.16 says UV/Vis 'can be deployed' as a low-cost tool for biomass monitoring because turbidity 'correlates well' with cell density; the claim says the example 'supports' it, which is stronger than a described possibility but the page does state correlation. The 'low-cost trend' wording is only partly supported. Fix: Say: S01 p.16 describes UV/Vis turbidity as a possible low-cost biomass monitoring approach, since turbidity correlates with cell density."
+      },
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "overstated: S01 p.16 describes Raman as a possible molecular fingerprint for these metabolites and notes it suits aqueous environments; 'supports' presents an illustrative example as established support. Fix: Rephrase to say the cited page describes Raman as usable for detecting these metabolites in aqueous media."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "different_context: S01 p.11 says fluorescence superposition complicates Raman for many organic compounds in general; the claim applies it to the bioprocess context and adds a 'check signal quality first' recommendation not on the page. Fix: Limit to: S01 p.11 notes that luminescence (fluorescence) can overlap Raman bands for many organic compounds, and that specialized filters and probes can mitigate this."
       },
       {
         "path": "recommendations[2].caveat",
         "kind": "context",
-        "detail": "not_supported: The cited pages S01 p.7 and S01 p.8 do not say to assess each method alone first or that a combined gain is a hypothesis to test. That wording appears in the DOCX §5 'Combinations' row, which is not cited here. Fix: Cite DOCX §5 for the 'compare with the best single method' and 'gain is a hypothesis to test' wording, or remove the claim that each method must be assessed alone first."
+        "detail": "not_supported: S01 p.7 and p.8 discuss synergy and multispectral analysis, but do not state that each method must be assessed alone first or that added value is a hypothesis to test. Fix: Rephrase to what the pages say, e.g. combinations can provide synergy for some problems, without asserting a testing procedure."
+      },
+      {
+        "path": "measurement_concept.items[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited table rows list UV-Vis transmission/transflection probes for liquids (1-10 mm) and ATR probes with very short depth (0.1-1 um), but the table does not say to choose transmission for clear broth or ATR only when optical density saturates; that selection logic comes from S01 p.16 only in a general sense. Fix: Attribute the selection rule to S01 p.16 explicitly and treat the table rows as supporting path-length information only."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "different_context: S02 p.6 gives the transmission range for standard and Al/Cu-coated UV-VIS silica fibers, but the claim applies it as a fiber for this link without a fiber-length or configuration caveat that the DOCX says is needed; the page itself is a figure transcription to be checked. Fix: State that the range is from S02 p.6 (figure transcription, check the figure) and that actual transmission depends on configuration and fiber length."
+      },
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "context",
+        "detail": "not_supported: S02 p.6 lists transmission ranges only; it does not state which fiber families are 'full range' or 'partial' for UV-Vis or Raman, so the rule check is not supported by the cited page. Fix: Remove the full/partial classification or cite a source that defines it; use S02 p.6 only for the transmission ranges."
+      },
+      {
+        "path": "risks[0]",
+        "kind": "context",
+        "detail": "not_supported: DOCX §5 lists calibration as matrix-specific and says calibration depends on the matrix, but does not explicitly say a change of medium, strain or formulation invalidates it. Fix: Rephrase: calibration is specific to the matrix, so changes in medium or formulation may require recalibration."
       },
       {
         "path": "risks[1]",
         "kind": "context",
-        "detail": "not_supported: DOCX §5 does not say that turbidity, scattering or temperature can mimic composition changes. It only notes overlapping bands, physical variation and matrix-specific calibration for NIR, and that OD is not a viable cell count. Fix: Rephrase to what the source supports, e.g. 'Physical variation and overlapping bands can complicate NIR calibration', or cite a page that discusses temperature effects."
+        "detail": "not_supported: S01 p.16 supports saturation with rising opacity and turbidity; S01 p.7 mentions process turbulence as a morphological factor but does not say bubbles or turbulence can mimic composition. Fix: Remove the bubble/turbulence mimicry claim or state only that process turbulence must be considered as a morphological factor (S01 p.7)."
+      },
+      {
+        "path": "risks[2]",
+        "kind": "context",
+        "detail": "overstated: S01 p.7 and p.8 describe synergy as possible and a combination as sometimes solving problems, not a guarantee; the claim's 'neither ... is guaranteed' wording addresses detection speed, which the pages do not discuss at all. Fix: Remove the earlier-detection claim or state that the cited pages describe combinations as possibly beneficial without guaranteeing improved detection."
       }
     ]
   },
@@ -756,29 +807,35 @@
       "detail": ""
     },
     {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "check": "report length 250-450 words",
       "passed": false,
-      "detail": "591 words"
+      "detail": "761 words; over budget: Requirements stated 30/28, Key unknowns 36/22, Clarification questions 74/55, Recommendation 218/110, Measurement concept 109/45, Spectral range 62/30, Risks and uncertainty 63/48, Decision basis 23/22 (citations excluded)"
     }
   ],
   "extraction": {
     "summary": "The client wants an optical measurement during yeast fermentation to follow growth and detect changes earlier, and asks for help designing an initial feasibility study with reference measurements.",
     "stated_facts": [
       {
-        "fact": "The process is yeast fermentation.",
-        "enquiry_quote": "during yeast fermentation"
+        "fact": "The client wants an optical measurement during yeast fermentation.",
+        "enquiry_quote": "We would like an optical measurement during yeast fermentation"
       },
       {
-        "fact": "The purpose is to follow growth and notice changes earlier.",
+        "fact": "The measurement is meant to help follow growth and notice changes earlier.",
         "enquiry_quote": "to help us follow growth and notice changes earlier"
       },
       {
-        "fact": "The team has mentioned a biomass signal and a metabolic signal.",
-        "enquiry_quote": "Our team has mentioned both a biomass signal and a metabolic signal"
-      },
-      {
-        "fact": "The biomass and metabolic signals have not been defined as separate targets.",
-        "enquiry_quote": "these have not been defined as separate targets"
+        "fact": "The team has mentioned a biomass signal and a metabolic signal, not yet defined as separate targets.",
+        "enquiry_quote": "Our team has mentioned both a biomass signal and a metabolic signal, but these have not been defined as separate targets."
       },
       {
         "fact": "The broth becomes more optically dense as the run develops.",
@@ -790,11 +847,11 @@
       }
     ],
     "targets": [
-      "biomass (growth)",
-      "metabolic signal (undefined)"
+      "biomass (to be defined)",
+      "metabolic signal (to be defined)"
     ],
-    "sample_description": "Yeast fermentation broth, optically dense as the run develops",
-    "sample_state": "unknown",
+    "sample_description": "Yeast fermentation broth",
+    "sample_state": "clear_liquid",
     "process_context": "unknown",
     "conditions": [
       "Optical density of the broth increases as the run develops"
@@ -808,40 +865,30 @@
     "fibers_mentioned": [],
     "client_premises": [
       {
-        "claim": "An optical measurement will follow growth and reveal changes earlier than current practice.",
+        "claim": "An optical measurement of the fermentation will follow growth and reveal changes earlier.",
         "enquiry_quote": "We would like an optical measurement during yeast fermentation to help us follow growth and notice changes earlier."
       },
       {
-        "claim": "Optical density of the broth can serve as the biomass signal.",
+        "claim": "Optical density increase reflects growth and can serve as the biomass signal.",
         "enquiry_quote": "The broth becomes more optically dense as the run develops."
       }
     ],
-    "requested_decision": "Whether an optical measurement can follow growth and metabolic changes during yeast fermentation, and what initial feasibility study with reference measurements to run.",
+    "requested_decision": "Whether an optical measurement can follow yeast growth and metabolic changes, and what an initial feasibility study with reference measurements should contain.",
     "unknowns": [
-      "Definition of the biomass target and the metabolic target(s) and their levels",
-      "Which metabolic changes are meant and which analytes are relevant",
-      "Current reference lab method and its accuracy",
-      "Fermentation scale and whether the process is production, pilot or research",
-      "Sample handling: whether samples are withdrawn or measured in situ, and fouling or cleaning requirements",
-      "Measurement location and distance to analyzer, existing fibers",
-      "Response time and budget requirements",
-      "Current process pain and decisions that real-time data would drive"
+      "Whether the biomass and metabolic signals are to be defined as separate targets and what each should be",
+      "Target analytes or variables and their levels (ppm or %)",
+      "Whether the broth is clear, turbid or opaque at the measurement point and how it varies",
+      "Process context: production, pilot or research lab",
+      "Fermentation conditions such as temperature, pressure, aeration, and fouling or cleaning/sterilization",
+      "Installation point, distance to analyzer, and existing fibers",
+      "Current reference lab method for biomass and metabolites and its accuracy",
+      "Required accuracy, response time and budget",
+      "Yeast strain and medium composition",
+      "Required timing of the earlier detection"
     ]
   },
   "pre_analysis": {
     "table_shortlist": [
-      {
-        "row": "UV/Visible spectroscopy / diffuse reflection probe",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "solid, pill",
-        "optical_path_or_depth": "1-5 mm",
-        "sensitivity": "low",
-        "selectivity": "low",
-        "cost": "low",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
-      },
       {
         "row": "UV/Visible spectroscopy / transmission or transflection probe",
         "cite": "S01 Table 1 (p.6)",
@@ -850,23 +897,7 @@
         "sensitivity": "low",
         "selectivity": "low",
         "cost": "low",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
-      },
-      {
-        "row": "UV/Visible spectroscopy / probe, lens",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "radiating sample",
-        "optical_path_or_depth": "any",
-        "sensitivity": "high",
-        "selectivity": "low",
-        "cost": "low",
-        "notes": [
-          "non-contact measurement at a distance",
-          "only relevant if contact is a problem",
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "Fluorimetry / fluorimetric probe",
@@ -876,9 +907,7 @@
         "sensitivity": "high",
         "selectivity": "low",
         "cost": "low",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "UV/Visible spectroscopy / cuvette",
@@ -889,8 +918,7 @@
         "selectivity": "low",
         "cost": "low",
         "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
+          "lab/offline technique: use for lab screening, not in-line"
         ]
       },
       {
@@ -902,20 +930,7 @@
         "selectivity": "low",
         "cost": "low",
         "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
-        ]
-      },
-      {
-        "row": "IR spectroscopy / sample surface",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "solid",
-        "optical_path_or_depth": "10 um",
-        "sensitivity": "average",
-        "selectivity": "high",
-        "cost": "average",
-        "notes": [
-          "sample state unknown: all rows kept"
+          "lab/offline technique: use for lab screening, not in-line"
         ]
       },
       {
@@ -926,35 +941,7 @@
         "sensitivity": "average",
         "selectivity": "average",
         "cost": "average",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
-      },
-      {
-        "row": "NIR spectroscopy / diffuse reflection probe",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "scattering media, powder",
-        "optical_path_or_depth": "0.5-1 mm",
-        "sensitivity": "average",
-        "selectivity": "average",
-        "cost": "average",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
-      },
-      {
-        "row": "NIR spectroscopy / surface at a distance",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "solid, powder",
-        "optical_path_or_depth": "2-5 mm",
-        "sensitivity": "average",
-        "selectivity": "average",
-        "cost": "average",
-        "notes": [
-          "non-contact measurement at a distance",
-          "only relevant if contact is a problem",
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "UV/Visible spectroscopy / ATR probe",
@@ -964,9 +951,7 @@
         "sensitivity": "low",
         "selectivity": "low",
         "cost": "average",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "IR spectroscopy / cuvette",
@@ -977,21 +962,7 @@
         "selectivity": "high",
         "cost": "average",
         "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
-        ]
-      },
-      {
-        "row": "IR spectroscopy / sample layer",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "solid film",
-        "optical_path_or_depth": "5-50 um",
-        "sensitivity": "high",
-        "selectivity": "high",
-        "cost": "average",
-        "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
+          "lab/offline technique: use for lab screening, not in-line"
         ]
       },
       {
@@ -1003,21 +974,7 @@
         "selectivity": "average",
         "cost": "average",
         "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
-        ]
-      },
-      {
-        "row": "NIR spectroscopy / integrating sphere",
-        "cite": "S01 Table 1 (p.6)",
-        "sample_type": "solid, powder",
-        "optical_path_or_depth": "5-10 mm",
-        "sensitivity": "average",
-        "selectivity": "average",
-        "cost": "average",
-        "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
+          "lab/offline technique: use for lab screening, not in-line"
         ]
       },
       {
@@ -1028,9 +985,7 @@
         "sensitivity": "average",
         "selectivity": "high",
         "cost": "high",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "IR spectroscopy / ATR probe*",
@@ -1040,9 +995,7 @@
         "sensitivity": "average",
         "selectivity": "high",
         "cost": "high",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "Raman spectroscopy / Raman probe",
@@ -1052,9 +1005,7 @@
         "sensitivity": "average",
         "selectivity": "high",
         "cost": "high",
-        "notes": [
-          "sample state unknown: all rows kept"
-        ]
+        "notes": []
       },
       {
         "row": "Raman spectroscopy / cuvette 90 deg",
@@ -1065,8 +1016,7 @@
         "selectivity": "high",
         "cost": "high",
         "notes": [
-          "lab/offline technique: use for lab screening, not in-line",
-          "sample state unknown: all rows kept"
+          "lab/offline technique: use for lab screening, not in-line"
         ]
       }
     ],
@@ -1133,101 +1083,105 @@
           }
         }
       },
-      "client_fiber_conflicts": []
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
     },
+    "fiber_findings_required_in_premise_check": [],
     "rule_hints": [
       "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
-      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
-      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+      "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
     ],
     "required_risk_categories": [
       "calibration_validity",
+      "physical_variation",
       "no_guaranteed_gain",
       "nothing_confirmed"
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.5.0",
+    "pipeline_version": "0.6.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-17T20:33:35.456691+00:00",
+        "timestamp": "2026-10-17T21:10:08.253410+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 9.9,
+        "duration_s": 9.4,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 141,
-          "output_tokens": 2159,
-          "cache_read_input_tokens": 10356,
+          "output_tokens": 2069,
+          "cache_read_input_tokens": 10425,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001197
+        "cost_usd": 0.001153
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-17T20:33:45.394953+00:00",
+        "timestamp": "2026-10-17T21:10:17.684518+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 43.7,
+        "duration_s": 49.0,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 10881,
-          "output_tokens": 10904,
-          "cache_read_input_tokens": 84114,
+          "input_tokens": 9501,
+          "output_tokens": 12504,
+          "cache_read_input_tokens": 84363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.007381
+        "cost_usd": 0.008046
       },
       {
-        "claims_checked": 13,
+        "claims_checked": 15,
         "stage": "critic",
-        "timestamp": "2026-10-17T20:34:29.126466+00:00",
+        "timestamp": "2026-10-17T21:11:06.750371+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 6.8,
+        "duration_s": 9.1,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 8339,
-          "output_tokens": 1551,
+          "input_tokens": 9702,
+          "output_tokens": 1954,
           "cache_read_input_tokens": 744,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001617
+        "cost_usd": 0.001955
       },
       {
-        "flags_sent": 4,
+        "flags_sent": 14,
         "stage": "revise",
-        "timestamp": "2026-10-17T20:34:35.971484+00:00",
+        "timestamp": "2026-10-17T21:11:15.898396+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 26.1,
+        "duration_s": 36.9,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 9725,
-          "output_tokens": 7493,
-          "cache_read_input_tokens": 84114,
+          "input_tokens": 11762,
+          "output_tokens": 10387,
+          "cache_read_input_tokens": 84363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.00556
+        "cost_usd": 0.007213
       }
     ],
-    "prompt_hash": "c726a6f12cc1",
-    "git_commit": "029e13a",
-    "timestamp": "2026-10-17T20:33:45.376945+00:00",
-    "duration_s": 86.7,
-    "cost_usd": 0.0158
+    "prompt_hash": "4387329b7893",
+    "git_commit": "f166896",
+    "timestamp": "2026-10-17T21:10:17.665774+00:00",
+    "duration_s": 104.7,
+    "cost_usd": 0.0184
   }
 }

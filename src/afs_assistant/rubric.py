@@ -33,7 +33,7 @@ def rubric(a: Assessment, case_id: str, required_risks: list[str], fiber_finding
           f"{len(a.report_questions)} questions, order {[q.covers for q in a.report_questions]}")
 
     recs = [r for r in a.recommendations if r.role != "not_recommended"]
-    if a.decision_status == "insufficient_information" and not recs:
+    if a.decision_status in ("insufficient_information", "outside_supported_scope") and not recs:
         check("recommendations: cited reason + caveat", True)
     else:
         bad = [r.method for r in recs if r.reason.basis != "sourced" or not r.reason.citations or not r.caveat.text.strip()]
@@ -57,8 +57,9 @@ def rubric(a: Assessment, case_id: str, required_risks: list[str], fiber_finding
     content = []
     if not _has(texts.get("spectra_with_reference", ""), r"referen|laborator|\blab\b|assay", r"tim"):
         content.append("spectra need independent reference + timing")
-    if not _has(texts.get("models_and_validation", ""), r"single", r"held.out|independent|validat"):
-        content.append("single-method first + held-out validation")
+    several = len(recs) > 1
+    if not _has(texts.get("models_and_validation", ""), r"single" if several else r".", r"held.out|independent|validat"):
+        content.append("single-method first + held-out validation" if several else "held-out validation")
     if not _has(texts.get("comparison", ""), r"error", r"bias"):
         content.append("compare prediction error and bias")
     not_proposal = [s.element for s in a.feasibility_plan.steps if s.basis != "proposal"]

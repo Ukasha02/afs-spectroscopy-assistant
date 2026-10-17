@@ -93,9 +93,16 @@ def _usage(response) -> dict:
 
 
 def _json_from_text(response) -> str:
+    """The first complete JSON object in the reply; prose or extra characters after it are ignored."""
     text = "".join(b.text for b in response.content if b.type == "text")
-    start, end = text.find("{"), text.rfind("}")
-    return text[start : end + 1] if start >= 0 and end > start else text
+    start = text.find("{")
+    if start < 0:
+        return text
+    try:
+        obj, _ = json.JSONDecoder().raw_decode(text[start:])
+        return json.dumps(obj)
+    except json.JSONDecodeError:
+        return text[start:]  # let validation report the JSON error to the repair call
 
 
 def _call_anthropic(system: list[str], user_prompt: str, schema: type[BaseModel], stage: str) -> tuple[BaseModel, dict]:
@@ -110,10 +117,14 @@ def _call_anthropic(system: list[str], user_prompt: str, schema: type[BaseModel]
     blocks += [{"type": "text", "text": t} for t in system[1:]]
     started = time.monotonic()
     usage_total: dict[str, int] = {}
+    cost_total = 0.0
     mode = "prompted_json" if schema.__name__ in _GRAMMAR_TOO_LARGE else "constrained"
 
     def _billed(response) -> None:
-        for k, v in _usage(response).items():
+        nonlocal cost_total
+        usage = _usage(response)
+        cost_total += costs.call_cost(model, usage)  # price tiers apply per request, not to the sum
+        for k, v in usage.items():
             usage_total[k] = usage_total.get(k, 0) + v
 
     parsed = None
@@ -154,7 +165,7 @@ def _call_anthropic(system: list[str], user_prompt: str, schema: type[BaseModel]
                 )
 
     duration = round(time.monotonic() - started, 1)
-    cost = costs.record(model, "anthropic", stage, usage_total, duration)
+    cost = costs.record(model, "anthropic", stage, usage_total, duration, cost=cost_total)
     if parsed is None:
         raise RuntimeError(f"{model} returned no parsable output")
     meta = {"provider": "anthropic", "model": model, "effort": effort, "thinking_level": effort, "duration_s": duration,

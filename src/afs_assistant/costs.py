@@ -74,8 +74,9 @@ def check_budget(model: str, prompt_chars: int, max_tokens: int) -> None:
         )
 
 
-def record(model: str, provider: str, stage: str, usage: dict, duration_s: float) -> float:
-    cost = round(call_cost(model, usage), 6)
+def record(model: str, provider: str, stage: str, usage: dict, duration_s: float, cost: float | None = None) -> float:
+    """Log one pipeline call. Pass `cost` when the call made several requests (each priced on its own)."""
+    cost = round(call_cost(model, usage) if cost is None else cost, 6)
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "phase": os.getenv("SPEND_PHASE", "dev"),

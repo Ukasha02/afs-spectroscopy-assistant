@@ -4,122 +4,117 @@
   "enquiry": "We run a cell culture process in an aqueous medium. Glucose and lactate are measured from samples, and the delay makes it difficult to see changes promptly. We are exploring an in situ spectroscopy pilot that can be checked against those existing laboratory measurements. The medium and cell population change during the run; we have not yet selected a probe or a calibration strategy.",
   "facts_stated": [
     {
-      "fact": "The process is a cell culture process in an aqueous medium.",
+      "fact": "The client runs a cell culture process in an aqueous medium.",
       "enquiry_quote": "We run a cell culture process in an aqueous medium."
     },
     {
-      "fact": "Glucose and lactate are currently measured from samples in the laboratory.",
-      "enquiry_quote": "Glucose and lactate are measured from samples, and the delay makes it difficult to see changes promptly."
+      "fact": "Glucose and lactate are measured from samples in the existing workflow.",
+      "enquiry_quote": "Glucose and lactate are measured from samples,"
     },
     {
-      "fact": "The delay of the existing sample-based measurement makes it difficult to see changes promptly.",
-      "enquiry_quote": "the delay makes it difficult to see changes promptly"
+      "fact": "The delay of the current sample-based measurement makes it difficult to see changes promptly.",
+      "enquiry_quote": "the delay makes it difficult to see changes promptly."
     },
     {
       "fact": "The client is exploring an in situ spectroscopy pilot.",
-      "enquiry_quote": "We are exploring an in situ spectroscopy pilot that can be checked against those existing laboratory measurements."
+      "enquiry_quote": "We are exploring an in situ spectroscopy pilot"
     },
     {
-      "fact": "The pilot is to be checked against the existing laboratory measurements.",
-      "enquiry_quote": "that can be checked against those existing laboratory measurements"
+      "fact": "The pilot should be checkable against the existing laboratory measurements.",
+      "enquiry_quote": "that can be checked against those existing laboratory measurements."
     },
     {
-      "fact": "The medium changes during the run.",
-      "enquiry_quote": "The medium and cell population change during the run"
-    },
-    {
-      "fact": "The cell population changes during the run.",
-      "enquiry_quote": "The medium and cell population change during the run"
+      "fact": "The medium and the cell population change during the run.",
+      "enquiry_quote": "The medium and cell population change during the run;"
     },
     {
       "fact": "No probe has been selected yet.",
-      "enquiry_quote": "we have not yet selected a probe or a calibration strategy"
+      "enquiry_quote": "we have not yet selected a probe or a calibration strategy."
     },
     {
       "fact": "No calibration strategy has been selected yet.",
-      "enquiry_quote": "we have not yet selected a probe or a calibration strategy"
+      "enquiry_quote": "we have not yet selected a probe or a calibration strategy."
     }
   ],
   "clarification_questions": [
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "What decision would faster glucose and lactate data drive during the run, and what goes wrong today because of the delay?",
-      "why": "Defines the value of real-time data and which changes must be seen promptly.",
-      "assumption_if_unanswered": "Decision and delay impact unknown; the pilot scope stays exploratory until the expert confirms the use case.",
+      "question": "What decision would faster glucose and lactate data drive during a run, such as feeding or harvest timing?",
+      "why": "Defines which change must be seen promptly and how fast the signal must respond.",
+      "assumption_if_unanswered": "Decision unknown; the pilot is scoped as monitoring only until the decision is defined.",
       "answer": null
     },
     {
       "id": "Q2",
       "topic": "target_and_level",
-      "question": "What are the expected glucose and lactate concentration ranges during the run, and in which units are they reported?",
-      "why": "Decides whether the target is at ppm or % level and which spectral region and sensitivity are needed.",
+      "question": "What are the expected glucose and lactate concentration ranges across the run, stated in ppm or %?",
+      "why": "Concentration level decides whether the method needs high sensitivity or can work at higher levels.",
       "assumption_if_unanswered": "Level unknown; lab screening establishes whether the targets are at ppm or % level.",
       "answer": null
     },
     {
       "id": "Q3",
       "topic": "sample_form_optics",
-      "question": "How turbid or opaque is the culture broth, and how does cell density change over the run?",
-      "why": "Cell density and turbidity determine the probe geometry and whether transmission, transflection, or ATR fits.",
-      "assumption_if_unanswered": "Clear liquid assumed as stated; cell-related turbidity is treated as unknown until lab screening.",
+      "question": "Is the culture broth clear, turbid or opaque, and does it contain high cell density or particles that scatter light?",
+      "why": "Optical properties decide the probe geometry (transmission, diffuse reflection or ATR).",
+      "assumption_if_unanswered": "Optical state unknown; lab screening on representative broth samples establishes the probe geometry.",
       "answer": null
     },
     {
       "id": "Q4",
       "topic": "process_conditions",
-      "question": "What temperature, pressure, and sterilization or cleaning requirements apply, and how does the medium composition vary during the run?",
-      "why": "Determines probe materials, sterilizability, and whether the calibration must cover medium changes.",
-      "assumption_if_unanswered": "Conditions unknown; the probe is assumed to need compatibility with sterilization and the medium variation is assumed to need calibration coverage.",
+      "question": "What are the process conditions: temperature, pressure, sterilization or cleaning method (for example steam-in-place), and how the medium composition and cell population change over the run?",
+      "why": "Determines probe materials, robustness, and whether calibration remains valid as the matrix changes.",
+      "assumption_if_unanswered": "Conditions unknown; calibration is assumed to need validation across run phases before use.",
       "answer": null
     },
     {
       "id": "Q5",
       "topic": "installation_distance",
-      "question": "Where would the probe be installed, how far is the analyzer from the measuring point, and do existing fibers or analyzer equipment exist?",
-      "why": "Decides whether remote fiber transmission is needed and which fiber types can be used.",
-      "assumption_if_unanswered": "Installation and distance unknown; the analyzer is assumed to be located at the bioreactor for the pilot.",
+      "question": "Where would the probe be installed (bioreactor port, recirculation loop), and how far is the analyzer from that point? Are any optical fibers already installed?",
+      "why": "Installation point and distance decide the fiber type and whether a remote analyzer is feasible.",
+      "assumption_if_unanswered": "Installation point and distance unknown; a probe at the vessel with a short fiber link is assumed for the feasibility discussion only.",
       "answer": null
     },
     {
       "id": "Q6",
       "topic": "reference_method",
-      "question": "What is the current laboratory reference method for glucose and lactate, its accuracy, and how often and when are samples taken?",
-      "why": "Sets the benchmark the in situ pilot must be checked against and the timing needed for time-aligned comparison.",
-      "assumption_if_unanswered": "Reference method and accuracy unknown; the expert establishes them before the pilot comparison design is fixed.",
+      "question": "What is the current laboratory method for glucose and lactate, its accuracy, and how often are samples taken during a run?",
+      "why": "The reference method defines the accuracy benchmark and the time alignment for calibration.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the expert verifies the existing method before any comparison.",
       "answer": null
     },
     {
       "id": "Q7",
       "topic": "requirements",
-      "question": "What accuracy, response time, and budget are required for the pilot and for later routine use?",
-      "why": "Determines whether a single method with few wavelengths is sufficient or whether a broader system is justified.",
-      "assumption_if_unanswered": "Requirements unknown; the pilot starts with a single-method lab screening before any combination is considered.",
+      "question": "What accuracy, response time and budget are required for the in situ measurement?",
+      "why": "These requirements decide whether a single method suffices or a combination is justified.",
+      "assumption_if_unanswered": "Requirements unknown; a single-method feasibility plan is proposed first.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "provisional_assessment",
-    "status_reason": "Raman and NIR bioprocess examples exist; concentrations and reference unknown.",
+    "status_reason": "Targets are defined; levels, broth optics and reference accuracy remain open.",
     "requirements_stated": [
-      "Aqueous cell culture process.",
-      "Glucose and lactate measured from samples; delay hampers prompt view.",
-      "In situ pilot to be checked against lab measurements.",
-      "Medium and cell population change during the run."
+      "Cell culture in an aqueous medium.",
+      "Glucose and lactate are measured from samples; the delay hinders prompt view of changes.",
+      "An in situ pilot should be checkable against existing laboratory measurements."
     ],
     "key_unknowns": [
-      "Glucose and lactate levels, units, process scale.",
-      "Turbidity and cell-density range over the run.",
-      "Reference method, accuracy, sampling times.",
-      "Response time, accuracy, installation, sterilization or cleaning."
+      "Glucose and lactate levels and required response time.",
+      "Broth optical state and cell density.",
+      "Probe location, fiber distance, sterilisation.",
+      "Laboratory reference accuracy and sampling interval."
     ],
     "premise_checks": [
       {
-        "client_claim": "An in situ pilot can track glucose and lactate promptly in the culture.",
-        "verdict": "plausible_to_be_tested",
+        "client_claim": "Spectroscopy in the culture can detect glucose and lactate.",
+        "verdict": "supported",
         "explanation": [
           {
-            "text": "A bioprocess example uses Raman in one reactor for glucose and lactate.",
+            "text": "A bioreactor example uses Raman for glucose and lactate; a reason to test, not proof for this process.",
             "basis": "sourced",
             "citations": [
               {
@@ -128,63 +123,90 @@
                 "url": null
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "client_claim": "The pilot can follow changes promptly and agree with laboratory results.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
           {
-            "text": "A published application is a reason to test, not proof for this customer.",
-            "basis": "sourced",
-            "citations": [
-              {
-                "ref": "DOCX §3",
-                "quote": null,
-                "url": null
-              }
-            ]
+            "text": "Prompt response and agreement with the reference are unverified; reference accuracy is unknown.",
+            "basis": "assumption",
+            "citations": []
           }
         ]
       }
     ],
     "report_questions": [
       {
-        "question": "Which glucose and lactate ranges, units and cell-density levels occur during a run?",
+        "question": "Which glucose and lactate ranges must be resolved, and how clear is the broth at high cell density?",
         "covers": "measured"
       },
       {
-        "question": "Which lab method, its uncertainty and sampling times give time-aligned reference values?",
+        "question": "What accuracy, sampling interval and result delay does the laboratory reference have?",
         "covers": "reference"
       },
       {
-        "question": "Which medium, cell-population and temperature changes occur between and during runs?",
+        "question": "Which medium and cell changes occur across run phases, and do temperature or sterilisation affect the probe?",
         "covers": "variation"
       },
       {
-        "question": "What response time, accuracy, installation point and probe sterilizability are required?",
+        "question": "What response time, accuracy, installation point and fiber distance are required?",
         "covers": "requirements"
-      },
-      {
-        "question": "What decision would faster readings drive, and what does the delay cost today?",
-        "covers": "context"
       }
     ],
     "recommendations": [
       {
-        "method": "Raman spectroscopy",
-        "geometry": "Raman fiber probe (immersion to confirm)",
+        "method": "NIR spectroscopy",
+        "geometry": "Transmission or transflection probe for clear liquid",
         "role": "primary",
         "simplicity_rank": 1,
-        "cost_complexity": "high",
+        "cost_complexity": "average",
         "reason": {
-          "text": "A bioprocess example uses Raman in one reactor for glucose and lactate; Raman suits aqueous media.",
+          "text": "A bioprocess example lists glucose and lactate among NIR-accessible variables.",
           "basis": "sourced",
           "citations": [
             {
-              "ref": "S01 p.16",
-              "quote": null,
+              "ref": "S01 p.17",
+              "quote": "NIR - glucose, lactate, glutamine, ammonium, pH, biomass.",
               "url": null
             }
           ]
         },
         "caveat": {
-          "text": "The Raman signal is weak and fluorescence can dominate; check signal quality first.",
+          "text": "NIR may lack sensitivity for trace compounds below 0.1 percent; target levels are unknown.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Application example exists; broth optics and levels unknown."
+      },
+      {
+        "method": "Raman spectroscopy",
+        "geometry": "Raman probe",
+        "role": "alternative",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "Raman is a comparison candidate for glucose and lactate in one reactor.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "for direct detection of specific metabolites like glucose, acetate, or lactate",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Weak signal; fluorescence background can dominate for many organic compounds.",
           "basis": "sourced",
           "citations": [
             {
@@ -194,133 +216,77 @@
             }
           ]
         },
-        "confidence": "medium",
-        "confidence_reason": "Example supports the targets; nothing measured."
-      },
-      {
-        "method": "NIR spectroscopy",
-        "geometry": "Transmission or transflection probe",
-        "role": "comparison",
-        "simplicity_rank": 2,
-        "cost_complexity": "average",
-        "reason": {
-          "text": "The cited bioprocess figure lists glucose and lactate as NIR-accessible variables.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S01 p.17",
-              "quote": null,
-              "url": null
-            }
-          ]
-        },
-        "caveat": {
-          "text": "NIR may lack sensitivity for trace compounds below 0.1 percent.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S01 p.16",
-              "quote": null,
-              "url": null
-            }
-          ]
-        },
-        "confidence": "medium",
-        "confidence_reason": "Same targets; geometry and turbidity unknown."
-      },
-      {
-        "method": "NIR and Raman combination",
-        "geometry": "Combined probe or two probes at one spot",
-        "role": "combination",
-        "simplicity_rank": 3,
-        "cost_complexity": "high",
-        "reason": {
-          "text": "NIR with Raman gave the best online result in a fluidized-bed pellet coating process.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S01 p.7",
-              "quote": null,
-              "url": null
-            }
-          ]
-        },
-        "caveat": {
-          "text": "Only after each method is assessed alone; whether it adds value here is a hypothesis to test.",
-          "basis": "proposal",
-          "citations": []
-        },
         "confidence": "low",
-        "confidence_reason": "Gain not shown for this culture."
+        "confidence_reason": "Application example exists; cost is high."
       }
     ],
     "method_table_screening": [
       {
         "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
         "decision": "rejected",
-        "reason": "Low selectivity."
+        "reason": "Low selectivity; not for metabolites."
       },
       {
         "table_row": "Fluorimetry / fluorimetric probe",
         "decision": "rejected",
-        "reason": "No defined fluorophore."
+        "reason": "Needs a fluorescent species."
       },
       {
         "table_row": "UV/Visible spectroscopy / cuvette",
-        "decision": "rejected",
-        "reason": "Low selectivity; offline."
+        "decision": "lab_screening_only",
+        "reason": "Offline; low selectivity."
       },
       {
         "table_row": "Fluorimetry / cuvette 90 deg",
         "decision": "rejected",
-        "reason": "Offline; no fluorophore."
+        "reason": "Needs a fluorescent species."
       },
       {
         "table_row": "NIR spectroscopy / transmission or transflection probe",
         "decision": "recommended",
-        "reason": "Comparison candidate."
+        "reason": "Primary; clear-liquid geometry."
       },
       {
         "table_row": "UV/Visible spectroscopy / ATR probe",
         "decision": "rejected",
-        "reason": "Low sensitivity, selectivity."
+        "reason": "Low sensitivity and selectivity."
       },
       {
         "table_row": "IR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Offline."
+        "reason": "Offline; water absorbs strongly."
       },
       {
         "table_row": "NIR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Offline spectra check."
+        "reason": "Offline; laboratory comparison."
       },
       {
         "table_row": "IR spectroscopy / ATR platform",
         "decision": "alternative",
-        "reason": "High cost; water absorbs IR."
+        "reason": "High cost; fallback only."
       },
       {
         "table_row": "IR spectroscopy / ATR probe*",
         "decision": "alternative",
-        "reason": "Shallow depth, fouling risk."
+        "reason": "High cost; fallback only."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
-        "decision": "recommended",
-        "reason": "Primary; aqueous-suited."
+        "decision": "alternative",
+        "reason": "Comparison candidate; high cost."
       },
       {
         "table_row": "Raman spectroscopy / cuvette 90 deg",
         "decision": "lab_screening_only",
-        "reason": "Offline form."
+        "reason": "Offline; laboratory comparison."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "Raman probe; table lists liquid, powder and solid samples at 2-5 mm optical path; immersion to be confirmed.",
+          "text": "NIR transmission or transflection probe; Raman probe as comparison.",
           "basis": "sourced",
           "citations": [
             {
@@ -332,13 +298,25 @@
         },
         {
           "aspect": "location",
-          "text": "Bioreactor measuring point not yet defined by the client.",
+          "text": "Vessel port or loop not defined; sterilisation compatibility unconfirmed.",
           "basis": "assumption",
           "citations": []
         },
         {
           "aspect": "fiber_link",
-          "text": "Vis-NIR silica transmits 350-2400 nm; Raman band coverage depends on laser wavelength, unconfirmed; no link length defined.",
+          "text": "No link stated; silica Vis-NIR fibers cover the NIR range if the link is confirmed.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG); RAMAN full range: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber; partial: -.",
           "basis": "sourced",
           "citations": [
             {
@@ -349,18 +327,18 @@
           ]
         }
       ],
-      "fiber_family": "Vis-NIR silica",
+      "fiber_family": "Silica (Vis-NIR), if the link is confirmed",
       "fiber_compatible": null,
       "architecture": "undecided",
       "needs_afs_confirmation": [
-        "probe type and sterilizability",
-        "laser excitation and optics",
-        "installation and analyzer distance"
+        "Probe type and path length",
+        "Installation point and sterilisation",
+        "Fiber link length and routing"
       ]
     },
     "spectral_ranges": [
       {
-        "method": "NIR spectroscopy",
+        "method": "NIR",
         "nominal_range": "780-2500 nm",
         "citation": {
           "ref": "S01 p.10",
@@ -370,72 +348,81 @@
         "note": null
       },
       {
-        "method": "Raman spectroscopy",
-        "nominal_range": "Raman shift (cm-1); signal recorded in 400-1100 nm",
+        "method": "Raman",
+        "nominal_range": "Raman shift (cm-1); signal recorded at 400-1100 nm",
         "citation": {
           "ref": "S01 p.11",
           "quote": null,
           "url": null
         },
-        "note": "Excitation wavelength not yet set; state separately from Raman shift."
+        "note": "Excitation wavelength not yet defined; state it separately."
       }
     ],
     "risks": [
       {
         "category": "calibration_validity",
-        "text": "Medium and cell-population changes can invalidate a calibration built for one state.",
+        "text": "Calibrations are matrix-specific, so a change in medium composition may invalidate them.",
         "basis": "sourced",
         "citations": [
           {
             "ref": "DOCX §5",
-            "quote": null,
+            "quote": "calibration specific to the matrix",
             "url": null
           }
         ]
       },
       {
         "category": "physical_variation",
-        "text": "Cell scattering and turbidity can overlap with the analyte signal.",
+        "text": "Turbidity and high optical density can saturate the transmission signal, so an ATR probe may be needed.",
         "basis": "sourced",
         "citations": [
           {
-            "ref": "S01 p.7",
-            "quote": null,
+            "ref": "S01 p.16",
+            "quote": "as the media becomes more opaque, turbid, or highly concentrated",
             "url": null
           }
         ]
       },
       {
         "category": "no_guaranteed_gain",
-        "text": "No single method or combination is guaranteed to track these analytes.",
+        "text": "No single method is guaranteed to fit every analyte and condition here.",
         "basis": "sourced",
         "citations": [
           {
             "ref": "S01 p.16",
-            "quote": null,
+            "quote": "no single sensor is universally optimal for every analyte or condition",
             "url": null
           }
         ]
       },
       {
         "category": "nothing_confirmed",
-        "text": "Accuracy, response time, interface ratings and equipment compatibility are unconfirmed.",
+        "text": "Accuracy, update rate and equipment compatibility are unconfirmed for this process.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "fiber_link",
+        "text": "Link length and routing are unknown, so fiber compatibility is unconfirmed.",
         "basis": "assumption",
         "citations": []
       }
     ],
-    "assumptions": [],
+    "assumptions": [
+      "Broth is clear; not yet confirmed.",
+      "Probe at the vessel with a short silica link, for discussion only."
+    ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "representative_samples",
-          "text": "Collect culture samples across the agreed glucose and lactate range and cell-density changes over runs.",
+          "text": "Collect culture samples across the agreed glucose and lactate range and run phases.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record spectra from each candidate with time-stamped independent glucose and lactate reference results.",
+          "text": "Record spectra from each candidate with time-stamped laboratory glucose and lactate results.",
           "basis": "proposal",
           "citations": []
         },
@@ -447,16 +434,16 @@
         },
         {
           "element": "comparison",
-          "text": "Compare prediction error, bias and ability to follow changes against the client's requirements.",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
           "basis": "proposal",
           "citations": []
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "Scale, target levels and requirements not yet defined."
+      "afs_next_path_reason": "Depends on feasibility results and client requirements."
     },
     "decision_basis": {
-      "text": "Agree error, bias and response-time limits with the client before the pilot; choose the simplest method meeting them on independent runs.",
+      "text": "Agree error, bias and response-time limits before the test; choose the simplest configuration that meets them on independent runs.",
       "basis": "proposal",
       "citations": []
     }
@@ -471,43 +458,29 @@
         "score": null
       },
       {
-        "path": "premise_checks[0].explanation[1].citations[0]",
-        "ref": "DOCX §3",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
         "path": "recommendations[0].reason.citations[0]",
-        "ref": "S01 p.16",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.17",
+        "quote": "NIR - glucose, lactate, glutamine, ammonium, pH, biomass.",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[0].caveat.citations[0]",
-        "ref": "S01 p.11",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.16",
+        "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[1].reason.citations[0]",
-        "ref": "S01 p.17",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.16",
+        "quote": "for direct detection of specific metabolites like glucose, acetate, or lactate",
+        "status": "verified",
+        "score": 98.7
       },
       {
         "path": "recommendations[1].caveat.citations[0]",
-        "ref": "S01 p.16",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "recommendations[2].reason.citations[0]",
-        "ref": "S01 p.7",
+        "ref": "S01 p.11",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -527,25 +500,32 @@
         "score": null
       },
       {
-        "path": "risks[0].citations[0]",
-        "ref": "DOCX §5",
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "calibration specific to the matrix",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
         "path": "risks[1].citations[0]",
-        "ref": "S01 p.7",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.16",
+        "quote": "as the media becomes more opaque, turbid, or highly concentrated",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "risks[2].citations[0]",
         "ref": "S01 p.16",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "no single sensor is universally optimal for every analyte or condition",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "spectral_ranges[0].citation",
@@ -564,24 +544,20 @@
     ],
     "flags": [],
     "counts": {
-      "citations_page_only": 14
+      "citations_page_only": 7,
+      "citations_verified": 6
     },
     "revised": true,
     "flags_before_revision": [
       {
-        "path": "recommendations[1].reason",
+        "path": "risks[0]",
         "kind": "context",
-        "detail": "not_supported: The claim says the bioprocess example lists NIR for glucose and lactate as 'major components'. The cited p.17 figure only lists glucose and lactate among NIR accessible variables and does not describe them as major components. The 'major component' framing comes from p.16, which concerns glucose or glycerol only. Fix: Say that the cited figure lists glucose and lactate as NIR-accessible variables, and cite S01 p.16 for the statement that NIR tracks major components such as glucose or glycerol."
+        "detail": "not_supported: The cited DOCX §5 says only that NIR and Raman calibrations are matrix-specific. It does not mention changes in cell population, so the claim that a cell population change may invalidate a calibration is not stated in the cited text. Fix: Limit the claim to what DOCX §5 says, e.g. 'Calibrations are matrix-specific, so a change in medium composition may invalidate them.' Or cite a source that addresses cell population changes."
       },
       {
-        "path": "measurement_concept.items[0]",
+        "path": "risks[1]",
         "kind": "context",
-        "detail": "not_supported: Table row r12 gives a Raman probe for liquid, powder and solid samples with a 2-5 mm optical path. It does not say the probe is immersed in the liquid. Fix: Remove 'immersed in liquid'. State the Raman probe, the liquid sample type and the 2-5 mm optical path from the table, and mark the immersion geometry as an assumption to confirm."
-      },
-      {
-        "path": "measurement_concept.items[2]",
-        "kind": "context",
-        "detail": "not_supported: S02 p.6 gives the Vis-NIR silica transmission range as 350-2400 nm. It does not state that this covers the Raman band range. Raman bands are given as shifts relative to the laser excitation, and no laser wavelength is specified here. Fix: State only that the Vis-NIR silica fiber transmits 350-2400 nm per S02 p.6, and that whether it covers the Raman bands depends on the laser wavelength and the Raman shift range, which must be confirmed."
+        "detail": "not_supported: S01 p.16 says turbidity, opacity or high concentration saturates the transmission signal and that ATR is used for highly scattering fluids. It does not say that turbidity or scattering can mimic or mask composition changes. Fix: Restate as 'Turbidity and high optical density can saturate the transmission signal, so an ATR probe may be needed,' which matches the cited page."
       }
     ]
   },
@@ -642,91 +618,95 @@
       "detail": ""
     },
     {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "check": "report length 250-450 words",
       "passed": false,
-      "detail": "590 words"
+      "detail": "573 words; over budget: Requirements stated 33/28, Key unknowns 27/22, Clarification questions 64/55, Measurement concept 112/45, Spectral range 39/30, Risks and uncertainty 68/48 (citations excluded)"
     }
   ],
   "extraction": {
-    "summary": "The client wants to see glucose and lactate changes in a cell culture process promptly, via an in situ spectroscopy pilot checked against existing laboratory measurements.",
+    "summary": "The client wants to know whether an in situ spectroscopy pilot can monitor glucose and lactate in their aqueous cell culture process promptly, checked against existing laboratory measurements.",
     "stated_facts": [
       {
-        "fact": "The process is a cell culture process in an aqueous medium.",
+        "fact": "The client runs a cell culture process in an aqueous medium.",
         "enquiry_quote": "We run a cell culture process in an aqueous medium."
       },
       {
-        "fact": "Glucose and lactate are currently measured from samples in the laboratory.",
-        "enquiry_quote": "Glucose and lactate are measured from samples, and the delay makes it difficult to see changes promptly."
+        "fact": "Glucose and lactate are measured from samples in the existing workflow.",
+        "enquiry_quote": "Glucose and lactate are measured from samples,"
       },
       {
-        "fact": "The delay of the existing sample-based measurement makes it difficult to see changes promptly.",
-        "enquiry_quote": "the delay makes it difficult to see changes promptly"
+        "fact": "The delay of the current sample-based measurement makes it difficult to see changes promptly.",
+        "enquiry_quote": "the delay makes it difficult to see changes promptly."
       },
       {
         "fact": "The client is exploring an in situ spectroscopy pilot.",
-        "enquiry_quote": "We are exploring an in situ spectroscopy pilot that can be checked against those existing laboratory measurements."
+        "enquiry_quote": "We are exploring an in situ spectroscopy pilot"
       },
       {
-        "fact": "The pilot is to be checked against the existing laboratory measurements.",
-        "enquiry_quote": "that can be checked against those existing laboratory measurements"
+        "fact": "The pilot should be checkable against the existing laboratory measurements.",
+        "enquiry_quote": "that can be checked against those existing laboratory measurements."
       },
       {
-        "fact": "The medium changes during the run.",
-        "enquiry_quote": "The medium and cell population change during the run"
-      },
-      {
-        "fact": "The cell population changes during the run.",
-        "enquiry_quote": "The medium and cell population change during the run"
+        "fact": "The medium and the cell population change during the run.",
+        "enquiry_quote": "The medium and cell population change during the run;"
       },
       {
         "fact": "No probe has been selected yet.",
-        "enquiry_quote": "we have not yet selected a probe or a calibration strategy"
+        "enquiry_quote": "we have not yet selected a probe or a calibration strategy."
       },
       {
         "fact": "No calibration strategy has been selected yet.",
-        "enquiry_quote": "we have not yet selected a probe or a calibration strategy"
+        "enquiry_quote": "we have not yet selected a probe or a calibration strategy."
       }
     ],
     "targets": [
       "glucose",
       "lactate"
     ],
-    "sample_description": "Aqueous cell culture medium with cells, sampled from a cell culture process.",
+    "sample_description": "Cell culture process in an aqueous medium; samples taken for laboratory measurement.",
     "sample_state": "clear_liquid",
     "process_context": "unknown",
     "conditions": [
-      "medium composition changes during the run",
-      "cell population changes during the run"
+      "Medium and cell population change during the run."
     ],
     "measurement_location": null,
     "remote_measurement": false,
     "contact_with_sample": "unknown",
     "analyzer_distance": null,
     "existing_equipment": [
-      "existing laboratory measurement of glucose and lactate from samples"
+      "Existing laboratory measurement of glucose and lactate from samples"
     ],
     "methods_mentioned": [],
     "fibers_mentioned": [],
     "client_premises": [
       {
-        "claim": "An in situ spectroscopy pilot can track glucose and lactate promptly in the culture.",
+        "claim": "An in situ spectroscopy pilot can monitor glucose and lactate promptly and be checked against existing laboratory measurements.",
         "enquiry_quote": "We are exploring an in situ spectroscopy pilot that can be checked against those existing laboratory measurements."
       }
     ],
-    "requested_decision": "Whether an in situ spectroscopy pilot can show glucose and lactate changes promptly, checked against existing laboratory measurements.",
+    "requested_decision": "Whether an in situ spectroscopy pilot is a suitable way to monitor glucose and lactate promptly, and which probe and calibration strategy to use.",
     "unknowns": [
-      "Whether the process is production, pilot, or research scale",
-      "Concentration levels of glucose and lactate and their units",
-      "Sample turbidity or opacity, including cell density",
-      "Cell density and viability ranges during the run",
-      "Temperature, pressure, and sterilization or cleaning requirements",
-      "Installation point and distance from the analyzer to the measuring point",
-      "Existing fibers or analyzer equipment",
-      "Accuracy, response time, and budget requirements",
-      "Current reference laboratory method and its accuracy",
-      "Sampling frequency and timing of laboratory measurements",
-      "Whether the probe must be sterilizable or single-use",
-      "Chemometric calibration strategy and availability of reference data"
+      "Whether the process is a production, pilot, or research laboratory process",
+      "Target concentration levels of glucose and lactate (ppm or % level)",
+      "Cell density, viability and cell type",
+      "Medium composition and whether it is clear, turbid or opaque",
+      "Process temperature, pressure, sterilization and cleaning requirements",
+      "Bioreactor vessel type and installation point for the probe",
+      "Distance between the analyzer and the measuring point, and existing fibers",
+      "Accuracy and sampling frequency of the existing laboratory reference method",
+      "Required response time and budget",
+      "How the medium and cell population change during the run",
+      "Whether the in situ measurement must be non-contact or may be in contact with the sample"
     ]
   },
   "pre_analysis": {
@@ -925,8 +905,11 @@
           }
         }
       },
-      "client_fiber_conflicts": []
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
     },
+    "fiber_findings_required_in_premise_check": [],
     "rule_hints": [
       "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
       "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
@@ -940,87 +923,87 @@
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.5.0",
+    "pipeline_version": "0.6.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-17T20:31:37.675437+00:00",
+        "timestamp": "2026-10-17T21:08:28.822023+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 8.9,
+        "duration_s": 9.0,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 145,
-          "output_tokens": 2092,
-          "cache_read_input_tokens": 10356,
+          "output_tokens": 2012,
+          "cache_read_input_tokens": 10425,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001164
+        "cost_usd": 0.001125
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-17T20:31:46.582140+00:00",
+        "timestamp": "2026-10-17T21:08:37.859101+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 59.8,
+        "duration_s": 60.9,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 9523,
-          "output_tokens": 13610,
-          "cache_read_input_tokens": 84114,
+          "input_tokens": 9475,
+          "output_tokens": 14732,
+          "cache_read_input_tokens": 84363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.008598
+        "cost_usd": 0.009157
       },
       {
-        "claims_checked": 12,
+        "claims_checked": 11,
         "stage": "critic",
-        "timestamp": "2026-10-17T20:32:46.391934+00:00",
+        "timestamp": "2026-10-17T21:09:38.823883+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 10.2,
+        "duration_s": 9.1,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 9760,
-          "output_tokens": 2022,
+          "input_tokens": 8324,
+          "output_tokens": 1872,
           "cache_read_input_tokens": 744,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001994
+        "cost_usd": 0.001776
       },
       {
-        "flags_sent": 4,
+        "flags_sent": 3,
         "stage": "revise",
-        "timestamp": "2026-10-17T20:32:56.605960+00:00",
+        "timestamp": "2026-10-17T21:09:47.990560+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 38.7,
+        "duration_s": 20.1,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 9030,
-          "output_tokens": 10213,
-          "cache_read_input_tokens": 84114,
+          "input_tokens": 9181,
+          "output_tokens": 5710,
+          "cache_read_input_tokens": 84363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.006851
+        "cost_usd": 0.004617
       }
     ],
-    "prompt_hash": "c726a6f12cc1",
-    "git_commit": "029e13a",
-    "timestamp": "2026-10-17T20:31:46.564740+00:00",
-    "duration_s": 117.8,
-    "cost_usd": 0.0186
+    "prompt_hash": "4387329b7893",
+    "git_commit": "f166896",
+    "timestamp": "2026-10-17T21:08:37.841329+00:00",
+    "duration_s": 99.4,
+    "cost_usd": 0.0167
   }
 }
