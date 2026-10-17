@@ -1,0 +1,883 @@
+{
+  "case_id": "D07",
+  "mode": "one_shot",
+  "enquiry": "We are developing a hot polymer extrusion process that incorporates an active pharmaceutical ingredient. We want to investigate whether an optical measurement can detect composition changes while the melt is being processed. We have offline assays, but the process interface is hot and may be exposed to material build up. We need an initial comparison plan and the questions required before choosing a probe.",
+  "facts_stated": [
+    {
+      "fact": "The client is developing a hot polymer extrusion process.",
+      "enquiry_quote": "We are developing a hot polymer extrusion process that incorporates an active pharmaceutical ingredient."
+    },
+    {
+      "fact": "The process incorporates an active pharmaceutical ingredient (API).",
+      "enquiry_quote": "We are developing a hot polymer extrusion process that incorporates an active pharmaceutical ingredient."
+    },
+    {
+      "fact": "The client wants to investigate whether an optical measurement can detect composition changes while the melt is being processed.",
+      "enquiry_quote": "We want to investigate whether an optical measurement can detect composition changes while the melt is being processed."
+    },
+    {
+      "fact": "The client has offline assays.",
+      "enquiry_quote": "We have offline assays"
+    },
+    {
+      "fact": "The process interface is hot.",
+      "enquiry_quote": "the process interface is hot"
+    },
+    {
+      "fact": "The process interface may be exposed to material build-up.",
+      "enquiry_quote": "may be exposed to material build up"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today in the extrusion process when composition drifts, and what decision would real-time data drive (e.g. adjusting feed, rejecting material)?",
+      "why": "Defines the decision the optical data must support and therefore the required accuracy and response.",
+      "assumption_if_unanswered": "Decision unknown; the first step is a comparison plan that keeps the purpose general until the expert confirms the goal.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Which API and which other components should be monitored, and at what expected level: ppm or % by weight?",
+      "why": "Determines whether the method needs trace sensitivity or bulk-level quantification, and whether the API is detectable optically at all.",
+      "assumption_if_unanswered": "API identity and level unknown; lab screening establishes whether the signal is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "What is the physical form of the melt at the measurement point and how optically opaque is it: clear, turbid or opaque, and does it contain fillers or colour?",
+      "why": "Optical properties decide the probe geometry (transmission, diffuse reflection or ATR).",
+      "assumption_if_unanswered": "Melt optical properties unknown; the lab screening tests reflection and transmission options on representative melt samples.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "What are the melt temperature, pressure and screw or die configuration at the measurement point, and how much build-up or fouling occurs and how often is the interface cleaned?",
+      "why": "Temperature, pressure and fouling limit which probe materials and window designs are feasible and affect signal stability.",
+      "assumption_if_unanswered": "Temperature, pressure and fouling unknown; probe selection stays open until these conditions are documented.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "process_conditions",
+      "question": "How does the melt vary during processing (formulation batches, API homogeneity, particle size, bubbles, residence time), and which parts of this variation must the measurement tolerate?",
+      "why": "Heterogeneity and bubbles can dominate the optical signal and may require a same-spot or multi-method design.",
+      "assumption_if_unanswered": "Sample variation unknown; the trial design includes heterogeneous batches to test robustness.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "installation_distance",
+      "question": "Where exactly would the probe be installed, how far is the analyzer from that point, and are any fibers or optical access ports already installed?",
+      "why": "Distance determines the fiber type and whether mid-IR or silica fibers are possible; reuse of fibers must be checked.",
+      "assumption_if_unanswered": "Installation point and distance unknown; the fiber choice is deferred until the layout is known.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "reference_method",
+      "question": "What is the current offline assay for the API, its sampling frequency, and its measured accuracy and precision?",
+      "why": "The reference method defines the calibration target and the benchmark any optical method must match.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the expert must obtain the assay details before any comparison.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for the in-line measurement, and is the goal a production sensor or a research tool?",
+      "why": "These requirements decide between a simple few-wavelength sensor and a broader laboratory system.",
+      "assumption_if_unanswered": "Requirements unknown; the plan proposes a lab screening stage first, with production requirements defined later.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "provisional_assessment",
+    "status_reason": "API identity, level and melt optics are open; a comparison plan is needed.",
+    "requirements_stated": [
+      "Hot polymer extrusion with an API.",
+      "Question: can optics detect composition changes during melt processing?",
+      "Offline assays available.",
+      "Process interface is hot and may build up material."
+    ],
+    "key_unknowns": [
+      "API identity and level (ppm or % w/w).",
+      "Polymer formulation and melt optics.",
+      "Temperature, pressure, build-up and cleaning.",
+      "Offline assay accuracy, response time, budget."
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "An optical measurement can detect composition changes while the melt is being processed.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "Application slide shows NIR and MIR-ATR probes for API control in hot polymer extrusion.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.14",
+                "quote": "Control of API - production with PIR - fiber FTIR - spectroscopy in Pharma Industry",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Reason to test; melt detectability untested.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      },
+      {
+        "client_claim": "Offline assays can serve as the reference for the optical method.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "Assay accuracy, precision and sampling time are unknown.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which API and other components, at what level (ppm or % w/w), must be distinguished?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which offline assay, its uncertainty and sampling time give the reference values?",
+        "covers": "reference"
+      },
+      {
+        "question": "Which batch, bubble, temperature and residence-time changes must the measurement tolerate?",
+        "covers": "variation"
+      },
+      {
+        "question": "What response time, accuracy, probe point, distance and cleaning limits apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "Is the goal a production sensor or an R&D tool?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "Diffuse reflection probe at barrel or die",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The application example shows a NIR reflection probe at the extruder die for API in hot polymer.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.14",
+              "quote": "NIR - Reflex & MIR - ATR - spectroscopy to control polymer extrusion in - line",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Diffuse reflection suits scattering media; melt optics are unknown and need lab testing.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Same application type cited; no melt spectra yet."
+      },
+      {
+        "method": "MIR spectroscopy (ATR)",
+        "geometry": "Diamond ATR probe with PIR-fiber FTIR",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "The same example shows a diamond ATR probe with PIR-fiber FTIR for API in hot polymer.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.14",
+              "quote": "Control of API - production with PIR - fiber FTIR - spectroscopy in Pharma Industry",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "ATR depth is only 1-6 um, so contact and build-up matter; fiber link undefined.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Comparison only; fiber link and interface unconfirmed."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab-platform equivalent; a process probe is needed in the melt."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "Application example supports it; contact and fiber risks."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "NIR diffuse reflection probe; diamond ATR probe as comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S02 p.14",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Extrusion interface; exact point and access open.",
+          "basis": "client_fact",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "Silica covers NIR to 2.4 um; MIR can use PIR fiber (3-17 um), among other partial-range fibers.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "Link undefined; NIR: indium or zirconium fluoride fibers cover it; MIR: none covers it fully.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG); MIR full range: no single fiber; partial: Chalcogenide As-S IR fiber (CIR), Polycrystalline silver halide IR fiber (PIR), Hollow glass waveguide (HWG), Indium fluoride fiber, Zirconium fluoride fiber.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Undefined: silica (NIR) or PIR (MIR)",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "probe type and window material",
+        "installation point and access",
+        "optics and fiber length"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "MIR spectroscopy (ATR)",
+        "nominal_range": "4000-400 cm-1 (2.5-25 um)",
+        "citation": {
+          "ref": "S01 p.9",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "A change of API, polymer or formulation can invalidate the calibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Physical variation of the melt may mimic composition changes; to be tested.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither NIR nor ATR is guaranteed to detect the API in this melt.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, response time, interface ratings and equipment compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "fouling_interface",
+        "text": "Contact and fouling can affect MIR-ATR; heat and cleaning effects need testing.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "API identity, level and melt optics unknown.",
+      "Probe point, distance and fiber link undefined."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Prepare melt samples across the agreed API range and batch, bubble, temperature and build-up variation.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record NIR and ATR spectra on the same samples with timed offline assay values.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models first; validate on held-out batches before any combination.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow composition changes against client requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Depends on lab results and client requirements."
+    },
+    "decision_basis": {
+      "text": "Agree accuracy, response time and maintenance targets with the client before the trial; choose the simplest probe meeting them on held-out batches.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S02 p.14",
+        "quote": "Control of API - production with PIR - fiber FTIR - spectroscopy in Pharma Industry",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S02 p.14",
+        "quote": "NIR - Reflex & MIR - ATR - spectroscopy to control polymer extrusion in - line",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S02 p.14",
+        "quote": "Control of API - production with PIR - fiber FTIR - spectroscopy in Pharma Industry",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[1]",
+        "ref": "S02 p.14",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[4].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[4].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 3,
+      "citations_page_only": 12
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "overstated: The claim says \"MIR needs PIR fiber\", but S02 p.6 lists several fibers covering part of the MIR range: chalcogenide As-S (1.1-6.5 um), PIR (3-17 um), hollow glass waveguides (2-18 um), and indium and zirconium fluoride fibers. PIR is one option, not the only requirement. Fix: Replace \"MIR needs PIR fiber\" with something like \"MIR can use PIR fiber (3-17 um), among other partial-range options such as chalcogenide, hollow glass waveguide or fluoride fibers\"."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "not_supported: DOCX §5 does not mention particle size, bubbles, temperature or turbidity mimicking composition changes. It only notes NIR limitations from overlapping bands and physical variation, and calibration specificity to the matrix. Fix: Tie the risk to the cited text, for example: \"Physical variation in the sample (for example particle or matrix changes) can confound NIR calibration\", or cite a source that names these effects."
+      },
+      {
+        "path": "risks[4]",
+        "kind": "context",
+        "detail": "not_supported: DOCX §5 mentions contact and fouling as MIR-ATR limitations, but it does not say that heat causes fouling or that heat shifts the signal. The claim that cleaning is unknown is also not stated there. Fix: Limit the claim to what is cited: \"Contact and fouling can affect MIR-ATR measurements\", and state separately that the effect of heat and cleaning needs testing."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "642 words; over budget: Requirements stated 29/28, Key unknowns 25/22, Clarification questions 66/55, Recommendation 140/110, Measurement concept 131/45, Risks and uncertainty 64/48, Decision basis 24/22 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to know whether an optical measurement can detect composition changes in a hot polymer extrusion melt containing an API, and needs an initial comparison plan and questions before choosing a probe.",
+    "stated_facts": [
+      {
+        "fact": "The client is developing a hot polymer extrusion process.",
+        "enquiry_quote": "We are developing a hot polymer extrusion process that incorporates an active pharmaceutical ingredient."
+      },
+      {
+        "fact": "The process incorporates an active pharmaceutical ingredient (API).",
+        "enquiry_quote": "We are developing a hot polymer extrusion process that incorporates an active pharmaceutical ingredient."
+      },
+      {
+        "fact": "The client wants to investigate whether an optical measurement can detect composition changes while the melt is being processed.",
+        "enquiry_quote": "We want to investigate whether an optical measurement can detect composition changes while the melt is being processed."
+      },
+      {
+        "fact": "The client has offline assays.",
+        "enquiry_quote": "We have offline assays"
+      },
+      {
+        "fact": "The process interface is hot.",
+        "enquiry_quote": "the process interface is hot"
+      },
+      {
+        "fact": "The process interface may be exposed to material build-up.",
+        "enquiry_quote": "may be exposed to material build up"
+      }
+    ],
+    "targets": [
+      "API composition in the polymer melt"
+    ],
+    "sample_description": "Polymer melt containing an active pharmaceutical ingredient in a hot polymer extrusion process",
+    "sample_state": "paste_or_soft_solid",
+    "process_context": "production",
+    "conditions": [
+      "Hot process interface",
+      "Possible material build-up at the process interface"
+    ],
+    "measurement_location": "Process interface of the extrusion process",
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "An optical measurement can detect composition changes while the melt is being processed.",
+        "enquiry_quote": "We want to investigate whether an optical measurement can detect composition changes while the melt is being processed."
+      }
+    ],
+    "requested_decision": "Whether an optical measurement can detect composition changes during processing, and an initial comparison plan and the questions needed before choosing a probe.",
+    "unknowns": [
+      "API identity and concentration level (ppm or %)",
+      "Polymer type and formulation",
+      "Melt temperature and pressure values",
+      "Sample optical properties (clear, turbid or opaque)",
+      "Extent and nature of material build-up",
+      "Probe installation point and distance to analyzer",
+      "Existing fibers or analyzer",
+      "Current offline reference assay and its accuracy",
+      "Accuracy, response time and budget requirements",
+      "Sample variation (homogeneity, particle size, bubbles)",
+      "Cleaning or sterilization requirements"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:13:45.291288+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.2,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 142,
+          "output_tokens": 2088,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001162
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:13:54.542515+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 43.9,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 8061,
+          "output_tokens": 10689,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.006994
+      },
+      {
+        "claims_checked": 11,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:14:38.440889+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.6,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 6085,
+          "output_tokens": 1969,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.0016
+      },
+      {
+        "flags_sent": 4,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:14:47.106135+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 30.3,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 8787,
+          "output_tokens": 8032,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.005738
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "f166896-dirty",
+    "timestamp": "2026-10-17T21:13:54.524544+00:00",
+    "duration_s": 92.2,
+    "cost_usd": 0.0155
+  }
+}

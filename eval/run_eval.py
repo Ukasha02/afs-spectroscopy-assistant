@@ -75,6 +75,7 @@ def main() -> int:
     ap.add_argument("--cases")
     ap.add_argument("--no-run", action="store_true")
     ap.add_argument("--adversarial", action="store_true")
+    ap.add_argument("--tag", help="write outputs to outputs/runs/<tag>/ (model comparison) instead of outputs/")
     ap.add_argument("--phase", help="label for the spend ledger")
     args = ap.parse_args()
     if args.phase:
@@ -89,6 +90,8 @@ def main() -> int:
     else:
         cases = load_cases()
         out_dir = config.OUTPUTS_DIR
+    if args.tag:
+        out_dir = config.OUTPUTS_DIR / "runs" / args.tag / ("adversarial" if args.adversarial else "D")
     ids = args.cases.split(",") if args.cases else sorted(c for c in cases if args.adversarial or c.startswith(args.set or "D"))
     if any(c.startswith("H") for c in ids) and not args.no_run:
         print("H cases are generated only by `run-all --set H` from a frozen commit, not by the eval loop.", file=sys.stderr)
@@ -156,7 +159,7 @@ def main() -> int:
 
     out = config.OUTPUTS_DIR / "eval"
     out.mkdir(parents=True, exist_ok=True)
-    name = "adversarial_report.md" if args.adversarial else "eval_report.md"
+    name = ("adversarial_report.md" if args.adversarial else "eval_report.md") if not args.tag else f"{args.tag}_{'adversarial' if args.adversarial else 'D'}_report.md"
     (out / name).write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n" + "\n".join(lines))
     print(f"\nSaved {out / name}")

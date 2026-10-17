@@ -1,0 +1,775 @@
+{
+  "case_id": "A05",
+  "mode": "one_shot",
+  "enquiry": "Moulded plastic parts from one of our lines sometimes show small black specks. We suspect something in the polymer pellets, but we have no analysis yet. Please tell us which sensor to mount on the hopper.",
+  "facts_stated": [
+    {
+      "fact": "Moulded plastic parts from one of the client's lines sometimes show small black specks.",
+      "enquiry_quote": "Moulded plastic parts from one of our lines sometimes show small black specks."
+    },
+    {
+      "fact": "The client suspects something in the polymer pellets.",
+      "enquiry_quote": "We suspect something in the polymer pellets, but we have no analysis yet."
+    },
+    {
+      "fact": "The client has no analysis of the problem yet.",
+      "enquiry_quote": "we have no analysis yet"
+    },
+    {
+      "fact": "The client asks for a sensor to be mounted on the hopper.",
+      "enquiry_quote": "Please tell us which sensor to mount on the hopper."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What is the cost or quality impact of the black specks today (scrap rate, customer complaints, inspection effort), and what decision should real-time data support?",
+      "why": "Defines the decision the sensor must support and whether an in-line sensor is justified at all.",
+      "assumption_if_unanswered": "Problem severity unknown; first step is a lab analysis of specks and pellets before any sensor choice.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Do you know what the black specks consist of (for example carbon black, degraded polymer, contaminant particles), and at what level they appear in the parts?",
+      "why": "The target determines whether any optical method can detect it; without an identified target no sensor can be justified.",
+      "assumption_if_unanswered": "Target undefined; lab screening of specks and pellets must establish identity and whether the level is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "What polymer and pellet grade are used, and are the pellets natural or colored or containing regrind?",
+      "why": "Polymer type and colorants affect spectral response and whether black particles in the pellets can be distinguished from the matrix.",
+      "assumption_if_unanswered": "Polymer and grade unknown; treated as solid opaque pellets until lab screening.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "Do the specks appear only at certain times or after certain conditions (melt temperature, residence time, regrind share, start-up or shutdown)?",
+      "why": "Distinguishes pellet contamination from thermal degradation in the moulding process, which changes where monitoring should be placed.",
+      "assumption_if_unanswered": "Process cause unknown; both pellet and process origin remain open.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Is the hopper accessible for mounting a probe, and how far is the proposed analyzer from the hopper?",
+      "why": "Determines probe geometry and whether a remote analyzer and fiber link are needed.",
+      "assumption_if_unanswered": "Access and distance unknown; a hopper-mounted probe is not yet assumed feasible.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "How are the black specks checked today (visual inspection, microscopy, lab analysis of the parts or pellets), and how accurate is that method?",
+      "why": "A reference method is needed to compare any sensor against and to confirm the origin of the specks.",
+      "assumption_if_unanswered": "No reference method exists; lab analysis of specks and pellets is the first step.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What response time and accuracy would you need, and what is the budget for a sensor or lab study?",
+      "why": "Sets whether a lab study, an in-line sensor, or a simpler inspection step is the right next step.",
+      "assumption_if_unanswered": "Requirements undefined; recommend a lab screening step before any sensor purchase.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "insufficient_information",
+    "status_reason": "The target contaminant is unidentified, so no hopper sensor can yet be justified.",
+    "requirements_stated": [
+      "Black specks appear in moulded plastic parts from one line.",
+      "Client suspects something in the polymer pellets; no analysis yet.",
+      "Client asks which sensor to mount on the hopper."
+    ],
+    "key_unknowns": [
+      "Identity and level of the specks.",
+      "Origin: pellets or moulding process.",
+      "Polymer, grade, colour, regrind share.",
+      "Reference method, hopper access, response time."
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "A sensor mounted on the hopper can detect the cause of the black specks.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "The materials show a feed-frame example for powder blends, not for polymer pellets or black speck detection.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.15",
+                "quote": null,
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Whether any hopper measurement can detect the specks depends on the identity of the target, which is not yet known.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      },
+      {
+        "client_claim": "The black specks originate from something in the polymer pellets.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "This is the client's suspicion; no analysis of pellets or specks exists yet.",
+            "basis": "client_fact",
+            "citations": []
+          },
+          {
+            "text": "A process cause such as thermal degradation remains open and must be tested.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which substance forms the specks, at what size and level, and do they occur in pellets, parts or both?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference method checks specks today, and how accurate and fast is it?",
+        "covers": "reference"
+      },
+      {
+        "question": "Which polymer, grade, colourant or regrind share is used, and do specks appear only under certain process conditions?",
+        "covers": "variation"
+      },
+      {
+        "question": "What response time, accuracy, hopper access, cleaning conditions and lab budget apply?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Low sensitivity and low selectivity; no target identified to justify it."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "rejected",
+        "reason": "Fluorescence needs a defined fluorescent species, and none has been identified."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "lab_screening_only",
+        "reason": "High selectivity for identifying a material; useful in lab screening, not yet as a hopper sensor."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "alternative",
+        "reason": "Non-contact option if hopper contact is a problem; depends on the identified target."
+      },
+      {
+        "table_row": "IR spectroscopy / sample layer",
+        "decision": "lab_screening_only",
+        "reason": "Thin-layer lab technique; sample preparation of pellets is not established."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "lab_screening_only",
+        "reason": "Lab technique for solids and powders; not an in-line option."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "Selective for solids, but high cost and possible fluorescence background; test only if the target suggests it."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "Lab screening with IR sample surface or NIR integrating sphere; no hopper interface yet.",
+          "basis": "proposal",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Hopper access and distance to any analyzer are unknown.",
+          "basis": "assumption",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link defined; compatibility unchecked.",
+          "basis": "assumption",
+          "citations": []
+        }
+      ],
+      "fiber_family": "not defined",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type for hopper",
+        "Installation and access",
+        "Optical configuration"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": "Nominal method range; usable range depends on instrument, fiber and probe."
+      },
+      {
+        "method": "Raman spectroscopy",
+        "nominal_range": "Raman shift in cm-1; signal recorded at 400-1100 nm",
+        "citation": {
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "Excitation wavelength not yet set."
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "Calibrations are matrix-specific, so a change of matrix may require recalibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Sample inhomogeneity and process turbulence are morphological factors that must be considered; scattering and fluorescence can complicate analysis.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.7",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "No single method or combination is guaranteed to detect the specks.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, response time, hopper access and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "The specks are solid particles; their identity is not yet known.",
+      "The hopper may not be accessible for a probe; this is unverified.",
+      "No existing analysis or reference method is available."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "lab_screening",
+          "text": "Screen speck and pellet samples with several methods to identify the target and useful range.",
+          "basis": "proposal",
+          "citations": [
+            {
+              "ref": "S02 p.20",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record spectra from each candidate with independent reference results and timing information.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models first; validate on held-out batches before considering any combination.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against the client's requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Target identity and origin must be established by lab screening before any path is chosen."
+    },
+    "decision_basis": {
+      "text": "Agree acceptance criteria with the client before testing; choose the simplest configuration that meets them on independent batches.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.15",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "feasibility_plan.steps[0].citations[0]",
+        "ref": "S02 p.20",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_page_only": 7
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "risks[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited DOCX §5 page is a general table of methods with limitations such as 'calibration specific to the matrix' and 'calibration specific to the matrix' for NIR and Raman; it does not state that a change of polymer, grade or colourant can invalidate any calibration. The claim's 'any calibration' is broader than the source, and the page does not mention polymers, grades or colourants. Fix: Rephrase to what the cited page supports, e.g. 'Calibrations are matrix-specific (NIR and Raman limitations in DOCX §5), so a change of matrix may require recalibration.' Remove the polymer, grade and colourant specifics unless supported by another page."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.7 says that morphological factors such as sample inhomogeneity and process turbulence must be considered, and that analysis is complicated by absorption, scattering and fluorescence. It does not mention pellet surface or colour mimicking composition changes. Fix: Limit the claim to what the page says, e.g. 'Sample inhomogeneity and process turbulence are morphological factors that must be considered when selecting a measurement technique, and scattering and fluorescence can complicate analysis.' Remove pellet surface and colour unless supported elsewhere."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "501 words; over budget: Requirements stated 31/28, Key unknowns 24/22, Clarification questions 68/55, Spectral range 50/30, Risks and uncertainty 54/48 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants a sensor recommendation to mount on the hopper to address small black specks in moulded plastic parts, suspected to originate from the polymer pellets.",
+    "stated_facts": [
+      {
+        "fact": "Moulded plastic parts from one of the client's lines sometimes show small black specks.",
+        "enquiry_quote": "Moulded plastic parts from one of our lines sometimes show small black specks."
+      },
+      {
+        "fact": "The client suspects something in the polymer pellets.",
+        "enquiry_quote": "We suspect something in the polymer pellets, but we have no analysis yet."
+      },
+      {
+        "fact": "The client has no analysis of the problem yet.",
+        "enquiry_quote": "we have no analysis yet"
+      },
+      {
+        "fact": "The client asks for a sensor to be mounted on the hopper.",
+        "enquiry_quote": "Please tell us which sensor to mount on the hopper."
+      }
+    ],
+    "targets": [],
+    "sample_description": "Polymer pellets in a hopper (feed of a moulding line); moulded plastic parts showing black specks.",
+    "sample_state": "solid",
+    "process_context": "production",
+    "conditions": [],
+    "measurement_location": "hopper",
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "A sensor mounted on the hopper can detect the cause of the black specks.",
+        "enquiry_quote": "Please tell us which sensor to mount on the hopper."
+      },
+      {
+        "claim": "The black specks originate from something in the polymer pellets.",
+        "enquiry_quote": "We suspect something in the polymer pellets, but we have no analysis yet."
+      }
+    ],
+    "requested_decision": "Which sensor to mount on the hopper to address black specks in moulded parts.",
+    "unknowns": [
+      "The identity of the black speck material (contaminant, degraded polymer, pigment, or other).",
+      "Whether the specks originate from the pellets or from the moulding process.",
+      "The target variable or contaminant to monitor and its level (ppm or %).",
+      "Polymer type and pellet grade, and whether the pellets are colored or natural.",
+      "Process conditions (melt temperature, residence time, regrind use, cleaning).",
+      "Whether the specks occur continuously or intermittently, and the speck size.",
+      "Current reference or inspection method for the specks.",
+      "Accuracy, response time and budget requirements.",
+      "Whether the hopper is accessible for optical contact and the distance to any analyzer.",
+      "Existing equipment or fibers."
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample layer",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid film",
+        "optical_path_or_depth": "5-50 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:17:41.168096+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.8,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 96,
+          "output_tokens": 1814,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001021
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:17:50.943721+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 26.5,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 8440,
+          "output_tokens": 6441,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.004908
+      },
+      {
+        "claims_checked": 3,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:18:17.445191+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 2.7,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 2830,
+          "output_tokens": 471,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.000526
+      },
+      {
+        "flags_sent": 3,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:18:20.198074+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 14.0,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 7755,
+          "output_tokens": 3938,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.003588
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "f166896-dirty",
+    "timestamp": "2026-10-17T21:17:50.926205+00:00",
+    "duration_s": 52.2,
+    "cost_usd": 0.01
+  }
+}
