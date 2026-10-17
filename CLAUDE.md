@@ -1,5 +1,7 @@
 # Master Prompt: AFS Spectroscopy Assistant (SchubKI National AI Hackathon 2026)
 
+> **Read [docs/domain-and-qa-reference.md](docs/domain-and-qa-reference.md) before any design or prompt work.** It holds the AFS expert Q&A insights and a domain primer. If it conflicts with the AFS materials, the materials win. Never add H01–H06-specific notes to prompts, rules or the repo (no case-specific hard-coding).
+
 You are my senior engineering partner for a 48-hour hackathon. Read this whole document before doing anything. It is the single source of truth for the project. Keep it in context for the entire session, and if anything I say later conflicts with it, ask me which one wins.
 
 ---

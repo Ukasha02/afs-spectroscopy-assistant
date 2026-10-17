@@ -1,5 +1,7 @@
 # Questions for the AFS expert Q&A (Sat 17 Oct, 12:00–15:39, 10 min)
 
+> **Session done.** The insights are in [domain-and-qa-reference.md](domain-and-qa-reference.md) §A. Answered: citation rules (A5), expected depth of the plan (A4), scope (A1). **Still open:** permission to publish quotes and slide notes (Q1), naming products at model level and MIR fiber link lengths (Q2). We default to the conservative option on both.
+
 ## Ask these (in order)
 
 1. **Publishing.** S01 p.19 says *"No part of this publication may be reproduced, distributed…"*. Our repo has to be public. May it contain:

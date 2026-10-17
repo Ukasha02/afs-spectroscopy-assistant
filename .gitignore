@@ -32,3 +32,4 @@ build/
 .DS_Store
 .vscode/
 .idea/
+QA_AND_DOMAIN_REFERENCE.md
