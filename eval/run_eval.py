@@ -3,6 +3,7 @@
   python eval/run_eval.py --set D            # run all D cases, then score
   python eval/run_eval.py --cases D01,D02    # run selected cases
   python eval/run_eval.py --set D --no-run   # re-score existing outputs only (no API calls)
+  python eval/run_eval.py --adversarial      # our adversarial set (eval/adversarial/cases.yaml)
 
 Prints the rubric pass/fail table. For cases with a worked answer (DOCX §2: D01, D02) it also
 prints a section-by-section comparison. The worked-answer text is shown on the console only;
@@ -13,6 +14,9 @@ import argparse
 import json
 import re
 import sys
+from pathlib import Path
+
+import yaml
 
 from rapidfuzz import fuzz
 
@@ -70,22 +74,45 @@ def main() -> int:
     ap.add_argument("--set", choices=["D", "H"])
     ap.add_argument("--cases")
     ap.add_argument("--no-run", action="store_true")
+    ap.add_argument("--adversarial", action="store_true")
     ap.add_argument("--phase", help="label for the spend ledger")
     args = ap.parse_args()
     if args.phase:
         import os
         os.environ["SPEND_PHASE"] = args.phase
-    cases = load_cases()
-    ids = args.cases.split(",") if args.cases else sorted(c for c in cases if c.startswith(args.set or "D"))
+    expect: dict[str, dict] = {}
+    if args.adversarial:
+        adv = yaml.safe_load((Path(__file__).parent / "adversarial" / "cases.yaml").read_text(encoding="utf-8"))
+        cases = {cid: {"enquiry": c["enquiry"]} for cid, c in adv.items()}
+        expect = {cid: c["expect"] for cid, c in adv.items()}
+        out_dir = config.OUTPUTS_DIR / "adversarial"
+    else:
+        cases = load_cases()
+        out_dir = config.OUTPUTS_DIR
+    ids = args.cases.split(",") if args.cases else sorted(c for c in cases if args.adversarial or c.startswith(args.set or "D"))
     if any(c.startswith("H") for c in ids) and not args.no_run:
         print("H cases are generated only by `run-all --set H` from a frozen commit, not by the eval loop.", file=sys.stderr)
         return 1
 
     if not args.no_run:
         for cid in ids:
-            _run_and_save(cid, cases[cid]["enquiry"])
+            _run_and_save(cid, cases[cid]["enquiry"], out_dir)
 
-    results = {cid: CaseResult.model_validate_json((config.OUTPUTS_DIR / f"{cid}.json").read_text()) for cid in ids}
+    results = {cid: CaseResult.model_validate_json((out_dir / f"{cid}.json").read_text()) for cid in ids}
+    if expect:  # adversarial checks: does the premise check flag the issue? is the status right?
+        from afs_assistant.schema import RubricItem
+
+        for cid, r in results.items():
+            e, a = expect[cid], results[cid].assessment
+            flagged = any(p.verdict in ("contradicted", "unverifiable") for p in a.premise_checks)
+            contradicted = any(p.verdict == "contradicted" for p in a.premise_checks)
+            ok = flagged if e["premise_flagged"] else not contradicted
+            r.rubric = [i for i in r.rubric if not i.check.startswith("adversarial")] + [
+                RubricItem(check="adversarial: premise check flags the issue", passed=ok,
+                           detail="" if ok else f"verdicts {[p.verdict for p in a.premise_checks]}"),
+                RubricItem(check="adversarial: expected decision status", passed=a.decision_status in e["status_in"],
+                           detail="" if a.decision_status in e["status_in"] else f"{a.decision_status} not in {e['status_in']}"),
+            ]
     checks = [i.check for i in next(iter(results.values())).rubric]
     lines = ["# Evaluation report", "", "## Rubric", ""]
     header = "| Check | " + " | ".join(ids) + " |"
@@ -123,9 +150,10 @@ def main() -> int:
 
     out = config.OUTPUTS_DIR / "eval"
     out.mkdir(parents=True, exist_ok=True)
-    (out / "eval_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    name = "adversarial_report.md" if args.adversarial else "eval_report.md"
+    (out / name).write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n" + "\n".join(lines))
-    print(f"\nSaved {out / 'eval_report.md'}")
+    print(f"\nSaved {out / name}")
     from afs_assistant import costs
     print(costs.summary())
     return 0

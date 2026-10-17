@@ -59,8 +59,10 @@ remains. Nothing is measured at this stage, so in practice the primary method is
 8. Architecture 'undecided' unless the enquiry gives a reason."""
 
 RECIPE = """Answer recipe (the style exemplars below follow it). Fill the fields in this order:
-1. decision_status + one-line status_reason: provisional_assessment (default); insufficient_information (target, \
-matrix or contaminant undefined); premise_not_supported (the client's concept or premise is contradicted by the \
+1. decision_status + one-line status_reason: provisional_assessment (default); insufficient_information when the \
+target analyte/variable, the matrix or the contaminant itself is unknown, undefined or only vaguely described \
+(e.g. 'quality', 'something is wrong') - NOT when only grades, ranges, levels or conditions are unknown (those are \
+clarification questions); premise_not_supported (the client's concept or premise is contradicted by the \
 materials, so it cannot be approved); outside_supported_scope (the request goes beyond what the evidence supports).
 2. requirements_stated: ONLY what the client said, compact, no interpretation.
 3. key_unknowns: compact. Typical categories: identity and range of target and matrix, acceptance limits, response \
@@ -71,12 +73,17 @@ its uncertainty, sampling time); variation (what varies between runs or batches:
 texture, bubbles, homogenisation, temperature, operating conditions); requirements (response time, acceptance \
 limits, installation and access, cleaning); context (only if relevant: pain or goal, distance to the analyzer, budget).
 5. recommendations: one short entry per method. reason = one sentence on why, citing the APPLICATION EXAMPLE page \
-that supports it for this sample type; caveat = one sentence with the key condition, cited. Order: primary method \
-supported by an application example, then a comparison candidate, then a combination ONLY 'after each method has \
-been assessed on its own', framed explicitly as a hypothesis to test. If the premise is not supported, say so \
+that supports it for this sample type, with a short verbatim quote (one sentence, copied exactly) from that page; \
+caveat = one sentence with the key condition, cited. Order: primary method supported by an application example, \
+then a comparison candidate. Add a combination ONLY if the materials show that the two methods give complementary \
+information for this kind of sample or target (not for an unrelated application, and not two geometries of one \
+method); then frame it as 'only after each method has been assessed on its own; a hypothesis to test'. \
+Otherwise give no combination. If the premise is not supported, say so \
 first in premise_checks (cited) and recommend the alternative to test. Use the simplest sufficient option first.
 6. measurement_concept: one interface item per candidate taken from S01 Table 1 (p.6), the location, the fiber link \
-(checked against the fiber ranges); needs_afs_confirmation lists what AFS must confirm (probe type, installation, \
+(checked against the fiber ranges). Every item in pre_analysis.fiber_findings_required_in_premise_check (a fiber that \
+cannot carry the method's range, or an unknown link) MUST appear as a premise check (verdict contradicted or \
+unverifiable, mentioning the fiber or link) AND as a fiber_link risk; needs_afs_confirmation lists what AFS must confirm (probe type, installation, \
 optical configuration).
 7. spectral_ranges: the NOMINAL method range with its citation; for Raman put the excitation wavelength in the note, \
 separate from the Raman shift. Never pick an optimal band without sample spectra.
@@ -105,7 +112,9 @@ risks max 5. Count before answering: if the report would exceed 450 words, short
 'must be built and tested'); never 'will work', 'ensures', 'guarantees'."""
 
 INTAKE_RULES = """Task: read the enquiry and produce (a) a faithful extraction and (b) a short diagnostic questionnaire.
-Extraction: stated_facts contain ONLY what the client said, each with the exact enquiry words. Anything not stated \
+Extraction: stated_facts contain ONLY what the client said, each with the exact enquiry words. process_context: \
+research_lab ONLY if the client says the work is a laboratory or research study; production or pilot if they \
+describe a process line or plant; clinical_or_medical for patient or surgical use; otherwise unknown. Anything not stated \
 is unknown: list it in unknowns, never fill it in. client_premises: every belief, request or proposed solution of \
 the client that an expert should check (e.g. a requested method, reuse of existing equipment or data, a claim that \
 something will work or is proven).

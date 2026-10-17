@@ -24,6 +24,7 @@ from afs_assistant.schema import QUESTION_TOPICS, Assessment, Flag, Question, So
 
 QUOTE_MATCH_THRESHOLD = 85
 _LIMITED_SCOPE = {"S03", "S04", "S05", "S06"}
+_LAB_STUDIES = {"S03", "S04"}
 _UNIT = r"(?:%|°\s*C|nm|µm|um|mm|cm\s*-\s*1|cm⁻¹|cm|m|meters?|metres?|km|s|sec|seconds?|min|minutes?|h|hours?|ppm|ppb|bar|psi|w/w|mg|g|kg|mM|µM|uM|nM|Hz|kHz|K|V|A|W)"
 _NUM = r"\d+(?:[.,]\d+)?"
 _TOKEN = re.compile(
@@ -148,7 +149,8 @@ def verify_questions(questions: list[Question], enquiry: str) -> list[Flag]:
     return flags
 
 
-def verify(assessment: Assessment, enquiry: str, questions: list[Question], table_shortlist: list[dict]) -> Verification:
+def verify(assessment: Assessment, enquiry: str, questions: list[Question], table_shortlist: list[dict],
+           process_context: str = "unknown") -> Verification:
     data = assessment.model_dump()
     client = _client_key(enquiry, questions)
     facts_sources = load_facts()["sources"]
@@ -213,8 +215,11 @@ def verify(assessment: Assessment, enquiry: str, questions: list[Question], tabl
         if pc["verdict"] != "supported":
             continue
         cited = {_source_id(c["ref"]) for st in pc["explanation"] for c in st["citations"]}
-        if not cited or cited <= _LIMITED_SCOPE:
-            flags.append(Flag(path=f"premise_checks[{i}]", kind="scope", detail=f"verdict 'supported' rests only on limited-scope sources {sorted(cited) or 'none'}; use 'plausible_to_be_tested'"))
+        # Lab studies (S03 in vitro, S04 model tissue) can support a premise only for a client who
+        # stated a research-lab context; they never support process or clinical readiness.
+        lab_ok = process_context == "research_lab" and cited and cited <= _LAB_STUDIES
+        if not cited or (cited <= _LIMITED_SCOPE and not lab_ok):
+            flags.append(Flag(path=f"premise_checks[{i}]", kind="scope", detail=f"verdict 'supported' rests only on limited-scope sources {sorted(cited) or 'none'} for a {process_context} context; use 'plausible_to_be_tested'"))
 
     screened = {match_key(d["table_row"]) for d in data["method_table_screening"]}
     for row in table_shortlist:

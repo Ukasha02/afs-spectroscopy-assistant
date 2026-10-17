@@ -124,7 +124,7 @@ def test_strict_assumption_numbers(make_assessment):
 
 def rec(method="NIR", role="primary", basis="sourced", reason="Supported by an application example.", caveat="Calibration must be built.", confidence="medium"):
     return {"method": method, "geometry": "g", "role": role, "simplicity_rank": 1, "cost_complexity": "average",
-            "reason": st(reason, basis, refs=["S01 p.17"] if basis == "sourced" else []), "caveat": st(caveat, "sourced", refs=["S01 p.10"]),
+            "reason": st(reason, basis, refs=["S01 p.17"] if basis == "sourced" else [], quote="Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products"), "caveat": st(caveat, "sourced", refs=["S01 p.10"]),
             "confidence": confidence, "confidence_reason": "r"}
 
 
@@ -140,3 +140,23 @@ def test_worked_examples_are_not_citable(make_assessment):
     assert 'cite="DOCX §2' not in render_corpus()
     a = make_assessment(premise_checks=claims([st("A calibration must be built.", refs=["DOCX §2 D01"])]))
     assert any(f.kind == "scope" and "worked answer" in f.detail for f in flags(a))
+
+
+@needs_cache
+def test_lab_study_supports_premise_only_in_stated_research_context(make_assessment):
+    pc = [{"client_claim": "c", "verdict": "supported", "explanation": [st("fused data separated the tissues", refs=["S04 p.4"])]}]
+    a = make_assessment(premise_checks=pc)
+    assert not [f for f in verify(a, ENQ, [], [], "research_lab").flags if f.kind == "scope"]
+    assert [f for f in verify(a, ENQ, [], [], "production").flags if f.kind == "scope"]
+    assert [f for f in verify(a, ENQ, [], [], "clinical_or_medical").flags if f.kind == "scope"]
+
+
+@needs_cache
+def test_fiber_conflict_only_without_coverage(extraction):
+    fc = rules.fiber_checks(extraction)  # MIR over silica: no coverage -> conflict
+    assert fc["client_fiber_conflicts"] and rules.fiber_findings(fc)
+    nir = extraction.model_copy(update={"methods_mentioned": ["NIR"]})
+    fc = rules.fiber_checks(nir)  # NIR over silica: partial (0.78-2.4 of 2.5 um) -> note, not conflict
+    assert not fc["client_fiber_conflicts"] and fc["client_fiber_notes"]
+    ok, text = rules.fiber_verdict(["NIR (diffuse reflection)"], nir, fc)
+    assert ok is True and "partial" in text

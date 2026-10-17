@@ -19,13 +19,14 @@ from afs_assistant.pipeline import run_case
 from afs_assistant.render import to_markdown
 
 
-def _run_and_save(case_id: str, enquiry: str) -> None:
+def _run_and_save(case_id: str, enquiry: str, out_dir=None) -> None:
     os.environ["SPEND_CASE"] = case_id
     print(f"[{case_id}] running...", file=sys.stderr, flush=True)
     result = run_case(case_id, enquiry)
-    config.OUTPUTS_DIR.mkdir(exist_ok=True)
-    (config.OUTPUTS_DIR / f"{case_id}.json").write_text(result.model_dump_json(indent=2), encoding="utf-8")
-    (config.OUTPUTS_DIR / f"{case_id}.md").write_text(to_markdown(result), encoding="utf-8")
+    out_dir = out_dir or config.OUTPUTS_DIR
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"{case_id}.json").write_text(result.model_dump_json(indent=2), encoding="utf-8")
+    (out_dir / f"{case_id}.md").write_text(to_markdown(result), encoding="utf-8")
     v = result.verification
     print(
         f"[{case_id}] {result.assessment.decision_status} · {result.run_meta.duration_s}s · ${result.run_meta.cost_usd:.4f} · "

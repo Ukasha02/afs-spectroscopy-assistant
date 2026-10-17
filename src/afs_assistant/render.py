@@ -16,7 +16,7 @@ STATUS_LABEL = {
 }
 _MARK = {"general_knowledge": " *(general knowledge)*", "assumption": " *(assumption)*"}
 _ROLE_ORDER = {"primary": 0, "comparison": 1, "alternative": 2, "combination": 3, "not_recommended": 4}
-RANGE_CAVEAT = "Specify only the usable range of the selected instrument and fiber; do not pick an optimal band without sample spectra."
+RANGE_CAVEAT = "Usable range depends on the selected instrument and fiber; no optimal band without sample spectra."
 
 
 def _cite(claim) -> str:
@@ -45,41 +45,57 @@ def sources_used(a: Assessment) -> list[str]:
     return sorted(refs, key=lambda r: (r.startswith(("DOCX", "EXTERNAL")), r))
 
 
-def report_body(a: Assessment, case_id: str) -> str:
-    L = [f"# {case_id} · First technical assessment", ""]
-    L += [f"**Decision status.** {STATUS_LABEL[a.decision_status]}. {a.status_reason}", ""]
-    L += [f"**Requirements stated.** {_join(a.requirements_stated)}.", ""]
-    L += [f"**Key unknowns.** {_join(a.key_unknowns)}.", ""]
+# Word budgets per section (rubric): together about 430 words + title and sources.
+SECTION_BUDGETS = {
+    "Decision status": 18, "Requirements stated": 28, "Key unknowns": 22, "Clarification questions": 55,
+    "Recommendation": 110, "Measurement concept": 45, "Spectral range": 30, "Risks and uncertainty": 48,
+    "First feasibility experiment": 60, "Decision basis": 22,
+}
 
-    L += ["### Clarification questions", ""]
-    L += [f"{i}. {q.question}" for i, q in enumerate(a.report_questions, 1)] + [""]
 
-    L += ["### Recommendation", ""]
+def report_sections(a: Assessment) -> dict[str, str]:
+    """The 11 report sections as Markdown, in output order (Sources last)."""
+    S: dict[str, str] = {}
+    S["Decision status"] = f"**Decision status.** {STATUS_LABEL[a.decision_status]}. {a.status_reason}"
+    S["Requirements stated"] = f"**Requirements stated.** {_join(a.requirements_stated)}."
+    S["Key unknowns"] = f"**Key unknowns.** {_join(a.key_unknowns)}."
+    S["Clarification questions"] = "\n".join(["### Clarification questions", ""] + [f"{i}. {q.question}" for i, q in enumerate(a.report_questions, 1)])
+    rec = ["### Recommendation", ""]
     for pc in a.premise_checks:
         if pc.verdict != "supported":
             why = " ".join(_text(s) for s in pc.explanation)
-            L.append(f"- **Premise: {pc.client_claim}** — {pc.verdict.replace('_', ' ')}. {why}")
-    for rec in sorted(a.recommendations, key=lambda r: (_ROLE_ORDER[r.role], r.simplicity_rank)):
-        prefix = "Not recommended: " if rec.role == "not_recommended" else ""
-        L.append(f"- **{prefix}{rec.method} ({rec.geometry}).** {_text(rec.reason)} {_text(rec.caveat)}")
-    L.append("")
-
+            rec.append(f"- **Premise: {pc.client_claim}** — {pc.verdict.replace('_', ' ')}. {why}")
+    for r in sorted(a.recommendations, key=lambda r: (_ROLE_ORDER[r.role], r.simplicity_rank)):
+        prefix = "Not recommended: " if r.role == "not_recommended" else ""
+        rec.append(f"- **{prefix}{r.method} ({r.geometry}).** {_text(r.reason)} {_text(r.caveat)}")
+    S["Recommendation"] = "\n".join(rec)
     mc = a.measurement_concept
     concept = " ".join(_text(i) for i in mc.items)
     confirm = f" Needs AFS confirmation: {_join(mc.needs_afs_confirmation, ', ')}." if mc.needs_afs_confirmation else ""
-    L += [f"**Measurement concept.** {concept}{confirm}", ""]
-
+    S["Measurement concept"] = f"**Measurement concept.** {concept}{confirm}"
     ranges = "; ".join(
         f"{e.method}: {e.nominal_range} nominal [{e.citation.ref}]" + (f" ({e.note.strip().rstrip('.')})" if e.note else "") for e in a.spectral_ranges
     )
-    L += [f"**Spectral range.** {ranges + '. ' if ranges else ''}{RANGE_CAVEAT}", ""]
+    S["Spectral range"] = f"**Spectral range.** {ranges + '. ' if ranges else ''}{RANGE_CAVEAT}"
+    S["Risks and uncertainty"] = "\n".join(["### Risks and uncertainty", ""] + [f"- {_text(r)}" for r in a.risks])
+    S["First feasibility experiment"] = "\n".join(["### First feasibility experiment", ""] + [f"{i}. {_text(s)}" for i, s in enumerate(a.feasibility_plan.steps, 1)])
+    S["Decision basis"] = f"**Decision basis.** {_text(a.decision_basis)}"
+    S["Sources"] = f"**Sources.** {', '.join(sources_used(a))}."
+    return S
 
-    L += ["### Risks and uncertainty", ""] + [f"- {_text(r)}" for r in a.risks] + [""]
-    L += ["### First feasibility experiment", ""]
-    L += [f"{i}. {_text(s)}" for i, s in enumerate(a.feasibility_plan.steps, 1)] + [""]
-    L += [f"**Decision basis.** {_text(a.decision_basis)}", ""]
-    L += [f"**Sources.** {', '.join(sources_used(a))}.", ""]
-    return "\n".join(L)
+
+def report_body(a: Assessment, case_id: str) -> str:
+    return "\n\n".join([f"# {case_id} · First technical assessment"] + list(report_sections(a).values())) + "\n"
+
+
+def section_overruns(a: Assessment) -> list[str]:
+    out = []
+    for name, md in report_sections(a).items():
+        budget = SECTION_BUDGETS.get(name)
+        words = word_count(re.sub(r"\[[^\]]*\]", "", md))  # citations do not count against the budget
+        if budget and words > budget:
+            out.append(f"{name} {words}/{budget}")
+    return out
 
 
 def word_count(md: str) -> int:

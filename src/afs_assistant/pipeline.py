@@ -10,12 +10,12 @@ from datetime import datetime, timezone
 
 from afs_assistant import prompts, rules
 from afs_assistant.llm import call_llm
-from afs_assistant.schema import Assessment, CaseResult, Intake, RunMeta
+from afs_assistant.schema import Assessment, CaseResult, CitationRef, ConceptItem, Intake, RunMeta
 from afs_assistant.critic import critique
 from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
-PIPELINE_VERSION = "0.5.0"
+PIPELINE_VERSION = "0.6.0"
 _REVISE_ON = {"quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage"}
 
 
@@ -26,6 +26,18 @@ def _git_commit() -> str:
         return sha + ("-dirty" if dirty else "")
     except (OSError, subprocess.CalledProcessError):
         return "unknown"
+
+
+def _apply_fiber_verdict(assessment: Assessment, ex, pre: dict) -> Assessment:
+    """Fill the fiber verdict from the rule step (not the model) and show it in the concept."""
+    methods = [r.method for r in assessment.recommendations if r.role != "not_recommended"]
+    compatible, text = rules.fiber_verdict(methods, ex, pre["fiber_checks"])
+    mc = assessment.measurement_concept
+    mc.fiber_compatible = compatible
+    mc.items = [i for i in mc.items if not i.text.startswith(("Rule check", "No fiber link stated. Rule check"))]
+    if text:
+        mc.items.append(ConceptItem(aspect="fiber_link", text=text, basis="sourced", citations=[CitationRef(ref="S02 p.6")]))
+    return assessment
 
 
 def run_intake(enquiry: str) -> tuple[Intake, list[dict]]:
@@ -60,25 +72,26 @@ def run_assessment(
 
     res = call_llm(prompts.assess_system(), prompts.assess_user(enquiry, intake_dict, pre), Assessment, stage="assess")
     calls.append(res["meta"])
-    assessment = Assessment.model_validate(res["output"])
+    ex = intake.extraction
+    assessment = _apply_fiber_verdict(Assessment.model_validate(res["output"]), ex, pre)
     required = pre["required_risk_categories"]
 
-    report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"])
+    report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"], ex.process_context)
     context_flags, critic_meta = critique(assessment)
     if critic_meta:
         calls.append(critic_meta)
-    checks = rubric(assessment, case_id, required)
+    checks = rubric(assessment, case_id, required, pre["fiber_findings_required_in_premise_check"])
     to_fix = [f for f in report.flags if f.kind in _REVISE_ON] + context_flags + rubric_flags(checks)
 
     if to_fix:
         res = call_llm(prompts.revise_system(), prompts.revise_user(assessment.model_dump(), [f.model_dump() for f in to_fix]), Assessment, stage="revise")
         calls.append({"flags_sent": len(to_fix), **res["meta"]})
-        assessment = Assessment.model_validate(res["output"])
-        new_report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"])
+        assessment = _apply_fiber_verdict(Assessment.model_validate(res["output"]), ex, pre)
+        new_report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"], ex.process_context)
         new_report.revised = True
         new_report.flags_before_revision = report.flags + context_flags
         report = new_report
-        checks = rubric(assessment, case_id, required)
+        checks = rubric(assessment, case_id, required, pre["fiber_findings_required_in_premise_check"])
 
     return CaseResult(
         case_id=case_id,

@@ -7,7 +7,7 @@ case content.
 
 import re
 
-from afs_assistant.render import report_body, word_count
+from afs_assistant.render import report_body, section_overruns, word_count
 from afs_assistant.schema import PLAN_REQUIRED, Assessment, Flag, RubricItem
 
 WORDS_MIN, WORDS_MAX = 250, 450
@@ -18,7 +18,7 @@ def _has(text: str, *patterns: str) -> bool:
     return all(re.search(p, text, re.I) for p in patterns)
 
 
-def rubric(a: Assessment, case_id: str, required_risks: list[str]) -> list[RubricItem]:
+def rubric(a: Assessment, case_id: str, required_risks: list[str], fiber_findings: list[str] = ()) -> list[RubricItem]:
     items: list[RubricItem] = []
 
     def check(name: str, ok: bool, detail: str = "") -> None:
@@ -55,7 +55,7 @@ def rubric(a: Assessment, case_id: str, required_risks: list[str]) -> list[Rubri
     missing_steps = [alt[0] for alt in PLAN_REQUIRED if not any(e in elements for e in alt)]
     texts = {s.element: s.text for s in a.feasibility_plan.steps}
     content = []
-    if not _has(texts.get("spectra_with_reference", ""), r"referen", r"tim"):
+    if not _has(texts.get("spectra_with_reference", ""), r"referen|laborator|\blab\b|assay", r"tim"):
         content.append("spectra need independent reference + timing")
     if not _has(texts.get("models_and_validation", ""), r"single", r"held.out|independent|validat"):
         content.append("single-method first + held-out validation")
@@ -70,8 +70,22 @@ def rubric(a: Assessment, case_id: str, required_risks: list[str]) -> list[Rubri
     over = [r.method for r in a.recommendations if r.confidence == "high" and a.key_unknowns]
     check("no 'high' confidence while unknowns remain", not over, f"high confidence: {over}")
 
+    unquoted = [r.method for r in recs if not any(c.quote and len(c.quote.split()) <= 40 for c in r.reason.citations)]
+    check("recommendation reasons quoted", not unquoted, f"no short verbatim quote for {unquoted}")
+
+    if fiber_findings:
+        fiber_premise = any(pc.verdict != "supported" and _has(pc.client_claim + " " + " ".join(s.text for s in pc.explanation), r"fib|link|cable")
+                            for pc in a.premise_checks)
+        fiber_risk = any(r.category == "fiber_link" for r in a.risks)
+        check("fiber issue in premise check + risk", fiber_premise and fiber_risk,
+              f"premise check {'ok' if fiber_premise else 'missing'}, risk {'ok' if fiber_risk else 'missing'}: {fiber_findings[0][:90]}")
+    else:
+        check("fiber issue in premise check + risk", True)
+
     words = word_count(report_body(a, case_id))
-    check(f"report length {WORDS_MIN}-{WORDS_MAX} words", WORDS_MIN <= words <= WORDS_MAX, f"{words} words")
+    over = section_overruns(a)
+    check(f"report length {WORDS_MIN}-{WORDS_MAX} words", WORDS_MIN <= words <= WORDS_MAX,
+          f"{words} words; over budget: {', '.join(over) or 'none'} (citations excluded)")
     return items
 
 
