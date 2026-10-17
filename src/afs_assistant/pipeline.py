@@ -11,9 +11,11 @@ from datetime import datetime, timezone
 from afs_assistant import prompts, rules
 from afs_assistant.llm import call_llm
 from afs_assistant.schema import Assessment, CaseResult, Intake, RunMeta
+from afs_assistant.critic import critique
+from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
-PIPELINE_VERSION = "0.3.0"
+PIPELINE_VERSION = "0.4.0"
 _REVISE_ON = {"quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage"}
 
 
@@ -59,17 +61,24 @@ def run_assessment(
     res = call_llm(prompts.assess_system(), prompts.assess_user(enquiry, intake_dict, pre), Assessment)
     calls.append({"stage": "assess", **res["meta"]})
     assessment = Assessment.model_validate(res["output"])
-    report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"])
+    required = pre["required_risk_categories"]
 
-    revisable = [f.model_dump() for f in report.flags if f.kind in _REVISE_ON]
-    if revisable:
-        res = call_llm(prompts.revise_system(), prompts.revise_user(assessment.model_dump(), revisable), Assessment)
-        calls.append({"stage": "revise", **res["meta"]})
-        revised = Assessment.model_validate(res["output"])
-        new_report = verify(revised, enquiry, intake.questions, pre["table_shortlist"])
+    report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"])
+    context_flags, critic_meta = critique(assessment)
+    if critic_meta:
+        calls.append(critic_meta)
+    checks = rubric(assessment, case_id, required)
+    to_fix = [f for f in report.flags if f.kind in _REVISE_ON] + context_flags + rubric_flags(checks)
+
+    if to_fix:
+        res = call_llm(prompts.revise_system(), prompts.revise_user(assessment.model_dump(), [f.model_dump() for f in to_fix]), Assessment)
+        calls.append({"stage": "revise", "flags_sent": len(to_fix), **res["meta"]})
+        assessment = Assessment.model_validate(res["output"])
+        new_report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"])
         new_report.revised = True
-        new_report.flags_before_revision = report.flags
-        assessment, report = revised, new_report
+        new_report.flags_before_revision = report.flags + context_flags
+        report = new_report
+        checks = rubric(assessment, case_id, required)
 
     return CaseResult(
         case_id=case_id,
@@ -79,6 +88,7 @@ def run_assessment(
         clarification_questions=intake.questions,
         assessment=assessment,
         verification=report,
+        rubric=checks,
         extraction=intake.extraction,
         pre_analysis=pre,
         run_meta=RunMeta(

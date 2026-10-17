@@ -1,6 +1,6 @@
 PY := .venv/bin/python
 
-.PHONY: setup kb test
+.PHONY: setup kb test eval eval-score
 
 setup:            ## create venv and install the package (editable) with dev tools
 	python3.11 -m venv .venv
@@ -13,3 +13,9 @@ kb:               ## build the knowledge-base cache from materials/ into kb/cach
 
 test:
 	$(PY) -m pytest -q
+
+eval:             ## run D01-D08, print rubric table + diff vs worked answers (D01/D02)
+	$(PY) eval/run_eval.py --set D
+
+eval-score:       ## re-score existing D outputs without API calls
+	$(PY) eval/run_eval.py --set D --no-run

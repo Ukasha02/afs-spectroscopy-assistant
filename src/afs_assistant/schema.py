@@ -17,7 +17,7 @@ FiberId = Literal["UV_SILICA", "VISNIR_SILICA", "CIR", "PIR", "HWG", "INF3", "ZR
 SampleState = Literal[
     "clear_liquid", "turbid_liquid", "opaque_liquid", "paste_or_soft_solid", "powder", "solid", "tissue", "gas", "unknown"
 ]
-Basis = Literal["client_fact", "sourced", "general_knowledge", "assumption"]
+Basis = Literal["client_fact", "sourced", "general_knowledge", "assumption", "proposal"]
 
 
 # --- shared ---------------------------------------------------------------------------------
@@ -33,7 +33,8 @@ class Statement(BaseModel):
     text: str
     basis: Basis = Field(
         description="client_fact: stated by the client; sourced: directly supported by the cited AFS page; "
-        "general_knowledge: textbook knowledge not in the materials; assumption: assumed for this provisional assessment."
+        "general_knowledge: textbook knowledge not in the materials; assumption: assumed for this provisional assessment; "
+        "proposal: a proposed experiment or action (feasibility plan)."
     )
     citations: list[CitationRef] = Field(default_factory=list, description="Required when basis is sourced.")
 
@@ -95,7 +96,17 @@ class Intake(BaseModel):
     questions: list[Question] = Field(min_length=5, max_length=10)
 
 
-# --- stage 3: assessment --------------------------------------------------------------------
+# --- stage 3: assessment (worked-answer recipe, docx §2/§3) ---------------------------------
+
+DecisionStatus = Literal[
+    "provisional_assessment", "insufficient_information", "premise_not_supported", "outside_supported_scope"
+]
+RiskCategory = Literal[
+    "calibration_validity", "physical_variation", "no_guaranteed_gain", "nothing_confirmed",
+    "fouling_interface", "fiber_link", "evidence_scope", "other",
+]
+PlanElement = Literal["representative_samples", "lab_screening", "spectra_with_reference", "models_and_validation", "comparison"]
+PLAN_REQUIRED = (("representative_samples", "lab_screening"), ("spectra_with_reference",), ("models_and_validation",), ("comparison",))
 
 
 class PremiseCheck(BaseModel):
@@ -106,88 +117,89 @@ class PremiseCheck(BaseModel):
     explanation: list[Statement]
 
 
+class ReportQuestion(BaseModel):
+    question: str = Field(description="Compound question bundling related unknowns. One sentence.")
+    covers: Literal["measured", "reference", "variation", "requirements", "context"]
+
+
 class TableRowDecision(BaseModel):
     table_row: str = Field(description="Shortlisted row as 'method / measurement technique'.")
     decision: Literal["recommended", "alternative", "lab_screening_only", "rejected"]
     reason: str
 
 
-class RecNote(BaseModel):
-    kind: Literal["condition", "why_not_simpler", "combination_trigger", "spectral_range_note"]
+class Recommendation(BaseModel):
+    method: str
+    geometry: str
+    role: Literal["primary", "comparison", "combination", "alternative", "not_recommended"]
+    simplicity_rank: int = Field(description="1 = simplest sufficient option.")
+    cost_complexity: Literal["low", "average", "high"] = Field(description="S01 Table 1 cost rating.")
+    reason: Statement = Field(description="One sentence: why, citing the application example that supports it for this sample type.")
+    caveat: Statement = Field(description="One sentence: the key condition or caveat, cited. For a combination: only after each method is assessed alone; a hypothesis to test.")
+    confidence: Literal["low", "medium", "high"]
+    confidence_reason: str
+
+
+class ConceptItem(BaseModel):
+    aspect: Literal["interface", "location", "fiber_link"]
     text: str
     basis: Basis
     citations: list[CitationRef] = Field(default_factory=list)
 
 
-class Recommendation(BaseModel):
-    method: str = Field(description="Method or combination, e.g. 'NIR', 'NIR + Raman'.")
-    technique_geometry: str
-    role: Literal["primary", "alternative", "add_on_if_needed", "not_recommended"]
-    simplicity_rank: int = Field(description="1 = simplest sufficient option.")
-    cost_complexity: Literal["low", "average", "high"] = Field(description="S01 Table 1 cost rating.")
-    spectral_range: str | None = Field(description="Nominal method range in correct units, copied from the sources.")
-    rationale: list[Statement]
-    notes: list[RecNote] = Field(description="Conditions; why_not_simpler if a simpler option exists; combination_trigger for combinations; spectral_range_note.")
-    confidence: Literal["low", "medium", "high"]
-    confidence_reason: str
-
-
 class MeasurementConcept(BaseModel):
-    probe_type: str
-    geometry: str
-    location: str
+    items: list[ConceptItem] = Field(description="One interface per candidate (from S01 Table 1), the location, the fiber link.")
     fiber_family: str
     fiber_compatible: bool | None = Field(description="null if the link is not yet defined.")
     architecture: Literal["centralized", "iot", "undecided"]
-    rationale: list[Statement] = Field(description="Include the fiber compatibility check.")
+    needs_afs_confirmation: list[str] = Field(description="e.g. probe type, installation, optical configuration.")
+
+
+class SpectralRangeEntry(BaseModel):
+    method: str
+    nominal_range: str = Field(description="Nominal method range in correct units, copied from the cited page.")
+    citation: CitationRef
+    note: str | None = Field(description="For Raman: excitation wavelength separately from the Raman shift. Otherwise null.")
 
 
 class Risk(BaseModel):
-    type: Literal["technical", "assumption", "evidence_scope"]
-    risk: str
-    mitigation: str
+    category: RiskCategory
+    text: str = Field(description="One short sentence.")
     basis: Basis
     citations: list[CitationRef] = Field(default_factory=list)
 
 
 class PlanStep(BaseModel):
-    stage: Literal["lab_screening", "method_comparison", "inline_trial", "scale_up"]
-    aspect: Literal[
-        "samples", "establish", "reference_method", "compare_on", "decision_basis", "location", "interface",
-        "verify", "robustness", "cleaning_sterilization", "industry_standards", "few_wavelength_simplification",
-    ]
-    text: str
-    basis: Basis
+    element: PlanElement
+    text: str = Field(description="One or two sentences.")
+    basis: Basis = Field(description="'proposal' for experiment steps.")
     citations: list[CitationRef] = Field(default_factory=list)
 
 
 class FeasibilityPlan(BaseModel):
-    objective: str
-    methods_screened: list[str]
-    methods_compared: list[str] = Field(description="Only as many as needed.")
     steps: list[PlanStep] = Field(
-        description="In stage order. lab_screening: samples, establish (range, resolution, ppm vs %). method_comparison: "
-        "reference_method (client's lab method), compare_on, decision_basis (agreed with client, no invented numbers). "
-        "inline_trial: location, interface, verify. scale_up: robustness, cleaning_sterilization, industry_standards, "
-        "few_wavelength_simplification."
+        description="4 steps in order: representative_samples (or lab_screening when information is insufficient), "
+        "spectra_with_reference, models_and_validation, comparison."
     )
     afs_next_path: Literal["A", "B", "C", "undecided"]
     afs_next_path_reason: str
 
 
 class Assessment(BaseModel):
-    decision_status: Literal["provisional_assessment", "insufficient_information", "outside_supported_scope"]
-    status_reason: str
-    summary_for_expert: str = Field(description="Two or three sentences an AFS expert reads first.")
-    constraints: list[Statement]
-    key_unknowns: list[str]
+    decision_status: DecisionStatus
+    status_reason: str = Field(description="One line.")
+    requirements_stated: list[str] = Field(description="Only what the client said; compact, no interpretation.")
+    key_unknowns: list[str] = Field(description="Compact list.")
     premise_checks: list[PremiseCheck]
-    method_table_screening: list[TableRowDecision] = Field(description="One entry for every shortlisted S01 Table 1 row.")
+    report_questions: list[ReportQuestion] = Field(description="4-6 prioritised compound questions, ordered measured, reference, variation, requirements, context.")
     recommendations: list[Recommendation]
+    method_table_screening: list[TableRowDecision] = Field(description="One entry for every shortlisted S01 Table 1 row.")
     measurement_concept: MeasurementConcept
-    risks: list[Risk]
+    spectral_ranges: list[SpectralRangeEntry]
+    risks: list[Risk] = Field(description="About 4 short items; include every required standard category.")
     assumptions: list[str]
     feasibility_plan: FeasibilityPlan
+    decision_basis: Statement = Field(description="Acceptance criteria agreed with the client before the test; simplest configuration that meets them on independent material.")
 
 
 # --- verification + final record ------------------------------------------------------------
@@ -203,7 +215,7 @@ class SourceCheck(BaseModel):
 
 class Flag(BaseModel):
     path: str
-    kind: Literal["quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage", "questionnaire"]
+    kind: Literal["quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage", "questionnaire", "context", "rubric"]
     detail: str
 
 
@@ -213,6 +225,12 @@ class Verification(BaseModel):
     counts: dict[str, int] = Field(default_factory=dict)
     revised: bool = False
     flags_before_revision: list[Flag] = Field(default_factory=list)
+
+
+class RubricItem(BaseModel):
+    check: str
+    passed: bool
+    detail: str = ""
 
 
 class RunMeta(BaseModel):
@@ -232,6 +250,7 @@ class CaseResult(BaseModel):
     clarification_questions: list[Question]
     assessment: Assessment
     verification: Verification
+    rubric: list[RubricItem] = Field(default_factory=list)
     extraction: ExtractedEnquiry
     pre_analysis: dict
     run_meta: RunMeta

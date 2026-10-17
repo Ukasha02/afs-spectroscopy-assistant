@@ -1,0 +1,82 @@
+"""Deterministic rubric: does an answer follow the worked-answer recipe? Runs on every answer.
+
+Failures that the model can fix are passed to the single revision pass as 'rubric' flags.
+Keyword checks look for the recipe's elements (e.g. 'hypothesis' for combinations), never for
+case content.
+"""
+
+import re
+
+from afs_assistant.render import report_body, word_count
+from afs_assistant.schema import PLAN_REQUIRED, Assessment, Flag, RubricItem
+
+WORDS_MIN, WORDS_MAX = 250, 450
+_Q_ORDER = ("measured", "reference", "variation", "requirements", "context")
+
+
+def _has(text: str, *patterns: str) -> bool:
+    return all(re.search(p, text, re.I) for p in patterns)
+
+
+def rubric(a: Assessment, case_id: str, required_risks: list[str]) -> list[RubricItem]:
+    items: list[RubricItem] = []
+
+    def check(name: str, ok: bool, detail: str = "") -> None:
+        items.append(RubricItem(check=name, passed=bool(ok), detail="" if ok else detail))
+
+    check("decision status + reason", a.decision_status and a.status_reason.strip(), "missing reason")
+    check("requirements stated", a.requirements_stated, "empty")
+    check("key unknowns", a.key_unknowns, "empty")
+
+    order = [_Q_ORDER.index(q.covers) for q in a.report_questions]
+    check("4-10 prioritised questions", 4 <= len(a.report_questions) <= 10 and order == sorted(order),
+          f"{len(a.report_questions)} questions, order {[q.covers for q in a.report_questions]}")
+
+    recs = [r for r in a.recommendations if r.role != "not_recommended"]
+    if a.decision_status == "insufficient_information" and not recs:
+        check("recommendations: cited reason + caveat", True)
+    else:
+        bad = [r.method for r in recs if r.reason.basis != "sourced" or not r.reason.citations or not r.caveat.text.strip()]
+        check("recommendations: cited reason + caveat", recs and not bad, f"missing for {bad or 'all (no recommendation)'}")
+    combos = [r for r in recs if r.role == "combination" or "+" in r.method]
+    unframed = [r.method for r in combos if not _has(r.reason.text + " " + r.caveat.text, r"hypothes")]
+    check("combination framed as hypothesis", not unframed, f"not framed as a hypothesis to test: {unframed}")
+
+    if a.decision_status in ("provisional_assessment", "premise_not_supported"):
+        check("nominal spectral range cited", a.spectral_ranges and all(e.citation.ref for e in a.spectral_ranges), "no cited nominal range")
+    else:
+        check("nominal spectral range cited", True)
+
+    present = {r.category for r in a.risks}
+    missing = [c for c in required_risks if c not in present]
+    check("standard risk categories", not missing, f"missing {missing}")
+
+    elements = [s.element for s in a.feasibility_plan.steps]
+    missing_steps = [alt[0] for alt in PLAN_REQUIRED if not any(e in elements for e in alt)]
+    texts = {s.element: s.text for s in a.feasibility_plan.steps}
+    content = []
+    if not _has(texts.get("spectra_with_reference", ""), r"referen", r"tim"):
+        content.append("spectra need independent reference + timing")
+    if not _has(texts.get("models_and_validation", ""), r"single", r"held.out|independent|validat"):
+        content.append("single-method first + held-out validation")
+    if not _has(texts.get("comparison", ""), r"error", r"bias"):
+        content.append("compare prediction error and bias")
+    not_proposal = [s.element for s in a.feasibility_plan.steps if s.basis != "proposal"]
+    check("feasibility plan: 4 elements", not missing_steps and not content and not not_proposal,
+          f"missing {missing_steps}; content {content}; not labelled proposal {not_proposal}")
+
+    check("decision basis: client-agreed + simplest", _has(a.decision_basis.text, r"client|agree", r"simpl"), "must say client-agreed criteria and simplest configuration")
+
+    over = [r.method for r in a.recommendations if r.confidence == "high" and a.key_unknowns]
+    check("no 'high' confidence while unknowns remain", not over, f"high confidence: {over}")
+
+    words = word_count(report_body(a, case_id))
+    check(f"report length {WORDS_MIN}-{WORDS_MAX} words", WORDS_MIN <= words <= WORDS_MAX, f"{words} words")
+    return items
+
+
+def rubric_flags(items: list[RubricItem]) -> list[Flag]:
+    """Failures the revision pass should fix."""
+    return [Flag(path="rubric", kind="rubric", detail=f"{i.check}: {i.detail}") for i in items if not i.passed]
+
+

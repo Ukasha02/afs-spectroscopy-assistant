@@ -181,7 +181,9 @@ def verify(assessment: Assessment, enquiry: str, questions: list[Question], tabl
     for path, s in _iter_plain_strings(data):
         if path.endswith("table_row"):  # copied from S01 Table 1 itself
             continue
-        strict = path.startswith(("assumptions", "key_unknowns"))
+        if path.startswith("spectral_ranges"):  # checked against their own citation below
+            continue
+        strict = path.startswith(("assumptions", "key_unknowns", "requirements_stated", "report_questions"))
         for value, unit in _numbers(s):
             if not _number_known(value, unit, client if strict else all_cited):
                 where = "the enquiry (assumptions need client numbers)" if strict else "the enquiry or any cited page"
@@ -189,8 +191,21 @@ def verify(assessment: Assessment, enquiry: str, questions: list[Question], tabl
 
     # A8.1: a recommendation needs AFS evidence, not general knowledge alone.
     for i, rec in enumerate(data["recommendations"]):
-        if rec["role"] != "not_recommended" and not any(st["basis"] == "sourced" for st in rec["rationale"]):
-            flags.append(Flag(path=f"recommendations[{i}].rationale", kind="basis", detail=f"'{rec['method']}' has no sourced rationale; general knowledge may only support"))
+        if rec["role"] != "not_recommended" and rec["reason"]["basis"] != "sourced":
+            flags.append(Flag(path=f"recommendations[{i}].reason", kind="basis", detail=f"'{rec['method']}': the reason must be sourced (an AFS application example); general knowledge may only support"))
+
+    # Spectral ranges: the nominal range must be on the page it cites.
+    for i, entry in enumerate(data["spectral_ranges"]):
+        check, text = _check_citation(f"spectral_ranges[{i}].citation", entry["citation"])
+        sources.append(check)
+        if not text:
+            flags.append(Flag(path=check.path, kind="quote", detail=f"{entry['citation']['ref']}: {check.status}"))
+        for value, unit in _numbers(entry["nominal_range"]):
+            if not _number_known(value, unit, client + " " + match_key(text)):
+                flags.append(Flag(path=f"spectral_ranges[{i}]", kind="number", detail=f"'{value}{unit}' not on the cited page {entry['citation']['ref']}"))
+        for value, unit in _numbers(entry.get("note") or ""):
+            if not _number_known(value, unit, all_cited + " " + match_key(text)):
+                flags.append(Flag(path=f"spectral_ranges[{i}].note", kind="number", detail=f"'{value}{unit}' not on any cited page"))
 
     for i, pc in enumerate(data["premise_checks"]):
         if pc["verdict"] != "supported":

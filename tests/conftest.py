@@ -35,27 +35,30 @@ def make_assessment():
     """Minimal valid Assessment; override parts via keyword arguments."""
 
     def _make(**over):
-        plan_st = st("agree with client", "assumption")
+        prop = lambda element, text: {"element": element, "text": text, "basis": "proposal", "citations": []}
         data = {
             "decision_status": "provisional_assessment",
             "status_reason": "r",
-            "summary_for_expert": "s",
-            "constraints": [],
-            "key_unknowns": [],
+            "requirements_stated": ["powder blend"],
+            "key_unknowns": ["concentration range"],
             "premise_checks": [],
-            "method_table_screening": [],
+            "report_questions": [{"question": f"q{i}?", "covers": c} for i, c in enumerate(["measured", "reference", "variation", "requirements"])],
             "recommendations": [],
-            "measurement_concept": {
-                "probe_type": "p", "geometry": "g", "location": "l", "fiber_family": "f",
-                "fiber_compatible": None, "architecture": "undecided", "rationale": [],
-            },
+            "method_table_screening": [],
+            "measurement_concept": {"items": [], "fiber_family": "f", "fiber_compatible": None, "architecture": "undecided", "needs_afs_confirmation": []},
+            "spectral_ranges": [],
             "risks": [],
             "assumptions": [],
             "feasibility_plan": {
-                "objective": "o", "methods_screened": [], "methods_compared": [],
-                "steps": [{"stage": "lab_screening", "aspect": "samples", **plan_st}],
+                "steps": [
+                    prop("representative_samples", "Representative samples across the client-agreed range."),
+                    prop("spectra_with_reference", "Spectra with independent reference measurements and timing information."),
+                    prop("models_and_validation", "Single-method models first, validated on held-out batches."),
+                    prop("comparison", "Compare prediction error and bias against the client's requirements."),
+                ],
                 "afs_next_path": "A", "afs_next_path_reason": "r",
             },
+            "decision_basis": st("Criteria agreed with the client; choose the simplest configuration.", "proposal"),
         }
         data.update(over)
         return schema.Assessment.model_validate(data)

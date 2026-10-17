@@ -117,9 +117,25 @@ def rule_hints(ex: ExtractedEnquiry) -> list[str]:
     return [f"{rid}: {rules[rid]['statement']} [{rules[rid]['src']}]" for rid in rules if rid in hits]
 
 
+def required_risk_categories(ex: ExtractedEnquiry) -> list[str]:
+    """Standard risk categories every answer must cover when they apply (worked-answer recipe).
+    Decided here, not by the model, so they do not vary between runs."""
+    required = ["no_guaranteed_gain", "nothing_confirmed"]  # nothing is measured at this stage
+    if ex.targets:  # a quantity is to be monitored -> a calibration will be built
+        required.insert(0, "calibration_validity")
+    if ex.sample_state not in ("unknown", "gas"):  # real samples vary physically
+        required.insert(1 if ex.targets else 0, "physical_variation")
+    if ex.fibers_mentioned or ex.remote_measurement:
+        required.append("fiber_link")
+    if ex.process_context == "clinical_or_medical":
+        required.append("evidence_scope")
+    return required
+
+
 def pre_analysis(ex: ExtractedEnquiry) -> dict:
     return {
         "table_shortlist": table_shortlist(ex),
         "fiber_checks": fiber_checks(ex),
         "rule_hints": rule_hints(ex),
+        "required_risk_categories": required_risk_categories(ex),
     }

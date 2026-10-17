@@ -9,6 +9,11 @@ needs_cache = pytest.mark.skipif(not config.CHUNKS_PATH.exists(), reason="run `m
 ENQ = "We measure moisture in a bulk powder from a control room."
 
 
+def claims(statements):
+    """Wrap test claims in a premise check (any labelled claim is verified the same way)."""
+    return [{"client_claim": "c", "verdict": "plausible_to_be_tested", "explanation": statements}]
+
+
 def flags(a, shortlist=()):
     """Verifier flags, ignoring the questionnaire-count check (these tests pass no questions)."""
     return [f for f in verify(a, ENQ, [], list(shortlist)).flags if f.kind != "questionnaire"]
@@ -38,7 +43,7 @@ def test_silica_fiber_conflicts_with_mir(extraction):
 
 @needs_cache
 def test_verified_quote_and_sourced_number_pass(make_assessment):
-    a = make_assessment(constraints=[st("NIR covers 780-2500 nm.", refs=["S01 p.10"], quote="NIR spectra (780–2500 nm) contain predominantly overtones")])
+    a = make_assessment(premise_checks=claims([st("NIR covers 780-2500 nm.", refs=["S01 p.10"], quote="NIR spectra (780–2500 nm) contain predominantly overtones")]))
     v = verify(a, ENQ, [], [])
     assert flags(a) == []
     assert v.counts["citations_verified"] == 1
@@ -46,7 +51,7 @@ def test_verified_quote_and_sourced_number_pass(make_assessment):
 
 @needs_cache
 def test_invented_number_is_flagged(make_assessment):
-    a = make_assessment(constraints=[st("Moisture between 0-30% is typical.", refs=["S01 p.10"])])
+    a = make_assessment(premise_checks=claims([st("Moisture between 0-30% is typical.", refs=["S01 p.10"])]))
     kinds = {(f.kind, f.detail.split("'")[1]) for f in flags(a)}
     assert ("number", "30%") in kinds
 
@@ -54,17 +59,17 @@ def test_invented_number_is_flagged(make_assessment):
 @needs_cache
 def test_number_from_uncited_page_is_flagged(make_assessment):
     """100-300 m is on S02 p.7, but this statement cites S01 p.10."""
-    a = make_assessment(constraints=[st("Cables reach 100-300 m.", refs=["S01 p.10"])])
+    a = make_assessment(premise_checks=claims([st("Cables reach 100-300 m.", refs=["S01 p.10"])]))
     assert any(f.kind == "number" for f in verify(a, ENQ, [], []).flags)
 
 
 @needs_cache
 def test_fake_quote_and_unknown_source_are_flagged(make_assessment):
     a = make_assessment(
-        constraints=[
+        premise_checks=claims([
             st("x", refs=["S01 p.10"], quote="Raman is always the best method for powders"),
             st("y", refs=["S09 p.3"]),
-        ]
+        ])
     )
     v = verify(a, ENQ, [], [])
     assert {"quote", "unsupported_sourced_claim"} <= {f.kind for f in v.flags}
@@ -81,7 +86,7 @@ def test_supported_verdict_on_limited_scope_source_is_flagged(make_assessment):
 
 @needs_cache
 def test_business_source_cannot_back_technical_claim(make_assessment):
-    a = make_assessment(constraints=[st("covers 0.3-16 um", refs=["S05 p.1"])])
+    a = make_assessment(premise_checks=claims([st("covers 0.3-16 um", refs=["S05 p.1"])]))
     assert any(f.kind == "scope" for f in verify(a, ENQ, [], []).flags)
 
 
@@ -117,9 +122,12 @@ def test_strict_assumption_numbers(make_assessment):
     assert any(f.kind == "number" and f.path.startswith("assumptions") for f in flags(a))
 
 
+def rec(method="NIR", role="primary", basis="sourced", reason="Supported by an application example.", caveat="Calibration must be built.", confidence="medium"):
+    return {"method": method, "geometry": "g", "role": role, "simplicity_rank": 1, "cost_complexity": "average",
+            "reason": st(reason, basis, refs=["S01 p.17"] if basis == "sourced" else []), "caveat": st(caveat, "sourced", refs=["S01 p.10"]),
+            "confidence": confidence, "confidence_reason": "r"}
+
+
 @needs_cache
-def test_recommendation_needs_sourced_rationale(make_assessment):
-    rec = {"method": "NIR", "technique_geometry": "g", "role": "primary", "simplicity_rank": 1, "cost_complexity": "average",
-           "spectral_range": None, "rationale": [st("works well", "general_knowledge")], "notes": [],
-           "confidence": "low", "confidence_reason": "r"}
-    assert any(f.kind == "basis" for f in flags(make_assessment(recommendations=[rec])))
+def test_recommendation_needs_sourced_reason(make_assessment):
+    assert any(f.kind == "basis" for f in flags(make_assessment(recommendations=[rec(basis="general_knowledge")])))

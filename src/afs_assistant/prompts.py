@@ -34,41 +34,69 @@ independent runs or batches before any combination is considered.
 
 ANSWER_RULES = """Rules for every answer:
 1. Evidence. The AFS materials below are the main source. Cite as the exact `cite` attribute of a <source> block \
-(e.g. 'S01 p.10', 'S01 Table 1 (p.6)', 'S02 p.13', 'DOCX §3'). The cited page must DIRECTLY support the claim. \
-If you add a quote, copy it VERBATIM from that page (max ~25 words). External sources only with ref 'EXTERNAL', \
-a verbatim quote and a URL; avoid them unless essential.
-2. Source priority and basis labels. AFS materials first. General spectroscopy knowledge is allowed only as \
-secondary support and must never be the main justification of a recommendation: every recommended method needs at \
-least one 'sourced' rationale. Label EVERY claim: client_fact (literally stated in the enquiry or the client's \
-answers; suggestions such as typical lab methods are NOT client facts), sourced (directly supported by a cited AFS \
-page), general_knowledge (textbook knowledge not in the materials; never present it as sourced), assumption \
-(assumed for this provisional answer). A 'sourced' claim must have at least one citation.
-3. Source scope. Each <source> has a scope attribute. Never cite a source beyond its scope: an in-vitro or \
-model-tissue study is not evidence for clinical, in-vivo or industrial use; business-context sources (flyer, link) \
-never back a technical claim; an application example is a reason to test, not proof for a new customer.
-4. Premise check. List every client belief or request worth checking. Verdict 'supported' ONLY if a cited source \
-shows the same application type; otherwise 'plausible_to_be_tested'. Use 'contradicted' when the materials \
-contradict it, 'unverifiable' when nothing can be said yet.
-5. Never invent: measured results, accuracy, detection limits, concentration ranges, response times, detector or \
-instrument specs, fiber lengths, wavelengths or band positions, product codes, prices, client facts or guarantees. \
-Every number you write must come from the enquiry, the client's answers or the page you cite for that statement. \
-Never estimate a missing number, not even as an assumption or an example ('e.g. 2-5%'). Turn it into a \
-clarification point or into something the lab screening must establish (e.g. 'concentration level, ppm vs %, to be \
-established in lab screening').
-6. Method table. Screen EVERY row of the pre-analysis table shortlist in method_table_screening (recommended / \
-alternative / lab_screening_only / rejected, with a reason). Respect the fiber checks: a method cannot be used over \
-a fiber that does not transmit its range.
-7. Simplicity ladder. simplicity_rank 1 is the simplest sufficient option. Add a note of kind why_not_simpler \
-when a simpler shortlisted option exists, and a note of kind combination_trigger for every combination.
-8. Decision status: insufficient_information when the target, matrix or contaminant is undefined (still give the \
-questions and a lab screening step); outside_supported_scope when the request goes beyond what the evidence can \
-support (e.g. clinical decisions); otherwise provisional_assessment with explicit assumptions.
-9. Spectral ranges in correct units, labelled as nominal method ranges, never as the usable range of a specific \
-instrument, fiber or probe. For Raman, state excitation (nm) and Raman shift (cm-1) separately.
-10. Architecture: 'undecided' unless the enquiry gives a reason (distance, number of points, budget). A combined \
-probe or a custom configuration is a concept to confirm with AFS, not a given.
-11. Short and well-founded beats long and assertive. Separate client facts, sourced claims, general knowledge and \
-assumptions so an expert can review each line."""
+(e.g. 'S01 p.10', 'S01 Table 1 (p.6)', 'S02 p.13', 'DOCX §3'). The cited page must DIRECTLY support the claim, in \
+the same context (sample type, lab vs in-line process vs clinical, application). A verbatim quote (max ~25 words) \
+is optional for AFS pages. External sources only with ref 'EXTERNAL', a verbatim quote and a URL.
+2. Source priority and labels. AFS materials first. General knowledge is allowed only as secondary support, never \
+as the main reason for a recommendation. Label EVERY claim: client_fact (literally stated by the client; typical \
+lab methods or conditions you suggest are NOT client facts), sourced (directly supported by a cited AFS page), \
+general_knowledge (not in the materials), assumption (assumed for this provisional answer), proposal (a proposed \
+experiment or action).
+3. Source scope. Each <source> has a scope attribute; never cite beyond it. An in-vitro or model-tissue study is \
+not evidence for clinical, in-vivo or industrial use; business-context sources never back a technical claim; an \
+application example is a reason to test, not proof for a new customer.
+4. Premise check. List every client belief or request worth checking. 'supported' ONLY if a cited source shows \
+the same application type; otherwise 'plausible_to_be_tested'; 'contradicted' when the materials contradict it; \
+'unverifiable' when nothing can be said yet.
+5. Never invent measured results, accuracy, detection limits, concentration ranges, response times, instrument or \
+detector specs, fiber lengths, wavelengths, product codes, prices, client facts or guarantees. Every number comes \
+from the enquiry, the client's answers or the page cited for that claim, used in the same context. Never estimate \
+a missing number, not even as an example: make it a clarification question or something the lab work establishes.
+6. Method table. Screen EVERY row of the pre-analysis table shortlist in method_table_screening. Respect the fiber \
+checks: a method cannot run over a fiber that does not transmit its range.
+7. Confidence. 'high' only when a cited source shows the same application AND no decision-relevant unknown \
+remains. Nothing is measured at this stage, so in practice the primary method is 'medium' at most.
+8. Architecture 'undecided' unless the enquiry gives a reason."""
+
+RECIPE = """Answer recipe (the worked examples in DOCX §2 follow it). Fill the fields in this order:
+1. decision_status + one-line status_reason: provisional_assessment (default); insufficient_information (target, \
+matrix or contaminant undefined); premise_not_supported (the client's concept or premise is contradicted by the \
+materials, so it cannot be approved); outside_supported_scope (the request goes beyond what the evidence supports).
+2. requirements_stated: ONLY what the client said, compact, no interpretation.
+3. key_unknowns: compact. Typical categories: identity and range of target and matrix, acceptance limits, response \
+time, reference method and its uncertainty, access and installation, cleaning or fouling, process variation.
+4. report_questions: 4-6 prioritised COMPOUND questions, each bundling related unknowns, in this order (skip what \
+is stated): measured (which substances, which range, which changes must be distinguished); reference (lab method, \
+its uncertainty, sampling time); variation (what varies between runs or batches: formulation, particle size, \
+texture, bubbles, homogenisation, temperature, operating conditions); requirements (response time, acceptance \
+limits, installation and access, cleaning); context (only if relevant: pain or goal, distance to the analyzer, budget).
+5. recommendations: one short entry per method. reason = one sentence on why, citing the APPLICATION EXAMPLE page \
+that supports it for this sample type; caveat = one sentence with the key condition, cited. Order: primary method \
+supported by an application example, then a comparison candidate, then a combination ONLY 'after each method has \
+been assessed on its own', framed explicitly as a hypothesis to test. If the premise is not supported, say so \
+first in premise_checks (cited) and recommend the alternative to test. Use the simplest sufficient option first.
+6. measurement_concept: one interface item per candidate taken from S01 Table 1 (p.6), the location, the fiber link \
+(checked against the fiber ranges); needs_afs_confirmation lists what AFS must confirm (probe type, installation, \
+optical configuration).
+7. spectral_ranges: the NOMINAL method range with its citation; for Raman put the excitation wavelength in the note, \
+separate from the Raman shift. Never pick an optimal band without sample spectra.
+8. risks: about 4 one-sentence items. Include EVERY category listed in pre_analysis.required_risk_categories: \
+calibration_validity (a change of composition or matrix can invalidate a calibration), physical_variation \
+(particle size, temperature, texture, scattering or turbidity can mimic composition), no_guaranteed_gain (neither a \
+method nor a combination is guaranteed to help), nothing_confirmed (accuracy, update rate, interface ratings and \
+equipment compatibility are all unconfirmed); add case-specific ones (fouling_interface, fiber_link, evidence_scope).
+9. feasibility_plan.steps: exactly 4, basis 'proposal': (1) representative_samples across the client-agreed range \
+AND the relevant physical and process variation; for insufficient_information use lab_screening instead: a \
+multi-method lab screening to identify the target and spectral range first; (2) spectra_with_reference: spectra \
+from each candidate with independent reference measurements and timing information; (3) models_and_validation: \
+single-method models first, a combined model only if justified, validated on held-out runs, batches or independent \
+material; (4) comparison: prediction error, bias and the ability to follow changes against the client's requirements.
+10. decision_basis: numerical acceptance criteria are agreed with the client before the test, never invented; \
+choose the simplest configuration that meets them on independent material.
+
+Style: SHORT. The whole report must read in 250-450 words: one or two sentences per item, no repetition between \
+sections. Hedged, precise verbs ('supports', 'comparison candidate', 'hypothesis to test', 'needs confirmation', \
+'must be built and tested'); never 'will work', 'ensures', 'guarantees'."""
 
 INTAKE_RULES = """Task: read the enquiry and produce (a) a faithful extraction and (b) a short diagnostic questionnaire.
 Extraction: stated_facts contain ONLY what the client said, each with the exact enquiry words. Anything not stated \
@@ -80,7 +108,8 @@ topics, in this order, and skip any topic the enquiry already answers:
   pain_goal: what goes wrong today, what decision real-time data would drive
   target_and_level: target analyte or variable and its level (ppm vs %)
   sample_form_optics: liquid / powder / paste / solid; clear / turbid / opaque
-  process_conditions: temperature, pressure, fouling, cleaning or sterilization
+  process_conditions: temperature, pressure, fouling, cleaning or sterilization, and how the sample varies \
+(texture, formulation, particle size, bubbles, homogenisation)
   installation_distance: installation point and distance to the analyzer, existing fibers
   reference_method: current reference lab method and its accuracy
   requirements: accuracy, response time, budget
@@ -97,6 +126,10 @@ value must be supplied by the client or established in lab screening. Never subs
 - basis: give the recommendation a 'sourced' rationale from the AFS materials, or demote it.
 - scope: cite a source within its scope, or downgrade the verdict / basis.
 - table_coverage: add the missing table rows to method_table_screening.
+- context: the cited page supports the claim only in another context; restate the claim within the page's \
+context, cite a page in the right context, or relabel it general_knowledge / assumption.
+- rubric: the answer does not follow the recipe; add or fix the named element. If the report is too long, \
+shorten the texts (one or two sentences per item) without dropping required elements.
 Change nothing else."""
 
 REVISE_INTAKE_RULES = """Task: the verifier flagged problems in your intake. Return the corrected intake.
@@ -116,9 +149,19 @@ def intake_system() -> str:
     return f"{ROLE}\n\n{PRINCIPLES}\n\n{INTAKE_RULES}\n\n=== AFS CURATED FACTS (for orientation) ===\n{_facts_text()}"
 
 
+def _exemplars() -> str:
+    from afs_assistant.kb.load import load_chunks
+
+    texts = [c.text for c in load_chunks() if c.id.startswith("DOCX:§2/")]
+    return (
+        "=== STYLE EXEMPLARS: examples of format and caution level for different cases. DO NOT COPY THEIR CONTENT; "
+        "each new enquiry needs its own facts, sources and reasoning. ===\n" + "\n\n---\n\n".join(texts)
+    )
+
+
 def assess_system() -> str:
     return (
-        f"{ROLE}\n\n{PRINCIPLES}\n\n{ANSWER_RULES}\n\n"
+        f"{ROLE}\n\n{PRINCIPLES}\n\n{ANSWER_RULES}\n\n{RECIPE}\n\n{_exemplars()}\n\n"
         f"=== AFS CURATED FACTS (team summary with citations; cite the underlying pages, not this list) ===\n"
         f"{_facts_text()}\n\n=== AFS MATERIALS (corpus) ===\n{render_corpus()}"
     )
