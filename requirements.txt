@@ -1,5 +1,5 @@
-anthropic==1.15.0
 fonttools==4.67.0
+google-genai==2.31.0
 openpyxl==3.1.5
 pydantic==2.14.1
 pypdf==6.21.1

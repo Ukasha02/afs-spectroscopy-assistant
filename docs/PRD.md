@@ -103,7 +103,7 @@ The users are an AFS application expert preparing or running a first customer co
    - Builds a fiber×method spectral compatibility matrix and flags any fiber the client stated.
    - Runs the **simplicity ladder**: candidates are ordered by Table 1 cost, the number of methods, and the fiber or probe complexity.
    - Lists the general rules that may apply.
-4. **Assess** (`claude-opus-5-5`, adaptive thinking, effort `high`, structured output):
+4. **Assess** (model from `.env`, default `gemini-3.8-flash`, thinking level `medium`/`high`, structured output):
    - Recommends the **simplest single method that plausibly fits**.
    - Adds a second method only with a stated `combination_trigger`.
    - Never recommends the expensive option without a reason, and doesn't default to Raman because it's popular.
@@ -142,14 +142,14 @@ The users are an AFS application expert preparing or running a first customer co
   - H01–H06 are generated once from a tagged commit (`run-all --set H`, one-shot mode), logged, and **never edited**.
 
 ## 8. Prototype, stack and keys
-- **Stack:** Python 3.11 venv with `anthropic`, `pydantic`, `pypdf`, `python-docx`, `openpyxl`, `pyyaml`, `rapidfuzz`, `streamlit`.
-- **`src/afs_assistant/`:** `llm.py` (provider wrapper: `LLM_PROVIDER=anthropic|bedrock`), `kb/`, `schema.py`, `questionnaire.py`, `rules.py`, `pipeline.py`, `verify.py`, `render.py`, `cli.py`.
+- **Stack:** Python 3.11 venv with `google-genai`, `pydantic`, `pypdf`, `python-docx`, `openpyxl`, `pyyaml`, `rapidfuzz`, `streamlit`.
+- **`src/afs_assistant/`:** `llm.py` (single entry point `call_llm()`; `LLM_PROVIDER=gemini` now, OpenRouter/Claude planned for model comparison), `kb/`, `schema.py`, `questionnaire.py`, `rules.py`, `pipeline.py`, `verify.py`, `render.py`, `cli.py`.
 - **Streamlit flow:**
   1. Enter an enquiry, or pick a D/H case.
   2. The questionnaire appears, with an answer box per question and a skip option.
   3. The recommendation is shown in tabs, with a sources panel and the verification report.
   4. A "one-shot" toggle skips the questionnaire pause.
-- **Model:** `claude-opus-5-5` with adaptive thinking, streaming and the cached KB prefix; settings are logged per run.
+- **Model:** Gemini via `google-genai` (`LLM_MODEL`, `LLM_THINKING_LEVEL`, `LLM_MAX_OUTPUT_TOKENS`, `LLM_SEED` from `.env`; default temperature as Google recommends for Gemini 3; no web/search tools). Model, settings and timestamp are logged with every output.
 - Keys live in `.env`. One-command reproduction: `make kb && make h`.
 
 ## 9. Timeline (solo)

@@ -1,0 +1,318 @@
+{
+  "output": {
+    "decision_status": "provisional_assessment",
+    "status_reason": "Soil monitoring for moisture and hydrocarbons is technically feasible in principle using near-infrared (NIR) diffuse reflectance or mid-infrared (MIR) spectroscopy, but key sample characteristics (soil matrix, concentration ranges, target hydrocarbons, distance, and probe fouling constraints) must be clarified.",
+    "summary_for_expert": "The client seeks remote in-situ monitoring of moisture and hydrocarbon contamination in humid, dirty soil. NIR diffuse reflectance via low-OH silica fiber is the most practical primary candidate for remote monitoring over distance, while mid-IR ATR or an IoT sensor node represents an alternative if low detection limits for specific hydrocarbons require fundamental vibrational bands. Laboratory screening on representative soil matrices is required before specifying field hardware.",
+    "constraints": [
+      "Remote measurement requirement across unspecified distance in the field",
+      "Harsh, humid, and dirty operating environment posing fouling and abrasion risks to optical interfaces",
+      "Heterogeneous particulate soil matrix with varying moisture and organic matter"
+    ],
+    "key_unknowns": [
+      "Target hydrocarbon types, expected concentration ranges (ppm vs. percentage levels), and required detection limits",
+      "Exact meaning of 'remote' (distance between spectrometer/control unit and measurement point: meters vs. hundreds of meters)",
+      "Soil physical form (dry particulate, damp soil, saturated slurry, compaction)",
+      "Fouling and maintenance conditions (access for cleaning, window washing, or purging)",
+      "Reference analytical methods currently used for moisture and hydrocarbon validation"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "Moisture and hydrocarbon contamination in soil can be monitored spectroscopically and remotely",
+        "verdict": "supported",
+        "explanation": [
+          {
+            "text": "Fiber-optic spectroscopy enables remote sampling-free measurements in situ, including ecological and soil monitoring applications.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S04 p.1",
+                "quote": "Modern applications of fiber-probe optical spectroscopy include in-line control of industrial processes, field analysis in agriculture, ecological monitoring, and medical diagnostics.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Robust 100-300 m cables made with low-OH silica fibers enable remote process control in the Vis-NIR range.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.7",
+                "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Moisture and hydrocarbons exhibit characteristic absorption bands across the NIR and MIR spectral regions.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.18",
+                "quote": "1.3-1.7 / 1.5-2.0 / 1.7-2.2 moisture, polymers, API, ethanol; 3.0-3.7 / 3.7-4.5 hydrocarbons, CO2",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "Optical probes can operate reliably in a humid and dirty soil environment",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "While industrial probes feature robust protective materials such as PEEK tubing, sapphire windows, or sealed shafts, dirty and humid soil can cause severe optical window fouling, mud adherence, or mechanical abrasion that must be tested experimentally.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.13",
+                "quote": "ATR-Probes with ATR-tips from ZrO2 (& Diamond, etc.) sealed in PEEK-shaft and protected by PEEK-tubing can be used in microwave furnaces",
+                "url": null
+              },
+              {
+                "ref": "S03 p.5",
+                "quote": "Additionally, the built-in sapphire window protected the fibers and facilitated the probe cleaning.",
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR",
+        "technique_geometry": "diffuse reflection probe",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "rationale": [
+          {
+            "text": "NIR diffuse reflectance is well-suited for scattering solids and powders without sample preparation, capturing water absorption bands and C-H overtone bands.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.10",
+                "quote": "NIR spectra (780-2500 nm) contain predominantly overtones and component bands of fundamental vibrations of molecules and atomic groups, such as -OH, -NH2=NH, -CH3, =CH2, >=CH, etc.",
+                "url": null
+              },
+              {
+                "ref": "S01 Table 1 (p.6)",
+                "quote": null,
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Silica fiber cables can transmit NIR radiation over long distances (100-300 m) required for remote field operation.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.7",
+                "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+                "url": null
+              }
+            ]
+          }
+        ],
+        "why_not_simpler": null,
+        "combination_trigger": null,
+        "conditions": [
+          "Hydrocarbon contamination levels are within the NIR detection range (typically tenths of a percent or higher, rather than trace ppb)",
+          "Distance between probe and spectrometer can be spanned by low-OH silica cables"
+        ],
+        "spectral_range": {
+          "value": "780-2500 nm",
+          "note": "Nominal method range for NIR spectroscopy; usable range depends on specific spectrometer detector (e.g. InGaAs 900-1700 nm or extended InGaAs) and fiber attenuation."
+        },
+        "confidence": "medium",
+        "confidence_reason": "Supported by general diffuse reflection principles on particulate matrices, but hydrocarbon sensitivity in soil at field concentrations remains unverified."
+      },
+      {
+        "method": "MIR (ATR)",
+        "technique_geometry": "ATR probe",
+        "role": "alternative",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "rationale": [
+          {
+            "text": "MIR fundamental vibrational bands (3.0-3.7 um for hydrocarbons, 3800-3000 cm-1 for water) provide higher chemical selectivity and sensitivity than NIR overtones.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.9",
+                "quote": "Vibrational spectroscopy in the mid-IR range (4000-400 cm-1) is one of the most informative methods of chemical analysis.",
+                "url": null
+              },
+              {
+                "ref": "S02 p.13",
+                "quote": null,
+                "url": null
+              },
+              {
+                "ref": "S02 p.18",
+                "quote": "3.0-3.7 / 3.7-4.5 hydrocarbons, CO2",
+                "url": null
+              }
+            ]
+          }
+        ],
+        "why_not_simpler": "Requires expensive polycrystalline (PIR) fibers and robust ATR crystals (diamond/ZrO2), which suffer higher optical attenuation over long fiber lengths compared to silica NIR cables.",
+        "combination_trigger": null,
+        "conditions": [
+          "Soil or sediment can achieve direct, tight contact with the ATR crystal surface (e.g., damp paste or slurry)",
+          "The spectrometer is located close to the sampling point (short PIR cable) or an IoT sensor head is deployed locally"
+        ],
+        "spectral_range": {
+          "value": "4000-400 cm-1 (2.5-25 um)",
+          "note": "Nominal mid-IR range. PIR fibers transmit across 3-17 um, covering hydrocarbon C-H stretches around 3.0-3.7 um."
+        },
+        "confidence": "low",
+        "confidence_reason": "ATR requires close optical contact with the sample surface, which is difficult to ensure reproducibly in coarse or particulate soil without sample compaction."
+      }
+    ],
+    "measurement_concept": {
+      "probe_type": "Industrial diffuse reflection probe with protected sapphire window",
+      "geometry": "Diffuse reflection (contact or fixed distance)",
+      "location": "Directly inserted into or placed flush against the soil sampling zone",
+      "fiber_link": {
+        "family": "Low-OH silica fibers (Vis-NIR)",
+        "compatible": true,
+        "check_note": "Silica fiber cables with metal or protective jackets can bridge up to 100-300 m with low OH absorption bands."
+      },
+      "architecture": "undecided",
+      "rationale": [
+        {
+          "text": "If long fiber runs (up to 100-300 m) to a central shelter are preferred, a centralized analyzer with silica cables is viable. Alternatively, if distance exceeds fiber capabilities or wireless telemetry is required, a compact IoT sensor head sending data wirelessly to the cloud is supported.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.7",
+              "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+              "url": null
+            },
+            {
+              "ref": "S02 p.18",
+              "quote": "Sensors installed in measuring points and send results via wires, Ethernet, Wi-Fi, etc.",
+              "url": null
+            }
+          ]
+        }
+      ]
+    },
+    "risks": [
+      {
+        "risk": "Fouling of the probe optical window by wet mud, biological matter, or dirt, blocking optical transmission or reflection",
+        "type": "technical",
+        "mitigation": "Incorporate a mechanical wiper, automated air/water jet cleaning, or an angled protective sapphire window that facilitates cleaning.",
+        "citations": [
+          {
+            "ref": "S03 p.5",
+            "quote": "Additionally, the built-in sapphire window protected the fibers and facilitated the probe cleaning.",
+            "url": null
+          }
+        ]
+      },
+      {
+        "risk": "Hydrocarbon concentration in contaminated soil may fall below the detection threshold of NIR diffuse reflectance (trace ppm levels)",
+        "type": "technical",
+        "mitigation": "Establish sensitivity and detection limits on spiked soil samples during initial lab screening; test MIR ATR if higher sensitivity is required.",
+        "citations": [
+          {
+            "ref": "S01 Table 1 (p.6)",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "risk": "Soil particle size, mineralogy, compaction, and moisture fluctuations create strong baseline shifts and scattering interference",
+        "type": "technical",
+        "mitigation": "Apply chemometric scatter corrections (such as SNV, MSC, or second derivatives) and build multivariate calibration models across diverse soil moisture and texture states.",
+        "citations": [
+          {
+            "ref": "S01 p.17",
+            "quote": "Data processing may involve converting the reflectance values to absorbance and applying Multiplicative Scatter Correction (MSC) or Standard Normal Variate (SNV) transformations",
+            "url": null
+          },
+          {
+            "ref": "S03 p.7",
+            "quote": "A data transformation into second derivatives (Figure 5b) revealed a number of variables enabling an unambiguous differentiation",
+            "url": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Target hydrocarbon concentrations are high enough to be detected optically without chromatographic separation",
+      "Soil can be brought into reproducible contact or proximity with the probe face",
+      "Remote distance is compatible with silica fiber runs or field IoT connectivity"
+    ],
+    "feasibility_plan": {
+      "objective": "Evaluate the feasibility of measuring moisture and target hydrocarbons in representative soil samples using fiber-optic spectroscopy under controlled and dirty conditions.",
+      "lab_screening": {
+        "samples": "Representative soil matrices (sand, loam, clay) spiked with varying known moisture levels (0-30%) and target hydrocarbons across expected concentration ranges.",
+        "establish": [
+          "Usable spectral features and absorption bands for water and hydrocarbons",
+          "Limit of detection and sensitivity for hydrocarbons against varying water backgrounds",
+          "Effect of soil particle size and scattering on baseline stability"
+        ],
+        "methods_screened": [
+          "NIR diffuse reflection",
+          "MIR ATR (using ZrO2 or diamond crystal)"
+        ]
+      },
+      "method_comparison": {
+        "methods": [
+          "NIR diffuse reflection",
+          "MIR ATR"
+        ],
+        "reference_method": "Client-validated laboratory reference methods (e.g. gravimetric drying or Karl Fischer for moisture; GC-FID or solvent extraction for hydrocarbons)",
+        "compare_on": [
+          "Prediction accuracy (RMSEP) for water and hydrocarbons",
+          "Robustness to soil matrix variability and moisture interference",
+          "Susceptibility to window fouling and ease of optical surface cleaning"
+        ],
+        "decision_basis": "Agreement on client-specified accuracy limits, detection threshold for hydrocarbons, and probe maintenance requirements on independent validation sets."
+      },
+      "inline_trial": {
+        "location": "Pilot outdoor soil lysimeter, soil flow channel, or field test pit",
+        "interface": "Robust diffuse reflectance probe with sapphire window and protective PEEK sleeve",
+        "what_to_verify": [
+          "Signal stability over time in a humid, dirty outdoor environment",
+          "Window fouling rates and recovery after cleaning/purging",
+          "Correlation of real-time optical predictions with grab-sample laboratory assays"
+        ]
+      },
+      "scale_up": {
+        "robustness": "Ensure probe housing meets ingress protection and corrosion standards against soil moisture and chemical contaminants.",
+        "cleaning_sterilization": "Implement automated wash/purge cycles or scheduled optical window inspections suited for soil contact.",
+        "industry_standards": "Comply with environmental monitoring and ATEX/safety ratings if monitoring volatile hydrocarbons in confined spaces.",
+        "few_wavelength_simplification": "If specific key NIR wavelengths (e.g., water bands at 1.45 um and hydrocarbon C-H bands at 1.7 um) are proven sufficient, migrate to an LED/photodiode IoT sensor head."
+      },
+      "afs_next_path": "A",
+      "afs_next_path_reason": "Step 1 and 2 screening must identify the key spectral features and establish chemometric calibration models (Path A) before committing to a custom spectrometer setup (Path B) or a dedicated IoT sensor (Path C)."
+    }
+  },
+  "meta": {
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "thinking_level": "medium",
+    "max_output_tokens": 16384,
+    "seed": 42,
+    "timestamp": "2026-10-17T12:50:04.476627+00:00",
+    "duration_s": 35.6,
+    "finish_reason": "FinishReason.STOP",
+    "usage": {
+      "candidates_token_count": 3611,
+      "prompt_token_count": 46491,
+      "prompt_tokens_details": [
+        {
+          "modality": "TEXT",
+          "token_count": 46491
+        }
+      ],
+      "thoughts_token_count": 1254,
+      "total_token_count": 51356
+    }
+  }
+}

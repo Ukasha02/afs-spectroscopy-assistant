@@ -16,9 +16,7 @@ FACTS_PATH = KB_DIR / "facts.yaml"
 FIGURE_NOTES_PATH = KB_DIR / "figure_notes.yaml"
 OUTPUTS_DIR = REPO_ROOT / "outputs"
 
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "anthropic")  # anthropic | bedrock
-MODEL = os.getenv("AFS_MODEL", "claude-opus-5-5")
-EFFORT = os.getenv("AFS_EFFORT", "high")
+# LLM settings (LLM_*) are read in afs_assistant/llm.py.
 
 # Source files as named in the challenge materials. The ID is what the assistant cites.
 SOURCE_FILES = {
