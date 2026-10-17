@@ -6,6 +6,7 @@ answer the questions, then calls run_assessment() with those answers.
 
 import subprocess
 import time
+from collections.abc import Callable
 from datetime import datetime, timezone
 
 from afs_assistant import prompts, rules
@@ -16,6 +17,14 @@ from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
 PIPELINE_VERSION = "0.6.0"
+Progress = Callable[[str], None] | None  # optional UI hook: called with the step about to run
+
+
+def _step(progress: Progress, name: str) -> None:
+    if progress:
+        progress(name)
+
+
 _REVISE_ON = {"quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage"}
 
 
@@ -40,8 +49,9 @@ def _apply_fiber_verdict(assessment: Assessment, ex, pre: dict) -> Assessment:
     return assessment
 
 
-def run_intake(enquiry: str) -> tuple[Intake, list[dict]]:
+def run_intake(enquiry: str, progress: Progress = None) -> tuple[Intake, list[dict]]:
     """Extraction + questionnaire, verified; one revision if a question invents numbers or breaks the order."""
+    _step(progress, "Intake")
     res = call_llm(prompts.intake_system(), prompts.intake_user(enquiry), Intake, stage="intake")
     intake = Intake.model_validate(res["output"])
     calls = [res["meta"]]
@@ -60,22 +70,26 @@ def run_assessment(
     intake_calls: list[dict],
     answers: dict[str, str] | None = None,
     mode: str = "one_shot",
+    progress: Progress = None,
 ) -> CaseResult:
     started = time.monotonic()
     timestamp = datetime.now(timezone.utc).isoformat()
     for q in intake.questions:
         if answers and answers.get(q.id):
             q.answer = answers[q.id]
+    _step(progress, "Rule checks")
     pre = rules.pre_analysis(intake.extraction)
     intake_dict = intake.model_dump()
     calls = list(intake_calls)
 
+    _step(progress, "Assessment")
     res = call_llm(prompts.assess_system(), prompts.assess_user(enquiry, intake_dict, pre), Assessment, stage="assess")
     calls.append(res["meta"])
     ex = intake.extraction
     assessment = _apply_fiber_verdict(Assessment.model_validate(res["output"]), ex, pre)
     required = pre["required_risk_categories"]
 
+    _step(progress, "Verification")
     report = verify(assessment, enquiry, intake.questions, pre["table_shortlist"], ex.process_context)
     context_flags, critic_meta = critique(assessment)
     if critic_meta:
@@ -84,6 +98,7 @@ def run_assessment(
     to_fix = [f for f in report.flags if f.kind in _REVISE_ON] + context_flags + rubric_flags(checks)
 
     if to_fix:
+        _step(progress, "Revision")
         res = call_llm(prompts.revise_system(), prompts.revise_user(assessment.model_dump(), [f.model_dump() for f in to_fix]), Assessment, stage="revise")
         calls.append({"flags_sent": len(to_fix), **res["meta"]})
         assessment = _apply_fiber_verdict(Assessment.model_validate(res["output"]), ex, pre)
@@ -116,7 +131,7 @@ def run_assessment(
     )
 
 
-def run_case(case_id: str, enquiry: str) -> CaseResult:
+def run_case(case_id: str, enquiry: str, progress: Progress = None) -> CaseResult:
     """One-shot mode: questionnaire + provisional assessment in a single result."""
-    intake, calls = run_intake(enquiry)
-    return run_assessment(case_id, enquiry, intake, calls)
+    intake, calls = run_intake(enquiry, progress)
+    return run_assessment(case_id, enquiry, intake, calls, progress=progress)

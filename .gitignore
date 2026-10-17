@@ -35,3 +35,4 @@ build/
 QA_AND_DOMAIN_REFERENCE.md
 kb/cache/
 *.egg-info/
+.streamlit/secrets.toml

@@ -58,6 +58,22 @@ Each run writes `outputs/<case>.json` (full labelled data, verification report, 
 compatibility, required risk categories) → assessment (full AFS corpus in the prompt) → deterministic
 verifier (quotes, numbers, source scope) + LLM context critic + rubric → one revision pass.
 
+## Web app
+
+**Hosted:** _URL added after deployment_ (Streamlit Community Cloud).
+
+- **Results library (free, default):** browse the pre-generated reports for D01–D08, our adversarial cases and H01–H06. No API calls.
+- **Live mode:** runs the real pipeline on a new enquiry, optionally asking the clarification questions first. It's protected by an **access code, provided in the submission**, and limited to 3 runs per session plus the spend-ledger budget guard.
+- Each report shows the decision status, the 11 sections, each claim's basis (client fact / AFS source / general knowledge / assumption / proposal), clickable citation chips (source, page, scope, verified quote), the verification details and the rule checks.
+
+Run locally:
+
+```bash
+.venv/bin/streamlit run app/streamlit_app.py
+```
+
+Live mode locally: set `ACCESS_CODE=...` in `.env`. On the hosted app, `kb/cache/` is downloaded at startup from a private repo using a read-only token (`KB_REPO`, `KB_TOKEN` in the host's secrets). The AFS texts are never in this public repo. Prototype built for Art Fiber Systems · SchubKI National AI Hackathon 2026; not an official AFS product.
+
 ## Contributing
 
 - **One branch per feature** (`feat/kb-parsing`, `fix/citations`, …). Open a PR into `main`, and don't push directly to it.
