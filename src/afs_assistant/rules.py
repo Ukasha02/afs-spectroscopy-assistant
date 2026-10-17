@@ -127,10 +127,25 @@ def fiber_verdict(methods: list[str], ex: ExtractedEnquiry, fc: dict) -> tuple[b
         for m in ids:
             parts.append(f"{m}: " + ", ".join(f"{names[f]} {fc['per_method'][m]['fibers'][f]}" for f in client))
         return ok, "Rule check of the stated fiber: " + "; ".join(parts) + "."
+    fc_ranges = {f["id"]: f["range_um"] for f in facts["fibers"]}
+    method_ranges = {m["id"]: m["range_um"] for m in facts["methods"]}
+    short = {"UV_SILICA": "UV-Vis silica", "VISNIR_SILICA": "Vis-NIR silica", "CIR": "chalcogenide IR (CIR)",
+             "PIR": "polycrystalline IR (PIR)", "HWG": "hollow waveguide", "INF3": "InF3", "ZRF4": "ZrF4"}
     for m in ids:
-        full = [names[f] for f, cov in fc["per_method"][m]["fibers"].items() if cov == "full"]
-        partial = [names[f] for f, cov in fc["per_method"][m]["fibers"].items() if cov.startswith("partial")]
-        parts.append(f"{m} full range: {', '.join(full) or 'no single fiber'}; partial: {', '.join(partial) or '-'}")
+        cov = fc["per_method"][m]["fibers"]
+        silica = cov["VISNIR_SILICA"] if m != "UVVIS" and m != "FLUO" else cov["UV_SILICA"]
+        silica_name = "Vis-NIR silica" if m not in ("UVVIS", "FLUO") else "UV-Vis silica"
+        if silica == "full":
+            parts.append(f"{m}: {silica_name} covers the nominal range")
+        elif silica.startswith("partial"):
+            parts.append(f"{m}: {silica_name} partial ({silica.split('(')[1].split(' of')[0]})")
+        else:  # silica cannot carry it: name the IR fiber with the widest coverage
+            def overlap(f):
+                lo, hi = fc_ranges[f]
+                return max(0.0, min(hi, method_ranges[m][1]) - max(lo, method_ranges[m][0]))
+            # HWG excluded: poor coupling to FTIR compared with PIR fibers [S02 p.10]
+            best = max(("PIR", "CIR", "INF3", "ZRF4"), key=overlap)
+            parts.append(f"{m}: {silica_name} no coverage; {short[best]} {cov[best].split(' of')[0]}" + (")" if "(" in cov[best] else ""))
     return None, "No fiber link stated. Rule check: " + "; ".join(parts) + "."
 
 
