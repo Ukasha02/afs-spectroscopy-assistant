@@ -62,7 +62,7 @@ def critique(assessment: Assessment) -> tuple[list[Flag], dict | None]:
         "Pages:\n" + "\n\n".join(f'<page id="{pid}">\n{text}\n</page>' for pid, text in pages.items())
         + "\n\nClaims:\n" + json.dumps(claims, indent=1, ensure_ascii=False)
     )
-    res = call_llm(CRITIC_SYSTEM, user, CriticOutput)
+    res = call_llm(CRITIC_SYSTEM, user, CriticOutput, thinking_level="low")
     out = CriticOutput.model_validate(res["output"])
     flags = [
         Flag(path=i.claim_id, kind="context", detail=f"{i.problem}: {i.explanation} Fix: {i.fix}")

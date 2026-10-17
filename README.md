@@ -41,7 +41,22 @@ make test
 
 `make kb` extracts every PDF page, the method table and the docx into `kb/cache/` (gitignored, because the materials may not be redistributed). Content that exists only as images (the S02 slides, S01 figures, S05 flyer) is covered by our own transcriptions in [kb/figure_notes.yaml](kb/figure_notes.yaml). Curated facts and general rules with page references are in [kb/facts.yaml](kb/facts.yaml).
 
-_Running the assistant: coming soon._
+## Running the assistant
+
+```bash
+.venv/bin/python -m afs_assistant.cli run --case D01            # one development case
+.venv/bin/python -m afs_assistant.cli run --text "We need ..."   # a new enquiry (saved as outputs/NEW.*)
+.venv/bin/python -m afs_assistant.cli run-all --set H           # final evaluation cases H01-H06
+make eval                                                       # D01-D08 + rubric table + diff vs worked answers
+make eval-score                                                 # re-score existing outputs, no API calls
+```
+
+Each run writes `outputs/<case>.json` (full labelled data, verification report, rubric, run metadata) and
+`outputs/<case>.md` (the expert report in the worked-answer layout).
+
+**Pipeline:** intake (facts + 5-10 diagnostic questions) → rule checks (S01 Table 1 shortlist, fiber
+compatibility, required risk categories) → assessment (full AFS corpus in the prompt) → deterministic
+verifier (quotes, numbers, source scope) + LLM context critic + rubric → one revision pass.
 
 ## Contributing
 

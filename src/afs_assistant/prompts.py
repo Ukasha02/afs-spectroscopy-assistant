@@ -58,7 +58,7 @@ checks: a method cannot run over a fiber that does not transmit its range.
 remains. Nothing is measured at this stage, so in practice the primary method is 'medium' at most.
 8. Architecture 'undecided' unless the enquiry gives a reason."""
 
-RECIPE = """Answer recipe (the worked examples in DOCX §2 follow it). Fill the fields in this order:
+RECIPE = """Answer recipe (the style exemplars below follow it). Fill the fields in this order:
 1. decision_status + one-line status_reason: provisional_assessment (default); insufficient_information (target, \
 matrix or contaminant undefined); premise_not_supported (the client's concept or premise is contradicted by the \
 materials, so it cannot be approved); outside_supported_scope (the request goes beyond what the evidence supports).
@@ -154,8 +154,9 @@ def _exemplars() -> str:
 
     texts = [c.text for c in load_chunks() if c.id.startswith("DOCX:§2/")]
     return (
-        "=== STYLE EXEMPLARS: examples of format and caution level for different cases. DO NOT COPY THEIR CONTENT; "
-        "each new enquiry needs its own facts, sources and reasoning. ===\n" + "\n\n---\n\n".join(texts)
+        "=== STYLE EXEMPLARS: worked answers to OTHER enquiries, showing format, length and caution level only. "
+        "They are NOT sources: never cite them (no 'DOCX §2'). Do not copy their content or sentences; each enquiry "
+        "needs its own facts, its own citations to the AFS pages, and its own reasoning. ===\n" + "\n\n---\n\n".join(texts)
     )
 
 

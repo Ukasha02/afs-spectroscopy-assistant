@@ -131,3 +131,12 @@ def rec(method="NIR", role="primary", basis="sourced", reason="Supported by an a
 @needs_cache
 def test_recommendation_needs_sourced_reason(make_assessment):
     assert any(f.kind == "basis" for f in flags(make_assessment(recommendations=[rec(basis="general_knowledge")])))
+
+
+@needs_cache
+def test_worked_examples_are_not_citable(make_assessment):
+    from afs_assistant.kb.load import render_corpus
+
+    assert 'cite="DOCX §2' not in render_corpus()
+    a = make_assessment(premise_checks=claims([st("A calibration must be built.", refs=["DOCX §2 D01"])]))
+    assert any(f.kind == "scope" and "worked answer" in f.detail for f in flags(a))

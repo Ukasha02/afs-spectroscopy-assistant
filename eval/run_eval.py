@@ -19,7 +19,7 @@ from rapidfuzz import fuzz
 from afs_assistant import config
 from afs_assistant.cli import _run_and_save
 from afs_assistant.kb.load import load_cases, load_chunks
-from afs_assistant.render import RANGE_CAVEAT, word_count
+from afs_assistant.render import RANGE_CAVEAT, sources_used, word_count
 from afs_assistant.schema import CaseResult
 
 SECTIONS = [
@@ -57,7 +57,7 @@ def our_sections(r: CaseResult) -> dict[str, str]:
         "Risks and uncertainty": " ".join(f"({x.category}) {x.text} [{'; '.join(c.ref for c in x.citations)}]" for x in a.risks),
         "First feasibility experiment": " ".join(f"({s.element}) {s.text}" for s in a.feasibility_plan.steps),
         "Decision basis": j([a.decision_basis]),
-        "Sources": "",
+        "Sources": ", ".join(sources_used(a)),
     }
 
 

@@ -16,6 +16,7 @@ from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
 PIPELINE_VERSION = "0.4.0"
+FAST_THINKING = "low"  # intake and critic; the assessment uses LLM_THINKING_LEVEL
 _REVISE_ON = {"quote", "number", "unsupported_sourced_claim", "scope", "basis", "table_coverage"}
 
 
@@ -30,7 +31,7 @@ def _git_commit() -> str:
 
 def run_intake(enquiry: str) -> tuple[Intake, list[dict]]:
     """Extraction + questionnaire, verified; one revision if a question invents numbers or breaks the order."""
-    res = call_llm(prompts.intake_system(), prompts.intake_user(enquiry), Intake)
+    res = call_llm(prompts.intake_system(), prompts.intake_user(enquiry), Intake, thinking_level=FAST_THINKING)
     intake = Intake.model_validate(res["output"])
     calls = [{"stage": "intake", **res["meta"]}]
     flags = verify_questions(intake.questions, enquiry)

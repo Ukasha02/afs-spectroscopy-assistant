@@ -25,8 +25,19 @@ def _cite(claim) -> str:
     return (f" [{refs}]" if refs else "") + _MARK.get(claim.basis, "")
 
 
+_INLINE_REF = re.compile(r"\s*\[(?:S0\d|DOCX|TABLE|EXTERNAL)[^\]]*\]")
+
+
 def _text(claim) -> str:
-    return f"{claim.text.rstrip()}{_cite(claim)}"
+    """Claim text with its citations appended once (refs the model wrote into the text are removed)."""
+    text = _INLINE_REF.sub("", claim.text).strip()
+    if claim.citations and text.endswith("."):
+        text = text[:-1]
+    return f"{text}{_cite(claim)}" + ("." if claim.citations else "")
+
+
+def _join(items: list[str], sep: str = "; ") -> str:
+    return sep.join(i.strip().rstrip(".;,") for i in items if i.strip())
 
 
 def sources_used(a: Assessment) -> list[str]:
@@ -37,8 +48,8 @@ def sources_used(a: Assessment) -> list[str]:
 def report_body(a: Assessment, case_id: str) -> str:
     L = [f"# {case_id} · First technical assessment", ""]
     L += [f"**Decision status.** {STATUS_LABEL[a.decision_status]}. {a.status_reason}", ""]
-    L += [f"**Requirements stated.** {'; '.join(a.requirements_stated)}.", ""]
-    L += [f"**Key unknowns.** {'; '.join(a.key_unknowns)}.", ""]
+    L += [f"**Requirements stated.** {_join(a.requirements_stated)}.", ""]
+    L += [f"**Key unknowns.** {_join(a.key_unknowns)}.", ""]
 
     L += ["### Clarification questions", ""]
     L += [f"{i}. {q.question}" for i, q in enumerate(a.report_questions, 1)] + [""]
@@ -55,11 +66,11 @@ def report_body(a: Assessment, case_id: str) -> str:
 
     mc = a.measurement_concept
     concept = " ".join(_text(i) for i in mc.items)
-    confirm = f" Needs AFS confirmation: {', '.join(mc.needs_afs_confirmation)}." if mc.needs_afs_confirmation else ""
+    confirm = f" Needs AFS confirmation: {_join(mc.needs_afs_confirmation, ', ')}." if mc.needs_afs_confirmation else ""
     L += [f"**Measurement concept.** {concept}{confirm}", ""]
 
     ranges = "; ".join(
-        f"{e.method}: {e.nominal_range} nominal [{e.citation.ref}]" + (f" ({e.note})" if e.note else "") for e in a.spectral_ranges
+        f"{e.method}: {e.nominal_range} nominal [{e.citation.ref}]" + (f" ({e.note.strip().rstrip('.')})" if e.note else "") for e in a.spectral_ranges
     )
     L += [f"**Spectral range.** {ranges + '. ' if ranges else ''}{RANGE_CAVEAT}", ""]
 

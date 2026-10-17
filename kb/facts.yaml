@@ -174,7 +174,7 @@ rules:
   - id: calibration_matrix_specific
     statement: "Chemometric calibrations are specific to the matrix; a change of API, excipients or formulation can invalidate them."
     applies_when: "reuse or transfer of an existing calibration or model; a new product or formulation"
-    src: "S01 p.10; DOCX §2 D01; DOCX §5"
+    src: "S01 p.10; DOCX §5"
   - id: optical_density_not_viability
     statement: "Turbidity / optical density tracks cell density but is not a viable cell count."
     applies_when: "biomass, viable cells or growth are targets"
@@ -190,7 +190,7 @@ rules:
   - id: combination_is_hypothesis
     statement: "Combining methods can add complementary information, but the gain is a hypothesis to test against the best single method."
     applies_when: "two or more methods are considered"
-    src: "S01 p.7-8; DOCX §2 D01; DOCX §5"
+    src: "S01 p.7-8; DOCX §5"
   - id: fiber_limits_wavelength
     statement: "The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers."
     applies_when: "a fiber link, remote analyzer, or reuse of existing fiber is mentioned; MIR is considered"
@@ -202,7 +202,7 @@ rules:
   - id: raman_fluorescence_background
     statement: "Raman can be swamped by fluorescence background from many organic compounds; check signal quality first."
     applies_when: "Raman is considered for organic or biological samples"
-    src: "S01 p.11; DOCX §2 D01"
+    src: "S01 p.11"
   - id: geometry_follows_optics
     statement: "Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR."
     applies_when: "choosing a probe geometry; optical properties vary between streams or over time"

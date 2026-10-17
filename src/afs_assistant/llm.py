@@ -22,10 +22,12 @@ Run the smoke test (needs `make kb` and a key):
 
 import json
 import os
+import sys
+import time
 from datetime import datetime, timezone
 from functools import lru_cache
 from google import genai
-from google.genai import types
+from google.genai import errors, types
 from pydantic import BaseModel
 
 from afs_assistant import config  # noqa: F401  (loads .env from the repo root)
@@ -48,7 +50,21 @@ def _client() -> genai.Client:
 # LLM call
 # ---------------------------------------------------------------------------
 
-def call_llm(system_prompt: str, user_prompt: str, schema: type[BaseModel] = Assessment) -> dict:
+RETRY_DELAYS_S = (20, 60, 120)  # temporary server errors (503 high demand, 500); quota errors are not retried
+
+
+def _generate_with_retry(user_prompt: str, config: types.GenerateContentConfig):
+    for attempt, delay in enumerate((*RETRY_DELAYS_S, None)):
+        try:
+            return _client().models.generate_content(model=MODEL, contents=user_prompt, config=config)
+        except errors.ServerError as e:
+            if delay is None:
+                raise
+            print(f"[llm] {e.code} from {MODEL}, retry {attempt + 1}/{len(RETRY_DELAYS_S)} in {delay}s", file=sys.stderr, flush=True)
+            time.sleep(delay)
+
+
+def call_llm(system_prompt: str, user_prompt: str, schema: type[BaseModel] = Assessment, thinking_level: str | None = None) -> dict:
     """Call the model and return parsed, schema-validated output plus run metadata.
 
     Single entry point for every pipeline stage. Other providers (OpenRouter, Claude) are
@@ -63,18 +79,14 @@ def call_llm(system_prompt: str, user_prompt: str, schema: type[BaseModel] = Ass
         response_mime_type="application/json",
         response_schema=schema,
         max_output_tokens=MAX_OUTPUT_TOKENS,
-        thinking_config=types.ThinkingConfig(thinking_level=types.ThinkingLevel(THINKING_LEVEL.upper())),
+        thinking_config=types.ThinkingConfig(thinking_level=types.ThinkingLevel((thinking_level or THINKING_LEVEL).upper())),
         seed=SEED,
         # Temperature left at the default: Google recommends keeping the
         # default (1.0) for Gemini 3 models, since lowering it can cause looping.
     )
 
     started = datetime.now(timezone.utc)
-    response = _client().models.generate_content(
-        model=MODEL,
-        contents=user_prompt,
-        config=config,
-    )
+    response = _generate_with_retry(user_prompt, config)
 
     parsed = response.parsed  # Pydantic object when response_schema is set
     if parsed is None:  # fall back to raw text if parsing failed
@@ -85,7 +97,7 @@ def call_llm(system_prompt: str, user_prompt: str, schema: type[BaseModel] = Ass
         "meta": {  # logged for reproducibility
             "provider": PROVIDER,
             "model": MODEL,
-            "thinking_level": THINKING_LEVEL,
+            "thinking_level": thinking_level or THINKING_LEVEL,
             "max_output_tokens": MAX_OUTPUT_TOKENS,
             "seed": SEED,
             "timestamp": started.isoformat(),

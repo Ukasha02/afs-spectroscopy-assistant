@@ -174,6 +174,8 @@ def build_docx_chunks() -> tuple[list[Chunk], dict[str, dict]]:
                     kind="docx_section",
                     title=f"Worked example: {sec['h2']}",
                     text=body,
+                    # Answer to a different enquiry: used only as a style exemplar, never as evidence.
+                    in_corpus=False,
                 )
             )
         else:
@@ -186,8 +188,8 @@ def build_docx_chunks() -> tuple[list[Chunk], dict[str, dict]]:
                     kind="docx_section",
                     title=sec["h1"],
                     text=body,
-                    # §1 intro lists the D-cases; §0 is the cover page. Neither is evidence.
-                    in_corpus=sec_no not in ("0", "1"),
+                    # §0 cover, §1 D-case list, §2 worked-example intro: not evidence.
+                    in_corpus=sec_no not in ("0", "1", "2"),
                 )
             )
     return chunks, d_cases
