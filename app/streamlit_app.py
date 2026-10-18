@@ -47,18 +47,28 @@ KB_STATE = ensure_kb()
 # data
 # ---------------------------------------------------------------------------
 
-@st.cache_data(show_spinner=False)
-def library() -> list[dict]:
-    """Pre-generated results: D (development), A (adversarial), H (final evaluation, once frozen)."""
+def _library_files() -> tuple[tuple[str, str, float], ...]:
+    """(group, path, mtime) of every pre-generated result; used as the cache key."""
     run = config.OUTPUTS_DIR / "runs" / LIBRARY_RUN
     d_dir = run / "D" if (run / "D").exists() else config.OUTPUTS_DIR
     a_dir = run / "adversarial" if (run / "adversarial").exists() else config.OUTPUTS_DIR / "adversarial"
     groups = [("Final evaluation (H)", config.OUTPUTS_DIR, "H*.json"),
               ("Development (D)", d_dir, "D*.json"),
               ("Adversarial (own hard cases)", a_dir, "A*.json")]
+    return tuple((g, str(p), p.stat().st_mtime) for g, folder, pattern in groups for p in sorted(folder.glob(pattern)))
+
+
+def library() -> list[dict]:
+    """Pre-generated results: H (final evaluation), D (development), A (adversarial)."""
+    return _library(_library_files())
+
+
+@st.cache_data(show_spinner=False)
+def _library(files: tuple[tuple[str, str, float], ...]) -> list[dict]:
+    # Cached per set of files: new or changed outputs (e.g. after a redeploy) invalidate it.
     items = []
-    for group, folder, pattern in groups:
-        for p in sorted(folder.glob(pattern)):
+    for group, path, _ in files:
+        for p in [Path(path)]:
             r = CaseResult.model_validate_json(p.read_text())
             items.append({"group": group, "id": r.case_id, "path": str(p), "status": r.assessment.decision_status,
                           "rubric": f"{sum(i.passed for i in r.rubric)}/{len(r.rubric)}",
