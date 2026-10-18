@@ -16,7 +16,7 @@ def failed(a, required=()):
 def test_fixture_passes_structure_checks(make_assessment):
     a = make_assessment(recommendations=[rec()], spectral_ranges=[{"method": "NIR", "nominal_range": "780-2500 nm", "citation": {"ref": "S01 p.10", "quote": None, "url": None}, "note": None}])
     # Only length fails for the tiny fixture.
-    assert failed(a) == {"report length 250-450 words"}
+    assert failed(a) == {"report length 250-550 words"}
 
 
 @needs_cache

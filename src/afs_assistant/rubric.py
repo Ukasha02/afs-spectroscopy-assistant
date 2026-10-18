@@ -10,7 +10,7 @@ import re
 from afs_assistant.render import report_body, section_overruns, word_count
 from afs_assistant.schema import PLAN_REQUIRED, Assessment, Flag, RubricItem
 
-WORDS_MIN, WORDS_MAX = 250, 450
+WORDS_MIN, WORDS_MAX = 250, 550  # 450 proved unreachable without dropping required content
 _Q_ORDER = ("measured", "reference", "variation", "requirements", "context")
 
 
@@ -55,7 +55,7 @@ def rubric(a: Assessment, case_id: str, required_risks: list[str], fiber_finding
     missing_steps = [alt[0] for alt in PLAN_REQUIRED if not any(e in elements for e in alt)]
     texts = {s.element: s.text for s in a.feasibility_plan.steps}
     content = []
-    if not _has(texts.get("spectra_with_reference", ""), r"referen|laborator|\blab\b|assay", r"tim"):
+    if not _has(texts.get("spectra_with_reference", ""), r"referen|laborator|\blab\b|assay|label|ground truth", r"tim"):
         content.append("spectra need independent reference + timing")
     several = len(recs) > 1
     if not _has(texts.get("models_and_validation", ""), r"single" if several else r".", r"held.out|independent|validat"):

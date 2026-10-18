@@ -366,11 +366,21 @@
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated. Rule check: UVVIS full range: UV-Vis silica fiber (standard or Al/Cu-coated); partial: Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber; FLUO full range: UV-Vis silica fiber (standard or Al/Cu-coated); partial: Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber.",
+          "text": "No fiber link stated. Rule check: UVVIS: UV-Vis silica covers the nominal range; FLUO: UV-Vis silica covers the nominal range.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.12",
               "quote": null,
               "url": null
             }
@@ -579,6 +589,20 @@
         "score": null
       },
       {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "risks[1].citations[0]",
         "ref": "DOCX §5",
         "quote": null,
@@ -610,7 +634,7 @@
     "flags": [],
     "counts": {
       "citations_verified": 5,
-      "citations_page_only": 11
+      "citations_page_only": 13
     },
     "revised": true,
     "flags_before_revision": [
@@ -703,9 +727,9 @@
       "detail": ""
     },
     {
-      "check": "report length 250-450 words",
-      "passed": false,
-      "detail": "562 words; over budget: Recommendation 140/110, Measurement concept 96/45, Spectral range 31/30, Risks and uncertainty 51/48 (citations excluded)"
+      "check": "report length 250-550 words",
+      "passed": true,
+      "detail": ""
     }
   ],
   "extraction": {

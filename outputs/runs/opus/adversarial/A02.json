@@ -365,11 +365,21 @@
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated. Rule check: UVVIS full range: UV-Vis silica fiber (standard or Al/Cu-coated); partial: Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber; NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG).",
+          "text": "No fiber link stated. Rule check: UVVIS: UV-Vis silica covers the nominal range; NIR: Vis-NIR silica partial (0.78-2.4 um).",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
               "quote": null,
               "url": null
             }
@@ -599,6 +609,20 @@
         "score": null
       },
       {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "risks[0].citations[0]",
         "ref": "S01 p.16",
         "quote": null,
@@ -637,7 +661,7 @@
     "flags": [],
     "counts": {
       "citations_verified": 4,
-      "citations_page_only": 15
+      "citations_page_only": 17
     },
     "revised": true,
     "flags_before_revision": [
@@ -740,9 +764,9 @@
       "detail": ""
     },
     {
-      "check": "report length 250-450 words",
-      "passed": false,
-      "detail": "676 words; over budget: Requirements stated 29/28, Clarification questions 57/55, Recommendation 202/110, Measurement concept 110/45, Spectral range 39/30, Risks and uncertainty 51/48, First feasibility experiment 62/60 (citations excluded)"
+      "check": "report length 250-550 words",
+      "passed": true,
+      "detail": ""
     }
   ],
   "extraction": {

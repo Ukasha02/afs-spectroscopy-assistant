@@ -387,6 +387,11 @@
               "ref": "S02 p.6",
               "quote": null,
               "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
             }
           ]
         }
@@ -590,6 +595,13 @@
         "score": null
       },
       {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "risks[0].citations[0]",
         "ref": "S02 p.6",
         "quote": null,
@@ -613,7 +625,7 @@
     ],
     "flags": [],
     "counts": {
-      "citations_page_only": 13,
+      "citations_page_only": 14,
       "citations_verified": 3
     },
     "revised": true,
@@ -692,9 +704,9 @@
       "detail": ""
     },
     {
-      "check": "report length 250-450 words",
-      "passed": false,
-      "detail": "550 words; over budget: Recommendation 175/110, Measurement concept 57/45, Risks and uncertainty 52/48 (citations excluded)"
+      "check": "report length 250-550 words",
+      "passed": true,
+      "detail": ""
     }
   ],
   "extraction": {

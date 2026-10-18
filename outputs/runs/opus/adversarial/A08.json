@@ -360,11 +360,21 @@
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG); MIR full range: no single fiber; partial: Chalcogenide As-S IR fiber (CIR), Polycrystalline silver halide IR fiber (PIR), Hollow glass waveguide (HWG), Indium fluoride fiber, Zirconium fluoride fiber.",
+          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um); MIR: Vis-NIR silica no coverage; polycrystalline IR (PIR) partial (3-17 um).",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.9",
               "quote": null,
               "url": null
             }
@@ -567,6 +577,20 @@
         "score": null
       },
       {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "risks[4].citations[0]",
         "ref": "S02 p.6",
         "quote": null,
@@ -591,7 +615,7 @@
     "flags": [],
     "counts": {
       "citations_verified": 3,
-      "citations_page_only": 12
+      "citations_page_only": 14
     },
     "revised": true,
     "flags_before_revision": [
@@ -689,9 +713,9 @@
       "detail": ""
     },
     {
-      "check": "report length 250-450 words",
-      "passed": false,
-      "detail": "663 words; over budget: Clarification questions 56/55, Recommendation 209/110, Measurement concept 116/45, Spectral range 38/30, Risks and uncertainty 49/48 (citations excluded)"
+      "check": "report length 250-550 words",
+      "passed": true,
+      "detail": ""
     }
   ],
   "extraction": {

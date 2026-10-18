@@ -45,7 +45,8 @@ def _apply_fiber_verdict(assessment: Assessment, ex, pre: dict) -> Assessment:
     mc.fiber_compatible = compatible
     mc.items = [i for i in mc.items if not i.text.startswith(("Rule check", "No fiber link stated. Rule check"))]
     if text:
-        mc.items.append(ConceptItem(aspect="fiber_link", text=text, basis="sourced", citations=[CitationRef(ref="S02 p.6")]))
+        refs = ["S02 p.6"] + rules.range_sources(methods)
+        mc.items.append(ConceptItem(aspect="fiber_link", text=text, basis="sourced", citations=[CitationRef(ref=r) for r in refs]))
     return assessment
 
 

@@ -113,6 +113,12 @@ def method_id(name: str) -> str | None:
     return None
 
 
+def range_sources(methods: list[str]) -> list[str]:
+    """Pages that give the nominal ranges used in the fiber verdict (cited next to S02 p.6)."""
+    srcs = {m["id"]: m["range_src"] for m in load_facts()["methods"]}
+    return list(dict.fromkeys(srcs[i] for i in (method_id(x) for x in methods) if i in srcs))
+
+
 def fiber_verdict(methods: list[str], ex: ExtractedEnquiry, fc: dict) -> tuple[bool | None, str]:
     """Rule-based fiber check for the recommended methods (S02 p.6 ranges)."""
     facts = load_facts()
