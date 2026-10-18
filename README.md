@@ -60,7 +60,7 @@ verifier (quotes, numbers, source scope) + LLM context critic + rubric → one r
 
 ## Web app
 
-**Hosted:** _URL added after deployment_ (Streamlit Community Cloud).
+**Hosted:** https://afs-spectroscopy-assistant.streamlit.app/ (Streamlit Community Cloud; if the app was asleep, the first visit takes about a minute to wake it).
 
 - **Results library (free, default):** browse the pre-generated reports for D01–D08, our adversarial cases and H01–H06. No API calls.
 - **Live mode:** runs the real pipeline on a new enquiry, optionally asking the clarification questions first. **It's switched off on the hosted app** (`LIVE_ENABLED=false`: no API key, no cost). When enabled, it's protected by an access code and limited to 3 runs per session plus the spend-ledger budget guard. The demo video shows a live run recorded locally.
