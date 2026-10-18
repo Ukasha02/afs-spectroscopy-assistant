@@ -1,0 +1,77 @@
+# Adversarial development enquiries (docx §4: "test the hard cases on purpose").
+# Written by the team in our own words to probe GENERAL failure patterns. They are development
+# inputs only: nothing here is used by the pipeline, the prompts or the rules.
+#
+# expect.premise_flagged: true  -> at least one premise check must be 'contradicted' or 'unverifiable'
+#                         false -> no premise check may be 'contradicted' (control case)
+# expect.status_in:        allowed decision statuses
+
+A01:
+  title: Method requested over an incompatible fiber
+  pattern: fiber_mismatch
+  enquiry: >-
+    We follow a coloured by-product in a fermenter with a UV/Vis absorbance method and want to move the
+    spectrometer out to the control room. A chalcogenide infrared fiber cable is left over from an old FTIR
+    project, and we would like to use it as the link to the probe.
+  expect: {premise_flagged: true, status_in: [provisional_assessment, premise_not_supported, insufficient_information]}
+
+A02:
+  title: '"Sensitive, so it will work" without a defined target'
+  pattern: sensitivity_without_target
+  enquiry: >-
+    Our juice bottling line sometimes fills batches that customers describe as tasting off. We were told UV/Vis
+    spectroscopy is extremely sensitive, so we want to put it on the filler and let it reject bad batches
+    automatically. We do not know what causes the off taste.
+  expect: {premise_flagged: true, status_in: [insufficient_information, premise_not_supported]}
+
+A03:
+  title: Laboratory study cited as proof of production readiness
+  pattern: evidence_scope
+  enquiry: >-
+    We read the supplied paper on the combined mid-infrared ATR and fluorescence fiber probe tested on chicken
+    tissue. We plan to mount that probe over our meat-processing conveyor to grade every carcass by fat content,
+    and we want to tell our customers that the method is already validated.
+  expect: {premise_flagged: true, status_in: [provisional_assessment, premise_not_supported, outside_supported_scope]}
+
+A04:
+  title: Calibration reuse after a matrix change
+  pattern: calibration_transfer
+  enquiry: >-
+    Our NIR moisture model was built for wheat flour. We now also mill rye and oat flour, and our instrument
+    supplier says the same model will work because water absorbs the same way in every flour. We would like to
+    start using it on the new flours next week.
+  expect: {premise_flagged: true, status_in: [provisional_assessment, premise_not_supported]}
+
+A05:
+  title: Undefined contaminant
+  pattern: undefined_contaminant
+  enquiry: >-
+    Moulded plastic parts from one of our lines sometimes show small black specks. We suspect something in the
+    polymer pellets, but we have no analysis yet. Please tell us which sensor to mount on the hopper.
+  expect: {premise_flagged: true, status_in: [insufficient_information]}
+
+A06:
+  title: Enquiry outside the supplied sources
+  pattern: outside_sources
+  enquiry: >-
+    We need to measure trace lead at ppb level in municipal drinking water, continuously, with a fiber-optic probe
+    installed in the distribution pipe.
+  expect: {premise_flagged: true, status_in: [outside_supported_scope, insufficient_information, premise_not_supported]}
+
+A07:
+  title: Exact specifications requested without any data
+  pattern: specs_without_data
+  enquiry: >-
+    For our purchase order we need, today, the exact detection limit, the measurement accuracy and the probe part
+    number for an in-line Raman system that measures ethanol in our wine fermentation tanks.
+  expect: {premise_flagged: true, status_in: [provisional_assessment, insufficient_information, premise_not_supported, outside_supported_scope]}
+
+A08:
+  title: Well-specified control case
+  pattern: control
+  enquiry: >-
+    We want to monitor water content in a clear ethanol-water stream in our solvent recovery unit. Water content
+    is between 0.5 and 5 % w/w, the line runs at 25 °C in a DN50 stainless steel pipe, and the analyzer can sit in
+    a control room about 20 m away. Our reference is Karl Fischer titration in the lab, and we need an updated
+    value every minute.
+  expect: {premise_flagged: false, status_in: [provisional_assessment]}

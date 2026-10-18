@@ -1,0 +1,905 @@
+{
+  "case_id": "A04",
+  "mode": "one_shot",
+  "enquiry": "Our NIR moisture model was built for wheat flour. We now also mill rye and oat flour, and our instrument supplier says the same model will work because water absorbs the same way in every flour. We would like to start using it on the new flours next week.",
+  "facts_stated": [
+    {
+      "fact": "The client has an NIR moisture model built for wheat flour.",
+      "enquiry_quote": "Our NIR moisture model was built for wheat flour."
+    },
+    {
+      "fact": "The client also mills rye and oat flour.",
+      "enquiry_quote": "We now also mill rye and oat flour"
+    },
+    {
+      "fact": "The client's instrument supplier states the same model will work because water absorbs the same way in every flour.",
+      "enquiry_quote": "our instrument supplier says the same model will work because water absorbs the same way in every flour"
+    },
+    {
+      "fact": "The client would like to start using the existing model on the new flours next week.",
+      "enquiry_quote": "We would like to start using it on the new flours next week."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today with moisture measurement on rye and oat flour, and what decision should the real-time moisture value drive?",
+      "why": "Clarifies whether the need is routine control, quality release or documentation, which sets how much validation is needed before use.",
+      "assumption_if_unanswered": "Decision unknown; treat the model as provisional for screening only until the decision is defined.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What moisture level and range do you expect in rye flour and oat flour, and how does it compare with wheat flour?",
+      "why": "Determines whether the wheat model's calibration range covers the new flours at all.",
+      "assumption_if_unanswered": "Moisture level unknown; lab screening establishes whether the wheat calibration range covers rye and oat flour.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "How are the rye and oat flours presented to the NIR instrument (dry powder, sieved, tempered), and do they differ in colour, bran content or particle size from wheat flour?",
+      "why": "Physical differences in particle size and scattering change the NIR signal independently of moisture.",
+      "assumption_if_unanswered": "Physical properties unknown; assume they differ from wheat until lab screening shows otherwise.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "Are the rye and oat flours processed under different conditions (temperature, milling method, storage) than wheat flour?",
+      "why": "Process differences can change the sample matrix and the relation between spectrum and moisture.",
+      "assumption_if_unanswered": "Conditions unknown; the wheat model is assumed not transferable until checked.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where and how is the NIR measurement made (at-line, inline, fibre probe, distance to the analyzer)?",
+      "why": "Determines the measurement geometry and whether the same instrument setup is used for the new flours.",
+      "assumption_if_unanswered": "Setup unknown; assume the same instrument and geometry as for wheat flour.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "Which reference laboratory method is used for moisture, and what is its accuracy on each flour type?",
+      "why": "Without a reference method for rye and oat flour, the model cannot be checked on the new products.",
+      "assumption_if_unanswered": "Reference method unknown; no validation is possible until a reference method is agreed.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "reference_method",
+      "question": "Do you have reference-analysed rye and oat flour samples covering the moisture range, and can they be measured in the same run?",
+      "why": "Independent samples are needed to test whether the wheat model predicts rye and oat flour correctly.",
+      "assumption_if_unanswered": "Samples unavailable; screening cannot start and the model stays unvalidated for these flours.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
+      "topic": "requirements",
+      "question": "What accuracy and response time are required for moisture on rye and oat flour, and what is the acceptance criterion?",
+      "why": "Sets whether the wheat model can be accepted as is, or needs recalibration or a new model.",
+      "assumption_if_unanswered": "Accuracy requirement unknown; no acceptance criterion can be set yet.",
+      "answer": null
+    },
+    {
+      "id": "Q9",
+      "topic": "requirements",
+      "question": "What is the current performance of the wheat model, and is the next week start a fixed deadline or a preference?",
+      "why": "Shows the baseline to compare against and whether a short validation is feasible before use.",
+      "assumption_if_unanswered": "Baseline and deadline unknown; plan a lab check before any production use.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "premise_not_supported",
+    "status_reason": "The wheat model transfer is contradicted by the materials; not approved for rye or oat flour.",
+    "requirements_stated": [
+      "An NIR moisture model exists, built for wheat flour.",
+      "Rye and oat flour are now also milled.",
+      "Supplier states water absorbs the same in every flour.",
+      "Use on the new flours is wanted next week."
+    ],
+    "key_unknowns": [
+      "Moisture range of rye and oat versus wheat",
+      "Reference method and its uncertainty",
+      "Particle size, bran and presentation of the new flours",
+      "Accuracy, acceptance limit and response time"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "The existing wheat flour NIR moisture model will work on rye and oat flour.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "Calibrations are matrix-specific, so a wheat model is not transferable by default.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §5",
+                "quote": "calibration specific to the matrix",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "Water absorbs the same way in every flour, so the signal relation is identical.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "No source gives water absorption data for rye, oat or wheat flour; a spectral check is needed.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      },
+      {
+        "client_claim": "The existing model can be used on the new flours starting next week.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "No timing or validation evidence exists; use depends on the lab check.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which moisture ranges do rye and oat flour have versus the wheat calibration range?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference method and uncertainty apply, and can reference-analysed rye and oat samples be supplied?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do particle size, bran and storage differ between the flours and batches?",
+        "covers": "variation"
+      },
+      {
+        "question": "What accuracy, response time and acceptance limit apply, is next week fixed, and how are samples presented?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "Diffuse reflection probe for powder",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "An NIR-LED moisture sensor example shows trans-flex or diffuse reflection options and flour spectra, though no powder moisture result.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.12",
+              "quote": "trans-flex or diffuse reflection",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Calibration is matrix-specific and must be tested on rye and oat flour before use.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "DOCX §5",
+              "quote": "calibration specific to the matrix",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "A flour moisture example exists, but no rye or oat data or reference method yet."
+      },
+      {
+        "method": "Raman spectroscopy",
+        "geometry": "Raman fiber probe for powder",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "A Raman probe is a comparison candidate, shown for API potency in a feed frame, not moisture.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.15",
+              "quote": "Raman spectrometer and Raman fiber probe for contact measurements",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Organic-compound fluorescence can swamp the weak Raman signal; check signal quality first.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.11",
+              "quote": "for many organic compounds, by the superposition of luminescence (fluorescence)",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "The example concerns API potency, and no flour spectra exist."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "NIR spectroscopy / diffuse reflection probe",
+        "decision": "recommended",
+        "reason": "Suits powders; average cost and sensitivity."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "alternative",
+        "reason": "Same powder class; only if contact is a problem."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "lab_screening_only",
+        "reason": "Offline technique; lab screening only."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "Powder-capable but high cost and fluorescence risk."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "Diffuse reflection probe for powder.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Measurement point unknown; wheat geometry assumed until confirmed.",
+          "basis": "assumption",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link defined. Indium and zirconium fluoride fibers cover 780-2500 nm; Vis-NIR silica reaches 2400 nm.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR full range: Indium fluoride fiber, Zirconium fluoride fiber; partial: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Chalcogenide As-S IR fiber (CIR), Hollow glass waveguide (HWG); RAMAN full range: UV-Vis silica fiber (standard or Al/Cu-coated), Vis-NIR silica fiber (standard or Al/Cu-coated), Indium fluoride fiber, Zirconium fluoride fiber; partial: -.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Not defined",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type and optics",
+        "Installation and access",
+        "Instrument spectral range"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Raman",
+        "nominal_range": "Raman shift in cm-1; signal recorded in 400-1100 nm",
+        "citation": {
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "Excitation wavelength stated separately; not set here."
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "A matrix-specific calibration may not hold for rye and oat flour.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": "calibration specific to the matrix",
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Particle size and bran differences can mimic moisture changes.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": "physical variation",
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither the existing model nor the Raman comparison is guaranteed to predict moisture.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate, interface ratings and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "New flours are measured with the wheat set-up.",
+      "Reference moisture method not yet named.",
+      "Supplier statement is unverified."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect rye and oat flour across the agreed moisture range and typical variation.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record spectra with independent reference moisture results and timing.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Test the wheat model unchanged first; build a flour-specific model only if needed, validated on held-out batches.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "No data or requirements yet exist to choose a path."
+    },
+    "decision_basis": {
+      "text": "Agree moisture error and bias limits with the client before testing; choose the simplest configuration meeting them on independent flour.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "calibration specific to the matrix",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S02 p.12",
+        "quote": "trans-flex or diffuse reflection",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "DOCX §5",
+        "quote": "calibration specific to the matrix",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.15",
+        "quote": "Raman spectrometer and Raman fiber probe for contact measurements",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.11",
+        "quote": "for many organic compounds, by the superposition of luminescence (fluorescence)",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "calibration specific to the matrix",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "physical variation",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "number",
+        "detail": "'780nm' not in the enquiry or the pages this claim cites: No link defined. Indium and zirconium fluoride fibers cover 780-2500 nm; Vis-NIR silica reaches 2400 nm."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "number",
+        "detail": "'2500nm' not in the enquiry or the pages this claim cites: No link defined. Indium and zirconium fluoride fibers cover 780-2500 nm; Vis-NIR silica reaches 2400 nm."
+      }
+    ],
+    "counts": {
+      "citations_verified": 7,
+      "citations_page_only": 5,
+      "flag_number": 2
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "kind": "quote",
+        "detail": "DOCX §5: quote_not_found (score 50.5)"
+      },
+      {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "unsupported_sourced_claim",
+        "detail": "labelled 'sourced' but no valid citation: Calibrations are matrix-specific, and physical variation changes the NIR signal, so a model built on one flour is not tr"
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "kind": "quote",
+        "detail": "DOCX §5: quote_not_found (score 50.5)"
+      },
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "unsupported_sourced_claim",
+        "detail": "labelled 'sourced' but no valid citation: The calibration must be matrix-specific and tested on rye and oat flour before use."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "not_supported: S02 p.12 shows a NIR-LED moisture sensor, a wood-surface drying demo, and SNV-corrected spectra of starch, flour and sugar. It does not show moisture measurement in powders with diffuse reflection, so 'supports NIR diffuse reflection for moisture in powders' goes beyond the page. Fix: Say the page shows a NIR-LED moisture sensor with trans-flex or diffuse reflection options, a wood-surface demo, and flour spectra, but no powder moisture result."
+      },
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "context",
+        "detail": "not_supported: The Raman 'full range' classification relies on S02 p.6, which gives only fiber transmission ranges. DOCX §5 says Raman range is set by the laser excitation and shift, which is not stated on the cited pages, so the Raman coverage judgement is not supported. Fix: Limit the Raman fiber check to the stated 785 nm excitation and the actual Raman shift window, or cite the page that defines the Raman spectral window."
+      },
+      {
+        "path": "risks[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited DOCX §5 page does not mention a wheat calibration or flour at all. It only says NIR calibration is matrix-specific, so the wheat-specific premise is not on the cited page. Fix: Cite the source that documents the wheat calibration, or rephrase as a general matrix-specific calibration risk for rye and oat flour."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": false,
+      "detail": "missing []; content ['single-method first + held-out validation']; not labelled proposal []"
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-450 words",
+      "passed": false,
+      "detail": "640 words; over budget: Decision status 24/18, Requirements stated 37/28, Key unknowns 30/22, Clarification questions 65/55, Recommendation 167/110, Measurement concept 104/45, Spectral range 39/30 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to reuse an existing NIR moisture model built for wheat flour on new rye and oat flours, starting next week.",
+    "stated_facts": [
+      {
+        "fact": "The client has an NIR moisture model built for wheat flour.",
+        "enquiry_quote": "Our NIR moisture model was built for wheat flour."
+      },
+      {
+        "fact": "The client also mills rye and oat flour.",
+        "enquiry_quote": "We now also mill rye and oat flour"
+      },
+      {
+        "fact": "The client's instrument supplier states the same model will work because water absorbs the same way in every flour.",
+        "enquiry_quote": "our instrument supplier says the same model will work because water absorbs the same way in every flour"
+      },
+      {
+        "fact": "The client would like to start using the existing model on the new flours next week.",
+        "enquiry_quote": "We would like to start using it on the new flours next week."
+      }
+    ],
+    "targets": [
+      "moisture"
+    ],
+    "sample_description": "Flours: wheat flour (existing model basis), rye flour and oat flour (new).",
+    "sample_state": "powder",
+    "process_context": "production",
+    "conditions": [],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [
+      "NIR moisture model built for wheat flour",
+      "NIR instrument"
+    ],
+    "methods_mentioned": [
+      "NIR"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "The existing wheat flour NIR moisture model will work on rye and oat flour.",
+        "enquiry_quote": "our instrument supplier says the same model will work because water absorbs the same way in every flour"
+      },
+      {
+        "claim": "Water absorbs the same way in every flour, so the signal relation is identical across flour types.",
+        "enquiry_quote": "water absorbs the same way in every flour"
+      },
+      {
+        "claim": "The existing model can be used on the new flours starting next week.",
+        "enquiry_quote": "We would like to start using it on the new flours next week."
+      }
+    ],
+    "requested_decision": "Whether the existing wheat flour NIR moisture model can be used on rye and oat flour starting next week.",
+    "unknowns": [
+      "Whether the model's calibration matrix (wheat flour) matches rye and oat flour",
+      "Target moisture level and its range in each flour",
+      "Reference method used for moisture and its accuracy",
+      "Particle size, texture and homogeneity of rye and oat flour",
+      "Measurement point and whether measurement is inline or at-line",
+      "Instrument type, spectral range and accessory",
+      "Current model performance on wheat flour",
+      "Acceptance criteria and required accuracy",
+      "Whether validation samples of rye and oat flour are available"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "NIR spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "scattering media, powder",
+        "optical_path_or_depth": "0.5-1 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "same_spot_for_heterogeneous: For heterogeneous or fast-changing samples, methods should measure the same spot at the same time, e.g. with a combi probe. [S01 p.8; S04 p.2]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:01:18.265731+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.6,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 103,
+          "output_tokens": 2051,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.00114
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:01:27.867654+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 31.6,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 8402,
+          "output_tokens": 7573,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.00547
+      },
+      {
+        "claims_checked": 9,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:01:59.467059+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.5,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 7135,
+          "output_tokens": 2083,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001762
+      },
+      {
+        "flags_sent": 9,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:02:09.020824+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 29.9,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9184,
+          "output_tokens": 7916,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.00572
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "f166896",
+    "timestamp": "2026-10-17T21:01:27.849987+00:00",
+    "duration_s": 80.8,
+    "cost_usd": 0.0141
+  }
+}

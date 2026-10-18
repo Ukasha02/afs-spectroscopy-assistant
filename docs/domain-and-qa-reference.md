@@ -57,6 +57,20 @@ The source is our notes and a rough auto-transcript of the session. The expert i
 6. **Add a premise check and a decision status** to every answer: `provisional assessment` / `insufficient information` / `outside supported scope`.
 7. **Make "no hallucination" a feature we demo:** every claim carries a citation, and a self-check step removes or flags any claim without support.
 
+### A8. Second expert session (Sat 17 Oct)
+1. **Source priority.** AFS materials come first. General spectroscopy knowledge is allowed only as secondary support. It must always carry the label `basis=general_knowledge`, and it must never be the main justification for a recommendation.
+2. **Never estimate missing numbers** (detection limits, concentration ranges, fiber lengths, detector specs). Turn each one into a clarification question, or into something the lab screening must establish. This is enforced in the prompt and in the number check of the verifier.
+3. **Questionnaire.** The design is ours. The expert's hint: "understand stakeholders and their pain first, then architect, recommend, check feasibility." Order the questions by decision impact:
+   1. Pain or goal: what goes wrong today, and what decision real-time data would drive.
+   2. Target analyte and level (ppm vs %).
+   3. Sample form and optics (liquid/powder/paste/solid; clear/turbid/opaque).
+   4. Process conditions (temperature, pressure, fouling, cleaning or sterilization).
+   5. Installation point and distance to the analyzer.
+   6. Current reference lab method and its accuracy.
+   7. Accuracy, response time, budget.
+
+   Ask at most 5–10 questions, skip anything the enquiry already states, and give each question a fallback assumption to use if it goes unanswered. The fallback must not contain an invented number.
+
 ---
 
 ## B. Domain primer (plain-language)

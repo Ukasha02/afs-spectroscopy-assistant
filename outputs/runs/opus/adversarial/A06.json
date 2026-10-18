@@ -1,0 +1,1094 @@
+{
+  "case_id": "A06",
+  "mode": "one_shot",
+  "enquiry": "We need to measure trace lead at ppb level in municipal drinking water, continuously, with a fiber-optic probe installed in the distribution pipe.",
+  "facts_stated": [
+    {
+      "fact": "The target is trace lead.",
+      "enquiry_quote": "measure trace lead"
+    },
+    {
+      "fact": "The required level is ppb (parts per billion).",
+      "enquiry_quote": "at ppb level"
+    },
+    {
+      "fact": "The sample is municipal drinking water.",
+      "enquiry_quote": "in municipal drinking water"
+    },
+    {
+      "fact": "Measurement is to be continuous.",
+      "enquiry_quote": "continuously"
+    },
+    {
+      "fact": "A fiber-optic probe is proposed.",
+      "enquiry_quote": "with a fiber-optic probe"
+    },
+    {
+      "fact": "The probe is to be installed in the distribution pipe.",
+      "enquiry_quote": "installed in the distribution pipe"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What decision or action should the continuous lead reading trigger, and what goes wrong today without it?",
+      "why": "Defines the operational purpose and whether a real-time alarm or trend is needed.",
+      "assumption_if_unanswered": "Purpose unknown; treat as trend monitoring until the client confirms an alarm or control use.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What lead concentration range must be detected, and what is the regulatory or internal limit it is compared against?",
+      "why": "Determines whether the ppb requirement is a detection limit or a limit to be verified, which strongly affects method feasibility.",
+      "assumption_if_unanswered": "Level in ppb stated; exact limit unknown; lab screening establishes the achievable detection range.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "target_and_level",
+      "question": "In which chemical form is lead expected in the water (dissolved ion, complex, or particulate), and is it known to vary?",
+      "why": "Speciation changes whether any optical signal from lead can be observed at all, and whether sampling must include particulates.",
+      "assumption_if_unanswered": "Speciation unknown; lab screening on representative water samples must confirm whether a measurable optical signal exists.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "sample_form_optics",
+      "question": "What is the typical turbidity, colour and particle content of the water at the measurement point, and does it vary over time?",
+      "why": "Turbidity and particles scatter light and can mask or mimic a signal; determines probe geometry.",
+      "assumption_if_unanswered": "Optical clarity unknown; treated as clear liquid pending lab measurement on representative samples.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "process_conditions",
+      "question": "What are the water temperature, pressure and flow range in the distribution pipe, and is biofilm or scale fouling expected on a probe tip?",
+      "why": "These affect probe mechanical design, signal stability and maintenance intervals.",
+      "assumption_if_unanswered": "Process conditions unknown; probe design and fouling risk to be assessed in an in-line trial.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "installation_distance",
+      "question": "Where exactly would the probe be installed, and how far is the analyzer from that point; is any fiber infrastructure already present?",
+      "why": "Distance and fiber type determine which wavelengths can be transmitted and whether the analyzer can be remote.",
+      "assumption_if_unanswered": "Installation point and analyzer distance unknown; fiber type and length to be specified after the client answers.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "reference_method",
+      "question": "What reference laboratory method is used today for lead in this water, and what is its accuracy and detection limit?",
+      "why": "Needed to judge any optical result against an accepted reference and to set the comparison design.",
+      "assumption_if_unanswered": "Reference method unknown; comparison against a laboratory method is required before any performance claim.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget does the application require, and which standards or regulations apply?",
+      "why": "Sets the feasibility bar and tells whether a continuous optical sensor can meet the need or a different approach is required.",
+      "assumption_if_unanswered": "Requirements unknown; feasibility judgement remains provisional until the client states them.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "outside_supported_scope",
+    "status_reason": "No AFS material shows optical fiber measurement of trace metals in water.",
+    "requirements_stated": [
+      "Trace lead at ppb level",
+      "Municipal drinking water",
+      "Continuous measurement",
+      "Fiber-optic probe installed in the distribution pipe"
+    ],
+    "key_unknowns": [
+      "Lead form and limit",
+      "Reference method and detection limit",
+      "Turbidity, fouling, flow",
+      "Response time, analyzer distance"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "A fiber-optic probe in the distribution pipe can continuously measure trace lead at ppb level.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "The materials give no application example for heavy metals or drinking water.",
+            "basis": "assumption",
+            "citations": []
+          },
+          {
+            "text": "NIR may lack sensitivity for trace compounds below 0.1 percent, far above ppb.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.16",
+                "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Fluorimetry needs a fluorescent species; most chemicals do not fluoresce.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.5",
+                "quote": "However, most chemicals do not exhibit this property.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Lead at ppb is usually determined by elemental laboratory methods, not molecular spectroscopy.",
+            "basis": "general_knowledge",
+            "citations": []
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which lead forms, concentration range and regulatory limit apply?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference method, detection limit and sampling schedule exist?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do turbidity, particles, temperature, flow and biofilm vary?",
+        "covers": "variation"
+      },
+      {
+        "question": "Which response time, alarm purpose, standards and installation access apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "How far is the analyzer; is a bypass with reagents acceptable?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "UV/Vis spectroscopy",
+        "geometry": "transmission or transflection probe",
+        "role": "alternative",
+        "simplicity_rank": 1,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "Lab screening candidate only, given its UV sensitivity.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.5",
+              "quote": "It has very high sensitivity, especially in the UV region (190-360 nm), but requires the use of special light sources and fiber optic probes.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Low selectivity; other constituents could mimic or mask lead.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "No supporting application example; ppb detectability unknown."
+      },
+      {
+        "method": "Fluorescence spectroscopy",
+        "geometry": "fluorimetric probe",
+        "role": "alternative",
+        "simplicity_rank": 2,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "Lab screening only if a justified fluorescent lead indicator exists.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.5",
+              "quote": "Another highly sensitive method, UV/Vis fluorimetry, is based on the secondary emission of excited molecules of certain substances, most often of biological origin.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Measures only a defined fluorescent species or justified indicator.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "DOCX §5",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "No indicator or application identified in the materials."
+      },
+      {
+        "method": "NIR, MIR, Raman",
+        "geometry": "transmission, ATR, Raman probe",
+        "role": "not_recommended",
+        "simplicity_rank": 3,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "NIR may lack sensitivity below 0.1 percent.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Reconsider only if lab screening reveals a usable signal.",
+          "basis": "proposal",
+          "citations": []
+        },
+        "confidence": "low",
+        "confidence_reason": "Sensitivity far from the stated ppb level."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "Clear-liquid in-line geometry; only if lab screening shows a lead signal."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "alternative",
+        "reason": "Only with a justified fluorescent indicator."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of spiked water samples."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline check for any indicator fluorescence."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "rejected",
+        "reason": "Trace sensitivity insufficient per S01 p.16."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Very short path, low sensitivity; meant for opaque fluids."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "No evidence of a lead band at ppb."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "Trace sensitivity insufficient."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "rejected",
+        "reason": "Micrometre depth, average sensitivity; no trace-metal evidence."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "rejected",
+        "reason": "Same as ATR platform; also needs mid-IR fiber."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "rejected",
+        "reason": "Weak signal, high cost, no trace-metal evidence."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "rejected",
+        "reason": "Same limitation offline."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "If pursued: UV/Vis transmission or transflection probe; fluorimetric probe only with an indicator.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Distribution pipe, as stated.",
+          "basis": "client_fact",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "UV-Vis silica fiber covers both ranges; no link stated, length and route unknown.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: UVVIS: UV-Vis silica covers the nominal range; FLUO: UV-Vis silica covers the nominal range.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.12",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "UV-Vis silica (if UV/Vis or fluorescence is pursued)",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type for pipe",
+        "Installation and pressure rating",
+        "Optical path length"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "UV/Vis",
+        "nominal_range": "UV 190-360 nm and visible",
+        "citation": {
+          "ref": "S01 p.5",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Fluorescence",
+        "nominal_range": "Depends on the fluorescent species",
+        "citation": {
+          "ref": "S01 p.12",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "evidence_scope",
+        "text": "Cited AFS pages show no trace-metal water example.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "calibration_validity",
+        "text": "Calibrations are matrix-specific; changed water composition may require recalibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Turbidity and particles can mask a weak signal.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.16",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Reaching ppb with any method or combination is an untested hypothesis.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Detection limit, update rate, ratings and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Water treated as clear liquid until measured.",
+      "Purpose treated as trend monitoring until confirmed."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "lab_screening",
+          "text": "Screen representative and lead-spiked water by UV/Vis and fluorescence to check whether any lead signal exists.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record spectra with independent reference lead results and timing information.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models only if a signal exists; validate on independent water samples.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Feasibility of any optical lead signal is unestablished."
+    },
+    "decision_basis": {
+      "text": "Agree numerical criteria with the client before testing; choose the simplest configuration meeting them on independent samples, or stop.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "S01 p.16",
+        "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[2].citations[0]",
+        "ref": "S01 p.5",
+        "quote": "However, most chemicals do not exhibit this property.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.5",
+        "quote": "It has very high sensitivity, especially in the UV region (190-360 nm), but requires the use of special light sources and fiber optic probes.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].caveat.citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.5",
+        "quote": "Another highly sensitive method, UV/Vis fluorimetry, is based on the secondary emission of excited molecules of certain substances, most often of biological origin.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "S01 p.16",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 5,
+      "citations_page_only": 13
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "not_supported: The quoted UV/Vis sensitivity statement is on S01 p.5, but the cited pages say nothing about lead or water examples. The clause 'no lead or water example exists' is an absence claim that the cited pages do not establish. Fix: Remove 'no lead or water example exists' or state that the cited pages do not include a lead or water example."
+      },
+      {
+        "path": "recommendations[2].reason",
+        "kind": "context",
+        "detail": "not_supported: S01 p.16 supports only that NIR may lack sensitivity below 0.1 percent. The statement that no vibrational-method example covers trace metals does not appear on the cited page. Fix: Keep the NIR sensitivity limitation and drop the claim about trace-metal examples, or cite a page that addresses trace metals."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "overstated: DOCX §5 says only that NIR calibration is matrix-specific. It does not say that changing water composition invalidates any calibration, so 'can invalidate any calibration' is broader than the source and is not about water. Fix: Rephrase as: calibrations are matrix-specific, so a change in water composition may require recalibration."
+      },
+      {
+        "path": "risks[3]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.7 discusses synergy of combined spectral methods for complex mixtures. It does not mention ppb detection limits, so it does not support the claim that neither method nor combination is guaranteed to reach ppb. Fix: Cite the sensitivity ratings from the method table or S01 p.5/p.16 instead, or state the ppb limitation as a hypothesis to test."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to continuously measure trace lead at ppb level in municipal drinking water using a fiber-optic probe installed in the distribution pipe.",
+    "stated_facts": [
+      {
+        "fact": "The target is trace lead.",
+        "enquiry_quote": "measure trace lead"
+      },
+      {
+        "fact": "The required level is ppb (parts per billion).",
+        "enquiry_quote": "at ppb level"
+      },
+      {
+        "fact": "The sample is municipal drinking water.",
+        "enquiry_quote": "in municipal drinking water"
+      },
+      {
+        "fact": "Measurement is to be continuous.",
+        "enquiry_quote": "continuously"
+      },
+      {
+        "fact": "A fiber-optic probe is proposed.",
+        "enquiry_quote": "with a fiber-optic probe"
+      },
+      {
+        "fact": "The probe is to be installed in the distribution pipe.",
+        "enquiry_quote": "installed in the distribution pipe"
+      }
+    ],
+    "targets": [
+      "lead"
+    ],
+    "sample_description": "Municipal drinking water in a distribution pipe",
+    "sample_state": "clear_liquid",
+    "process_context": "production",
+    "conditions": [],
+    "measurement_location": "distribution pipe",
+    "remote_measurement": false,
+    "contact_with_sample": "possible",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "A fiber-optic probe installed in the distribution pipe can continuously measure trace lead at ppb level.",
+        "enquiry_quote": "continuously, with a fiber-optic probe installed in the distribution pipe"
+      }
+    ],
+    "requested_decision": "Continuous monitoring of lead concentration in drinking water at ppb level.",
+    "unknowns": [
+      "Chemical form or speciation of lead in the water",
+      "Required detection limit and accuracy",
+      "Water temperature, pressure and flow in the pipe",
+      "Presence of other dissolved or particulate constituents or turbidity",
+      "Distance from probe to analyzer and existing fiber infrastructure",
+      "Reference laboratory method and its accuracy",
+      "Response time and budget requirements",
+      "Whether the process is production, pilot or research",
+      "Regulatory limits or standards the monitoring must meet",
+      "Pipe material and fouling or cleaning conditions"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:49:57.231476+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.8,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 77,
+          "output_tokens": 1829,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001026
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:50:07.029953+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 39.1,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9215,
+          "output_tokens": 4815,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.150033
+      },
+      {
+        "claims_checked": 13,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:50:46.137676+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.7,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 8950,
+          "output_tokens": 2153,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001979
+      },
+      {
+        "flags_sent": 7,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:50:55.885382+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 40.8,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9733,
+          "output_tokens": 5147,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.158745
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "27e2824-dirty",
+    "timestamp": "2026-10-17T21:50:07.014694+00:00",
+    "duration_s": 99.6,
+    "cost_usd": 0.3118
+  }
+}

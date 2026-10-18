@@ -27,14 +27,52 @@ Built for **Challenge 01** of the SchubKI National AI Hackathon 2026, with Art F
 
 ## Setup
 
-_Coming soon: full instructions once the stack is set up._
+Requires Python 3.11.
 
 ```bash
 git clone https://github.com/Ukasha02/afs-spectroscopy-assistant.git
 cd afs-spectroscopy-assistant
-cp .env.example .env          # add your API key
+make setup                    # venv + dependencies + package (editable)
+cp .env.example .env          # add your API key (see .env.example)
 # put the AFS materials into materials/ (see materials/README.md)
+make kb                       # build the knowledge-base cache into kb/cache/
+make test
 ```
+
+`make kb` extracts every PDF page, the method table and the docx into `kb/cache/` (gitignored, because the materials may not be redistributed). Content that exists only as images (the S02 slides, S01 figures, S05 flyer) is covered by our own transcriptions in [kb/figure_notes.yaml](kb/figure_notes.yaml). Curated facts and general rules with page references are in [kb/facts.yaml](kb/facts.yaml).
+
+## Running the assistant
+
+```bash
+.venv/bin/python -m afs_assistant.cli run --case D01            # one development case
+.venv/bin/python -m afs_assistant.cli run --text "We need ..."   # a new enquiry (saved as outputs/NEW.*)
+.venv/bin/python -m afs_assistant.cli run-all --set H           # final evaluation cases H01-H06
+make eval                                                       # D01-D08 + rubric table + diff vs worked answers
+make eval-score                                                 # re-score existing outputs, no API calls
+```
+
+Each run writes `outputs/<case>.json` (full labelled data, verification report, rubric, run metadata) and
+`outputs/<case>.md` (the expert report in the worked-answer layout).
+
+**Pipeline:** intake (facts + 5-10 diagnostic questions) → rule checks (S01 Table 1 shortlist, fiber
+compatibility, required risk categories) → assessment (full AFS corpus in the prompt) → deterministic
+verifier (quotes, numbers, source scope) + LLM context critic + rubric → one revision pass.
+
+## Web app
+
+**Hosted:** _URL added after deployment_ (Streamlit Community Cloud).
+
+- **Results library (free, default):** browse the pre-generated reports for D01–D08, our adversarial cases and H01–H06. No API calls.
+- **Live mode:** runs the real pipeline on a new enquiry, optionally asking the clarification questions first. **It's switched off on the hosted app** (`LIVE_ENABLED=false`: no API key, no cost). When enabled, it's protected by an access code and limited to 3 runs per session plus the spend-ledger budget guard. The demo video shows a live run recorded locally.
+- Each report shows the decision status, the 11 sections, each claim's basis (client fact / AFS source / general knowledge / assumption / proposal), clickable citation chips (source, page, scope, verified quote), the verification details and the rule checks.
+
+Run locally:
+
+```bash
+.venv/bin/streamlit run app/streamlit_app.py
+```
+
+Live mode locally: set `LIVE_ENABLED=true` and `ACCESS_CODE=...` in `.env`. Hosted app secrets: only `KB_REPO` and `KB_TOKEN` (plus `LIVE_ENABLED=false`). On the hosted app, `kb/cache/` is downloaded at startup from a private repo using a read-only token (`KB_REPO`, `KB_TOKEN` in the host's secrets). The AFS texts are never in this public repo. Prototype built for Art Fiber Systems · SchubKI National AI Hackathon 2026; not an official AFS product.
 
 ## Contributing
 

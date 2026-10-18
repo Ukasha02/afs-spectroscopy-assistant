@@ -1,0 +1,1131 @@
+{
+  "case_id": "A02",
+  "mode": "one_shot",
+  "enquiry": "Our juice bottling line sometimes fills batches that customers describe as tasting off. We were told UV/Vis spectroscopy is extremely sensitive, so we want to put it on the filler and let it reject bad batches automatically. We do not know what causes the off taste.",
+  "facts_stated": [
+    {
+      "fact": "The company runs a juice bottling line.",
+      "enquiry_quote": "Our juice bottling line"
+    },
+    {
+      "fact": "The line sometimes fills batches that customers describe as tasting off.",
+      "enquiry_quote": "sometimes fills batches that customers describe as tasting off"
+    },
+    {
+      "fact": "The client was told UV/Vis spectroscopy is extremely sensitive.",
+      "enquiry_quote": "We were told UV/Vis spectroscopy is extremely sensitive"
+    },
+    {
+      "fact": "The client wants to place UV/Vis spectroscopy on the filler to reject bad batches automatically.",
+      "enquiry_quote": "we want to put it on the filler and let it reject bad batches automatically"
+    },
+    {
+      "fact": "The client does not know what causes the off taste.",
+      "enquiry_quote": "We do not know what causes the off taste."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today when a batch tastes off: how is it detected, what does it cost you, and what decision should real-time data drive on the filler?",
+      "why": "Clarifies the pain and whether an automatic reject decision is the right goal.",
+      "assumption_if_unanswered": "Off-taste batches are detected late by customers; the decision to be supported is unclear, so lab screening will first establish the cause.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Do you know, or suspect, which compound or property causes the off taste, and at what level does it become noticeable?",
+      "why": "Determines whether UV/Vis can see the target at all and whether ppm or % level is needed.",
+      "assumption_if_unanswered": "Target unknown; level unknown. Lab screening establishes whether the target is ppm or % level and whether UV/Vis responds to it.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "Is the juice clear, turbid or opaque at the filler, and does its appearance vary between batches?",
+      "why": "Optical state decides the probe geometry (transmission, transflection or ATR) and whether UV/Vis light reaches the detector.",
+      "assumption_if_unanswered": "Juice assumed clear liquid; turbidity variation unknown and must be checked in lab screening.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "How does the juice vary along the process (fruit source, pasteurisation, temperature, cleaning cycles, pulp or bubbles), and when in the run do off-taste batches occur?",
+      "why": "Shows whether variation comes from the juice itself or from the line, which affects whether a sensor on the filler can be representative.",
+      "assumption_if_unanswered": "Variation sources unknown; batches are assumed to differ in composition, and time-aligned samples are needed.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where exactly would the probe sit on the filler, and is there space and access for a probe and any fiber link to the analyzer?",
+      "why": "Defines the installation point, distance to the analyzer and whether a fiber type compatible with the wavelength range is needed.",
+      "assumption_if_unanswered": "Installation point not defined; no fiber or distance assumed until the layout is known.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "How is off taste confirmed today (sensory panel, lab chemistry, customer complaints), and how accurate is that method?",
+      "why": "A reference method is needed to test whether any optical signal correlates with off taste.",
+      "assumption_if_unanswered": "No reference method known; a sensory or lab reference must be set up before any sensor claim is tested.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget do you need for an automatic reject decision, and what is the cost of a false reject or a missed bad batch?",
+      "why": "Sets the requirements that decide whether a single UV/Vis method is sufficient or another method is needed.",
+      "assumption_if_unanswered": "Requirements unknown; the simplest single-method option will be tested first in lab screening.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "insufficient_information",
+    "status_reason": "The cause of the off taste is unknown, so no target can be measured.",
+    "requirements_stated": [
+      "Juice bottling line; customers say some batches taste off",
+      "Cause unknown",
+      "Wants UV/Vis on the filler to reject bad batches automatically",
+      "Was told UV/Vis is extremely sensitive"
+    ],
+    "key_unknowns": [
+      "Off-taste cause and level",
+      "Juice optics (clarity, pulp, bubbles)",
+      "Reference method",
+      "Reject limits, installation, cleaning"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "UV/Vis is suitable because it is extremely sensitive.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "UV/Vis is described as highly sensitive in the UV region, and the cuvette row is rated high sensitivity.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.5",
+                "quote": "It has very high sensitivity, especially in the UV region (190-360 nm)",
+                "url": null
+              },
+              {
+                "ref": "S01 Table 1 (p.6)",
+                "quote": null,
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "The table rates UV/Vis selectivity low and rates the transmission or transflection probe row low sensitivity.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 Table 1 (p.6)",
+                "quote": null,
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Overlapping UV signals in real mixtures require chemometrics.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.5",
+                "quote": "the strong overlap of spectral signals in UV spectra complicates the analysis of real samples",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "UV/Vis on the filler can detect off-taste batches and reject them automatically.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "The client does not know what causes the off taste.",
+            "basis": "client_fact",
+            "citations": []
+          },
+          {
+            "text": "No supplied AFS application covers juice or off-taste detection, so the target must first be identified in multi-method lab trials.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.20",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "A probe on the filler can be linked to an analyzer.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "No fiber link or analyzer distance is stated; the fiber must transmit the chosen method's range.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.6",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which suspected causes and levels apply, and are retained good and off-taste samples available?",
+        "covers": "measured"
+      },
+      {
+        "question": "How is off taste confirmed today, with what reliability and sampling timing?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do fruit source, processing, turbidity, pulp and bubbles vary between batches?",
+        "covers": "variation"
+      },
+      {
+        "question": "What reject speed, false-reject tolerance, probe position and cleaning apply at the filler?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "UV/Vis spectroscopy",
+        "geometry": "transmission or transflection probe (lab screening first)",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "No juice example exists; bioprocess media support UV transmission probes for clear liquids, and transfer to juice is untested.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "For highly transparent liquids with low optical density, UV-Transmission or Transflection probes are ideal",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Assumed useful only if the off-taste cause absorbs in UV/Vis; lab screening must confirm this.",
+          "basis": "assumption",
+          "citations": []
+        },
+        "confidence": "low",
+        "confidence_reason": "Target unknown; no juice application in the materials."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "transmission or transflection probe",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The dairy example supports NIR transmission for transparent liquids; transfer to juice is untested.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Overlapping bands need chemometrics; NIR may lack sensitivity for trace compounds.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.16",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Dairy example only; target unknown."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "recommended",
+        "reason": "Cheapest in-line option for clear liquids; to be tested once a target is known."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "alternative",
+        "reason": "Applies only if the off-taste cause is or correlates with a fluorescent species."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of good and off-taste samples."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline check for a fluorescent marker."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "Comparison candidate for clear liquids."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Intended for opaque fluids; low sensitivity; clear juice assumed."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "High selectivity helps identify the cause offline."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Selective lab identification; high cost."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "rejected",
+        "reason": "High cost and mid-IR fiber needed; only after screening justifies it."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "rejected",
+        "reason": "High cost; consider only if screening shows a need."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Selective lab identification if fluorescence background allows."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "UV/Vis transmission or transflection probe; path set by screening.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "interface",
+          "text": "NIR transmission or transflection probe as comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "Link undefined. Nominal fiber ranges: UV-Vis silica 190-1200 nm, Vis-NIR silica 350-2400 nm; instrument and probe range need confirmation.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: UVVIS: UV-Vis silica covers the nominal range; NIR: Vis-NIR silica partial (0.78-2.4 um).",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "UV-Vis silica (UV/Vis); Vis-NIR silica (NIR), pending layout",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type and path length",
+        "Filler installation and cleaning",
+        "Optical configuration"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "UV/Vis spectroscopy",
+        "nominal_range": "UV 190-360 nm and visible",
+        "citation": {
+          "ref": "S01 p.5",
+          "quote": null,
+          "url": null
+        },
+        "note": "Usable band needs sample spectra."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": "Nominal, not instrument range."
+      }
+    ],
+    "risks": [
+      {
+        "category": "physical_variation",
+        "text": "Turbid or opaque juice can saturate a transmission signal.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.16",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "No method is guaranteed to see the off-taste cause.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate, interface ratings and compatibility are all unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "fiber_link",
+        "text": "Fiber link and analyzer distance are undefined.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "evidence_scope",
+        "text": "The cited examples are dairy and bioprocess cases, not juice.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §3",
+            "quote": null,
+            "url": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "The juice is assumed to be a clear liquid at the filler.",
+      "Retained good and off-taste samples are assumed to be obtainable.",
+      "Pulp and bubbles may also disturb the signal or mimic composition changes (not sourced)."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "lab_screening",
+          "text": "Lab-screen retained good and off-taste batches with UV/Vis, fluorescence, NIR and IR to find a distinguishing signal and range.",
+          "basis": "proposal",
+          "citations": [
+            {
+              "ref": "S02 p.20",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record spectra from each candidate with time-aligned sensory or chemical references.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models first, combine only if justified; validate on held-out batches.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against the reject requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "The target must be identified before choosing a model, a system or a sensor."
+    },
+    "decision_basis": {
+      "text": "Agree numerical reject criteria with the client before the test; choose the simplest configuration that meets them on independent batches.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.5",
+        "quote": "It has very high sensitivity, especially in the UV region (190-360 nm)",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[0].citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[0].explanation[2].citations[0]",
+        "ref": "S01 p.5",
+        "quote": "the strong overlap of spectral signals in UV spectra complicates the analysis of real samples",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[1].citations[0]",
+        "ref": "S02 p.20",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[2].explanation[0].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "For highly transparent liquids with low optical density, UV-Transmission or Transflection probes are ideal",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S01 p.16",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[1].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "S01 p.16",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[4].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "feasibility_plan.steps[0].citations[0]",
+        "ref": "S02 p.20",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 4,
+      "citations_page_only": 17
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "context",
+        "detail": "different_context: S01 p.5 says UV-visible spectroscopy has very high sensitivity especially in the UV region (190-360 nm), which supports the claim; however the table (TABLE:r13) rates cuvette UV/Vis sensitivity high while probe rows rate it low, so the unqualified claim transfers a lab/cuvette-type rating to the process setting without saying so. Fix: Say UV/Vis is rated highly sensitive in the UV region for cuvette measurements (TABLE:r13), while probe-based UV/Vis rows are rated low sensitivity."
+      },
+      {
+        "path": "premise_checks[0].explanation[1]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages rate UV/Vis selectivity low, but the claim's statement about the in-line transmission probe row being low sensitivity is a mismatch in scope: the page lists several probe rows, and the note that sensitivity alone does not show identification of an unknown cause is not stated by any cited page. Fix: Limit the claim to the table ratings (selectivity low; transmission probe sensitivity low per TABLE:r16) and drop the unsupported inference about identifying unknown causes."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "different_context: The quoted bioprocess text on UV-Transmission probes concerns bioprocess media with path lengths of 1-10 mm; applying it to juice clarity transfers it to a different sample type without saying so. Fix: State that the support is from bioprocess media and that transfer to juice is untested."
+      },
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "context",
+        "detail": "overstated: Stating UV/Vis is useful only if the cause absorbs is a reasonable limit, but the cited table cells are generic ratings and do not establish the conclusion for off-taste detection. Fix: Frame it as a conditional assumption requiring lab confirmation rather than a rule derived from the table."
+      },
+      {
+        "path": "measurement_concept.items[3]",
+        "kind": "context",
+        "detail": "not_supported: S02 p.6 lists UV-VIS silica fibers at 190-1200 nm and VIS-NIR silica at 350-2400 nm; the claim that Vis-NIR silica covers NIR to 2.4 um is accurate, but the claim that UV-Vis silica covers UV/Vis is only a nominal fiber range, not an instrument range, which the brief forbids treating as a specific instrument range. Fix: Describe these as nominal fiber transmission ranges and note that the actual instrument and probe range must be confirmed."
+      },
+      {
+        "path": "risks[0]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.16 mentions saturation from turbidity and opacity but does not mention pulp or bubbles mimicking composition changes. Fix: Limit the risk to turbidity-driven saturation as stated on the page and mark pulp and bubble effects as unsourced assumptions."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to know whether UV/Vis spectroscopy on the filler can detect the cause of off-taste juice batches and automatically reject bad batches.",
+    "stated_facts": [
+      {
+        "fact": "The company runs a juice bottling line.",
+        "enquiry_quote": "Our juice bottling line"
+      },
+      {
+        "fact": "The line sometimes fills batches that customers describe as tasting off.",
+        "enquiry_quote": "sometimes fills batches that customers describe as tasting off"
+      },
+      {
+        "fact": "The client was told UV/Vis spectroscopy is extremely sensitive.",
+        "enquiry_quote": "We were told UV/Vis spectroscopy is extremely sensitive"
+      },
+      {
+        "fact": "The client wants to place UV/Vis spectroscopy on the filler to reject bad batches automatically.",
+        "enquiry_quote": "we want to put it on the filler and let it reject bad batches automatically"
+      },
+      {
+        "fact": "The client does not know what causes the off taste.",
+        "enquiry_quote": "We do not know what causes the off taste."
+      }
+    ],
+    "targets": [],
+    "sample_description": "Juice in bottling line, batches described by customers as tasting off",
+    "sample_state": "clear_liquid",
+    "process_context": "production",
+    "conditions": [],
+    "measurement_location": "filler",
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [
+      "filler"
+    ],
+    "methods_mentioned": [
+      "UVVIS"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "UV/Vis spectroscopy is suitable because it is extremely sensitive.",
+        "enquiry_quote": "We were told UV/Vis spectroscopy is extremely sensitive"
+      },
+      {
+        "claim": "UV/Vis on the filler can detect the cause of off taste and reject bad batches automatically.",
+        "enquiry_quote": "we want to put it on the filler and let it reject bad batches automatically"
+      }
+    ],
+    "requested_decision": "Whether to install UV/Vis spectroscopy on the filler to automatically reject off-taste batches.",
+    "unknowns": [
+      "The compound or property causing the off taste is unknown.",
+      "Target analyte or variable and its level (ppm or %) are undefined.",
+      "Whether the juice is clear, turbid or opaque is not stated.",
+      "Process conditions such as temperature, pressure, and variation in juice are not stated.",
+      "Installation distance and existing fibers are not stated.",
+      "Current reference method for off taste (e.g. sensory panel or lab analysis) is not stated.",
+      "Accuracy, response time and budget requirements are not stated.",
+      "Whether a sensory or chemical link to the off taste has been established is not stated."
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.6.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-17T21:43:09.531378+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.5,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 115,
+          "output_tokens": 1916,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001074
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-17T21:43:18.060532+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 41.4,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9361,
+          "output_tokens": 4752,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.149357
+      },
+      {
+        "claims_checked": 14,
+        "stage": "critic",
+        "timestamp": "2026-10-17T21:43:59.495866+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 6.0,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 10281,
+          "output_tokens": 1031,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001551
+      },
+      {
+        "flags_sent": 7,
+        "stage": "revise",
+        "timestamp": "2026-10-17T21:44:05.548370+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 49.9,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10255,
+          "output_tokens": 6363,
+          "cache_read_input_tokens": 84363,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.185153
+      }
+    ],
+    "prompt_hash": "4387329b7893",
+    "git_commit": "27e2824-dirty",
+    "timestamp": "2026-10-17T21:43:18.042837+00:00",
+    "duration_s": 106.0,
+    "cost_usd": 0.3371
+  }
+}

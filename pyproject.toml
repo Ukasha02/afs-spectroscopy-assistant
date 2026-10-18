@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "afs-assistant"
+version = "0.1.0"
+description = "AI assistant for in-line spectroscopy solution design (SchubKI Hackathon 2026, Art Fiber Systems challenge)"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=1.15",
+    "google-genai>=2.31",
+    "pydantic>=2.14",
+    "pypdf>=6.0",
+    "fonttools>=4.0",
+    "python-docx>=1.2",
+    "openpyxl>=3.1",
+    "pyyaml>=6.0",
+    "rapidfuzz>=3.14",
+    "streamlit>=1.66",
+    "python-dotenv>=1.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.0"]
+
+[project.scripts]
+afs-assistant = "afs_assistant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
