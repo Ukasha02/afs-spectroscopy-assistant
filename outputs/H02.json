@@ -9,123 +9,118 @@
     },
     {
       "fact": "The dairy process handles an opaque milk concentrate.",
-      "enquiry_quote": "and an opaque milk concentrate."
+      "enquiry_quote": "and an opaque milk concentrate"
     },
     {
       "fact": "The client wants a pilot for composition monitoring.",
       "enquiry_quote": "We want a pilot for composition monitoring"
     },
     {
-      "fact": "Laboratory protein and fat results are to be used where those variables are relevant.",
+      "fact": "The client plans to use laboratory protein and fat results where those variables are relevant.",
       "enquiry_quote": "using laboratory protein and fat results where those variables are relevant"
     },
     {
       "fact": "The client can compare different measurement interfaces before choosing the installation.",
-      "enquiry_quote": "We can compare different measurement interfaces before choosing the installation."
+      "enquiry_quote": "We can compare different measurement interfaces before choosing the installation"
     }
   ],
   "clarification_questions": [
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "What goes wrong today with composition control on the whey and the milk concentrate, and which process decision should real-time protein and fat data drive?",
-      "why": "Defines whether the pilot must support fast process control or only trend monitoring, which changes the measurement concept.",
-      "assumption_if_unanswered": "Decision is unknown; the first concept is kept general for trend monitoring until the expert confirms the control need.",
+      "question": "What goes wrong today with composition control on the whey and the concentrate, and what decision should real-time data drive?",
+      "why": "Defines whether the pilot should support process control, yield tracking or quality release, which changes the method choice.",
+      "assumption_if_unanswered": "Decision unknown; the first step is a comparison experiment that establishes whether real-time data would be useful for control.",
       "answer": null
     },
     {
       "id": "Q2",
       "topic": "target_and_level",
-      "question": "At what concentration levels are protein and fat expected in each stream, stated in percent or ppm, and which of them must be tracked?",
-      "why": "Sets whether lab screening must target major components or trace levels, which determines the spectral range and method.",
-      "assumption_if_unanswered": "Levels unknown; lab screening establishes whether the targets are at percent level before any method is chosen.",
+      "question": "Which analytes must be monitored beyond protein and fat, and at what level (ppm or %) does each need to be measured in each stream?",
+      "why": "Determines whether NIR-based composition measurement is sufficient or trace-level analysis needs a different method.",
+      "assumption_if_unanswered": "Only protein and fat as stated; level unknown, so the lab screening establishes whether the required level is ppm or % level.",
       "answer": null
     },
     {
       "id": "Q3",
       "topic": "sample_form_optics",
-      "question": "How turbid or opaque is the whey stream and the milk concentrate, and is each stream a flowing liquid, a paste or something else?",
-      "why": "Optical state determines the probe geometry: transmission or transflection for clear liquids, diffuse reflection for opaque samples.",
-      "assumption_if_unanswered": "Whey treated as clear liquid and concentrate as opaque liquid, to be confirmed in lab screening.",
+      "question": "How turbid is the whey stream and how opaque is the milk concentrate, and do their optical properties change over time?",
+      "why": "Clear liquids suit transmission or transflection; opaque concentrate suits diffuse reflection; variation changes the probe choice.",
+      "assumption_if_unanswered": "Whey treated as clear liquid and concentrate as opaque, as stated; variation unknown and to be checked in lab screening.",
       "answer": null
     },
     {
       "id": "Q4",
       "topic": "process_conditions",
-      "question": "What are the temperature, flow, fouling and cleaning conditions in each stream, and how much do composition, bubbles and homogeneity vary?",
-      "why": "Temperature, fouling and sample variation affect calibration stability and whether a probe can stay in contact with the stream.",
-      "assumption_if_unanswered": "Conditions unknown; the pilot design includes a check of temperature and fouling effects before scale-up.",
+      "question": "What are the process temperature, pressure, fouling tendency and cleaning or sterilization regime at each measurement point?",
+      "why": "Determines probe material, mounting and whether contact-free measurement is required.",
+      "assumption_if_unanswered": "Conditions unknown; the pilot assumes an interface that can be cleaned in place and is checked before installation.",
       "answer": null
     },
     {
       "id": "Q5",
       "topic": "installation_distance",
-      "question": "Where would the measurement point be in the process, how far is the analyzer from it, and are any optical fibers already installed?",
-      "why": "Distance and existing fibers decide whether a remote fiber probe is feasible and which wavelength range the fiber transmits.",
-      "assumption_if_unanswered": "Installation point and distance unknown; the comparison assumes a short, in-line probe position to be confirmed later.",
+      "question": "Where would each probe be installed, how far is the analyzer from that point, and are any fibers already in place?",
+      "why": "Fiber type and length determine which wavelengths can reach the analyzer; silica fibers cannot carry mid-IR.",
+      "assumption_if_unanswered": "Installation point and distance unknown; the comparison is done at the analyzer first and the installation is chosen after the pilot.",
       "answer": null
     },
     {
       "id": "Q6",
       "topic": "reference_method",
-      "question": "Which laboratory method provides the protein and fat reference values, how often are samples taken, and what accuracy does that method have?",
-      "why": "The reference method and its accuracy define what the optical concept can be validated against and the achievable comparison quality.",
-      "assumption_if_unanswered": "Reference method and accuracy unknown; the comparison uses time-aligned lab samples with the accuracy to be established first.",
+      "question": "Which laboratory method provides the protein and fat reference, how often is it sampled, and what is its accuracy?",
+      "why": "The fiber measurement is only as good as the reference; accuracy sets the achievable model error.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the pilot requires time-aligned lab samples before any model is built.",
       "answer": null
     },
     {
       "id": "Q7",
       "topic": "requirements",
-      "question": "What accuracy, response time and budget are required for the pilot and for a later installation?",
-      "why": "These requirements decide between a simple few-wavelength sensor and a broader multi-method setup.",
-      "assumption_if_unanswered": "Requirements unknown; the pilot starts with the simplest single-method comparison and expands only if needed.",
+      "question": "What accuracy, response time and budget are required for the pilot and for a later production sensor?",
+      "why": "Decides whether a single method is sufficient or a combination is worth testing against it.",
+      "assumption_if_unanswered": "Requirements unknown; the pilot compares single methods first and considers combinations only if one is not precise enough.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "provisional_assessment",
-    "status_reason": "Targets and streams defined; levels and process conditions open.",
+    "status_reason": "Streams and targets defined; ranges, requirements and process conditions still unknown.",
     "requirements_stated": [
-      "Clear whey stream and opaque milk concentrate",
-      "Composition monitoring pilot",
-      "Laboratory protein and fat results available",
-      "Interfaces compared before choosing installation"
+      "Relatively clear whey stream; opaque milk concentrate",
+      "Pilot for composition monitoring",
+      "Lab protein and fat results where relevant",
+      "Compare interfaces before choosing installation"
     ],
     "key_unknowns": [
-      "Protein and fat levels, required accuracy",
-      "Reference method uncertainty, sampling time",
-      "Temperature, bubbles, fouling, cleaning",
-      "Measurement point, response time"
+      "Composition ranges and acceptance limits",
+      "Reference uncertainty and sampling timing",
+      "Temperature, bubbles, homogenisation, fouling",
+      "Installation, response time, cleaning"
     ],
     "premise_checks": [
       {
-        "client_claim": "Laboratory protein and fat results can serve as the reference for composition monitoring.",
+        "client_claim": "Laboratory protein and fat results can serve as reference for the pilot.",
         "verdict": "plausible_to_be_tested",
         "explanation": [
           {
-            "text": "The dairy example quantifies fat and protein with PLS regression.",
+            "text": "The dairy example quantifies fat and protein with PLS regression. The client's reference uncertainty and timing are unknown.",
             "basis": "sourced",
             "citations": [
               {
                 "ref": "S01 p.17",
-                "quote": "Partial Least Squares (PLS) regression to quantify fat and protein",
+                "quote": "before using Partial Least Squares (PLS) regression to quantify fat and protein.",
                 "url": null
               }
             ]
-          },
-          {
-            "text": "Such a calibration needs reference values; the uncertainty of the client's laboratory method is unknown.",
-            "basis": "assumption",
-            "citations": []
           }
         ]
       },
       {
-        "client_claim": "Different measurement interfaces can be compared before the installation is chosen.",
+        "client_claim": "Different measurement interfaces can be compared before choosing the installation.",
         "verdict": "supported",
         "explanation": [
           {
-            "text": "The dairy case keeps reflection and transmission available so each production stage can be calibrated.",
+            "text": "The dairy example describes keeping both reflection and transmission interfaces to cover changing physical states.",
             "basis": "sourced",
             "citations": [
               {
@@ -140,66 +135,35 @@
     ],
     "report_questions": [
       {
-        "question": "Which protein and fat levels per stream, and which changes must be distinguished?",
+        "question": "Which variables, ranges and changes matter in each stream?",
         "covers": "measured"
       },
       {
-        "question": "Which lab method, uncertainty and sampling timing give the reference values?",
+        "question": "Which lab methods give protein and fat, with what uncertainty and sampling time?",
         "covers": "reference"
       },
       {
-        "question": "How do temperature, homogenisation, bubbles and composition vary between batches?",
+        "question": "How do temperature, turbidity, bubbles and homogenisation vary between runs?",
         "covers": "variation"
       },
       {
-        "question": "What accuracy, response time, access and cleaning apply per stream?",
+        "question": "What accuracy, response time, installation and cleaning limits apply?",
         "covers": "requirements"
       },
       {
-        "question": "Which process decision and budget drive the pilot?",
+        "question": "Which decision should the data drive, and where is the analyzer?",
         "covers": "context"
       }
     ],
     "recommendations": [
       {
-        "method": "NIR spectroscopy (whey stream)",
-        "geometry": "transmission or transflection probe",
+        "method": "NIR spectroscopy",
+        "geometry": "diffuse reflection (milk concentrate)",
         "role": "primary",
         "simplicity_rank": 1,
         "cost_complexity": "average",
         "reason": {
-          "text": "The dairy example names NIR transmission for clear streams such as whey.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S01 p.18",
-              "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
-              "url": null
-            }
-          ]
-        },
-        "caveat": {
-          "text": "The optical pathlength must be set on real samples.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S01 p.18",
-              "quote": "if the pathlength is too wide, the signal is lost to absorption; if too narrow, the sample represents a negligible volume.",
-              "url": null
-            }
-          ]
-        },
-        "confidence": "medium",
-        "confidence_reason": "Matching example; nothing measured on this whey."
-      },
-      {
-        "method": "NIR spectroscopy (milk concentrate)",
-        "geometry": "diffuse reflection probe",
-        "role": "primary",
-        "simplicity_rank": 1,
-        "cost_complexity": "average",
-        "reason": {
-          "text": "The dairy example uses NIR reflection for opaque concentrates.",
+          "text": "The dairy example supports NIR reflection for opaque concentrates.",
           "basis": "sourced",
           "citations": [
             {
@@ -210,7 +174,7 @@
           ]
         },
         "caveat": {
-          "text": "The signal depends on surface characteristics and fat globule size.",
+          "text": "Sensitive to surface and fat globule size; scatter must be handled.",
           "basis": "sourced",
           "citations": [
             {
@@ -221,16 +185,47 @@
           ]
         },
         "confidence": "medium",
-        "confidence_reason": "Matching example; concentrate optics unmeasured."
+        "confidence_reason": "Same application type shown; ranges, reference and requirements unknown."
       },
       {
-        "method": "NIR spectroscopy (both streams)",
-        "geometry": "transflection probe",
+        "method": "NIR spectroscopy",
+        "geometry": "transmission or transflection (whey)",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The dairy example names NIR transmission as preferred for whey.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Pathlength must be matched to the stream in lab tests.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.18",
+              "quote": "if the pathlength is too wide, the signal is lost to absorption; if too narrow, the sample represents a negligible volume.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Same application type shown; whey turbidity and ranges unknown."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "transflection (single interface for both streams)",
         "role": "comparison",
         "simplicity_rank": 2,
         "cost_complexity": "average",
         "reason": {
-          "text": "One transflection probe for both streams is a comparison candidate.",
+          "text": "Transflection may serve both low- and high-fat products.",
           "basis": "sourced",
           "citations": [
             {
@@ -241,55 +236,55 @@
           ]
         },
         "caveat": {
-          "text": "Transmission fails for thick or fat-rich product; testing on the concentrate is needed.",
+          "text": "Holds only in some cases; compare with stream-specific interfaces.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 p.18",
-              "quote": "it fails when the milk becomes too \"thick\" or fat -rich",
+              "quote": "In some cases, a Transflection probe can already be a combined solution",
               "url": null
             }
           ]
         },
         "confidence": "low",
-        "confidence_reason": "Source says 'in some cases' only."
+        "confidence_reason": "Source states it works only in some cases; concentrate opacity unknown."
       }
     ],
     "method_table_screening": [
       {
-        "table_row": "NIR spectroscopy / transmission or transflection probe",
-        "decision": "recommended",
-        "reason": "Whey interface; transflection is also the cross-stream comparison candidate."
-      },
-      {
         "table_row": "NIR spectroscopy / diffuse reflection probe",
         "decision": "recommended",
-        "reason": "Concentrate interface for scattering media."
+        "reason": "Dairy example for opaque concentrates."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "recommended",
+        "reason": "Dairy example for whey; transflection also a shared-interface candidate."
       },
       {
         "table_row": "NIR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Offline screening of whey samples."
+        "reason": "Offline whey spectra during lab screening."
       },
       {
         "table_row": "NIR spectroscopy / integrating sphere",
         "decision": "lab_screening_only",
-        "reason": "Offline reference geometry for opaque samples."
+        "reason": "Offline option; rated for solids and powders."
       },
       {
         "table_row": "NIR spectroscopy / surface at a distance",
         "decision": "rejected",
-        "reason": "Rated for solids and powders; no contact problem has been stated."
+        "reason": "Non-contact need not stated; rated for solids and powders."
       },
       {
         "table_row": "IR spectroscopy / ATR probe*",
         "decision": "alternative",
-        "reason": "Only if NIR misses specific information; it adds mid-IR fibers and higher cost."
+        "reason": "Molecular specificity option only if NIR proves insufficient."
       },
       {
         "table_row": "IR spectroscopy / ATR platform",
         "decision": "lab_screening_only",
-        "reason": "Lab check of specific bands, not in-line."
+        "reason": "Lab check of specificity if NIR is insufficient."
       },
       {
         "table_row": "IR spectroscopy / cuvette",
@@ -299,17 +294,17 @@
       {
         "table_row": "IR spectroscopy / sample layer",
         "decision": "rejected",
-        "reason": "Solid films; does not match liquid streams."
+        "reason": "Solid films; not these liquids."
       },
       {
         "table_row": "IR spectroscopy / sample surface",
         "decision": "rejected",
-        "reason": "Solids only."
+        "reason": "Solids; not these streams."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
         "decision": "alternative",
-        "reason": "High cost; only if NIR is insufficient."
+        "reason": "Higher cost; consider only if NIR proves insufficient."
       },
       {
         "table_row": "Raman spectroscopy / cuvette 90 deg",
@@ -319,7 +314,7 @@
       {
         "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
         "decision": "rejected",
-        "reason": "Low selectivity for fat and protein in mixtures."
+        "reason": "Low selectivity; no defined absorber for protein and fat named."
       },
       {
         "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
@@ -329,34 +324,34 @@
       {
         "table_row": "UV/Visible spectroscopy / ATR probe",
         "decision": "rejected",
-        "reason": "Low sensitivity and selectivity for these targets."
-      },
-      {
-        "table_row": "UV/Visible spectroscopy / probe, lens",
-        "decision": "rejected",
-        "reason": "For radiating samples; not applicable."
+        "reason": "Low sensitivity and selectivity for this target."
       },
       {
         "table_row": "UV/Visible spectroscopy / cuvette",
         "decision": "rejected",
-        "reason": "Low selectivity; no defined absorber is targeted."
+        "reason": "Low selectivity; no defined absorber."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / probe, lens",
+        "decision": "rejected",
+        "reason": "For radiating samples only."
       },
       {
         "table_row": "Fluorimetry / fluorimetric probe",
         "decision": "rejected",
-        "reason": "No defined fluorescent target; low selectivity."
+        "reason": "Low selectivity; no fluorescent target defined."
       },
       {
         "table_row": "Fluorimetry / cuvette 90 deg",
         "decision": "rejected",
-        "reason": "Same reason; offline only."
+        "reason": "No fluorescent target defined."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "NIR transmission or transflection on whey, diffuse reflection on the concentrate; transflection also tested on both.",
+          "text": "NIR diffuse reflection probe for the concentrate; NIR transmission or transflection probe for whey; transflection may be a combined option for both, to be verified.",
           "basis": "sourced",
           "citations": [
             {
@@ -366,41 +361,30 @@
             },
             {
               "ref": "S01 p.18",
-              "quote": null,
+              "quote": "In some cases, a Transflection probe can already be a combined solution working well for low-fat and high-fat containing milk products.",
               "url": null
             }
           ]
         },
         {
           "aspect": "location",
-          "text": "Lab screening first, then flush-mounted probes at client-confirmed points per stream.",
+          "text": "Compare interfaces on lab samples first, then flush-mount in pipe or vat per stream.",
           "basis": "proposal",
           "citations": [
             {
               "ref": "S01 p.17",
-              "quote": null,
+              "quote": "the probe is flush -mounted into a pipe or vat to interact directly with the flowing medium.",
               "url": null
             }
           ]
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated; fiber type and length need confirmation.",
-          "basis": "assumption",
-          "citations": []
-        },
-        {
-          "aspect": "fiber_link",
-          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um).",
+          "text": "No fiber link stated; silica fibers suit UV/Vis, NIR and Raman, while MIR needs IR fibers.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.6",
-              "quote": null,
-              "url": null
-            },
-            {
-              "ref": "S01 p.10",
               "quote": null,
               "url": null
             }
@@ -412,96 +396,103 @@
       "architecture": "undecided",
       "needs_afs_confirmation": [
         "Probe type per stream",
-        "Installation and cleaning compatibility",
-        "Optical pathlength configuration"
+        "Transflection pathlength",
+        "Installation and cleaning compatibility"
       ]
     },
     "spectral_ranges": [
       {
         "method": "NIR spectroscopy",
-        "nominal_range": "780–2500 nm",
+        "nominal_range": "780-2500 nm",
         "citation": {
           "ref": "S01 p.10",
-          "quote": null,
+          "quote": "NIR spectra (780–2500 nm)",
           "url": null
         },
-        "note": null
+        "note": "Nominal; usable bands from sample spectra."
       }
     ],
     "risks": [
       {
         "category": "calibration_validity",
-        "text": "Product or formulation changes can invalidate a calibration.",
-        "basis": "general_knowledge",
-        "citations": []
+        "text": "Whey and concentrate may need separate calibrations.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.18",
+            "quote": "a lab can calibrate models for every stage of production",
+            "url": null
+          }
+        ]
       },
       {
         "category": "physical_variation",
-        "text": "Fat globule size and scattering affect reflection signals, not only composition.",
+        "text": "Fat globule size and scattering can mimic composition changes.",
         "basis": "sourced",
         "citations": [
           {
             "ref": "S01 p.17",
-            "quote": "the method is sensitive to the surface characteristics and fat globule size.",
+            "quote": "to remove physical interference caused by the scattering nature of the milk particles",
             "url": null
           }
         ]
       },
       {
         "category": "no_guaranteed_gain",
-        "text": "No geometry, nor a shared probe, is guaranteed to work.",
+        "text": "No interface or added method is guaranteed to help.",
         "basis": "assumption",
         "citations": []
       },
       {
         "category": "nothing_confirmed",
-        "text": "Accuracy, update rate, interface ratings and compatibility are unconfirmed.",
+        "text": "Accuracy, update rate, ratings and compatibility unconfirmed.",
         "basis": "assumption",
         "citations": []
       },
       {
         "category": "fouling_interface",
-        "text": "Window fouling during production and cleaning is unassessed.",
+        "text": "Contact interfaces may foul; cleaning regime unknown.",
         "basis": "assumption",
         "citations": []
       }
     ],
     "assumptions": [
-      "Whey is treated as a clear liquid and the concentrate as an opaque liquid until lab screening confirms this.",
-      "Protein and fat are assumed to be at percent level until confirmed."
+      "Whey treated as clear and concentrate as opaque, as stated.",
+      "Only protein and fat are targets; levels unknown.",
+      "Process conditions and installation points unknown."
     ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "representative_samples",
-          "text": "Collect whey and concentrate across the agreed range, including temperature, homogenisation and bubble variation.",
+          "text": "Collect whey and concentrate samples across client-agreed composition ranges, temperature, homogenisation and bubble variation.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record spectra per interface with time-aligned laboratory protein and fat results.",
+          "text": "Record spectra with each interface alongside time-aligned laboratory protein and fat results.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "models_and_validation",
-          "text": "Build single-method models per stream and geometry first; validate on held-out runs or batches.",
+          "text": "Build single-interface models per stream first; validate on held-out runs or batches.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "comparison",
-          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "text": "Compare prediction error, bias and ability to follow changes against the client's requirements.",
           "basis": "proposal",
           "citations": []
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "Depends on lab screening results and control needs."
+      "afs_next_path_reason": "Path depends on pilot results and the client's requirements."
     },
     "decision_basis": {
-      "text": "Agree numerical acceptance criteria before testing; choose the simplest interface per stream meeting them on independent material.",
+      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest interface set meeting them on independent runs.",
       "basis": "proposal",
       "citations": []
     }
@@ -511,7 +502,7 @@
       {
         "path": "premise_checks[0].explanation[0].citations[0]",
         "ref": "S01 p.17",
-        "quote": "Partial Least Squares (PLS) regression to quantify fat and protein",
+        "quote": "before using Partial Least Squares (PLS) regression to quantify fat and protein.",
         "status": "verified",
         "score": 100.0
       },
@@ -524,29 +515,29 @@
       },
       {
         "path": "recommendations[0].reason.citations[0]",
-        "ref": "S01 p.18",
-        "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
-        "status": "verified",
-        "score": 100.0
-      },
-      {
-        "path": "recommendations[0].caveat.citations[0]",
-        "ref": "S01 p.18",
-        "quote": "if the pathlength is too wide, the signal is lost to absorption; if too narrow, the sample represents a negligible volume.",
-        "status": "verified",
-        "score": 100.0
-      },
-      {
-        "path": "recommendations[1].reason.citations[0]",
         "ref": "S01 p.17",
         "quote": "Inline NIR Reflection is primarily used for opaque or highly concentrated dairy products, such as yogurt, butter, or whole milk concentrates.",
         "status": "verified",
         "score": 100.0
       },
       {
-        "path": "recommendations[1].caveat.citations[0]",
+        "path": "recommendations[0].caveat.citations[0]",
         "ref": "S01 p.17",
         "quote": "the method is sensitive to the surface characteristics and fat globule size.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "NIR Transmission is the preferred method for transparent or semi-transparent liquids, such as skim milk, whey, or permeate.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.18",
+        "quote": "if the pathlength is too wide, the signal is lost to absorption; if too narrow, the sample represents a negligible volume.",
         "status": "verified",
         "score": 100.0
       },
@@ -560,7 +551,7 @@
       {
         "path": "recommendations[2].caveat.citations[0]",
         "ref": "S01 p.18",
-        "quote": "it fails when the milk becomes too \"thick\" or fat -rich",
+        "quote": "In some cases, a Transflection probe can already be a combined solution",
         "status": "verified",
         "score": 100.0
       },
@@ -574,72 +565,62 @@
       {
         "path": "measurement_concept.items[0].citations[1]",
         "ref": "S01 p.18",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "In some cases, a Transflection probe can already be a combined solution working well for low-fat and high-fat containing milk products.",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "measurement_concept.items[1].citations[0]",
         "ref": "S01 p.17",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "the probe is flush -mounted into a pipe or vat to interact directly with the flowing medium.",
+        "status": "verified",
+        "score": 100.0
       },
       {
-        "path": "measurement_concept.items[3].citations[0]",
+        "path": "measurement_concept.items[2].citations[0]",
         "ref": "S02 p.6",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
-        "path": "measurement_concept.items[3].citations[1]",
-        "ref": "S01 p.10",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "path": "risks[0].citations[0]",
+        "ref": "S01 p.18",
+        "quote": "a lab can calibrate models for every stage of production",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "risks[1].citations[0]",
         "ref": "S01 p.17",
-        "quote": "the method is sensitive to the surface characteristics and fat globule size.",
+        "quote": "to remove physical interference caused by the scattering nature of the milk particles",
         "status": "verified",
         "score": 100.0
       },
       {
         "path": "spectral_ranges[0].citation",
         "ref": "S01 p.10",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "NIR spectra (780–2500 nm)",
+        "status": "verified",
+        "score": 100.0
       }
     ],
     "flags": [],
     "counts": {
-      "citations_verified": 9,
-      "citations_page_only": 6
+      "citations_verified": 13,
+      "citations_page_only": 2
     },
     "revised": true,
     "flags_before_revision": [
       {
-        "path": "premise_checks[0].explanation[0]",
+        "path": "measurement_concept.items[0]",
         "kind": "context",
-        "detail": "not_supported: The claim says PLS calibration needs reference values and that the uncertainty of the client's own laboratory method is unknown. S01 p.17 only says PLS is used to quantify fat and protein. It says nothing about reference values or the client's lab. Fix: Limit the claim to what p.17 states: the dairy example uses PLS regression to quantify fat and protein. State the reference-value and client-lab points as AFS assumptions, not as content from the example."
+        "detail": "overstated: The claim says 'transflection tested on both', but S01 p.18 only says that in some cases a transflection probe 'can already be a combined solution' for low-fat and high-fat milk. The page does not report any testing of transflection on both the concentrate and whey streams. Fix: Replace 'transflection tested on both' with 'transflection may be a combined option for both low-fat and high-fat streams, to be verified (S01 p.18)'."
       },
       {
         "path": "measurement_concept.items[2]",
         "kind": "context",
-        "detail": "not_supported: S02 p.6 gives the Vis-NIR silica fiber range as 350-2400 nm, not 0.78-2.4 um. The 780 nm lower bound comes from the NIR band on S01 p.10, which is a spectral definition, not a fiber property. The word 'partial' is not stated in either page. Fix: Cite the fiber range as 350-2400 nm from S02 p.6 and cite the NIR band as 780-2500 nm from S01 p.10 separately. Do not merge them into one fiber-transmission range, and do not describe the coverage as partial unless the source says so."
-      },
-      {
-        "path": "risks[0]",
-        "kind": "context",
-        "detail": "not_supported: S01 p.10 covers ATR probes, NIR overtone bands, scattering, and the use of chemometrics. It does not say that a change in product, stream, or formulation invalidates a calibration. Fix: Cite a source that discusses calibration transfer or model validity, or present this as a general chemometric risk that AFS infers rather than as a finding from S01 p.10."
-      },
-      {
-        "path": "risks[1]",
-        "kind": "context",
-        "detail": "not_supported: S01 p.17 says the reflection method is sensitive to surface characteristics and fat globule size, and that the milk particles cause scattering. It does not mention temperature or say that these effects can mimic composition changes. Fix: Keep the fat globule size and scattering points, which p.17 supports, and remove temperature or cite a source that covers temperature effects on NIR reflection measurements."
+        "detail": "not_supported: S02 p.6 covers fiber transmission ranges: silica fibers for UV-VIS (190-1200 nm) and VIS-NIR (350-2400 nm), and IR fibers for MIR. It says nothing about Raman. The claim that silica fibers suit Raman is not in the cited page. Fix: Limit the silica-fiber statement to the UV/Vis and NIR ranges shown on S02 p.6, and state that the Raman fiber suitability is not covered by S02 p.6 (or cite another AFS source page that addresses Raman fibers)."
       }
     ]
   },
@@ -716,7 +697,7 @@
     }
   ],
   "extraction": {
-    "summary": "The client wants to know which first measurement concepts and comparison experiment would suit composition monitoring of a clear whey stream and an opaque milk concentrate in a dairy process, using laboratory protein and fat results.",
+    "summary": "The client wants to know which first measurement concepts and comparison experiment make sense for monitoring composition of a clear whey stream and an opaque milk concentrate in a dairy process pilot.",
     "stated_facts": [
       {
         "fact": "The dairy process handles a relatively clear whey stream.",
@@ -724,28 +705,28 @@
       },
       {
         "fact": "The dairy process handles an opaque milk concentrate.",
-        "enquiry_quote": "and an opaque milk concentrate."
+        "enquiry_quote": "and an opaque milk concentrate"
       },
       {
         "fact": "The client wants a pilot for composition monitoring.",
         "enquiry_quote": "We want a pilot for composition monitoring"
       },
       {
-        "fact": "Laboratory protein and fat results are to be used where those variables are relevant.",
+        "fact": "The client plans to use laboratory protein and fat results where those variables are relevant.",
         "enquiry_quote": "using laboratory protein and fat results where those variables are relevant"
       },
       {
         "fact": "The client can compare different measurement interfaces before choosing the installation.",
-        "enquiry_quote": "We can compare different measurement interfaces before choosing the installation."
+        "enquiry_quote": "We can compare different measurement interfaces before choosing the installation"
       }
     ],
     "targets": [
       "protein",
       "fat"
     ],
-    "sample_description": "Relatively clear whey stream and opaque milk concentrate from a dairy process.",
+    "sample_description": "Relatively clear whey stream and opaque milk concentrate in a dairy process.",
     "sample_state": "unknown",
-    "process_context": "unknown",
+    "process_context": "production",
     "conditions": [],
     "measurement_location": null,
     "remote_measurement": false,
@@ -756,24 +737,26 @@
     "fibers_mentioned": [],
     "client_premises": [
       {
-        "claim": "Laboratory protein and fat results are a usable reference for composition monitoring where those variables are relevant.",
+        "claim": "Laboratory protein and fat results are available and can serve as reference where those variables are relevant.",
         "enquiry_quote": "using laboratory protein and fat results where those variables are relevant"
       },
       {
-        "claim": "Different measurement interfaces can be compared before the installation is chosen.",
-        "enquiry_quote": "We can compare different measurement interfaces before choosing the installation."
+        "claim": "Different measurement interfaces can be compared in a pilot before choosing the installation.",
+        "enquiry_quote": "We can compare different measurement interfaces before choosing the installation"
       }
     ],
     "requested_decision": "Which first measurement concepts and comparison experiment make sense for the whey stream and the milk concentrate.",
     "unknowns": [
-      "Whether the process is a production line, pilot plant or research setup beyond the stated pilot.",
-      "Protein and fat levels and their required accuracy.",
-      "Sample temperature, flow, fouling and cleaning conditions.",
-      "Variation of composition, homogeneity and bubbles in each stream.",
-      "Measurement point and distance from the analyzer; existing fibers.",
-      "Current laboratory reference method and its accuracy.",
-      "Response time and budget requirements.",
-      "Which measurement interfaces the client intends to compare."
+      "Whether the whey stream and milk concentrate are sampled at the same or different points.",
+      "Current process temperature, pressure, fouling and cleaning regime.",
+      "Whether a target level in % or ppm is needed beyond protein and fat.",
+      "Reference laboratory method and its accuracy.",
+      "Sample variation (fat globules, homogenisation, bubbles, particle size).",
+      "Distance from measurement point to analyzer and existing fibers.",
+      "Response time and accuracy requirements, and budget.",
+      "Whether the pilot is in-line, at-line or in a bypass.",
+      "Whether contact with the sample is possible.",
+      "Pain today and the decision real-time data would drive."
     ]
   },
   "pre_analysis": {
@@ -1087,9 +1070,9 @@
     },
     "fiber_findings_required_in_premise_check": [],
     "rule_hints": [
-      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
-      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
-      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [guidance]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [guidance]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [guidance]"
     ],
     "required_risk_categories": [
       "calibration_validity",
@@ -1098,87 +1081,87 @@
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.7.0",
+    "pipeline_version": "0.8.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-18T10:10:13.257943+00:00",
+        "timestamp": "2026-10-18T11:04:07.513969+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 8.8,
+        "duration_s": 9.2,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 139,
-          "output_tokens": 1898,
-          "cache_read_input_tokens": 10425,
+          "output_tokens": 1904,
+          "cache_read_input_tokens": 10363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001067
+        "cost_usd": 0.00107
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-18T10:10:22.064751+00:00",
+        "timestamp": "2026-10-18T11:04:16.727120+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 39.1,
+        "duration_s": 40.9,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 10597,
-          "output_tokens": 4947,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 10593,
+          "output_tokens": 4940,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.158211
+        "cost_usd": 0.157807
       },
       {
         "claims_checked": 12,
         "stage": "critic",
-        "timestamp": "2026-10-18T10:11:01.217227+00:00",
+        "timestamp": "2026-10-18T11:04:57.678654+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 10.2,
+        "duration_s": 7.5,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 6893,
-          "output_tokens": 2246,
-          "cache_read_input_tokens": 744,
+          "input_tokens": 6098,
+          "output_tokens": 1708,
+          "cache_read_input_tokens": 794,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.00182
+        "cost_usd": 0.001472
       },
       {
-        "flags_sent": 6,
+        "flags_sent": 3,
         "stage": "revise",
-        "timestamp": "2026-10-18T10:11:11.477381+00:00",
+        "timestamp": "2026-10-18T11:05:05.173662+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 44.0,
+        "duration_s": 39.0,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 10390,
-          "output_tokens": 5735,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 9806,
+          "output_tokens": 5196,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.173143
+        "cost_usd": 0.159779
       }
     ],
-    "prompt_hash": "64053030c027",
-    "git_commit": "b5d8388",
-    "timestamp": "2026-10-18T10:10:22.046572+00:00",
-    "duration_s": 102.4,
-    "cost_usd": 0.3342
+    "prompt_hash": "910b15464e48",
+    "git_commit": "d70634c",
+    "timestamp": "2026-10-18T11:04:16.709879+00:00",
+    "duration_s": 96.8,
+    "cost_usd": 0.3201
   }
 }

@@ -8,15 +8,15 @@
       "enquiry_quote": "Moulded plastic parts from one of our lines sometimes show small black specks."
     },
     {
-      "fact": "The client suspects something in the polymer pellets.",
+      "fact": "The client suspects something in the polymer pellets as the cause.",
       "enquiry_quote": "We suspect something in the polymer pellets, but we have no analysis yet."
     },
     {
-      "fact": "The client has no analysis of the problem yet.",
-      "enquiry_quote": "but we have no analysis yet"
+      "fact": "No analysis has been performed yet.",
+      "enquiry_quote": "we have no analysis yet"
     },
     {
-      "fact": "The client asks for a sensor to mount on the hopper.",
+      "fact": "The client asks for a sensor to be mounted on the hopper.",
       "enquiry_quote": "Please tell us which sensor to mount on the hopper."
     }
   ],
@@ -24,104 +24,104 @@
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "How often do the black specks occur, and what happens to the parts or the line when they appear?",
-      "why": "Defines the cost of the defect and whether real-time detection at the hopper would drive a useful decision.",
-      "assumption_if_unanswered": "Occurrence and impact unknown; the sensor need is treated as provisional until the defect rate and consequence are known.",
+      "question": "What goes wrong today in terms of scrap, complaints or rework, and what decision should real-time data on the pellets support?",
+      "why": "Defines whether an in-line sensor is needed at all or whether offline inspection of the pellets answers the problem.",
+      "assumption_if_unanswered": "Defect cost and decision unknown; start with lab identification of the specks before any sensor choice.",
       "answer": null
     },
     {
       "id": "Q2",
       "topic": "target_and_level",
-      "question": "Do you know what the black specks consist of, for example burnt polymer, carbon black, or foreign particles, and at what size and frequency?",
-      "why": "Decides whether a spectroscopic approach can target a specific species or whether a different inspection is needed.",
-      "assumption_if_unanswered": "Speck composition unknown; lab screening must first identify the contaminant before any sensor is chosen.",
+      "question": "Have the black specks been examined (e.g. under a microscope or by chemical analysis), and what are they believed to be?",
+      "why": "The contaminant type determines whether any optical method can detect it and which method is relevant.",
+      "assumption_if_unanswered": "Speck identity unknown; lab screening must establish the contaminant and whether its level is ppm or % level.",
       "answer": null
     },
     {
       "id": "Q3",
       "topic": "sample_form_optics",
-      "question": "What are the pellets like: polymer type, grade, colour, and whether they contain additives, regrind or masterbatch?",
-      "why": "Pellet colour and additives strongly change the optical signal and the spectral features available.",
-      "assumption_if_unanswered": "Polymer and additive composition unknown; no method is pre-selected for the pellet matrix.",
+      "question": "What are the pellets: polymer type, grade, colour (clear, pigmented or black) and do they contain additives or regrind?",
+      "why": "Black or pigmented pellets strongly absorb light, which limits optical methods and changes the probe geometry.",
+      "assumption_if_unanswered": "Optical properties unknown; lab screening on representative pellets is needed before choosing a probe.",
       "answer": null
     },
     {
       "id": "Q4",
       "topic": "process_conditions",
-      "question": "Have you checked where the specks originate, such as the pellet lot, the hopper, drying, melt temperature, or the mould, and has the line been cleaned recently?",
-      "why": "Tells whether the problem is in the raw material or in the process, which determines where a sensor would even help.",
-      "assumption_if_unanswered": "Origin unknown; the hopper is not yet confirmed as the right measurement point.",
+      "question": "How do the pellets reach the hopper and how often are they mixed, dried or regranulated, and does the defect appear only after specific batches or times?",
+      "why": "Shows whether contamination enters before the hopper, in the hopper, or during moulding, which changes where measurement would help.",
+      "assumption_if_unanswered": "Contamination point unknown; the source must be traced before the hopper is instrumented.",
       "answer": null
     },
     {
       "id": "Q5",
       "topic": "installation_distance",
-      "question": "Is the hopper accessible for a probe, and how far is the proposed sensing point from where an analyzer could be placed?",
-      "why": "Determines whether a contact probe, a non-contact probe, or a remote fiber link is feasible.",
-      "assumption_if_unanswered": "Access and distance unknown; no fiber or probe geometry is assumed.",
+      "question": "Is hopper access available for a probe, and how far is the proposed sensor position from any analyzer or control cabinet?",
+      "why": "Access and distance decide the probe type and fiber requirements.",
+      "assumption_if_unanswered": "Access and distance unknown; no fiber or probe layout can be proposed yet.",
       "answer": null
     },
     {
       "id": "Q6",
       "topic": "reference_method",
-      "question": "What analysis do you currently use, or could you provide, to examine the specks or the pellets, and what accuracy does it give?",
-      "why": "A reference method is needed to test any sensor against and to judge whether an optical method can detect the problem.",
-      "assumption_if_unanswered": "No reference method exists; lab screening must establish one before a sensor is proposed.",
+      "question": "What reference lab method, if any, is used on pellets or parts, and what accuracy does it have?",
+      "why": "A reference method is needed to validate any sensor against the actual speck problem.",
+      "assumption_if_unanswered": "No reference method exists; lab identification of the specks is the first step.",
       "answer": null
     },
     {
       "id": "Q7",
       "topic": "requirements",
-      "question": "What response time and detection capability do you need, and what is your budget for a sensor?",
-      "why": "Sets the scope of any feasibility study and whether an in-line sensor or an offline lab step is appropriate.",
-      "assumption_if_unanswered": "Requirements unknown; the recommendation stays at the level of a lab feasibility step.",
+      "question": "What accuracy, response time and budget are expected for the monitoring?",
+      "why": "Determines whether a simple few-wavelength sensor or a lab-based study is appropriate.",
+      "assumption_if_unanswered": "Requirements unknown; propose a lab screening step before committing to a production sensor.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "insufficient_information",
-    "status_reason": "The speck identity and origin are unknown, so no hopper sensor can be chosen.",
+    "status_reason": "Identity and origin of the black specks are unknown; no analysis exists.",
     "requirements_stated": [
-      "Moulded parts from one line sometimes show small black specks",
+      "Black specks sometimes on moulded parts from one line",
       "Polymer pellets suspected",
-      "No analysis yet",
-      "Hopper sensor requested"
+      "No analysis done yet",
+      "Asks which sensor to mount on the hopper"
     ],
     "key_unknowns": [
-      "Speck composition, size and frequency",
-      "Origin: pellets or process",
-      "Pellet grade, colour, additives",
-      "Reference analysis, requirements, hopper access"
+      "Speck identity and origin",
+      "Polymer, colour, additives, regrind",
+      "Defect frequency, batch pattern",
+      "Hopper access, response time, budget"
     ],
     "premise_checks": [
-      {
-        "client_claim": "The specks come from something in the polymer pellets.",
-        "verdict": "unverifiable",
-        "explanation": [
-          {
-            "text": "No analysis exists yet, so the specks could also form during drying, melting or moulding.",
-            "basis": "general_knowledge",
-            "citations": []
-          }
-        ]
-      },
       {
         "client_claim": "A sensor mounted on the hopper can detect the cause of the black specks.",
         "verdict": "unverifiable",
         "explanation": [
           {
-            "text": "AFS starts with multi-method lab trials and identifies key spectral features before choosing a sensor.",
+            "text": "For industrial samples of incompletely known composition, testing various optical spectroscopy approaches is needed to select the most suitable method or combination.",
             "basis": "sourced",
             "citations": [
               {
-                "ref": "S02 p.20",
-                "quote": null,
+                "ref": "S01 p.3",
+                "quote": "analyzing natural and industrial samples of incompletely known composition, in order to select the most suitable method or combination of methods.",
                 "url": null
               }
             ]
           },
           {
-            "text": "Without knowing the contaminant, no method or measuring point can yet be justified.",
+            "text": "A probe samples a small spot, so sporadic small specks may pass unseen.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      },
+      {
+        "client_claim": "The cause of the black specks is in the polymer pellets.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "No analysis exists; the specks could also form during drying, feeding or moulding.",
             "basis": "assumption",
             "citations": []
           }
@@ -130,62 +130,31 @@
     ],
     "report_questions": [
       {
-        "question": "What are the specks made of, how large, how frequent, and in which parts?",
+        "question": "Have specks been isolated, and do they appear in pellets, regrind or only parts?",
         "covers": "measured"
       },
       {
-        "question": "Can you send specked parts, clean parts, suspect pellet lots and any lab analysis?",
+        "question": "Which lab analysis could serve as reference, with what uncertainty?",
         "covers": "reference"
       },
       {
-        "question": "Which grades, colours, additives, regrind, drying and temperatures vary between runs?",
+        "question": "Which polymer, additives and regrind, and do specks follow batches or drying?",
         "covers": "variation"
       },
       {
-        "question": "Which response time, hopper access and budget apply to a future sensor?",
+        "question": "What hopper access, response time, limits and budget apply?",
         "covers": "requirements"
       }
     ],
     "recommendations": [
       {
-        "method": "Multi-method lab screening (NIR, MIR, Raman)",
-        "geometry": "Lab measurements on pellets and specked parts",
+        "method": "NIR spectroscopy",
+        "geometry": "Diffuse reflection on pellets, lab first",
         "role": "primary",
         "simplicity_rank": 1,
         "cost_complexity": "average",
         "reason": {
-          "text": "A research-laboratory text supports testing several methods for samples of incompletely known composition; applying this to the client's process is an inference.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S01 p.3",
-              "quote": "The ability to test various optical spectroscopy approaches is crucial for solving complex analytical problems",
-              "url": null
-            }
-          ]
-        },
-        "caveat": {
-          "text": "Choose a sensor only after lab trials identify the key spectral features.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "S02 p.20",
-              "quote": null,
-              "url": null
-            }
-          ]
-        },
-        "confidence": "low",
-        "confidence_reason": "Contaminant unknown; no application example for specks in pellets."
-      },
-      {
-        "method": "NIR spectroscopy",
-        "geometry": "Diffuse reflection at a distance (later in-line candidate)",
-        "role": "alternative",
-        "simplicity_rank": 2,
-        "cost_complexity": "average",
-        "reason": {
-          "text": "An AFS slide shows NIR reflection for in-line polymer extrusion control.",
+          "text": "The AFS example is in-line NIR monitoring of API in hot polymer extrusion; use on pellets is an extrapolation to test: \"NIR - Reflex & MIR - ATR - spectroscopy to control polymer extrusion in - line\".",
           "basis": "sourced",
           "citations": [
             {
@@ -196,62 +165,93 @@
           ]
         },
         "caveat": {
-          "text": "That example monitors API in hot polymer, not specks; pursue only if screening shows an NIR feature.",
+          "text": "NIR bands overlap and need chemometrics.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.10",
+              "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Target unknown; the example is a different polymer application."
+      },
+      {
+        "method": "MIR (FTIR) spectroscopy",
+        "geometry": "ATR or surface reflection, lab identification of specks",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The example is in-process diamond ATR FTIR of API in hot polymer, not specks: \"Spectra of API in hot polymer obtained with Diamond cone ATR probe coupled to iC10 FTIR\".",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.14",
+              "quote": "Spectra of API in hot polymer obtained with Diamond cone ATR probe coupled to iC10 FTIR",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "ATR probes sample only 1-6 um, for liquid, paste or soft samples.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
               "quote": null,
               "url": null
             }
           ]
         },
         "confidence": "low",
-        "confidence_reason": "Different application; target not identified."
+        "confidence_reason": "Speck chemistry and optics unknown."
       }
     ],
     "method_table_screening": [
       {
         "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
         "decision": "lab_screening_only",
-        "reason": "May register darkening, but rated low sensitivity and selectivity; cannot identify the cause."
+        "reason": "Low cost but low selectivity; may track darkening, not identity."
       },
       {
         "table_row": "Fluorimetry / fluorimetric probe",
-        "decision": "rejected",
-        "reason": "No defined fluorescent species is known for the specks."
+        "decision": "lab_screening_only",
+        "reason": "Only useful if specks or pellets contain a fluorescent species."
       },
       {
         "table_row": "IR spectroscopy / sample surface",
         "decision": "lab_screening_only",
-        "reason": "High selectivity for identifying speck chemistry on solid parts."
+        "reason": "High selectivity for identifying speck chemistry on solids offline."
       },
       {
         "table_row": "NIR spectroscopy / surface at a distance",
         "decision": "alternative",
-        "reason": "Non-contact in-line option for solids, only after screening finds an informative feature."
+        "reason": "Non-contact option for a hopper only if NIR proves informative."
       },
       {
         "table_row": "IR spectroscopy / sample layer",
         "decision": "lab_screening_only",
-        "reason": "Offline technique for thin films of specked material."
+        "reason": "Thin-film lab technique for isolated specks or moulded sections."
       },
       {
         "table_row": "NIR spectroscopy / integrating sphere",
         "decision": "lab_screening_only",
-        "reason": "Offline screening of pellets and parts."
+        "reason": "Lab measurement of representative pellet batches."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
         "decision": "lab_screening_only",
-        "reason": "High selectivity for solids; high cost; fluorescence background must be checked."
+        "reason": "High selectivity but high cost; fluorescence background must be checked."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "Lab screening of pellets and specked parts: NIR integrating sphere, IR surface or sample layer, Raman probe.",
+          "text": "Lab first: NIR diffuse reflection or integrating sphere on pellets; IR surface or layer measurement on isolated specks.",
           "basis": "proposal",
           "citations": [
             {
@@ -263,30 +263,25 @@
         },
         {
           "aspect": "location",
-          "text": "Hopper not confirmed as measuring point; decide once the speck origin is known.",
-          "basis": "assumption",
+          "text": "Instrument the hopper only after the speck source is traced.",
+          "basis": "proposal",
           "citations": []
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated; Vis-NIR silica fibers are listed at 350–2400 nm, NIR spectra at 780–2500 nm.",
+          "text": "No link stated; derived from S02 p.6 ranges, Vis-NIR silica (350-2400 nm) cannot carry MIR, which needs e.g. PIR (3000 nm-17 um).",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.6",
-              "quote": null,
-              "url": null
-            },
-            {
-              "ref": "S01 p.10",
-              "quote": null,
+              "quote": "Standard and Al/Cu-coated VIS-NIR silica fibers 350-2400 nm",
               "url": null
             }
           ]
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated. Rule check: RAMAN: Vis-NIR silica covers the nominal range; NIR: Vis-NIR silica partial (0.78-2.4 um).",
+          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um); MIR: Vis-NIR silica no coverage; polycrystalline IR (PIR) partial (3-17 um).",
           "basis": "sourced",
           "citations": [
             {
@@ -295,31 +290,31 @@
               "url": null
             },
             {
-              "ref": "S01 p.11",
+              "ref": "S01 p.10",
               "quote": null,
               "url": null
             },
             {
-              "ref": "S01 p.10",
+              "ref": "S01 p.9",
               "quote": null,
               "url": null
             }
           ]
         }
       ],
-      "fiber_family": "undecided",
+      "fiber_family": "not yet defined",
       "fiber_compatible": null,
       "architecture": "undecided",
       "needs_afs_confirmation": [
-        "Screening probe set",
-        "Hopper access and installation",
+        "Probe type",
+        "Hopper installation",
         "Optical configuration"
       ]
     },
     "spectral_ranges": [
       {
-        "method": "NIR",
-        "nominal_range": "780–2500 nm",
+        "method": "NIR spectroscopy",
+        "nominal_range": "780-2500 nm",
         "citation": {
           "ref": "S01 p.10",
           "quote": null,
@@ -328,49 +323,39 @@
         "note": null
       },
       {
-        "method": "MIR",
-        "nominal_range": "4000–400 cm-1",
+        "method": "MIR (FTIR) spectroscopy",
+        "nominal_range": "4000-400 cm-1",
         "citation": {
           "ref": "S01 p.9",
           "quote": null,
           "url": null
         },
         "note": null
-      },
-      {
-        "method": "Raman",
-        "nominal_range": "Raman shift in cm-1; signal at 400–1100 nm",
-        "citation": {
-          "ref": "S01 p.11",
-          "quote": null,
-          "url": null
-        },
-        "note": "Excitation wavelength not yet chosen."
       }
     ],
     "risks": [
       {
         "category": "physical_variation",
-        "text": "Pellet colour, additives and scattering can mask or mimic specks.",
-        "basis": "general_knowledge",
-        "citations": []
-      },
-      {
-        "category": "other",
-        "text": "A point measurement may miss small, intermittent specks.",
+        "text": "Pellet colour, pigment, size and surface can mask contamination signals.",
         "basis": "general_knowledge",
         "citations": []
       },
       {
         "category": "no_guaranteed_gain",
-        "text": "No method or combination is guaranteed to reveal the specks.",
+        "text": "No method, single or combined, is guaranteed to detect the specks.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Detectability, accuracy, update rate and hopper compatibility are unconfirmed.",
         "basis": "assumption",
         "citations": []
       },
       {
         "category": "evidence_scope",
-        "text": "The extrusion slide is an example, not proof for contaminant detection.",
-        "basis": "sourced",
+        "text": "The polymer example (API in extrusion) is not speck detection.",
+        "basis": "assumption",
         "citations": [
           {
             "ref": "S02 p.14",
@@ -380,21 +365,23 @@
         ]
       },
       {
-        "category": "nothing_confirmed",
-        "text": "Detection, update rate, interface ratings and compatibility are unconfirmed.",
+        "category": "other",
+        "text": "A spot-sampling probe may miss sporadic small specks.",
         "basis": "assumption",
         "citations": []
       }
     ],
     "assumptions": [
-      "No reference analysis of the specks exists yet.",
-      "The specks may originate in the pellets or the process."
+      "Speck identity and origin unknown (Q2, Q4 unanswered)",
+      "Pellet optics unknown (Q3)",
+      "No reference method exists (Q6)",
+      "Requirements and access unknown (Q5, Q7)"
     ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "lab_screening",
-          "text": "Screen clean and specked parts and suspect pellet lots with several methods to identify contaminant and range.",
+          "text": "Multi-method lab screening of specks, clean and suspect pellets and defective parts to identify the contaminant and spectral range.",
           "basis": "proposal",
           "citations": [
             {
@@ -406,13 +393,13 @@
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record spectra per candidate with independent speck reference analysis and lot and time data.",
+          "text": "Record spectra per candidate with independent reference analysis and batch timing.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "models_and_validation",
-          "text": "Build single-method models first, combined only if justified; validate on independent lots or runs.",
+          "text": "Single-method models first, combined only if justified; validate on held-out batches.",
           "basis": "proposal",
           "citations": []
         },
@@ -424,10 +411,10 @@
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "The contaminant and its origin must be identified first."
+      "afs_next_path_reason": "Path depends on whether lab screening identifies a detectable speck signature."
     },
     "decision_basis": {
-      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest configuration meeting them on independent material.",
+      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest configuration meeting them on independent batches.",
       "basis": "proposal",
       "citations": []
     }
@@ -435,36 +422,36 @@
   "verification": {
     "sources": [
       {
-        "path": "premise_checks[1].explanation[0].citations[0]",
-        "ref": "S02 p.20",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "recommendations[0].reason.citations[0]",
+        "path": "premise_checks[0].explanation[0].citations[0]",
         "ref": "S01 p.3",
-        "quote": "The ability to test various optical spectroscopy approaches is crucial for solving complex analytical problems",
+        "quote": "analyzing natural and industrial samples of incompletely known composition, in order to select the most suitable method or combination of methods.",
         "status": "verified",
         "score": 100.0
       },
       {
-        "path": "recommendations[0].caveat.citations[0]",
-        "ref": "S02 p.20",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "recommendations[1].reason.citations[0]",
+        "path": "recommendations[0].reason.citations[0]",
         "ref": "S02 p.14",
         "quote": "NIR - Reflex & MIR - ATR - spectroscopy to control polymer extrusion in - line",
         "status": "verified",
         "score": 100.0
       },
       {
-        "path": "recommendations[1].caveat.citations[0]",
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 p.10",
+        "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
         "ref": "S02 p.14",
+        "quote": "Spectra of API in hot polymer obtained with Diamond cone ATR probe coupled to iC10 FTIR",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -479,16 +466,9 @@
       {
         "path": "measurement_concept.items[2].citations[0]",
         "ref": "S02 p.6",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "measurement_concept.items[2].citations[1]",
-        "ref": "S01 p.10",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "Standard and Al/Cu-coated VIS-NIR silica fibers 350-2400 nm",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "measurement_concept.items[3].citations[0]",
@@ -499,14 +479,14 @@
       },
       {
         "path": "measurement_concept.items[3].citations[1]",
-        "ref": "S01 p.11",
+        "ref": "S01 p.10",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
         "path": "measurement_concept.items[3].citations[2]",
-        "ref": "S01 p.10",
+        "ref": "S01 p.9",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -538,31 +518,49 @@
         "quote": null,
         "status": "page_only",
         "score": null
-      },
-      {
-        "path": "spectral_ranges[2].citation",
-        "ref": "S01 p.11",
-        "quote": null,
-        "status": "page_only",
-        "score": null
       }
     ],
     "flags": [],
     "counts": {
-      "citations_page_only": 14,
-      "citations_verified": 2
+      "citations_verified": 5,
+      "citations_page_only": 9
     },
     "revised": true,
     "flags_before_revision": [
       {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.3 says the laboratory supports analysis of incompletely known samples and that combining methods can be tested to select the most suitable method, but it does not state that no method or location can be justified without knowing the specks, nor the specific requirement to test several approaches first; the claim's 'no method or location can be justified' is stronger than the page. Fix: Rephrase to say that for natural and industrial samples of incompletely known composition, testing various optical spectroscopy approaches is needed to select the most suitable method or combination of methods (S01 p.3)."
+      },
+      {
         "path": "recommendations[0].reason",
         "kind": "context",
-        "detail": "different_context: The cited page S01 p.3 discusses a university/research laboratory's exploratory research on natural and industrial samples of incompletely known composition; it does not say this applies to AFS industrial process samples specifically, so the transfer to industrial process samples is made without saying so. Fix: State that the page describes a research laboratory setting for samples of incompletely known composition, and frame the industrial application as an inference rather than a direct statement."
+        "detail": "different_context: The cited S02 p.14 example is an in-line NIR/MIR monitoring of API in hot polymer during extrusion, not NIR reflection on pellets; the claim transfers it to pellet testing without saying so. Fix: State that the AFS example is in-line NIR monitoring of API in hot polymer during extrusion and that applying it to pellets is an extrapolation (S02 p.14)."
+      },
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "context",
+        "detail": "not_supported: S01 p.10 says NIR bands overlap and suggest chemometrics, but it does not state that the cited example concerns API in polymer rather than specks; the caveat attributes an example-specific statement to this page. Fix: Cite S02 p.14 for the API-in-polymer context and S01 p.10 only for the overlapping NIR bands requiring chemometrics."
+      },
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "different_context: The S02 p.14 example uses a diamond cone ATR probe coupled to an iC10 FTIR for API in hot polymer, which is an in-process setting; the claim presents it as a precedent for the speck application without noting the difference. Fix: Note that the cited example is an in-process diamond ATR FTIR measurement of API in hot polymer and is not a demonstration on specks (S02 p.14)."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "overstated: The cited table rows give ATR optical depth of 1-6 um and state contact-based sampling in general, but they do not state that isolated specks require targeted lab measurement; that conclusion is an inference presented as sourced fact, and the page list is overly broad. Fix: Limit the citation to S01 p.10 (ATR probes analyse at a distance without sampling) and S01 Table 1 rows for ATR (1-6 um optical depth), and present the need for targeted lab measurement as a recommendation."
       },
       {
         "path": "measurement_concept.items[2]",
         "kind": "context",
-        "detail": "not_supported: The cited pages do not state a Raman or NIR fiber-range rule check. S02 p.6 lists Vis-NIR silica at 350-2400 nm and S01 p.10 gives NIR as 780-2500 nm, but neither page says Raman is covered by Vis-NIR silica or quantifies the NIR partial coverage as 0.78-2.4 um; S01 p.11 places Raman excitation in the visible range and absorption spectrometers at 400-1100 nm, which does not establish the claimed Raman coverage. Fix: Restrict the claim to what the pages state: Vis-NIR silica fibers are listed at 350-2400 nm, and NIR spectra are given as 780-2500 nm, without asserting a Raman coverage verdict."
+        "detail": "not_supported: The pages give NIR range 780-2500 nm, a 350-2400 nm VIS-NIR silica fiber range, and PIR fibers 3000 nm-17 um, but do not state that MIR has no silica coverage or give 'partial' coverage labels; the 'Rule check' conclusions are not stated on the cited pages. Fix: Quote the fiber transmission ranges directly from S02 p.6 and the NIR range from S01 p.10 and state the coverage conclusions as derived from those ranges."
+      },
+      {
+        "path": "risks[3]",
+        "kind": "context",
+        "detail": "different_context: The S02 p.14 example concerns API monitoring in polymer extrusion; the claim's statement that it does not concern speck detection is accurate, but the page does not discuss speck detection at all, so the contrast is inferred rather than sourced. Fix: Cite S02 p.14 for the API-in-extrusion context only and mark the non-applicability to speck detection as an assessment rather than a sourced fact."
       }
     ]
   },
@@ -639,32 +637,30 @@
     }
   ],
   "extraction": {
-    "summary": "The client wants a sensor recommendation for mounting on the hopper to address small black specks in moulded plastic parts, suspecting contamination in polymer pellets.",
+    "summary": "The client wants a sensor recommendation for mounting on the hopper to address black specks in moulded plastic parts, suspected to originate from polymer pellets.",
     "stated_facts": [
       {
         "fact": "Moulded plastic parts from one of the client's lines sometimes show small black specks.",
         "enquiry_quote": "Moulded plastic parts from one of our lines sometimes show small black specks."
       },
       {
-        "fact": "The client suspects something in the polymer pellets.",
+        "fact": "The client suspects something in the polymer pellets as the cause.",
         "enquiry_quote": "We suspect something in the polymer pellets, but we have no analysis yet."
       },
       {
-        "fact": "The client has no analysis of the problem yet.",
-        "enquiry_quote": "but we have no analysis yet"
+        "fact": "No analysis has been performed yet.",
+        "enquiry_quote": "we have no analysis yet"
       },
       {
-        "fact": "The client asks for a sensor to mount on the hopper.",
+        "fact": "The client asks for a sensor to be mounted on the hopper.",
         "enquiry_quote": "Please tell us which sensor to mount on the hopper."
       }
     ],
     "targets": [],
-    "sample_description": "Polymer pellets fed to a moulding line via a hopper; the specks are in moulded parts.",
+    "sample_description": "Polymer pellets in a hopper feeding a moulding line; black specks in moulded parts",
     "sample_state": "solid",
     "process_context": "production",
-    "conditions": [
-      "Specks appear intermittently in moulded parts from one line"
-    ],
+    "conditions": [],
     "measurement_location": "hopper",
     "remote_measurement": false,
     "contact_with_sample": "unknown",
@@ -675,19 +671,25 @@
     "client_premises": [
       {
         "claim": "A sensor mounted on the hopper can detect the cause of the black specks.",
-        "enquiry_quote": "We suspect something in the polymer pellets, but we have no analysis yet. Please tell us which sensor to mount on the hopper."
+        "enquiry_quote": "Please tell us which sensor to mount on the hopper."
+      },
+      {
+        "claim": "The cause of the black specks is in the polymer pellets.",
+        "enquiry_quote": "We suspect something in the polymer pellets"
       }
     ],
-    "requested_decision": "Which sensor to mount on the hopper.",
+    "requested_decision": "Which sensor to mount on the hopper to address black specks in moulded parts.",
     "unknowns": [
-      "Identity of the black specks or the contaminant",
-      "Whether the contamination originates in the pellets or in the process",
-      "Target analyte and its level",
-      "Pellet and polymer grade, colour and additives",
-      "Moulding process conditions and cleaning history",
-      "Current reference analysis method and its accuracy",
-      "Installation details and distance to any analyzer",
-      "Budget, response time and accuracy requirements"
+      "Identity and nature of the black specks (contaminant, degraded polymer, carbon black, or other)",
+      "Target analyte or variable and its level",
+      "Polymer type and grade of the pellets",
+      "Whether the specks originate in the pellets, the feed, or the moulding process",
+      "Reference analysis method and its accuracy",
+      "Hopper geometry, access and ambient conditions",
+      "Whether the pellets are clear, opaque or pigmented",
+      "Process temperatures and cleaning conditions",
+      "Frequency and pattern of the defect",
+      "Budget and required response time"
     ]
   },
   "pre_analysis": {
@@ -839,9 +841,9 @@
     },
     "fiber_findings_required_in_premise_check": [],
     "rule_hints": [
-      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
-      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
-      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [guidance]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [guidance]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [guidance]"
     ],
     "required_risk_categories": [
       "physical_variation",
@@ -850,87 +852,87 @@
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.7.0",
+    "pipeline_version": "0.8.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-18T10:40:38.158433+00:00",
+        "timestamp": "2026-10-18T11:34:15.038940+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 8.1,
+        "duration_s": 7.7,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 96,
-          "output_tokens": 1668,
-          "cache_read_input_tokens": 10425,
+          "output_tokens": 1700,
+          "cache_read_input_tokens": 10363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.000948
+        "cost_usd": 0.000963
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-18T10:40:46.268643+00:00",
+        "timestamp": "2026-10-18T11:34:22.804957+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 41.6,
+        "duration_s": 36.9,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 8285,
-          "output_tokens": 4856,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 8310,
+          "output_tokens": 4228,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.147143
+        "cost_usd": 0.134435
       },
       {
         "claims_checked": 7,
         "stage": "critic",
-        "timestamp": "2026-10-18T10:41:27.854519+00:00",
+        "timestamp": "2026-10-18T11:34:59.736333+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 3.2,
+        "duration_s": 6.5,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 4284,
-          "output_tokens": 470,
-          "cache_read_input_tokens": 744,
+          "input_tokens": 6855,
+          "output_tokens": 1276,
+          "cache_read_input_tokens": 794,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.000671
+        "cost_usd": 0.001331
       },
       {
-        "flags_sent": 3,
+        "flags_sent": 8,
         "stage": "revise",
-        "timestamp": "2026-10-18T10:41:31.040558+00:00",
+        "timestamp": "2026-10-18T11:35:06.275347+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 37.7,
+        "duration_s": 42.9,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 8740,
-          "output_tokens": 5078,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 9600,
+          "output_tokens": 5575,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.153403
+        "cost_usd": 0.166535
       }
     ],
-    "prompt_hash": "64053030c027",
-    "git_commit": "b5d8388",
-    "timestamp": "2026-10-18T10:40:46.250619+00:00",
-    "duration_s": 90.7,
-    "cost_usd": 0.3022
+    "prompt_hash": "910b15464e48",
+    "git_commit": "d70634c",
+    "timestamp": "2026-10-18T11:34:22.787549+00:00",
+    "duration_s": 94.2,
+    "cost_usd": 0.3033
   }
 }

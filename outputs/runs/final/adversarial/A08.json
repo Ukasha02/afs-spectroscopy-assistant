@@ -4,15 +4,15 @@
   "enquiry": "We want to monitor water content in a clear ethanol-water stream in our solvent recovery unit. Water content is between 0.5 and 5 % w/w, the line runs at 25 °C in a DN50 stainless steel pipe, and the analyzer can sit in a control room about 20 m away. Our reference is Karl Fischer titration in the lab, and we need an updated value every minute.",
   "facts_stated": [
     {
-      "fact": "The stream is clear ethanol-water.",
+      "fact": "The monitored stream is a clear ethanol-water stream.",
       "enquiry_quote": "monitor water content in a clear ethanol-water stream"
     },
     {
-      "fact": "Monitoring takes place in the client's solvent recovery unit.",
+      "fact": "The process is a solvent recovery unit.",
       "enquiry_quote": "in our solvent recovery unit"
     },
     {
-      "fact": "Water content range is 0.5 to 5 % w/w.",
+      "fact": "Water content is between 0.5 and 5 % w/w.",
       "enquiry_quote": "Water content is between 0.5 and 5 % w/w"
     },
     {
@@ -24,7 +24,7 @@
       "enquiry_quote": "in a DN50 stainless steel pipe"
     },
     {
-      "fact": "The analyzer can be placed in a control room about 20 m away.",
+      "fact": "The analyzer can be placed in a control room about 20 m from the line.",
       "enquiry_quote": "the analyzer can sit in a control room about 20 m away"
     },
     {
@@ -40,82 +40,95 @@
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "What goes wrong today in the solvent recovery unit without a continuous water value, and which decision would the minute-by-minute water value drive (for example, adjusting the column or stopping off-spec product)?",
-      "why": "Defines the decision the sensor must support and therefore the required accuracy and response.",
-      "assumption_if_unanswered": "Decision unknown; the first conversation establishes whether the value is for process control, quality release or monitoring only.",
+      "question": "What goes wrong today when water content is only known from lab Karl Fischer results, and which operating decision should the minute-by-minute value support?",
+      "why": "Defines the decision (e.g. control of recovery, product quality release) and therefore the required response and accuracy.",
+      "assumption_if_unanswered": "Decision unknown; the first step is to define the control or monitoring action with the client before choosing a method.",
       "answer": null
     },
     {
       "id": "Q2",
-      "topic": "target_and_level",
-      "question": "Besides water, which other components are present in the ethanol-water stream and at what levels, and is the 0.5 to 5 % w/w range the expected operating range or a design envelope?",
-      "why": "Other components can overlap spectrally with water and change the calibration needed.",
-      "assumption_if_unanswered": "Only ethanol and water assumed; lab screening establishes whether other components interfere.",
+      "topic": "process_conditions",
+      "question": "What are the pressure, flow rate and any fouling, deposit or cleaning (CIP) conditions in the DN50 line?",
+      "why": "Determines probe type, mounting and whether the sensor must withstand cleaning or fouling.",
+      "assumption_if_unanswered": "Pressure, flow and fouling unknown; a fouling-tolerant, non-contact or easily cleaned arrangement is assumed to be needed until confirmed.",
       "answer": null
     },
     {
       "id": "Q3",
-      "topic": "sample_form_optics",
-      "question": "Does the stream stay clear under all operating conditions, or can bubbles, turbidity, colour or solids appear?",
-      "why": "Clarity determines whether transmission, transflection or ATR geometry is suitable.",
-      "assumption_if_unanswered": "Clear liquid as stated; occasional bubbles or turbidity not yet excluded.",
+      "topic": "process_conditions",
+      "question": "Besides water, what other components are in the stream, and do they vary (other solvents, dissolved solids, bubbles, entrained gas, or temperature changes)?",
+      "why": "Other components can overlap the water signal and invalidate a calibration if the composition changes.",
+      "assumption_if_unanswered": "Composition beyond ethanol and water unknown; calibration validity across composition changes must be checked in lab screening.",
       "answer": null
     },
     {
       "id": "Q4",
-      "topic": "process_conditions",
-      "question": "What are the flow rate, pressure and operating temperature range in the DN50 line, and is there fouling, deposition or a cleaning-in-place procedure?",
-      "why": "Pressure, flow and fouling affect probe mounting, cleaning and signal stability.",
-      "assumption_if_unanswered": "Stated 25 °C only; pressure, flow and fouling unknown and to be confirmed on site.",
+      "topic": "installation_distance",
+      "question": "Where exactly on the DN50 pipe would the sensor be installed, and is there a free connection (nozzle, bypass or flow cell) and an existing fiber or cable route to the control room?",
+      "why": "The measuring point and the fiber route determine the probe geometry and whether the fiber can carry the required wavelengths over about 20 m.",
+      "assumption_if_unanswered": "Installation point and route unknown; a probe-to-analyzer link of about 20 m is assumed as stated, with fiber type to be determined.",
       "answer": null
     },
     {
       "id": "Q5",
-      "topic": "installation_distance",
-      "question": "Where exactly can the measurement be installed on the DN50 line (tap, flow cell or bypass), can a probe contact the liquid, and what cabling or fiber already runs from the pipe to the control room?",
-      "why": "The installation point and contact possibility determine the probe type and whether a fiber link of about 20 m is needed.",
-      "assumption_if_unanswered": "Installation point and contact not known; remote measurement with an existing or new cable link is to be checked.",
+      "topic": "reference_method",
+      "question": "How is the Karl Fischer reference sample taken (sampling point, timing, sample volume) and what is its known accuracy or repeatability?",
+      "why": "Time-aligned reference samples and the reference accuracy set what the online sensor can be validated against.",
+      "assumption_if_unanswered": "Reference accuracy unknown; comparison with the Karl Fischer method requires time-aligned samples and a stated reference uncertainty.",
       "answer": null
     },
     {
       "id": "Q6",
-      "topic": "reference_method",
-      "question": "How is the Karl Fischer reference sampled (timing, sample volume, lab turnaround), what accuracy does it achieve, and are historical paired data available for calibration?",
-      "why": "The reference accuracy sets the achievable target and historical paired data are needed for any calibration.",
-      "assumption_if_unanswered": "Reference accuracy and sampling frequency unknown; paired reference data for model building assumed not available yet.",
+      "topic": "requirements",
+      "question": "What accuracy is required across the 0.5 to 5 % w/w range, and what response time is acceptable beyond the one-minute update?",
+      "why": "Accuracy and response time decide whether a few-wavelength sensor is enough or a broader method is needed.",
+      "assumption_if_unanswered": "Accuracy and response time unknown; the one-minute update is the only stated requirement.",
       "answer": null
     },
     {
       "id": "Q7",
       "topic": "requirements",
-      "question": "What accuracy, response time and budget are required for the online water measurement, and is the one-minute update the only timing requirement?",
-      "why": "These requirements decide whether a single-method solution is sufficient and what scope is realistic.",
-      "assumption_if_unanswered": "Accuracy, response time and budget unknown; the one-minute update is the only timing requirement stated so far.",
+      "question": "Is the solvent recovery area classified as hazardous (flammable ethanol vapour), and what installation constraints apply to the sensor and fibers?",
+      "why": "Hazardous area rules restrict the sensor and cabling, and therefore which optical setup is permissible.",
+      "assumption_if_unanswered": "Area classification unknown; the sensor location must be checked against site safety rules before any design.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
+      "topic": "requirements",
+      "question": "What is the budget range and the expected number of measuring points, and is a single online analyzer or a repeated installation intended?",
+      "why": "Budget and scale decide between a single robust sensor and a more complex system.",
+      "assumption_if_unanswered": "Budget and scale unknown; a single-point installation is assumed for the first assessment.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "provisional_assessment",
-    "status_reason": "Target, matrix and range are defined; method fit and fiber link need testing.",
+    "status_reason": "Target, matrix and range are defined; requirements and installation remain open.",
     "requirements_stated": [
-      "Water in a clear ethanol-water stream, 0.5–5 % w/w, solvent recovery.",
-      "DN50 stainless steel line, 25 °C.",
-      "Analyzer in a control room about 20 m away; value every minute.",
-      "Reference: lab Karl Fischer titration."
+      "Water in a clear ethanol-water stream, solvent recovery, 0.5-5 % w/w",
+      "DN50 stainless steel pipe, 25 °C",
+      "Analyzer in a control room about 20 m away",
+      "Karl Fischer reference; value every minute"
     ],
     "key_unknowns": [
-      "Other components and levels",
-      "Required accuracy",
-      "Karl Fischer uncertainty and timing",
-      "Installation, probe contact, fouling"
+      "Other components, bubbles, temperature variation",
+      "Accuracy, response time, Karl Fischer uncertainty",
+      "Installation point, fiber route, hazardous area",
+      "Fouling and cleaning"
     ],
     "premise_checks": [
       {
-        "client_claim": "The analyzer can sit in a control room about 20 m from the measuring point.",
+        "client_claim": "The analyzer can sit about 20 m away in a control room, linked to the measuring point.",
         "verdict": "unverifiable",
         "explanation": [
           {
-            "text": "Silica-fiber cables are documented for remote industrial process control, which supports remote NIR in principle.",
+            "text": "The fiber family and link are not defined yet, so the link cannot be checked.",
+            "basis": "assumption",
+            "citations": []
+          },
+          {
+            "text": "Robust silica cables are described for remote process control.",
             "basis": "sourced",
             "citations": [
               {
@@ -126,20 +139,15 @@
             ]
           },
           {
-            "text": "The fiber family and the link are not yet stated, so the link cannot be checked; no link length is given in the materials for mid-IR fibers.",
-            "basis": "assumption",
-            "citations": []
-          }
-        ]
-      },
-      {
-        "client_claim": "Lab Karl Fischer titration is an adequate reference for the online value.",
-        "verdict": "plausible_to_be_tested",
-        "explanation": [
-          {
-            "text": "It provides independent reference values, but its uncertainty and sampling timing are unknown and limit what a calibration can show.",
-            "basis": "assumption",
-            "citations": []
+            "text": "Silica fibers on the fiber chart cover only up to about 2400 nm, and no link lengths are given for mid-IR fibers.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.6",
+                "quote": null,
+                "url": null
+              }
+            ]
           }
         ]
       },
@@ -148,7 +156,7 @@
         "verdict": "plausible_to_be_tested",
         "explanation": [
           {
-            "text": "Diode-array NIR analyzers record all wavelengths simultaneously, which suits fast processes; the update rate for this setup is unconfirmed.",
+            "text": "Diode-array NIR analyzers are described for fast processes, but no update rate is confirmed for this case.",
             "basis": "sourced",
             "citations": [
               {
@@ -163,23 +171,23 @@
     ],
     "report_questions": [
       {
-        "question": "Which other components occur, at what levels, across which water range?",
+        "question": "Which other components or impurities occur, and do they vary?",
         "covers": "measured"
       },
       {
-        "question": "How is Karl Fischer sampled and timed, and with what uncertainty?",
+        "question": "How are Karl Fischer samples taken and timed, with what uncertainty?",
         "covers": "reference"
       },
       {
-        "question": "Do bubbles, turbidity, temperature or composition vary between operating states?",
+        "question": "How do temperature, bubbles, pressure and flow vary between operating states?",
         "covers": "variation"
       },
       {
-        "question": "What accuracy is needed, where can a probe contact the liquid, and is fouling expected?",
+        "question": "Which accuracy, response time, installation point and cleaning conditions apply?",
         "covers": "requirements"
       },
       {
-        "question": "Which cable route exists, and which decision will the value drive?",
+        "question": "Is the area hazardous, and is there a fiber route?",
         "covers": "context"
       }
     ],
@@ -191,7 +199,7 @@
         "simplicity_rank": 1,
         "cost_complexity": "average",
         "reason": {
-          "text": "AFS materials name NIR transmission for clear liquids; the dairy example is a reason to test.",
+          "text": "The dairy example supports NIR transmission for transparent liquids such as whey or permeate; a reason to test for this clear stream.",
           "basis": "sourced",
           "citations": [
             {
@@ -202,18 +210,18 @@
           ]
         },
         "caveat": {
-          "text": "The optical pathlength must be precisely controlled.",
+          "text": "The optical path length must be set on real samples to avoid signal loss or unrepresentative sampling.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 p.18",
-              "quote": "The key experimental action is the precise control of the optical pathlength (usually 1 - 10 mm)",
+              "quote": "The key experimental action is the precise control of the optical pathlength",
               "url": null
             }
           ]
         },
         "confidence": "medium",
-        "confidence_reason": "Geometry supported; no ethanol-water example, nothing measured."
+        "confidence_reason": "Dairy example, not ethanol-water; nothing measured."
       },
       {
         "method": "MIR (FTIR) spectroscopy",
@@ -222,7 +230,7 @@
         "simplicity_rank": 2,
         "cost_complexity": "high",
         "reason": {
-          "text": "AFS shows MIR-ATR for water in petroleum, a comparison candidate for water in liquids.",
+          "text": "An AFS slide shows ATR spectra of oil with 0.1-2.0 % water; a reason to test.",
           "basis": "sourced",
           "citations": [
             {
@@ -233,7 +241,7 @@
           ]
         },
         "caveat": {
-          "text": "Needs mid-IR fibers, not silica; the 20 m link needs confirmation.",
+          "text": "Silica fibers end at about 2400 nm and no mid-IR fiber link length is given, so a 20 m link is unconfirmed.",
           "basis": "sourced",
           "citations": [
             {
@@ -244,80 +252,85 @@
           ]
         },
         "confidence": "low",
-        "confidence_reason": "Different matrix, higher cost, unconfirmed mid-IR link."
+        "confidence_reason": "Different matrix, higher cost, link unverified."
       }
     ],
     "method_table_screening": [
       {
         "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
         "decision": "rejected",
-        "reason": "No defined UV/Vis absorber for water stated; low selectivity."
+        "reason": "Water is not a defined UV/Vis absorber here, and the method has low selectivity."
       },
       {
         "table_row": "Fluorimetry / fluorimetric probe",
         "decision": "rejected",
-        "reason": "Water is not a defined fluorescent species; low selectivity."
+        "reason": "There is no fluorescent species to measure."
       },
       {
         "table_row": "UV/Visible spectroscopy / cuvette",
         "decision": "rejected",
-        "reason": "Offline only and no UV/Vis target for water."
+        "reason": "Same limitation as the UV/Vis probe; it is also an offline technique."
       },
       {
         "table_row": "Fluorimetry / cuvette 90 deg",
         "decision": "rejected",
-        "reason": "Offline only and no fluorophore for water."
+        "reason": "There is no fluorophore."
       },
       {
         "table_row": "NIR spectroscopy / transmission or transflection probe",
         "decision": "recommended",
-        "reason": "Clear liquid, silica-fiber compatible, simplest in-line candidate."
+        "reason": "Clear liquid, water -OH bands and silica fibers suited to remote measurement."
       },
       {
         "table_row": "UV/Visible spectroscopy / ATR probe",
         "decision": "rejected",
-        "reason": "Intended for opaque fluids; low sensitivity and selectivity for water."
+        "reason": "Low sensitivity and selectivity; no water absorber in the UV/Vis."
       },
       {
         "table_row": "IR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Useful to locate water bands in lab screening."
+        "reason": "Offline check of MIR water bands."
       },
       {
         "table_row": "NIR spectroscopy / cuvette",
         "decision": "lab_screening_only",
-        "reason": "Lab screening of NIR bands and pathlength before probe selection."
+        "reason": "Lab screening to select the path length and spectral bands."
       },
       {
         "table_row": "IR spectroscopy / ATR platform",
         "decision": "lab_screening_only",
-        "reason": "Benchtop check of MIR-ATR response before a probe trial."
+        "reason": "Lab comparison before any in-line MIR probe."
       },
       {
         "table_row": "IR spectroscopy / ATR probe*",
         "decision": "alternative",
-        "reason": "Comparison candidate; needs mid-IR fiber link, high cost."
+        "reason": "Comparison candidate if NIR proves insufficient; mid-IR fiber link needed."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
         "decision": "alternative",
-        "reason": "High selectivity but high cost; consider only if NIR and MIR fall short."
+        "reason": "Suits aqueous media but is high cost; consider only if NIR and MIR both fail."
       },
       {
         "table_row": "Raman spectroscopy / cuvette 90 deg",
         "decision": "lab_screening_only",
-        "reason": "Optional lab check only."
+        "reason": "Offline only."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "NIR transmission or transflection probe; MIR-ATR probe as comparison.",
+          "text": "NIR transmission or transflection probe for liquids (1-10 mm path); exact path set on real samples.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.18",
               "quote": null,
               "url": null
             }
@@ -325,9 +338,21 @@
         },
         {
           "aspect": "location",
-          "text": "In the DN50 line or a bypass, analyzer in the control room; point to be agreed.",
-          "basis": "proposal",
+          "text": "In the DN50 line at 25 °C; analyzer in the control room about 20 m away.",
+          "basis": "client_fact",
           "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link stated. Fiber chart: Vis-NIR silica 350-2400 nm; polycrystalline IR 3000 nm-17 um.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
         },
         {
           "aspect": "fiber_link",
@@ -352,19 +377,19 @@
           ]
         }
       ],
-      "fiber_family": "Vis-NIR silica for NIR (to be confirmed); mid-IR fiber for MIR-ATR; link not defined",
+      "fiber_family": "to be determined (Vis-NIR silica for NIR; mid-IR fiber for an ATR comparison)",
       "fiber_compatible": null,
       "architecture": "undecided",
       "needs_afs_confirmation": [
-        "Probe type and pathlength",
-        "Installation in DN50 line",
+        "Probe type and path length",
+        "Installation and hazardous-area rating",
         "Fiber link over 20 m"
       ]
     },
     "spectral_ranges": [
       {
         "method": "NIR spectroscopy",
-        "nominal_range": "780–2500 nm",
+        "nominal_range": "780-2500 nm",
         "citation": {
           "ref": "S01 p.10",
           "quote": null,
@@ -374,7 +399,7 @@
       },
       {
         "method": "MIR (FTIR) spectroscopy",
-        "nominal_range": "4000–400 cm-1",
+        "nominal_range": "4000-400 cm-1",
         "citation": {
           "ref": "S01 p.9",
           "quote": null,
@@ -386,25 +411,25 @@
     "risks": [
       {
         "category": "calibration_validity",
-        "text": "Other components or matrix changes can invalidate the calibration.",
+        "text": "Overlapping NIR bands need chemometrics; other stream components may affect the model.",
         "basis": "sourced",
         "citations": [
           {
-            "ref": "DOCX §5",
-            "quote": null,
+            "ref": "S01 p.10",
+            "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
             "url": null
           }
         ]
       },
       {
         "category": "physical_variation",
-        "text": "Temperature shifts or bubbles can mimic water changes.",
+        "text": "Temperature or bubbles can distort the water signal.",
         "basis": "general_knowledge",
         "citations": []
       },
       {
         "category": "no_guaranteed_gain",
-        "text": "Neither method nor any combination is guaranteed to help.",
+        "text": "No method or combination is guaranteed to meet the requirements.",
         "basis": "assumption",
         "citations": []
       },
@@ -416,7 +441,7 @@
       },
       {
         "category": "fiber_link",
-        "text": "Fiber family and 20 m link are undefined, especially for mid-IR.",
+        "text": "Fiber ranges are given, but no mid-IR fiber link lengths.",
         "basis": "sourced",
         "citations": [
           {
@@ -428,39 +453,39 @@
       }
     ],
     "assumptions": [
-      "Only ethanol and water present until stated otherwise.",
-      "Stream stays clear; bubbles not yet excluded.",
-      "Probe contact with the liquid is not yet confirmed."
+      "Single measuring point.",
+      "Stream contains mainly ethanol and water until confirmed.",
+      "Probe contact with the stream is permitted."
     ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "representative_samples",
-          "text": "Collect samples across 0.5–5 % w/w, including temperature, impurity and bubble variation.",
+          "text": "Collect process samples across 0.5-5 % w/w, covering temperature, bubbles and composition variation.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record spectra from each candidate with independent Karl Fischer references and timing information.",
+          "text": "Record NIR and MIR-ATR spectra with independent Karl Fischer reference results and timing information.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "models_and_validation",
-          "text": "Build single-method models first, combined only if justified; validate on independent runs.",
+          "text": "Build single-method models first; validate on held-out runs or independent batches.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "comparison",
-          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "text": "Compare prediction error, bias and the ability to follow changes against the client's requirements.",
           "basis": "proposal",
           "citations": []
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "Depends on lab results; a few-wavelength sensor may follow if bands prove sufficient."
+      "afs_next_path_reason": "A chemometric model or a few-wavelength sensor depends on the lab results and the requirements."
     },
     "decision_basis": {
       "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest configuration meeting them on independent material.",
@@ -471,14 +496,21 @@
   "verification": {
     "sources": [
       {
-        "path": "premise_checks[0].explanation[0].citations[0]",
+        "path": "premise_checks[0].explanation[1].citations[0]",
         "ref": "S02 p.7",
         "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
         "status": "verified",
         "score": 100.0
       },
       {
-        "path": "premise_checks[2].explanation[0].citations[0]",
+        "path": "premise_checks[0].explanation[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
         "ref": "S01 p.10",
         "quote": "which is critical for monitoring fast processes",
         "status": "verified",
@@ -494,7 +526,7 @@
       {
         "path": "recommendations[0].caveat.citations[0]",
         "ref": "S01 p.18",
-        "quote": "The key experimental action is the precise control of the optical pathlength (usually 1 - 10 mm)",
+        "quote": "The key experimental action is the precise control of the optical pathlength",
         "status": "verified",
         "score": 100.0
       },
@@ -520,6 +552,13 @@
         "score": null
       },
       {
+        "path": "measurement_concept.items[0].citations[1]",
+        "ref": "S01 p.18",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "measurement_concept.items[2].citations[0]",
         "ref": "S02 p.6",
         "quote": null,
@@ -527,14 +566,21 @@
         "score": null
       },
       {
-        "path": "measurement_concept.items[2].citations[1]",
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
         "ref": "S01 p.10",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
-        "path": "measurement_concept.items[2].citations[2]",
+        "path": "measurement_concept.items[3].citations[2]",
         "ref": "S01 p.9",
         "quote": null,
         "status": "page_only",
@@ -542,10 +588,10 @@
       },
       {
         "path": "risks[0].citations[0]",
-        "ref": "DOCX §5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.10",
+        "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "risks[4].citations[0]",
@@ -571,15 +617,50 @@
     ],
     "flags": [],
     "counts": {
-      "citations_verified": 5,
-      "citations_page_only": 9
+      "citations_verified": 6,
+      "citations_page_only": 11
     },
     "revised": true,
     "flags_before_revision": [
       {
-        "path": "recommendations[0].caveat",
+        "path": "premise_checks[0].explanation[2]",
         "kind": "context",
-        "detail": "not_supported: The cited page S01 p.18 covers pathlength control for NIR transmission, but it does not mention Karl Fischer or a matrix-specific calibration against Karl Fischer. That reference method is not in the cited source. Fix: Keep the pathlength control point and state the calibration reference method as a proposal to confirm, or cite a source that names Karl Fischer as the reference method."
+        "detail": "not_supported: The cited S02 p.6 page lists transmission ranges for fibers, including PIR and chalcogenide fibers that transmit in the mid-IR (e.g. chalcogenide 1100-6500 nm, polycrystalline 3000 nm-17 um). The claim that silica fibers cannot carry mid-IR is partly supported by the chart showing silica ranges only to 2400 nm, but the statement that the materials give no link lengths for mid-IR fibers is accurate; the wording is acceptable only as a silica-range statement. Fix: Restrict the claim to: silica fibers on S02 p.6 cover only up to about 2400 nm, and S02 p.6 gives no link lengths for mid-IR fibers."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "different_context: The S01 p.18 quote about NIR transmission being preferred applies to dairy milk products, not to general clear liquids or petroleum. Adding water -OH NIR band support from S01 p.10 does not establish water content in this context, and S01 p.10 only describes NIR overtones generally. Fix: State that S01 p.18 supports NIR transmission for transparent or semi-transparent dairy liquids such as skim milk, whey, or permeate, and cite S01 p.10 only for the general NIR overtone description."
+      },
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "not_supported: S02 p.13 shows ATR absorbance vs water content in oil with ZrO2 or diamond tips, and absorbance rises in the 3800-3000 cm-1 region. It does not state that the measurement is MIR-ATR for a specific liquid beyond the oil example, and the claim's quoted label is accurate but the stated technique extends the page. Fix: Describe the slide as showing ATR absorbance spectra of oil with 0.1% to 2.0% water in the 4000-2000 cm-1 range, citing S02 p.13 only."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "overstated: The claim asserts that a 20 m link needs mid-IR fibers, but S02 p.6 and S04 p.1 do not state link requirements for a 20 m path; S04 p.1 only mentions fiber-probe use in general. Fix: Say that the materials do not give a link length for mid-IR fibers and that a 20 m link is unconfirmed by the cited pages."
+      },
+      {
+        "path": "measurement_concept.items[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited table rows list 1-10 mm for transmission or transflection probes on liquids, and S01 p.18 supports the transmission path control, but the table entries cover many methods and the claim selects a probe for a clear liquid without saying which row applies. Fix: Cite only TABLE:r7 (NIR transmission or transflection probe, liquid, 1-10 mm) and S01 p.18 for the path-length guidance."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages do not contain a rule check with spectral coverage labels such as Vis-NIR silica partial or PIR partial for NIR and MIR; S02 p.6 gives ranges but the partial/no coverage judgments are not stated there. Fix: Report the ranges directly from S02 p.6: Vis-NIR silica 350-2400 nm and polycrystalline IR 3000 nm-17 um, without the partial or no coverage labels."
+      },
+      {
+        "path": "risks[0]",
+        "kind": "context",
+        "detail": "overstated: S01 p.10 describes NIR overlapping bands requiring chemometrics but does not state that other solvents or impurities invalidate a matrix-specific calibration; that conclusion is stronger than the page. Fix: Say that overlapping NIR bands suggest chemometrics are needed, so other components in the stream may affect the model, citing S01 p.10."
+      },
+      {
+        "path": "risks[4]",
+        "kind": "context",
+        "detail": "not_supported: S02 p.6 gives transmission ranges for fiber families but does not state that the 20 m link is undefined; the claim about undefined fiber family is an inference not stated on the page. Fix: State only that S02 p.6 gives spectral ranges for fiber families and no link lengths for mid-IR fibers."
       }
     ]
   },
@@ -651,23 +732,23 @@
     },
     {
       "check": "report length 250-550 words",
-      "passed": true,
-      "detail": ""
+      "passed": false,
+      "detail": "558 words; over budget: Requirements stated 33/28, Clarification questions 59/55, Recommendation 120/110, Measurement concept 88/45, Risks and uncertainty 56/48 (citations excluded)"
     }
   ],
   "extraction": {
-    "summary": "The client wants a continuous, updated water-content value every minute for a clear ethanol-water stream in a solvent recovery unit, with the analyzer about 20 m away in a control room.",
+    "summary": "The client wants a continuous, updated water content value every minute for a clear ethanol-water stream in a solvent recovery unit, measured with the analyzer about 20 m away in a control room.",
     "stated_facts": [
       {
-        "fact": "The stream is clear ethanol-water.",
+        "fact": "The monitored stream is a clear ethanol-water stream.",
         "enquiry_quote": "monitor water content in a clear ethanol-water stream"
       },
       {
-        "fact": "Monitoring takes place in the client's solvent recovery unit.",
+        "fact": "The process is a solvent recovery unit.",
         "enquiry_quote": "in our solvent recovery unit"
       },
       {
-        "fact": "Water content range is 0.5 to 5 % w/w.",
+        "fact": "Water content is between 0.5 and 5 % w/w.",
         "enquiry_quote": "Water content is between 0.5 and 5 % w/w"
       },
       {
@@ -679,7 +760,7 @@
         "enquiry_quote": "in a DN50 stainless steel pipe"
       },
       {
-        "fact": "The analyzer can be placed in a control room about 20 m away.",
+        "fact": "The analyzer can be placed in a control room about 20 m from the line.",
         "enquiry_quote": "the analyzer can sit in a control room about 20 m away"
       },
       {
@@ -699,10 +780,9 @@
     "process_context": "production",
     "conditions": [
       "temperature 25 °C",
-      "DN50 stainless steel pipe",
       "water content 0.5 to 5 % w/w"
     ],
-    "measurement_location": "DN50 stainless steel pipe line in the solvent recovery unit",
+    "measurement_location": "DN50 stainless steel pipe in the solvent recovery unit",
     "remote_measurement": true,
     "contact_with_sample": "unknown",
     "analyzer_distance": "about 20 m",
@@ -711,31 +791,21 @@
     "fibers_mentioned": [],
     "client_premises": [
       {
-        "claim": "The analyzer can be placed in a control room about 20 m from the measuring point while still giving a reliable water value.",
+        "claim": "The analyzer can be placed in a control room about 20 m from the measuring point, so a fiber link or remote sensing solution is feasible at that distance.",
         "enquiry_quote": "the analyzer can sit in a control room about 20 m away"
-      },
-      {
-        "claim": "Karl Fischer titration in the lab is an adequate reference for the online value.",
-        "enquiry_quote": "Our reference is Karl Fischer titration in the lab"
-      },
-      {
-        "claim": "An updated value every minute is achievable and required for the process decision.",
-        "enquiry_quote": "we need an updated value every minute"
       }
     ],
-    "requested_decision": "Obtain an updated water-content value every minute to monitor the solvent recovery stream.",
+    "requested_decision": "Continuous real-time monitoring of water content in the stream, updated every minute, to be compared with the Karl Fischer lab reference.",
     "unknowns": [
-      "Accuracy required and how close the online value must be to the Karl Fischer reference",
-      "Response time required beyond the one-minute update interval",
-      "Budget",
-      "Flow rate, pressure and pipe fouling or cleaning procedure",
-      "Whether the stream contains components other than ethanol and water and their levels",
-      "Whether bubbles, solids or composition changes occur in the stream",
-      "Whether the sample can be contacted by a probe or only measured without contact",
-      "Whether existing fibers or cabling exist between the pipe and the control room",
-      "Existing measurement points, tap or flow-cell options on the DN50 line",
-      "Frequency and availability of past Karl Fischer data for calibration",
-      "Accuracy and sampling frequency of the current Karl Fischer reference method"
+      "Pressure and flow rate of the line",
+      "Fouling, deposits and cleaning or sterilization requirements",
+      "Whether the stream composition varies besides water (other solutes, impurities, bubbles, entrained gas)",
+      "Exact measuring point and whether it allows probe insertion or a flow cell",
+      "Whether an existing fiber or cable path to the control room exists",
+      "Karl Fischer reference accuracy and sampling frequency",
+      "Required accuracy, acceptable response time and budget",
+      "Hazardous area classification of the solvent recovery unit",
+      "Whether the sample contact is permitted (contact vs non-contact)"
     ]
   },
   "pre_analysis": {
@@ -942,11 +1012,11 @@
       "Remote analyzer requested but fiber family and link length are not stated: the link cannot be checked yet."
     ],
     "rule_hints": [
-      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
-      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1; DOCX §5]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [guidance]",
+      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1]",
       "remote_measurement_nir_silica: NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist. [S01 p.5; S02 p.7]",
       "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
-      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [guidance]"
     ],
     "required_risk_categories": [
       "calibration_validity",
@@ -957,87 +1027,87 @@
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.7.0",
+    "pipeline_version": "0.8.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-18T10:45:12.495518+00:00",
+        "timestamp": "2026-10-18T11:39:21.139414+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 14.6,
+        "duration_s": 14.7,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 154,
-          "output_tokens": 3142,
-          "cache_read_input_tokens": 10425,
+          "output_tokens": 3351,
+          "cache_read_input_tokens": 10363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001691
+        "cost_usd": 0.001795
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-18T10:45:27.137655+00:00",
+        "timestamp": "2026-10-18T11:39:35.898561+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 60.5,
+        "duration_s": 37.3,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 9995,
-          "output_tokens": 6936,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 10014,
+          "output_tokens": 4699,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.195583
+        "cost_usd": 0.150671
       },
       {
-        "claims_checked": 10,
+        "claims_checked": 11,
         "stage": "critic",
-        "timestamp": "2026-10-18T10:46:27.694044+00:00",
+        "timestamp": "2026-10-18T11:40:13.279350+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 7.1,
+        "duration_s": 7.3,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 8468,
-          "output_tokens": 1589,
-          "cache_read_input_tokens": 744,
+          "input_tokens": 8958,
+          "output_tokens": 1504,
+          "cache_read_input_tokens": 794,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001649
+        "cost_usd": 0.001656
       },
       {
-        "flags_sent": 3,
+        "flags_sent": 10,
         "stage": "revise",
-        "timestamp": "2026-10-18T10:46:34.830115+00:00",
+        "timestamp": "2026-10-18T11:40:20.651329+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 35.0,
+        "duration_s": 48.2,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 9184,
-          "output_tokens": 4690,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 10576,
+          "output_tokens": 5989,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.147419
+        "cost_usd": 0.178719
       }
     ],
-    "prompt_hash": "64053030c027",
-    "git_commit": "b5d8388",
-    "timestamp": "2026-10-18T10:45:27.120507+00:00",
-    "duration_s": 117.4,
-    "cost_usd": 0.3463
+    "prompt_hash": "910b15464e48",
+    "git_commit": "d70634c",
+    "timestamp": "2026-10-18T11:39:35.878909+00:00",
+    "duration_s": 107.8,
+    "cost_usd": 0.3328
   }
 }
