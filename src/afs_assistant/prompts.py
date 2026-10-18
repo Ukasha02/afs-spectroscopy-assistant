@@ -34,7 +34,7 @@ independent runs or batches before any combination is considered.
 
 ANSWER_RULES = """Rules for every answer:
 1. Evidence. The AFS materials below are the main source. Cite as the exact `cite` attribute of a <source> block \
-(e.g. 'S01 p.10', 'S01 Table 1 (p.6)', 'S02 p.13', 'DOCX §3'). The cited page must DIRECTLY support the claim, in \
+(e.g. 'S01 p.10', 'S01 Table 1 (p.6)', 'S02 p.13'). Never cite the challenge reference document (DOCX). The cited page must DIRECTLY support the claim, in \
 the same context (sample type, lab vs in-line process vs clinical, application). A verbatim quote (max ~25 words) \
 is optional for AFS pages. External sources only with ref 'EXTERNAL', a verbatim quote and a URL.
 2. Source priority and labels. AFS materials first. General knowledge is allowed only as secondary support, never \
@@ -165,6 +165,16 @@ def intake_system() -> list[str]:
     return [f"{ROLE}\n\n{PRINCIPLES}\n\n{INTAKE_RULES}\n\n=== AFS CURATED FACTS (for orientation) ===\n{_facts_text()}"]
 
 
+def _background() -> str:
+    from afs_assistant.kb.load import load_chunks
+
+    texts = [c.text for c in load_chunks() if c.id in ("DOCX:§3", "DOCX:§5")]
+    return (
+        "=== BACKGROUND (challenge guidance on answer quality and a method overview). NOT A SOURCE: never cite it; "
+        "cite the underlying AFS page instead. ===\n" + "\n\n".join(texts)
+    )
+
+
 def _exemplars() -> str:
     from afs_assistant.kb.load import load_chunks
 
@@ -179,7 +189,7 @@ def _exemplars() -> str:
 def assess_static() -> str:
     """Static, cacheable block shared by the assessment and the revision of every answer."""
     return (
-        f"{ROLE}\n\n{PRINCIPLES}\n\n{ANSWER_RULES}\n\n{RECIPE}\n\n{_exemplars()}\n\n"
+        f"{ROLE}\n\n{PRINCIPLES}\n\n{ANSWER_RULES}\n\n{RECIPE}\n\n{_background()}\n\n{_exemplars()}\n\n"
         f"=== AFS CURATED FACTS (team summary with citations; cite the underlying pages, not this list) ===\n"
         f"{_facts_text()}\n\n=== AFS MATERIALS (corpus) ===\n{render_corpus()}"
     )

@@ -188,8 +188,8 @@ def build_docx_chunks() -> tuple[list[Chunk], dict[str, dict]]:
                     kind="docx_section",
                     title=sec["h1"],
                     text=body,
-                    # §0 cover, §1 D-case list, §2 worked-example intro: not evidence.
-                    in_corpus=sec_no not in ("0", "1", "2"),
+                    # The challenge reference document is background (answer guidance), never evidence.
+                    in_corpus=False,
                 )
             )
     return chunks, d_cases

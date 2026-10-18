@@ -167,8 +167,8 @@ def verify(assessment: Assessment, enquiry: str, questions: list[Question], tabl
                 flags.append(Flag(path=check.path, kind="quote", detail=f"{c['ref']}: {check.status} (score {check.score})"))
             if text:
                 valid_text.append(text)
-            if re.match(r"\s*DOCX\s*§\s*2", c["ref"]):
-                flags.append(Flag(path=check.path, kind="scope", detail=f"{c['ref']} is a worked answer to another enquiry, not evidence; cite the AFS page instead"))
+            if re.match(r"\s*DOCX", c["ref"], re.I):
+                flags.append(Flag(path=check.path, kind="scope", detail=f"{c['ref']} is the challenge reference document, not evidence (worked answer or guidance); cite the underlying AFS page (S01-S05, S01 Table 1) or relabel the claim general_knowledge/assumption"))
             meta = facts_sources.get(_source_id(c["ref"]), {})
             if claim["basis"] == "sourced" and meta and not meta.get("technical", True):
                 flags.append(Flag(path=path, kind="scope", detail=f"{c['ref']} is business context only; it cannot back a technical claim"))

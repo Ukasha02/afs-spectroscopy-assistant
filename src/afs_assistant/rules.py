@@ -119,20 +119,27 @@ def range_sources(methods: list[str]) -> list[str]:
     return list(dict.fromkeys(srcs[i] for i in (method_id(x) for x in methods) if i in srcs))
 
 
-def fiber_verdict(methods: list[str], ex: ExtractedEnquiry, fc: dict) -> tuple[bool | None, str]:
-    """Rule-based fiber check for the recommended methods (S02 p.6 ranges)."""
+DEFAULT_FIBER_LINE = "No fiber link stated; silica fibers suit UV/Vis, NIR and Raman, while MIR needs IR fibers."
+
+
+def fiber_verdict(methods: list[str], ex: ExtractedEnquiry, fc: dict) -> tuple[bool | None, str, list[str]]:
+    """Rule-based fiber check for the recommended methods (S02 p.6 ranges): (compatible, text, citations).
+
+    Detailed coverage only when the client names a fiber or MIR is recommended; otherwise one short line."""
     facts = load_facts()
     names = {f["id"]: f["name"] for f in facts["fibers"]}
     ids = [m for m in dict.fromkeys(method_id(x) for x in methods) if m]
     if not ids:
-        return None, ""
+        return None, "", []
     client = [fid for m in ex.fibers_mentioned for fid in _SILICA_ALIASES.get(m, (m,)) if fid in names]
     parts = []
     if client:
         ok = all(any(fc["per_method"][m]["fibers"][fid] != "none" for fid in client) for m in ids)
         for m in ids:
             parts.append(f"{m}: " + ", ".join(f"{names[f]} {fc['per_method'][m]['fibers'][f]}" for f in client))
-        return ok, "Rule check of the stated fiber: " + "; ".join(parts) + "."
+        return ok, "Rule check of the stated fiber: " + "; ".join(parts) + ".", ["S02 p.6"] + range_sources(methods)
+    if "MIR" not in ids:
+        return None, DEFAULT_FIBER_LINE, ["S02 p.6"]
     fc_ranges = {f["id"]: f["range_um"] for f in facts["fibers"]}
     method_ranges = {m["id"]: m["range_um"] for m in facts["methods"]}
     short = {"UV_SILICA": "UV-Vis silica", "VISNIR_SILICA": "Vis-NIR silica", "CIR": "chalcogenide IR (CIR)",
@@ -152,7 +159,7 @@ def fiber_verdict(methods: list[str], ex: ExtractedEnquiry, fc: dict) -> tuple[b
             # HWG excluded: poor coupling to FTIR compared with PIR fibers [S02 p.10]
             best = max(("PIR", "CIR", "INF3", "ZRF4"), key=overlap)
             parts.append(f"{m}: {silica_name} no coverage; {short[best]} {cov[best].split(' of')[0]}" + (")" if "(" in cov[best] else ""))
-    return None, "No fiber link stated. Rule check: " + "; ".join(parts) + "."
+    return None, "No fiber link stated. Rule check: " + "; ".join(parts) + ".", ["S02 p.6"] + range_sources(methods)
 
 
 def fiber_findings(fc: dict) -> list[str]:
