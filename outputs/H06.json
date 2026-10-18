@@ -1,0 +1,1112 @@
+{
+  "case_id": "H06",
+  "mode": "one_shot",
+  "enquiry": "We read the supplied LED NIR kidney study and want to use the same concept to guide tumor boundary decisions during live surgery. Can we quote its findings as proof that the proposed sensor is ready for that use? We have no new in vivo data and no validation on our own setup. What assessment and next feasibility steps are appropriate?",
+  "facts_stated": [
+    {
+      "fact": "The client read a supplied LED NIR kidney study.",
+      "enquiry_quote": "We read the supplied LED NIR kidney study"
+    },
+    {
+      "fact": "The client wants to use the same concept to guide tumor boundary decisions during live surgery.",
+      "enquiry_quote": "want to use the same concept to guide tumor boundary decisions during live surgery"
+    },
+    {
+      "fact": "The client has no new in vivo data.",
+      "enquiry_quote": "We have no new in vivo data"
+    },
+    {
+      "fact": "The client has no validation on their own setup.",
+      "enquiry_quote": "no validation on our own setup"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What decision during surgery should the real-time signal drive, and what goes wrong today when the boundary is judged without it?",
+      "why": "Defines the clinical decision and whether an optical signal can support it.",
+      "assumption_if_unanswered": "Decision and current pain unclear; treat as an exploratory research question until the surgical decision is defined.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Which tissue contrast must be detected at the boundary (tumor versus which healthy tissue), and at what level of detail is it needed?",
+      "why": "Determines whether the contrast seen in the kidney study is relevant to the new target.",
+      "assumption_if_unanswered": "Target contrast undefined; the kidney study result cannot be assumed to transfer until the tissue pair is specified.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "Which tissue types and optical conditions (blood, fat, moisture, surface state) are expected at the surgical site?",
+      "why": "Tissue optics vary strongly and change NIR signals and calibration.",
+      "assumption_if_unanswered": "Optical conditions unknown; the kidney study's sample conditions are not assumed to apply.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "How will the probe be used in the operating environment, including contact, sterilization and handling constraints?",
+      "why": "Determines probe design, cleaning method and feasibility in the clinic.",
+      "assumption_if_unanswered": "Sterilization and contact constraints unknown; no sensor design is assumed.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where would the analyzer sit relative to the surgical field, and what fiber or probe connection is planned?",
+      "why": "Defines fiber type and whether a remote analyzer is needed.",
+      "assumption_if_unanswered": "Analyzer location unknown; no fiber type or distance is assumed.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "What reference method (for example histopathology) will confirm tumor boundaries, and what is its accuracy?",
+      "why": "Without a reference, no accuracy can be established for the sensor.",
+      "assumption_if_unanswered": "Reference method unknown; feasibility cannot be judged until the gold standard is defined.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and regulatory route (in vitro, ex vivo or clinical study) are required before any surgical use?",
+      "why": "Sets the gap between the current evidence and what is needed.",
+      "assumption_if_unanswered": "Requirements undefined; the work is treated as research only, with no clinical use planned.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "premise_not_supported",
+    "status_reason": "In-vitro proof-of-concept study cannot demonstrate readiness for live-surgery boundary decisions.",
+    "requirements_stated": [
+      "Read the LED NIR kidney study",
+      "Wants same concept for live-surgery tumor boundaries",
+      "No new in vivo data",
+      "No validation on own setup"
+    ],
+    "key_unknowns": [
+      "Tumor type and surgical decision",
+      "Histopathology reference, spot co-registration",
+      "Tissue and patient variation",
+      "Accuracy, response time, sterilisation, regulatory route"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "The kidney study findings can be quoted as proof that the proposed sensor is ready for live-surgery boundary decisions.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "The study describes itself as a proof of concept on in vitro samples from few patients.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S03 p.14",
+                "quote": "This study provides a proof-of-concept demonstration of the LED-based sensor for tumor discrimination.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Its authors state that a practicable diagnostic model still needs a large representative patient set.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S03 p.10",
+                "quote": "The practicable diagnostic model should be built at a later stage of the method development, using a large representative set of patients",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The LED NIR kidney concept transfers directly to intraoperative tumor boundary guidance.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "Frozen/thawed biopsy spectra may differ from in vivo measurements, so transfer must be tested.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S03 p.3",
+                "quote": "Although the spectra of frozen/thawed biopsies can differ from real-life in vivo measurements",
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which tumor and healthy tissue must be distinguished, for which surgical decision?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which histopathology reference confirms each spot, and how are spots co-registered?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do blood, fat, surface state and patient factors vary?",
+        "covers": "variation"
+      },
+      {
+        "question": "What accuracy, response time, sterilisation and regulatory route apply?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "diffuse reflection fiber probe (full spectrum first, then few LED wavelengths)",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The in-vitro kidney study supports testing NIR diffuse reflectance for tumor discrimination, not readiness.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S03 p.14",
+              "quote": "The presented technology of diffuse reflectance NIR sensing for tumor diagnostics can be extended to other tissue and cancer types.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "The LED set should be adapted to each tissue; full-spectrum data allow sensor simulation first.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S03 p.14",
+              "quote": "the working LED set, that is, the LED number and wavelengths, should be adapted to each case individually",
+              "url": null
+            },
+            {
+              "ref": "S03 p.10",
+              "quote": "Full-spectrum measurements enabled the simulation of a four-channel sensor with theoretically chosen LEDs before its physical construction.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Only in-vitro evidence from few patients; no data on the client's setup or in vivo."
+      },
+      {
+        "method": "Fluorescence spectroscopy",
+        "geometry": "fluorescence fiber probe",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "The tumor-margin example lists a fluorescence fiber probe as a candidate.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.13",
+              "quote": "UV-VIS spectrometer and 470 nm laser coupled with a fluorescence fiber probe",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Needs a fluorescent tissue component; the source table rates fluorimetry selectivity low.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.4",
+              "quote": "Of course, it is limited to the samples containing at least one fluorescent component",
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Lab and ex vivo evidence only; target tissue undefined."
+      },
+      {
+        "method": "NIR + fluorescence",
+        "geometry": "same-spot measurement, e.g. combi probe",
+        "role": "combination",
+        "simplicity_rank": 3,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "Materials report complementary NIR and fluorescence information for malignant versus benign tissue.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.14",
+              "quote": "Near-IR + Fluorescence: higher sensitivity in discrimination between malignant and benign colorectal tissue",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Only after each method is assessed alone; the gain is a hypothesis to test at the same spot.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.8",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S04 p.2",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Research-stage evidence; nothing measured for this application."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Low sensitivity and selectivity; no tissue example in the materials."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "alternative",
+        "reason": "Comparison candidate supported by tumor-margin examples; needs a fluorophore."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "rejected",
+        "reason": "No tissue application example; ATR is the documented tissue geometry."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "alternative",
+        "reason": "Only relevant if tissue contact is not acceptable in surgery."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "lab_screening_only",
+        "reason": "Offline lab technique for ex vivo screening."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Ex vivo screening of surface chemistry only."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "Tissue examples exist; needs mid-IR fiber and tight contact; later comparison."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "lab_screening_only",
+        "reason": "High cost; fluorescence background from tissue must be checked first."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "NIR diffuse reflection probe; fluorescence probe as comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.13",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Ex vivo tissue with histopathology first; intraoperative use only after validation and approval.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link stated; Vis-NIR silica transmits 350–2400 nm; fluorescence coverage depends on the fluorophore wavelengths.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um); FLUO: UV-Vis silica covers the nominal range.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.12",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "not yet defined",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "probe type and geometry",
+        "sterilisable probe design",
+        "optical configuration"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780–2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Fluorescence spectroscopy",
+        "nominal_range": "UV/Vis; depends on the fluorescent species",
+        "citation": {
+          "ref": "S01 p.12",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "evidence_scope",
+        "text": "In-vitro results from few patients do not establish in vivo use.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S03 p.3",
+            "quote": null,
+            "url": null
+          },
+          {
+            "ref": "DOCX §3",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "calibration_validity",
+        "text": "Models may fail on other tumor types or patients.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S03 p.10",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Position and biopsy differences may cause variability confusable with tissue differences.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S03 p.7",
+            "quote": "seemingly insignificant variations of the sample position against the probe, may have resulted in a strong spectral variability",
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "No method or combination is guaranteed to help.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, response time, sterilisation and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Work is treated as research only; no clinical use planned until requirements are defined.",
+      "Histopathology is assumed as reference until the client confirms."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect paired ex vivo tumor and normal tissue across agreed tumor types, patients and optical variation.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record NIR and fluorescence spectra at co-registered spots with independent histopathology reference and timing information.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Single-method models first, combined only if justified; validate on held-out patients.",
+          "basis": "proposal",
+          "citations": [
+            {
+              "ref": "S03 p.13",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow boundary changes against agreed requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Clinical decision, tissue pair and regulatory route must be defined first."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria before testing; choose the simplest configuration meeting them on independent patients.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S03 p.14",
+        "quote": "This study provides a proof-of-concept demonstration of the LED-based sensor for tumor discrimination.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "S03 p.10",
+        "quote": "The practicable diagnostic model should be built at a later stage of the method development, using a large representative set of patients",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S03 p.3",
+        "quote": "Although the spectra of frozen/thawed biopsies can differ from real-life in vivo measurements",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S03 p.14",
+        "quote": "The presented technology of diffuse reflectance NIR sensing for tumor diagnostics can be extended to other tissue and cancer types.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S03 p.14",
+        "quote": "the working LED set, that is, the LED number and wavelengths, should be adapted to each case individually",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[1]",
+        "ref": "S03 p.10",
+        "quote": "Full-spectrum measurements enabled the simulation of a four-channel sensor with theoretically chosen LEDs before its physical construction.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.13",
+        "quote": "UV-VIS spectrometer and 470 nm laser coupled with a fluorescence fiber probe",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S04 p.4",
+        "quote": "Of course, it is limited to the samples containing at least one fluorescent component",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].reason.citations[0]",
+        "ref": "S01 p.14",
+        "quote": "Near-IR + Fluorescence: higher sensitivity in discrimination between malignant and benign colorectal tissue",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].caveat.citations[0]",
+        "ref": "S01 p.8",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].caveat.citations[1]",
+        "ref": "S04 p.2",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[1]",
+        "ref": "S01 p.13",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "S03 p.3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[1]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S03 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "S03 p.7",
+        "quote": "seemingly insignificant variations of the sample position against the probe, may have resulted in a strong spectral variability",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "risks[3].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "feasibility_plan.steps[2].citations[0]",
+        "ref": "S03 p.13",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 10,
+      "citations_page_only": 16
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "not_supported: The claim cites 'selectivity is rated low' for fluorescence, but the table rows for fluorimetry (r18, r19) show low selectivity only for fluorimetry, and the caveat about needing a fluorescent tissue component is supported by S01 p.6/S04 p.4; however the cited set includes many unrelated NIR/Raman/UV-Vis rows that do not address fluorescence, so the page support for the fluorescence-specific selectivity rating is only partially shown. Fix: Cite only the fluorimetry rows (TABLE:r18, TABLE:r19) and S04 p.4 for the fluorescent-component requirement, and state that selectivity is rated low for fluorimetry in the source table."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: The claim states a fiber-link rule check: NIR Vis-NIR silica covers 0.78-2.4 um and FLUO UV-Vis silica covers the nominal range. S02 p.6 gives Vis-NIR silica 350-2400 nm and UV-VIS silica 190-1200 nm, which supports the numbers, but S01 p.10 and p.12 do not discuss fiber transmission ranges; the claim presents 'covers the nominal range' without checking the nominal fluorescence range, which the cited pages do not establish. Fix: Keep only the fiber transmission values from S02 p.6 and state that the fluorescence coverage depends on the excitation and emission wavelengths of the specific fluorophore, which the cited pages do not give."
+      },
+      {
+        "path": "risks[2]",
+        "kind": "context",
+        "detail": "not_supported: S03 p.7 states that biopsy size, tissue-type differences and sample position may cause strong spectral variability; it does not say that probe position changes can mimic tissue differences in discrimination, so the mimicking claim goes beyond the page. Fix: Rephrase to say that sample position and biopsy differences may produce strong spectral variability that could be confused with tissue differences, citing S03 p.7 for variability only."
+      },
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "context",
+        "detail": "overstated: S03 p.14 says the LED number and wavelengths should be adapted to each case individually; the claim that they 'must be re-selected from full-spectrum data' is a stronger prescription than the page's suggestion, and the full-spectrum re-selection method is described on p.10 rather than p.14. Fix: State that LED set should be adapted to each tissue type as suggested in S03 p.14, and cite S03 p.10 for the full-spectrum simulation approach."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": false,
+      "detail": "583 words; over budget: Recommendation 146/110, Measurement concept 69/45, Spectral range 31/30, Risks and uncertainty 51/48, First feasibility experiment 62/60 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to apply the LED NIR kidney tumor study concept to guide tumor boundary decisions during live surgery and asks whether the study findings can be quoted as proof of readiness.",
+    "stated_facts": [
+      {
+        "fact": "The client read a supplied LED NIR kidney study.",
+        "enquiry_quote": "We read the supplied LED NIR kidney study"
+      },
+      {
+        "fact": "The client wants to use the same concept to guide tumor boundary decisions during live surgery.",
+        "enquiry_quote": "want to use the same concept to guide tumor boundary decisions during live surgery"
+      },
+      {
+        "fact": "The client has no new in vivo data.",
+        "enquiry_quote": "We have no new in vivo data"
+      },
+      {
+        "fact": "The client has no validation on their own setup.",
+        "enquiry_quote": "no validation on our own setup"
+      }
+    ],
+    "targets": [
+      "tumor boundary"
+    ],
+    "sample_description": "Live surgical tissue (in vivo), as implied by live surgery; details not stated.",
+    "sample_state": "tissue",
+    "process_context": "clinical_or_medical",
+    "conditions": [
+      "live surgery"
+    ],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [
+      "LED NIR sensor concept from the supplied kidney study"
+    ],
+    "methods_mentioned": [
+      "NIR"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "The findings of the LED NIR kidney study can be quoted as proof that the proposed sensor is ready for live-surgery tumor boundary decisions.",
+        "enquiry_quote": "Can we quote its findings as proof that the proposed sensor is ready for that use?"
+      },
+      {
+        "claim": "The LED NIR kidney study concept transfers directly to tumor boundary guidance during live surgery.",
+        "enquiry_quote": "want to use the same concept to guide tumor boundary decisions during live surgery"
+      }
+    ],
+    "requested_decision": "Whether the kidney study can be cited as readiness proof for live-surgery tumor boundary guidance, and which feasibility steps are appropriate.",
+    "unknowns": [
+      "Tumor type and tissue types at the boundary beyond the kidney study",
+      "Sensor design, LED wavelengths and probe geometry of the proposed sensor",
+      "Fiber type and distance to analyzer",
+      "Required accuracy, response time and regulatory pathway",
+      "Reference histopathology method and its accuracy",
+      "Sample size and patient population for new work",
+      "Whether the surgical setting imposes sterilization or contact constraints"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "evidence_scope: A published application or a laboratory / in-vitro study is a reason to test a method, not proof that it works for a new customer, a process, or clinical use. [DOCX §3; S03 p.3, p.10, p.14]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "same_spot_for_heterogeneous: For heterogeneous or fast-changing samples, methods should measure the same spot at the same time, e.g. with a combi probe. [S01 p.8; S04 p.2]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed",
+      "evidence_scope"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.7.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-18T10:17:38.693221+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.0,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 133,
+          "output_tokens": 1729,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.000982
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-18T10:17:47.738495+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 58.4,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 8630,
+          "output_tokens": 7029,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.191983
+      },
+      {
+        "claims_checked": 15,
+        "stage": "critic",
+        "timestamp": "2026-10-18T10:18:46.190414+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 7.6,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 18490,
+          "output_tokens": 918,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.002315
+      },
+      {
+        "flags_sent": 6,
+        "stage": "revise",
+        "timestamp": "2026-10-18T10:18:53.785022+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 45.5,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10163,
+          "output_tokens": 5808,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.173695
+      }
+    ],
+    "prompt_hash": "64053030c027",
+    "git_commit": "b5d8388",
+    "timestamp": "2026-10-18T10:17:47.720951+00:00",
+    "duration_s": 120.7,
+    "cost_usd": 0.369
+  }
+}

@@ -38,7 +38,7 @@ st.markdown(f"<style>{(Path(__file__).parent / 'style.css').read_text()}</style>
 LABEL = "Prototype built for Art Fiber Systems · SchubKI National AI Hackathon 2026 · not an official AFS product"
 LIVE_RUNS = int(os.getenv("LIVE_RUNS_PER_SESSION", "3"))
 LIVE_ENABLED = os.getenv("LIVE_ENABLED", "false").strip().lower() == "true"  # off on the hosted app: zero API spend
-LIBRARY_RUN = os.getenv("LIBRARY_RUN", "opus")  # pre-generated outputs of the final model (outputs/runs/<run>/)
+LIBRARY_RUN = os.getenv("LIBRARY_RUN", "final")  # frozen-version runs (outputs/runs/final/), same config as H01-H06
 STEPS = ["Intake", "Rule checks", "Assessment", "Verification", "Revision"]
 KB_STATE = ensure_kb()
 

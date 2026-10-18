@@ -1,0 +1,1170 @@
+{
+  "case_id": "D08",
+  "mode": "one_shot",
+  "enquiry": "Our research group is evaluating a spectral measurement interface using model biological tissues such as chicken muscle, fat and liver. We want to compare MIR ATR and fluorescence information, because the material is heterogeneous and sequential measurements may not sample the same location. This is a laboratory classification study. We need a first comparison experiment and a clear statement of what its results would demonstrate.",
+  "facts_stated": [
+    {
+      "fact": "The group is evaluating a spectral measurement interface using model biological tissues such as chicken muscle, fat and liver.",
+      "enquiry_quote": "Our research group is evaluating a spectral measurement interface using model biological tissues such as chicken muscle, fat and liver."
+    },
+    {
+      "fact": "The group wants to compare MIR ATR and fluorescence information.",
+      "enquiry_quote": "We want to compare MIR ATR and fluorescence information"
+    },
+    {
+      "fact": "The material is heterogeneous.",
+      "enquiry_quote": "because the material is heterogeneous"
+    },
+    {
+      "fact": "Sequential measurements may not sample the same location.",
+      "enquiry_quote": "sequential measurements may not sample the same location"
+    },
+    {
+      "fact": "This is a laboratory classification study.",
+      "enquiry_quote": "This is a laboratory classification study."
+    },
+    {
+      "fact": "The group needs a first comparison experiment and a clear statement of what its results would demonstrate.",
+      "enquiry_quote": "We need a first comparison experiment and a clear statement of what its results would demonstrate."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What decision should the classification result support in your research programme, and what would make the current approach insufficient?",
+      "why": "Defines the purpose of the comparison and what success looks like.",
+      "assumption_if_unanswered": "Decision not stated; the first experiment is treated as a feasibility comparison of the two information sources.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Which tissue classes must be distinguished (for example muscle, fat, liver), and is any specific analyte or fluorescent species of interest?",
+      "why": "Sets the classification task and tells whether fluorescence has a defined species to measure.",
+      "assumption_if_unanswered": "Classes are tissue types as named; no analyte level is defined, so fluorescence is treated as an unspecified signal until a fluorophore is identified.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "What is the physical form of the samples during measurement (fresh, cooked, sliced, homogenised), and are they opaque or translucent?",
+      "why": "Determines contact with the ATR crystal, optical depth and whether the surface is representative.",
+      "assumption_if_unanswered": "Samples are solid tissue, opaque; surface contact with the ATR tip is assumed to be possible but not verified.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "How does the tissue vary within a sample and between samples (texture, fat content, moisture, temperature, time since preparation)?",
+      "why": "Heterogeneity and drift affect whether spectra from different spots are comparable and how many replicates are needed.",
+      "assumption_if_unanswered": "Heterogeneity is as stated; variation is unquantified and must be characterised in the lab screening.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Which probe geometry and fiber setup do you plan to use, and can MIR ATR and fluorescence be measured from the same spot, for example with a combi probe?",
+      "why": "Same-spot measurement is needed for a valid comparison of heterogeneous samples; fiber type limits MIR transmission.",
+      "assumption_if_unanswered": "Setup not defined; the comparison assumes separate probes measuring the same marked location on the sample, which is to be verified.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "What is the reference classification of each tissue sample (for example histology, dissection, or a reference chemical assay) and its accuracy?",
+      "why": "Without a reference, classification performance cannot be judged.",
+      "assumption_if_unanswered": "No reference method stated; labels are assumed to come from the sample origin (tissue type) and are unverified.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What number of samples, replicates and independent batches are planned, and what accuracy or response time would you consider acceptable for the classification?",
+      "why": "Sets the design of a validation on independent runs before any combination of methods is judged.",
+      "assumption_if_unanswered": "Sample numbers not stated; the design is a comparison of single methods first, validated on independent batches.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "provisional_assessment",
+    "status_reason": "Same application type shown in AFS lab study; client details still open.",
+    "requirements_stated": [
+      "Lab classification of model tissues: chicken muscle, fat, liver",
+      "Compare MIR ATR and fluorescence",
+      "Heterogeneous material; sequential measurements may miss the same spot",
+      "Wants first experiment, success evidence"
+    ],
+    "key_unknowns": [
+      "Class definitions, fluorophores of interest",
+      "Reference label reliability",
+      "Sample form, freshness, variation",
+      "Probe/fiber setup, acceptance criteria"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "MIR ATR and fluorescence give useful, complementary information for classifying these tissues.",
+        "verdict": "supported",
+        "explanation": [
+          {
+            "text": "An AFS laboratory study on chicken breast, fat and liver samples, not clinical data, found IR better for fat and fluorescence better for liver.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S04 p.4",
+                "quote": "IR spectroscopy works better for the discrimination of fat",
+                "url": null
+              },
+              {
+                "ref": "S04 p.3",
+                "quote": "using di fferent organs and parts of the chicken: breast, fat, and liver",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "The gain for the client's own samples, preparation and classes is still a hypothesis to test.",
+            "basis": "assumption",
+            "citations": []
+          }
+        ]
+      },
+      {
+        "client_claim": "Heterogeneous tissue requires both methods to sample the same spot.",
+        "verdict": "supported",
+        "explanation": [
+          {
+            "text": "For inhomogeneous samples such as tissue, spectra from different methods should come from the same small area.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.8",
+                "quote": null,
+                "url": null
+              },
+              {
+                "ref": "S04 p.2",
+                "quote": "Such alternating multispectral measurements cannot guarantee complete coincidence of the spots analyzed by both methods",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "No fiber link stated for the MIR-ATR and fluorescence probes.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "The fiber determines which wavelengths reach the probe; the AFS combi probe used chalcogenide IR fibers for ATR and UV silica fibers for fluorescence. The client's link must be confirmed.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §5",
+                "quote": "The fiber determines which wavelengths reach the probe.",
+                "url": null
+              },
+              {
+                "ref": "S04 p.2",
+                "quote": "high transparency in the working spectral regions of both chalcogenide infrared (CIR) and UV silica fibers",
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which classes must be separated, and is any fluorophore or marker of interest?",
+        "covers": "measured"
+      },
+      {
+        "question": "How are reference labels assigned and how reliable are they?",
+        "covers": "reference"
+      },
+      {
+        "question": "Which sample form, freshness and heterogeneity occur, across how many animals?",
+        "covers": "variation"
+      },
+      {
+        "question": "Which probe and fiber setup exists, and what performance is acceptable?",
+        "covers": "requirements"
+      },
+      {
+        "question": "Is later clinical or industrial use intended?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "MIR spectroscopy",
+        "geometry": "ATR probe in contact with tissue",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "In an AFS lab study on chicken tissue, FTIR spectra from the ATR probe separated fat via the ester carbonyl band.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.3",
+              "quote": "toward rich in lipids fat samples is related to the stretching vibration band of the ester carbonyl",
+              "url": null
+            },
+            {
+              "ref": "S04 p.4",
+              "quote": "IR spectroscopy works better for the discrimination of fat",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "ATR needs tight contact with liquid or soft samples and has an optical depth of about 1-6 um.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.4",
+              "quote": "which is true for liquid or soft solid samples and their components, allowing a tight contact with the probe head",
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Same lab application shown; client samples, classes and setup unconfirmed."
+      },
+      {
+        "method": "Fluorescence spectroscopy",
+        "geometry": "Fluorimetric probe in contact with tissue",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "The same lab study found 'fluorescence is well suited for the recognition of liver tissue'.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.4",
+              "quote": "fluorescence is well suited for the recognition of liver tissue",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Requires fluorescent components and has low selectivity; the excitation choice for these samples is a point to test.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.4",
+              "quote": "it is limited to the samples containing at least one fluorescent component",
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Same lab application shown; fluorophores in client samples unconfirmed."
+      },
+      {
+        "method": "MIR-ATR + fluorescence",
+        "geometry": "Combi probe measuring the same spot",
+        "role": "combination",
+        "simplicity_rank": 3,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "In one lab study with three samples per chicken tissue type, fused IR and fluorescence data separated all three classes in PCA.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S04 p.4",
+              "quote": "the PCA model built on the concatenated IR and fluorescence data revealed three distinct groups of samples corresponding to tissue types",
+              "url": null
+            },
+            {
+              "ref": "S04 p.3",
+              "quote": "three samples of each tissue type were prepared",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Only after each method is assessed alone; a hypothesis to test.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "DOCX §5",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Small lab demonstration on similar tissues; client classes not yet defined."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Not requested; low sensitivity and selectivity for this classification task."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "recommended",
+        "reason": "Requested method; shown to recognise liver in model tissues."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "rejected",
+        "reason": "Client asks for ATR; ATR suits soft tissue in contact."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "alternative",
+        "reason": "Only if ATR contact proves impractical; not part of the requested comparison."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "rejected",
+        "reason": "Not needed for this MIR versus fluorescence comparison."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Bench ATR reference spectra possible, but not same-spot with fluorescence."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "recommended",
+        "reason": "Requested method; liquid, paste and soft samples in contact."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "rejected",
+        "reason": "Not requested; fluorescence background from organic tissue can dominate Raman."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "MIR-ATR and fluorimetric probes, ideally one combi probe reading the same spot.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S04 p.2",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Lab bench, probe tip in contact at several distributed points per sample.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: MIR: Vis-NIR silica no coverage; polycrystalline IR (PIR) partial (3-17 um); FLUO: UV-Vis silica covers the nominal range.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.9",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.12",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "undefined: mid-IR fiber for ATR, silica for fluorescence",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Combi probe availability",
+        "ATR crystal and fibers",
+        "Fluorescence excitation wavelength"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "MIR (ATR)",
+        "nominal_range": "4000–400 cm-1 (2.5–25 µm)",
+        "citation": {
+          "ref": "S01 p.9",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Fluorescence",
+        "nominal_range": "UV/Vis excitation; species-dependent emission",
+        "citation": {
+          "ref": "S01 p.12",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "A model from one tissue set may fail on new material.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Fat inhomogeneity lowered IR reproducibility in the lab study.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S04 p.3",
+            "quote": "Low measurement reproducibility of the fat samples (broad standard deviation in Figure 2a) is explained by higher inhomogeneity of this tissue type",
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Fusion may not beat the best single method.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, signal quality and probe compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "fiber_link",
+        "text": "Fiber link undefined; each method needs a transmitting fiber.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": "The fiber determines which wavelengths reach the probe.",
+            "url": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Classes are the named tissue types; no analyte level defined.",
+      "Samples are opaque solid tissue; ATR contact assumed possible, unverified.",
+      "Labels come from sample origin, unverified.",
+      "Probe setup undefined; same-spot measurement still to be verified."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Prepare independent samples per agreed class, spanning composition, freshness and heterogeneity.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record same-spot MIR-ATR and fluorescence spectra with reference labels, positions and timestamps.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Single-method models first, fused only if justified; validate on held-out animals.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against agreed criteria.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "R&D lab context suggests a lab system, but decide after the comparison."
+    },
+    "decision_basis": {
+      "text": "Agree classification criteria with the client beforehand; choose the simplest configuration meeting them on independent samples.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S04 p.4",
+        "quote": "IR spectroscopy works better for the discrimination of fat",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[0].citations[1]",
+        "ref": "S04 p.3",
+        "quote": "using di fferent organs and parts of the chicken: breast, fat, and liver",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S01 p.8",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[1]",
+        "ref": "S04 p.2",
+        "quote": "Such alternating multispectral measurements cannot guarantee complete coincidence of the spots analyzed by both methods",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[2].explanation[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "The fiber determines which wavelengths reach the probe.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[2].explanation[0].citations[1]",
+        "ref": "S04 p.2",
+        "quote": "high transparency in the working spectral regions of both chalcogenide infrared (CIR) and UV silica fibers",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S04 p.3",
+        "quote": "toward rich in lipids fat samples is related to the stretching vibration band of the ester carbonyl",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[1]",
+        "ref": "S04 p.4",
+        "quote": "IR spectroscopy works better for the discrimination of fat",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S04 p.4",
+        "quote": "which is true for liquid or soft solid samples and their components, allowing a tight contact with the probe head",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S04 p.4",
+        "quote": "fluorescence is well suited for the recognition of liver tissue",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S04 p.4",
+        "quote": "it is limited to the samples containing at least one fluorescent component",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].reason.citations[0]",
+        "ref": "S04 p.4",
+        "quote": "the PCA model built on the concatenated IR and fluorescence data revealed three distinct groups of samples corresponding to tissue types",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].reason.citations[1]",
+        "ref": "S04 p.3",
+        "quote": "three samples of each tissue type were prepared",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].caveat.citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[1]",
+        "ref": "S04 p.2",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[1]",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[2]",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S04 p.3",
+        "quote": "Low measurement reproducibility of the fat samples (broad standard deviation in Figure 2a) is explained by higher inhomogeneity of this tissue type",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[4].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "The fiber determines which wavelengths reach the probe.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 14,
+      "citations_page_only": 13
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "context",
+        "detail": "different_context: The S04 p.4 study supports IR better for fat and fluorescence better for liver, but the claim says it was on chicken breast, fat and liver; the page mentions these tissues elsewhere (S04 p.3), so this is acceptable. However the claim is about the study finding, which is supported; no clear issue beyond the lab context not being stated as a lab study. Fix: State explicitly that this was a laboratory study on chicken tissue samples, not clinical data."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "not_supported: S04 p.4 says IR works better for fat discrimination from PCA, but does not attribute the separation to the ester carbonyl band in the claim's wording; that attribution is on S04 p.3 about the 1740 cm-1 band, and the claim's 'MIR-ATR' label is not stated for the tissue study on the cited page. Fix: Cite S04 p.3 for the ester carbonyl band and say the tissue study used FTIR spectra with ATR probe as reported."
+      },
+      {
+        "path": "recommendations[0].caveat",
+        "kind": "context",
+        "detail": "not_supported: The cited pages do not state that ATR probes only a few micrometres in these tissues; the table gives 1-6 um optical depth for ATR probes, but the 'tight contact' requirement is on S01 p.6 only in the DOCX source; the caveat combines several cited items including unrelated rows (cuvette, diffuse reflection) that do not concern ATR. Fix: Limit the caveat to the ATR rows (TABLE:r1, TABLE:r2) and S04 p.2 statement about tight contact with liquid or soft solid samples."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "overstated: The claim states the excitation wavelength must suit the tissues as a firm requirement; the sources only describe fluorescence depending on fluorescent species and low selectivity, not a specific excitation-matching rule. Fix: Say that fluorescence depends on the presence of fluorescent components and may need excitation chosen for the sample, as a point to test."
+      },
+      {
+        "path": "recommendations[2].reason",
+        "kind": "context",
+        "detail": "overstated: The page reports the concatenated PCA model revealed three distinct groups for this lab study; the claim presents it as a general finding supporting use for new samples without that scope. Fix: Qualify as a single lab study on three chicken tissue classes with a small sample set (3 samples per tissue type)."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages do not provide a fiber-link rule check; S02 p.6 gives transmission ranges but the claim's coverage conclusions (no Vis-NIR coverage for MIR, PIR partial) are derived and S01 p.9 and p.12 do not state them. The S02 chart also lists CIR 1100-6500 nm, which is not addressed. Fix: Report the stated fiber transmission ranges from S02 p.6 and state that the fiber link must be checked against the actual configuration."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "not_supported: S04 p.3 says fat spectra are broadened by inhomogeneity; it does not state that freshness and texture can mimic class differences. Fix: Remove the freshness and texture claim or cite a source that states it."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": false,
+      "detail": "556 words; over budget: Requirements stated 30/28, Clarification questions 59/55, Recommendation 142/110, Measurement concept 63/45, Risks and uncertainty 49/48 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The research group wants a first comparison experiment of MIR ATR and fluorescence information on model biological tissues, and a clear statement of what its results would demonstrate.",
+    "stated_facts": [
+      {
+        "fact": "The group is evaluating a spectral measurement interface using model biological tissues such as chicken muscle, fat and liver.",
+        "enquiry_quote": "Our research group is evaluating a spectral measurement interface using model biological tissues such as chicken muscle, fat and liver."
+      },
+      {
+        "fact": "The group wants to compare MIR ATR and fluorescence information.",
+        "enquiry_quote": "We want to compare MIR ATR and fluorescence information"
+      },
+      {
+        "fact": "The material is heterogeneous.",
+        "enquiry_quote": "because the material is heterogeneous"
+      },
+      {
+        "fact": "Sequential measurements may not sample the same location.",
+        "enquiry_quote": "sequential measurements may not sample the same location"
+      },
+      {
+        "fact": "This is a laboratory classification study.",
+        "enquiry_quote": "This is a laboratory classification study."
+      },
+      {
+        "fact": "The group needs a first comparison experiment and a clear statement of what its results would demonstrate.",
+        "enquiry_quote": "We need a first comparison experiment and a clear statement of what its results would demonstrate."
+      }
+    ],
+    "targets": [
+      "tissue classification (chicken muscle, fat, liver)"
+    ],
+    "sample_description": "Model biological tissues such as chicken muscle, fat and liver; heterogeneous material.",
+    "sample_state": "tissue",
+    "process_context": "research_lab",
+    "conditions": [
+      "heterogeneous material",
+      "sequential measurements may not sample the same location"
+    ],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [
+      "MIR",
+      "FLUO"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "MIR ATR and fluorescence information together are a useful comparison for classifying the tissues.",
+        "enquiry_quote": "We want to compare MIR ATR and fluorescence information, because the material is heterogeneous"
+      },
+      {
+        "claim": "Sequential measurements may not sample the same location, so a same-spot measurement is needed to compare methods.",
+        "enquiry_quote": "sequential measurements may not sample the same location"
+      }
+    ],
+    "requested_decision": "Define a first comparison experiment and state what its results would demonstrate.",
+    "unknowns": [
+      "Which tissue components are the classes and how many classes are defined",
+      "Whether the fluorescent species or indicator in the tissues is known",
+      "Target analyte or variable, if any, beyond tissue type",
+      "Reference classification method and its accuracy",
+      "Probe type and whether a combi probe is available",
+      "Sample preparation, temperature and handling",
+      "Number of samples and replicates planned",
+      "Existing equipment and fiber types",
+      "Required accuracy, response time and budget",
+      "Whether results are intended for clinical or industrial use"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "fluorescence_needs_fluorophore: Fluorescence only measures a defined fluorescent species or a justified indicator; most chemicals do not fluoresce. [S01 p.5; S04 p.4; DOCX §5]",
+      "sensitivity_not_selectivity: High sensitivity does not imply selectivity. Fluorimetry and UV/Vis are rated high sensitivity but low selectivity. [S01 Table 1 (p.6); DOCX §5]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "combination_is_hypothesis: Combining methods can add complementary information, but the gain is a hypothesis to test against the best single method. [S01 p.7-8; DOCX §5]",
+      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1; DOCX §5]",
+      "remote_measurement_nir_silica: NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist. [S01 p.5; S02 p.7]",
+      "same_spot_for_heterogeneous: For heterogeneous or fast-changing samples, methods should measure the same spot at the same time, e.g. with a combi probe. [S01 p.8; S04 p.2]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.7.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-18T10:31:08.733005+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 9.1,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 151,
+          "output_tokens": 1981,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.00111
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-18T10:31:17.823321+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 53.0,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9258,
+          "output_tokens": 6193,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.177775
+      },
+      {
+        "claims_checked": 14,
+        "stage": "critic",
+        "timestamp": "2026-10-18T10:32:10.927410+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 6.6,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 13197,
+          "output_tokens": 1180,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001917
+      },
+      {
+        "flags_sent": 9,
+        "stage": "revise",
+        "timestamp": "2026-10-18T10:32:17.571940+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 54.7,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10426,
+          "output_tokens": 7118,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.200947
+      }
+    ],
+    "prompt_hash": "64053030c027",
+    "git_commit": "b5d8388",
+    "timestamp": "2026-10-18T10:31:17.805801+00:00",
+    "duration_s": 123.8,
+    "cost_usd": 0.3817
+  }
+}

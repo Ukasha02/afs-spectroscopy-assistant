@@ -1,0 +1,981 @@
+{
+  "case_id": "H01",
+  "mode": "one_shot",
+  "enquiry": "Our existing NIR pilot follows API concentration in one powder formulation at the tablet press feed frame. We are introducing a different API and excipient blend and would like to reuse the calibration. A colleague suggests adding Raman so that the old calibration will remain valid. What should our first technical assessment and experiment be?",
+  "facts_stated": [
+    {
+      "fact": "The client has an existing NIR pilot that follows API concentration in one powder formulation at the tablet press feed frame.",
+      "enquiry_quote": "Our existing NIR pilot follows API concentration in one powder formulation at the tablet press feed frame."
+    },
+    {
+      "fact": "The client is introducing a different API and excipient blend.",
+      "enquiry_quote": "We are introducing a different API and excipient blend"
+    },
+    {
+      "fact": "The client would like to reuse the existing calibration.",
+      "enquiry_quote": "would like to reuse the calibration."
+    },
+    {
+      "fact": "A colleague suggests adding Raman so that the old calibration will remain valid.",
+      "enquiry_quote": "A colleague suggests adding Raman so that the old calibration will remain valid."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today at the feed frame, and what decision should real-time API data drive?",
+      "why": "Defines whether the goal is release control, feed adjustment or monitoring, which sets the required accuracy and response.",
+      "assumption_if_unanswered": "Goal unclear; first step is to confirm the decision the new sensor must support before choosing a method.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What is the new API concentration range and is it expressed in ppm or %?",
+      "why": "Concentration level decides whether NIR sensitivity is sufficient or whether another method is needed.",
+      "assumption_if_unanswered": "Level unknown; lab screening establishes whether it is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "What are the identities and proportions of the new API and excipients, and how do particle size and homogeneity vary in the blend?",
+      "why": "Matrix changes alter spectra and invalidate calibrations transferred from the old formulation.",
+      "assumption_if_unanswered": "Matrix assumed different from the old formulation; calibration reuse not assumed valid.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "Which process conditions (feed rate, moisture, temperature, blend variation over time) occur at the feed frame?",
+      "why": "Physical variation changes diffuse reflectance signals and determines robustness needs.",
+      "assumption_if_unanswered": "Conditions unknown; treat physical variation as a risk to be tested in a trial.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "How is the NIR pilot installed at the feed frame (probe type, distance to analyzer, fibers in use)?",
+      "why": "Confirms the existing hardware and whether the same geometry can measure the new blend.",
+      "assumption_if_unanswered": "Installation unknown; assume the same probe geometry is needed for any new comparison.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "What reference lab method is used for API concentration, and what is its accuracy and what reference samples and spectra are available for the old calibration?",
+      "why": "Needed to judge the old calibration and to build a new reference dataset time-aligned with spectra.",
+      "assumption_if_unanswered": "Reference method unknown; a new reference method must be agreed before any model is judged.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for the new application?",
+      "why": "Determines whether the existing NIR setup is sufficient or whether adding Raman is justified.",
+      "assumption_if_unanswered": "Requirements unknown; the simplest single-method option is evaluated first.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "premise_not_supported",
+    "status_reason": "Calibrations are matrix-specific; adding Raman cannot keep the old calibration valid.",
+    "requirements_stated": [
+      "NIR pilot tracks API in one powder blend in the feed frame",
+      "New API and excipients coming",
+      "Wants calibration reuse; colleague suggests adding Raman to keep it valid"
+    ],
+    "key_unknowns": [
+      "New API, excipients, API range",
+      "Reference assay and uncertainty",
+      "Pilot probe geometry and installation",
+      "Accuracy, response time, budget"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "The existing NIR calibration can be reused for the new API and excipient blend.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "The materials describe NIR calibration as specific to the matrix, so a new API and excipients require a new calibration.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §5",
+                "quote": "Overlapping bands, physical variation; calibration specific to the matrix.",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "Adding Raman will keep the old calibration valid.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "The DOCX §5 method table lists Raman calibration as specific to the matrix; S01 p.15 shows NIR and Raman fusion with PLS in one feed-frame setting.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §5",
+                "quote": "Weak signal, fluorescence background; calibration specific to the matrix.",
+                "url": null
+              },
+              {
+                "ref": "S01 p.15",
+                "quote": "where the synchronized NIR and Raman spectra are merged into a single augmented matrix.",
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which new API, excipients and API range, and which changes must be distinguished?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference assay, uncertainty and sampling timing apply; are old data kept?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do particle size, density, flow and feed rate vary between batches?",
+        "covers": "variation"
+      },
+      {
+        "question": "Which probe is installed; what accuracy, response time and cleaning limits apply?",
+        "covers": "requirements"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "diffuse reflection probe in the feed frame",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The tablet press feed-frame example uses an NIR reflection probe for API blend potency.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.15",
+              "quote": "NIR spectrometer and light source coupled with a NIR reflection probe",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "A new calibration must be built and validated for the new blend.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "DOCX §5",
+              "quote": "calibration specific to the matrix.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Application example matches; new blend unmeasured."
+      },
+      {
+        "method": "Raman spectroscopy",
+        "geometry": "Raman fiber probe in the feed frame",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "In the same feed-frame example, Raman with 785 nm excitation is part of the combined NIR and Raman setup.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.15",
+              "quote": "Raman spectrometer and Raman fiber probe for contact measurements with 785 nm excitation wavelength",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Fluorescence can overlap Raman bands for many organic compounds, so background should be checked.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.11",
+              "quote": "for many organic compounds, by the superposition of luminescence (fluorescence), which has a significantly higher intensity.",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Signal quality for new blend unknown; higher cost."
+      },
+      {
+        "method": "NIR + Raman",
+        "geometry": "same-spot combi probe or synchronised probes",
+        "role": "combination",
+        "simplicity_rank": 3,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "The feed-frame example reports higher accuracy and robustness for fused NIR and Raman models; this is one example.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.15",
+              "quote": "By combining Raman and NIR, these models can predict API potency or coating thickness with higher accuracy and robustness than single -method models.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Only after each method is assessed alone; the gain is a hypothesis to test.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.7",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Gain unproven for this formulation."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "NIR spectroscopy / diffuse reflection probe",
+        "decision": "recommended",
+        "reason": "Rated for powders; matches feed-frame example and existing pilot."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "alternative",
+        "reason": "Only if probe contact proves problematic."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "lab_screening_only",
+        "reason": "Offline technique for lab screening of the new blend."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "Comparison candidate; high selectivity but high cost."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "NIR diffuse reflection probe; Raman probe as comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Tablet press feed frame, as in the client's pilot.",
+          "basis": "client_fact",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No link stated; Vis-NIR silica (350–2400 nm) covers NIR (780–2500 nm) only partly; Raman coverage to confirm; verify figure values.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "DOCX §5",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um); RAMAN: Vis-NIR silica covers the nominal range.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.11",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "not stated; to be confirmed",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Existing probe type",
+        "Raman probe installation",
+        "Same-spot optical configuration"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780–2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Raman spectroscopy",
+        "nominal_range": "Raman shift (cm-1); signal 400–1100 nm",
+        "citation": {
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "Example excitation 785 nm; client excitation unconfirmed."
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "A new API and excipients may invalidate the old calibration and require recalibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Particle size, density and flow changes can mimic API changes.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither Raman nor a combination is guaranteed to help.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.7",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate and equipment compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Old calibration is not assumed valid for the new blend.",
+      "Existing NIR pilot geometry is assumed reusable until confirmed."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Prepare new-blend samples across the client-agreed API range and relevant particle, density and flow variation.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record NIR, and Raman if justified, with time-aligned independent API reference assays.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build a new NIR model first; Raman or fusion only if justified; validate on held-out batches.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "A",
+      "afs_next_path_reason": "A new chemometric model for the new blend is the core need."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria before testing; choose the simplest configuration meeting them on independent batches.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "Overlapping bands, physical variation; calibration specific to the matrix.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": "Weak signal, fluorescence background; calibration specific to the matrix.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[1]",
+        "ref": "S01 p.15",
+        "quote": "where the synchronized NIR and Raman spectra are merged into a single augmented matrix.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.15",
+        "quote": "NIR spectrometer and light source coupled with a NIR reflection probe",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "DOCX §5",
+        "quote": "calibration specific to the matrix.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.15",
+        "quote": "Raman spectrometer and Raman fiber probe for contact measurements with 785 nm excitation wavelength",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.11",
+        "quote": "for many organic compounds, by the superposition of luminescence (fluorescence), which has a significantly higher intensity.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].reason.citations[0]",
+        "ref": "S01 p.15",
+        "quote": "By combining Raman and NIR, these models can predict API potency or coating thickness with higher accuracy and robustness than single -method models.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].caveat.citations[0]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[1]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 8,
+      "citations_page_only": 12
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[1].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages do not state that Raman calibration is matrix-specific in the sense of the claim beyond the DOCX table's general limitation; the S01 p.15 page describes fusion for accuracy in a feed frame, which the claim characterises as 'not for transferring calibrations' without support in the pages. Fix: State only that the DOCX §5 table lists calibration specific to the matrix for Raman, and that S01 p.15 shows NIR+Raman fusion for PLS prediction in one feed-frame setting; do not claim anything about calibration transfer."
+      },
+      {
+        "path": "recommendations[0].reason",
+        "kind": "context",
+        "detail": "different_context: S01 p.15 describes NIR reflection probe use in a rotary tablet press feed frame for API potency, not a generic powder blend; the claim also asserts the client already runs NIR there, which is not in the cited pages. Fix: Say the example is a tablet press feed-frame NIR+Raman study, and remove the claim that the client already runs NIR there unless supported by client data."
+      },
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "different_context: S01 p.15 uses Raman in combination with NIR in a tablet press feed frame; it does not show Raman as a standalone second technique for API in powder blends. Fix: Describe Raman as part of the combined NIR+Raman setup in the feed-frame example only."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "not_supported: S01 p.11 says fluorescence can superimpose on Raman signals in many organic compounds; it does not state that fluorescence background must be checked first for a new blend. Fix: Say that S01 p.11 notes fluorescence can overlap Raman bands for many organic compounds, so background should be checked."
+      },
+      {
+        "path": "recommendations[2].reason",
+        "kind": "context",
+        "detail": "overstated: S01 p.15 reports that combining Raman and NIR can predict API potency with higher accuracy and robustness, a claim about one example, not a demonstrated complementary gain for this blend type in general. Fix: State that the feed-frame example reports higher accuracy and robustness for the fused NIR and Raman models, and that this is one example."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages do not contain the stated fiber-range rule check; S02 p.6 gives Vis-NIR silica 350-2400 nm, but the claim's 0.78-2.4 um partial coverage and 'covers the nominal range' verdict for Raman are not stated on these pages, and S01 p.11 does not give a fiber range. Fix: Restate the check using only the transmission ranges on S02 p.6 and the nominal ranges on DOCX §5, and note that the figure values should be verified."
+      },
+      {
+        "path": "risks[0]",
+        "kind": "context",
+        "detail": "overstated: DOCX §5 says calibration is specific to the matrix, which supports that changed composition may require recalibration, not that it definitively invalidates the old calibration. Fix: Say a new API and excipients may invalidate the old calibration and require checking or recalibration."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": false,
+      "detail": "missing []; content ['single-method first + held-out validation']; not labelled proposal []"
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": false,
+      "detail": "563 words; over budget: Decision status 19/18, Requirements stated 30/28, Recommendation 144/110, Measurement concept 71/45, Spectral range 38/30, First feasibility experiment 62/60 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to know whether an existing NIR calibration for API concentration in one powder formulation can be reused for a new API and excipient blend, and whether adding Raman would keep the old calibration valid.",
+    "stated_facts": [
+      {
+        "fact": "The client has an existing NIR pilot that follows API concentration in one powder formulation at the tablet press feed frame.",
+        "enquiry_quote": "Our existing NIR pilot follows API concentration in one powder formulation at the tablet press feed frame."
+      },
+      {
+        "fact": "The client is introducing a different API and excipient blend.",
+        "enquiry_quote": "We are introducing a different API and excipient blend"
+      },
+      {
+        "fact": "The client would like to reuse the existing calibration.",
+        "enquiry_quote": "would like to reuse the calibration."
+      },
+      {
+        "fact": "A colleague suggests adding Raman so that the old calibration will remain valid.",
+        "enquiry_quote": "A colleague suggests adding Raman so that the old calibration will remain valid."
+      }
+    ],
+    "targets": [
+      "API concentration"
+    ],
+    "sample_description": "Powder blend at the tablet press feed frame (API and excipient blend)",
+    "sample_state": "powder",
+    "process_context": "pilot",
+    "conditions": [],
+    "measurement_location": "tablet press feed frame",
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [
+      "NIR pilot system"
+    ],
+    "methods_mentioned": [
+      "NIR",
+      "RAMAN"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "The existing NIR calibration can be reused for the new API and excipient blend.",
+        "enquiry_quote": "would like to reuse the calibration."
+      },
+      {
+        "claim": "Adding Raman will keep the old calibration valid.",
+        "enquiry_quote": "A colleague suggests adding Raman so that the old calibration will remain valid."
+      }
+    ],
+    "requested_decision": "Decide the first technical assessment and experiment, including whether the existing calibration can be reused and whether Raman should be added.",
+    "unknowns": [
+      "Target concentration level (ppm or %) for the new API",
+      "Reference lab method and its accuracy",
+      "Accuracy, response time and budget requirements",
+      "Excipient and API identities and their proportions in the new blend",
+      "Particle size and homogeneity of the blend",
+      "Whether the NIR pilot uses reflection or another probe geometry",
+      "Fiber type and distance from analyzer to feed frame",
+      "Process conditions such as temperature, cleaning or variation over time",
+      "Whether the calibration data and reference samples are still available"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "NIR spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "scattering media, powder",
+        "optical_path_or_depth": "0.5-1 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "combination_is_hypothesis: Combining methods can add complementary information, but the gain is a hypothesis to test against the best single method. [S01 p.7-8; DOCX §5]",
+      "raman_fluorescence_background: Raman can be swamped by fluorescence background from many organic compounds; check signal quality first. [S01 p.11]",
+      "same_spot_for_heterogeneous: For heterogeneous or fast-changing samples, methods should measure the same spot at the same time, e.g. with a combi probe. [S01 p.8; S04 p.2]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.7.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-18T10:08:41.232522+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.4,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 129,
+          "output_tokens": 1732,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 10425
+        },
+        "cost_usd": 0.002182
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-18T10:08:50.634204+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 34.8,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 8165,
+          "output_tokens": 3839,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 84414
+        },
+        "cost_usd": 0.53151
+      },
+      {
+        "claims_checked": 13,
+        "stage": "critic",
+        "timestamp": "2026-10-18T10:09:25.470543+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 5.9,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 8575,
+          "output_tokens": 1102,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 744
+        },
+        "cost_usd": 0.001502
+      },
+      {
+        "flags_sent": 8,
+        "stage": "revise",
+        "timestamp": "2026-10-18T10:09:31.353962+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 41.8,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9457,
+          "output_tokens": 5453,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.163771
+      }
+    ],
+    "prompt_hash": "64053030c027",
+    "git_commit": "b5d8388",
+    "timestamp": "2026-10-18T10:08:50.616535+00:00",
+    "duration_s": 91.0,
+    "cost_usd": 0.699
+  }
+}

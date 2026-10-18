@@ -1,0 +1,1154 @@
+{
+  "case_id": "H05",
+  "mode": "one_shot",
+  "enquiry": "We have a liquid process that occasionally goes off specification. We suspect contamination, but we cannot yet name the contaminant or the affected quality variable. We would like you to recommend the best spectroscopy method and exact sensor configuration immediately. What information and first experiment should come before that decision?",
+  "facts_stated": [
+    {
+      "fact": "The client operates a liquid process.",
+      "enquiry_quote": "We have a liquid process"
+    },
+    {
+      "fact": "The process occasionally goes off specification.",
+      "enquiry_quote": "that occasionally goes off specification"
+    },
+    {
+      "fact": "The client suspects contamination as the cause.",
+      "enquiry_quote": "We suspect contamination"
+    },
+    {
+      "fact": "The client cannot yet name the contaminant.",
+      "enquiry_quote": "we cannot yet name the contaminant"
+    },
+    {
+      "fact": "The client cannot yet name the affected quality variable.",
+      "enquiry_quote": "or the affected quality variable"
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong when the process goes off specification, and what decision should real-time data drive?",
+      "why": "Defines the stakeholder pain and whether an in-line sensor is needed at all versus periodic lab checks.",
+      "assumption_if_unanswered": "Off-specification events are costly; the decision is whether to alarm, divert or adjust, to be confirmed.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Which quality variable is off specification, and what are its specification limits?",
+      "why": "Without the variable and its limits no method can be selected; the specification sets the required sensitivity.",
+      "assumption_if_unanswered": "Variable and limits unknown; a lab screening of candidate quality variables comes first.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "target_and_level",
+      "question": "What is the suspected contaminant, and at what level does it matter, in ppm or %?",
+      "why": "Decides whether trace-level detection (favouring sensitive methods) or bulk analysis is needed.",
+      "assumption_if_unanswered": "Contaminant unknown; lab screening establishes whether it is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "sample_form_optics",
+      "question": "Is the liquid clear, turbid or opaque, and does its colour or particle content vary?",
+      "why": "Determines probe geometry: transmission, transflection, diffuse reflection or ATR.",
+      "assumption_if_unanswered": "Clear liquid assumed; lab screening on representative samples confirms optics.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "process_conditions",
+      "question": "What are the process temperature, pressure and fouling or cleaning conditions, and how does the liquid composition vary over time?",
+      "why": "Temperature, fouling and composition drift change spectra and can invalidate a calibration.",
+      "assumption_if_unanswered": "Conditions unknown; the first trial records them alongside spectra.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "installation_distance",
+      "question": "Where would the analyzer sit relative to the measuring point, and are any optical fibers already installed?",
+      "why": "Distance and existing fiber determine which wavelength ranges can reach the probe.",
+      "assumption_if_unanswered": "Installation point unknown; remote placement is not assumed until confirmed.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "reference_method",
+      "question": "What is the current reference lab method for the quality variable, and what accuracy does it achieve?",
+      "why": "Spectroscopic results must be compared against an accepted reference over time-aligned samples.",
+      "assumption_if_unanswered": "No reference method known; one must be defined before any model is built.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required?",
+      "why": "Sets whether a simple few-wavelength sensor or a broader lab system is appropriate.",
+      "assumption_if_unanswered": "Requirements unknown; a simple single-method option is preferred until they are stated.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "insufficient_information",
+    "status_reason": "Contaminant and affected quality variable are unknown, so no method can be chosen.",
+    "requirements_stated": [
+      "Liquid process occasionally off specification",
+      "Contamination suspected; contaminant and quality variable unknown",
+      "Wants best method and exact sensor configuration immediately",
+      "Asks which information and experiment come first"
+    ],
+    "key_unknowns": [
+      "Contaminant identity and level (ppm or %)",
+      "Affected quality variable and limits",
+      "Reference method and uncertainty",
+      "Liquid optics, process conditions, installation"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "The best spectroscopy method and exact sensor configuration can be recommended immediately.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "For samples of incompletely known composition, the materials say several optical approaches must be tested before the most suitable method is selected.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.3",
+                "quote": "analyzing natural and industrial samples of incompletely known composition, in order to select the most suitable method or combination of methods.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "The method is chosen by comparing spectral data from the customer's own process.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.3",
+                "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "With the target undefined, the right answer is to ask the deciding questions and propose the next step.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §3",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "What goes off-spec, within which limits, and which contaminants are suspected?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which lab method flags off-spec batches, with what uncertainty and sampling time?",
+        "covers": "reference"
+      },
+      {
+        "question": "Is the liquid clear or turbid; how do temperature and composition vary?",
+        "covers": "variation"
+      },
+      {
+        "question": "What response time, installation, fouling and cleaning conditions apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "Which decision should the data drive, and what budget applies?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "Multi-method lab screening",
+        "geometry": "Lab cuvettes or probes on retained samples",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "Methods are chosen by comparing spectra from the client's own samples: \"Comparison of spectral data for customer process enables to select the best process-control solution\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.3",
+              "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Needs retained off-spec samples with reference results.",
+          "basis": "proposal",
+          "citations": []
+        },
+        "confidence": "low",
+        "confidence_reason": "Target, level and matrix are unknown; nothing has been measured."
+      },
+      {
+        "method": "UV/Vis spectroscopy",
+        "geometry": "Transmission or transflection probe",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "Suits clear liquids and is rated low cost in the source's qualitative table: \"For highly transparent liquids with low optical density, UV-Transmission or Transflection probes are ideal\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "For highly transparent liquids with low optical density, UV-Transmission or Transflection probes are ideal",
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Low selectivity may flag a change without identifying it.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Clear optics are only assumed; the contaminant is undefined."
+      },
+      {
+        "method": "MIR (FTIR) spectroscopy",
+        "geometry": "ATR probe",
+        "role": "comparison",
+        "simplicity_rank": 3,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "High selectivity; AFS liquid example: \"Application: measurement of water content in petroleum\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.13",
+              "quote": "Application: measurement of water content in petroleum",
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Needs mid-IR fibers and ATR contact.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "The example is an unrelated matrix; the contaminant is unknown."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "Low-cost in-line option for clear liquids; low selectivity."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "lab_screening_only",
+        "reason": "Useful only if the contaminant fluoresces; most chemicals do not."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of absorption differences between in-spec and off-spec samples."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline check whether off-spec samples contain a fluorescent species."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "In-line candidate for clear liquids if screening shows NIR-visible changes."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "alternative",
+        "reason": "Only relevant if the liquid is strongly absorbing or opaque."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "High-selectivity offline screening to help identify the contaminant."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of the NIR response."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab ATR screening of liquid samples."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "In-line candidate if MIR screening is informative; needs mid-IR fibers."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "alternative",
+        "reason": "Selective in-line candidate; high cost and possible fluorescence background."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of Raman signatures and fluorescence background."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "Lab cuvettes for screening; the in-line interface follows the measured optics: transmission or transflection for clear, ATR for opaque liquids.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.16",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "In-line location is defined after screening identifies target and range.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: UVVIS: UV-Vis silica covers the nominal range; MIR: Vis-NIR silica no coverage; polycrystalline IR (PIR) partial (3-17 um).",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.5",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.9",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "undecided (depends on the selected method)",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "Probe type",
+        "Installation point",
+        "Optical configuration"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "UV/Vis",
+        "nominal_range": "UV 190-360 nm and visible",
+        "citation": {
+          "ref": "S01 p.5",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "NIR",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "MIR",
+        "nominal_range": "4000-400 cm-1",
+        "citation": {
+          "ref": "S01 p.9",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Raman",
+        "nominal_range": "Raman shift in cm-1",
+        "citation": {
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "Excitation not yet selected."
+      },
+      {
+        "method": "Fluorescence",
+        "nominal_range": "Depends on the fluorescent species",
+        "citation": {
+          "ref": "S01 p.12",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "physical_variation",
+        "text": "Temperature, colour or turbidity changes can mimic contamination.",
+        "basis": "general_knowledge",
+        "citations": []
+      },
+      {
+        "category": "other",
+        "text": "Sensitive methods may detect a change without identifying the contaminant.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 Table 1 (p.6)",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither a single method nor a combination is guaranteed to detect it.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.7",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Detection level, accuracy, update rate and compatibility are all unconfirmed.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §3",
+            "quote": null,
+            "url": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "The liquid is clear (intake assumption, unconfirmed).",
+      "Off-spec events are costly; the decision to drive is still to be confirmed."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "lab_screening",
+          "text": "Screen retained in-spec and off-spec samples with several methods to identify target, range and level.",
+          "basis": "proposal",
+          "citations": [
+            {
+              "ref": "S02 p.20",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record spectra per candidate with independent, time-aligned reference results.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Single-method models first; combine only if justified; validate on held-out batches.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against the client's requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "The path depends on the screening results and the client's goals."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest configuration that meets them on independent batches.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.3",
+        "quote": "analyzing natural and industrial samples of incompletely known composition, in order to select the most suitable method or combination of methods.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "S02 p.3",
+        "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[2].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S02 p.3",
+        "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "For highly transparent liquids with low optical density, UV-Transmission or Transflection probes are ideal",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].reason.citations[0]",
+        "ref": "S02 p.13",
+        "quote": "Application: measurement of water content in petroleum",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].reason.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].caveat.citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[2].caveat.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[1]",
+        "ref": "S01 p.16",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[1]",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[2]",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[3].citations[0]",
+        "ref": "DOCX §3",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "feasibility_plan.steps[0].citations[0]",
+        "ref": "S02 p.20",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[2].citation",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[3].citation",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[4].citation",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 5,
+      "citations_page_only": 20
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "recommendations[1].reason",
+        "kind": "context",
+        "detail": "not_supported: The quoted sentence from S01 p.16 says UV-Transmission or Transflection probes are ideal for highly transparent, low-OD liquids, but it says nothing about cost. The claim that this is 'the low-cost option' is not on the cited page. The cost rating ('low') appears only in TABLE:r16, which is not cited for this claim. Fix: Keep the quoted suitability statement from S01 p.16 and, if cost is mentioned, cite TABLE:r16 (UV/Vis transmission or transflection probe, cost: low) and state that it is the source's qualitative rating, not a measured or AFS specification."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": false,
+      "detail": "586 words; over budget: Requirements stated 29/28, Clarification questions 61/55, Recommendation 124/110, Measurement concept 65/45, Spectral range 49/30 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants a recommendation of the best spectroscopy method and exact sensor configuration for a liquid process that occasionally goes off specification, and asks what information and first experiment should come first.",
+    "stated_facts": [
+      {
+        "fact": "The client operates a liquid process.",
+        "enquiry_quote": "We have a liquid process"
+      },
+      {
+        "fact": "The process occasionally goes off specification.",
+        "enquiry_quote": "that occasionally goes off specification"
+      },
+      {
+        "fact": "The client suspects contamination as the cause.",
+        "enquiry_quote": "We suspect contamination"
+      },
+      {
+        "fact": "The client cannot yet name the contaminant.",
+        "enquiry_quote": "we cannot yet name the contaminant"
+      },
+      {
+        "fact": "The client cannot yet name the affected quality variable.",
+        "enquiry_quote": "or the affected quality variable"
+      }
+    ],
+    "targets": [],
+    "sample_description": "Liquid process stream",
+    "sample_state": "clear_liquid",
+    "process_context": "unknown",
+    "conditions": [],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "A specific spectroscopy method and exact sensor configuration can be recommended immediately without further information.",
+        "enquiry_quote": "We would like you to recommend the best spectroscopy method and exact sensor configuration immediately."
+      }
+    ],
+    "requested_decision": "Recommendation of the best spectroscopy method and exact sensor configuration now, and identification of the information and first experiment needed before that decision.",
+    "unknowns": [
+      "Identity of the suspected contaminant",
+      "Affected quality variable and its specification limits",
+      "Target level (ppm or %)",
+      "Process context (production, pilot or research)",
+      "Process temperature, pressure, fouling and cleaning conditions",
+      "Sample variation over time",
+      "Installation point and distance to analyzer",
+      "Existing fibers or equipment",
+      "Current reference lab method and its accuracy",
+      "Accuracy, response time and budget requirements",
+      "Whether the sample is clear, turbid or opaque"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": []
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "geometry_follows_optics: Clear liquids suit transmission or transflection; opaque, concentrated or powder samples suit diffuse reflection; highly absorbing or 'black' liquids suit ATR. [S01 Table 1 (p.6); S01 p.16; S01 p.17-18]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "physical_variation",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.7.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-18T10:15:56.134468+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 7.4,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 121,
+          "output_tokens": 1684,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.000958
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-18T10:16:03.547214+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 43.1,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9148,
+          "output_tokens": 5403,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.161535
+      },
+      {
+        "claims_checked": 13,
+        "stage": "critic",
+        "timestamp": "2026-10-18T10:16:46.740382+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 10.8,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 12670,
+          "output_tokens": 2455,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.002502
+      },
+      {
+        "flags_sent": 2,
+        "stage": "revise",
+        "timestamp": "2026-10-18T10:16:57.566335+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 41.0,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9705,
+          "output_tokens": 5196,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.159623
+      }
+    ],
+    "prompt_hash": "64053030c027",
+    "git_commit": "b5d8388",
+    "timestamp": "2026-10-18T10:16:03.530221+00:00",
+    "duration_s": 102.6,
+    "cost_usd": 0.3246
+  }
+}

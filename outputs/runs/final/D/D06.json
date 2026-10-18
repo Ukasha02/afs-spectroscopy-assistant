@@ -1,0 +1,1196 @@
+{
+  "case_id": "D06",
+  "mode": "one_shot",
+  "enquiry": "We handle a petroleum stream and currently send samples to a laboratory for water determination. We want to investigate a fiber based measurement closer to the process so that changes can be noticed sooner. The analyzer would be outside the process area. Before selecting equipment, we need to know what to clarify and what a first comparison experiment should establish.",
+  "facts_stated": [
+    {
+      "fact": "The client handles a petroleum stream.",
+      "enquiry_quote": "We handle a petroleum stream"
+    },
+    {
+      "fact": "The client currently sends samples to a laboratory for water determination.",
+      "enquiry_quote": "currently send samples to a laboratory for water determination"
+    },
+    {
+      "fact": "The client wants to investigate a fiber based measurement closer to the process.",
+      "enquiry_quote": "We want to investigate a fiber based measurement closer to the process so that changes can be noticed sooner"
+    },
+    {
+      "fact": "The analyzer would be outside the process area.",
+      "enquiry_quote": "The analyzer would be outside the process area."
+    },
+    {
+      "fact": "The client wants to know what to clarify and what a first comparison experiment should establish before selecting equipment.",
+      "enquiry_quote": "Before selecting equipment, we need to know what to clarify and what a first comparison experiment should establish."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today with the laboratory water determination, and what decision would faster water data drive?",
+      "why": "Defines the value of earlier detection and the decision the measurement must support.",
+      "assumption_if_unanswered": "Pain and decision unknown; the first step is to define them with the process team before any method choice.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "What is the water level of interest, expressed in ppm or %, and what change in it must be detected?",
+      "why": "Water level decides whether trace or bulk methods are relevant and what detection limit is needed.",
+      "assumption_if_unanswered": "Level unknown; lab screening establishes whether the relevant range is ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "sample_form_optics",
+      "question": "Is the petroleum stream clear, turbid or opaque, and is the water dissolved, dispersed or present as a free phase?",
+      "why": "Optical appearance and water phase determine probe geometry and whether a transmission, reflection or ATR approach is possible.",
+      "assumption_if_unanswered": "Optical state unknown; the comparison assumes a liquid that must be measured by contact or flow-cell geometry until observed.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "process_conditions",
+      "question": "What are the process temperature, pressure and fouling tendency, and how much does the stream composition vary over time?",
+      "why": "Conditions affect probe survival, signal stability and calibration validity.",
+      "assumption_if_unanswered": "Conditions unknown; lab screening should cover the observed range of samples before any in-line trial.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "installation_distance",
+      "question": "Where would the probe be installed, what is the distance to the analyzer outside the process area, and which fibers or cabling already exist?",
+      "why": "Distance and existing fiber determine which wavelengths can reach the analyzer; mid-infrared needs special fibers.",
+      "assumption_if_unanswered": "Distance and fiber unknown; the comparison will not assume any existing fiber and will check wavelength transmission first.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "reference_method",
+      "question": "Which laboratory method is used for water determination, and what is its accuracy and repeatability?",
+      "why": "The reference method defines the ground truth against which any fiber-based result is judged.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the expert will request the lab method and its validation data before the comparison.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for the fiber-based measurement?",
+      "why": "These define whether a single simple method is sufficient or whether a more complex setup is justified.",
+      "assumption_if_unanswered": "Requirements unknown; the first comparison proposes a single-method screening before any combination is considered.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "provisional_assessment",
+    "status_reason": "Target and matrix are defined; level, water phase and fiber link are unknown.",
+    "requirements_stated": [
+      "Petroleum stream; water is now measured on laboratory samples.",
+      "Fiber-based measurement closer to the process for earlier detection.",
+      "Analyzer outside the process area.",
+      "Comparison experiment before choosing equipment."
+    ],
+    "key_unknowns": [
+      "Water level, phase, stream clarity",
+      "Reference method and uncertainty",
+      "Process and composition variation, fouling",
+      "Installation point, analyzer distance, cabling"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "A fiber-based measurement closer to the process lets water changes be noticed sooner than laboratory sampling.",
+        "verdict": "plausible_to_be_tested",
+        "explanation": [
+          {
+            "text": "Online fiber analysis in the process flow avoids sampling delays.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.3",
+                "quote": "eliminating delays and the risk of sample contamination",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "An AFS slide shows MIR-ATR for water in petroleum. It is an example, not validated performance for this stream.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.13",
+                "quote": "Application: measurement of water content in petroleum",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The analyzer can sit outside the process area with a fiber link to the probe.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "The fiber family and link length are not stated, so the link cannot be checked yet. The fiber determines which wavelengths reach the analyzer.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.6",
+                "quote": "Transmission for Different Fibers in 0.2 - 18μm - used for Fiber Probes",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "Long silica cables are shown for remote process control. These suit NIR but not mid-IR; no mid-IR link length is given in the materials.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.7",
+                "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "What water level (ppm or %) matters, and is water dissolved, dispersed or free?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which laboratory method, uncertainty and sampling time provide the reference values?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do composition, temperature and fouling vary over time?",
+        "covers": "variation"
+      },
+      {
+        "question": "What response time, acceptance limits and installation point apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "How far is the analyzer, and which cabling exists?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "MIR (FTIR) spectroscopy",
+        "geometry": "ATR probe",
+        "role": "primary",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "An AFS slide shows ATR probes for this application: 'Application: measurement of water content in petroleum'.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.13",
+              "quote": "Application: measurement of water content in petroleum",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "ATR samples only micrometres in contact and needs a mid-IR fiber, not silica.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "medium",
+        "confidence_reason": "Same application example; level, phase and mid-IR link unconfirmed."
+      },
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "Transmission/transflection probe (diffuse reflection if turbid)",
+        "role": "comparison",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "NIR suits remote fiber probes: 'Near-IR vibrational spectroscopy (NIR) is the most common online analysis method performed using fiber optic probes.'",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.10",
+              "quote": "Near-IR vibrational spectroscopy (NIR) is the most common online analysis method performed using fiber optic probes.",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "The cited materials contain no water-in-petroleum NIR example; overlapping bands suggest chemometric calibration.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.10",
+              "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "No same-application example; sensitivity at the water level unknown."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Designed for solids/pills; low selectivity; no water example."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "rejected",
+        "reason": "Low selectivity; no basis for water in petroleum."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / probe, lens",
+        "decision": "rejected",
+        "reason": "For radiating samples only."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "rejected",
+        "reason": "Water is not a defined fluorophore; low selectivity."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "Low selectivity; no water example."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "rejected",
+        "reason": "No fluorescent target."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "rejected",
+        "reason": "For solid samples."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "recommended",
+        "reason": "Comparison candidate if the stream is clear; silica fibers suit a remote analyzer."
+      },
+      {
+        "table_row": "NIR spectroscopy / diffuse reflection probe",
+        "decision": "alternative",
+        "reason": "Use only if the stream proves turbid or scattering."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "rejected",
+        "reason": "For solids and powders."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Low sensitivity and selectivity for water."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of the water bands in liquid samples."
+      },
+      {
+        "table_row": "IR spectroscopy / sample layer",
+        "decision": "rejected",
+        "reason": "For solid films."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline NIR screening of samples."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "rejected",
+        "reason": "For solids and powders."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab equivalent of the ATR probe for screening."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "recommended",
+        "reason": "Matches the water-in-petroleum application example."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "rejected",
+        "reason": "No water example; fluorescence background risk for organics; high cost."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "rejected",
+        "reason": "Same limits as the Raman probe; not needed for screening."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "Compare an MIR ATR probe with an NIR transmission/transflection probe; diffuse reflection if turbid.",
+          "basis": "proposal",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "Probe near the process, analyzer outside the process area; installation point to be defined.",
+          "basis": "client_fact",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated; rule check: silica cannot carry MIR, PIR partial; silica partial for NIR.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: MIR: Vis-NIR silica no coverage; polycrystalline IR (PIR) partial (3-17 um); NIR: Vis-NIR silica partial (0.78-2.4 um).",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.9",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "Undecided: mid-IR fiber for MIR-ATR, Vis-NIR silica for NIR",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "ATR tip and shaft materials",
+        "Mid-IR fiber link length",
+        "Probe installation and ratings"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "MIR (FTIR)",
+        "nominal_range": "4000-400 cm-1 (2.5-25 um)",
+        "citation": {
+          "ref": "S01 p.9",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "NIR",
+        "nominal_range": "780-2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "Composition changes can invalidate a matrix-specific calibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "fiber_link",
+        "text": "Mid-IR link to a distant analyzer is unconfirmed; silica cannot carry mid-IR.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S02 p.6",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "fouling_interface",
+        "text": "Deposits or droplets on the ATR window may bias readings.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "Neither candidate is guaranteed to meet the client's needs.",
+        "basis": "assumption",
+        "citations": []
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate, interface ratings and equipment compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "The stream is liquid and can be contacted by a probe or flow cell.",
+      "No existing fiber is assumed between the process and the analyzer."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect stream samples across the client-agreed water range, phases, composition and temperature variation.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record MIR-ATR and NIR spectra with time-aligned laboratory water reference values.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Build single-method models first and validate them on held-out batches or independent samples.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow water changes against the client's requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "The level, the link and the requirements must be known first."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria with the client before the test; choose the simplest configuration that meets them on independent material.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.3",
+        "quote": "eliminating delays and the risk of sample contamination",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "S02 p.13",
+        "quote": "Application: measurement of water content in petroleum",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S02 p.6",
+        "quote": "Transmission for Different Fibers in 0.2 - 18μm - used for Fiber Probes",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[1].citations[0]",
+        "ref": "S02 p.7",
+        "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S02 p.13",
+        "quote": "Application: measurement of water content in petroleum",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].caveat.citations[1]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.10",
+        "quote": "Near-IR vibrational spectroscopy (NIR) is the most common online analysis method performed using fiber optic probes.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.10",
+        "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.9",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 7,
+      "citations_page_only": 11
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "not_supported: The claim states that 'No water-in-petroleum example exists for NIR', an absence claim. The cited page S01 p.10 says nothing about petroleum or NIR examples, so it cannot establish that no such example exists. Fix: Remove the absence claim or rephrase it as 'The cited materials contain no water-in-petroleum NIR example', and keep the chemometric-calibration point tied to S01 p.10's statement that overlapping bands suggest chemometrics."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": false,
+      "detail": "554 words; over budget: Requirements stated 30/28, Clarification questions 58/55, Recommendation 115/110, Measurement concept 85/45, Risks and uncertainty 55/48 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to know what to clarify and what a first comparison experiment should establish for a fiber-based water measurement in a petroleum stream, closer to the process than the current laboratory sampling.",
+    "stated_facts": [
+      {
+        "fact": "The client handles a petroleum stream.",
+        "enquiry_quote": "We handle a petroleum stream"
+      },
+      {
+        "fact": "The client currently sends samples to a laboratory for water determination.",
+        "enquiry_quote": "currently send samples to a laboratory for water determination"
+      },
+      {
+        "fact": "The client wants to investigate a fiber based measurement closer to the process.",
+        "enquiry_quote": "We want to investigate a fiber based measurement closer to the process so that changes can be noticed sooner"
+      },
+      {
+        "fact": "The analyzer would be outside the process area.",
+        "enquiry_quote": "The analyzer would be outside the process area."
+      },
+      {
+        "fact": "The client wants to know what to clarify and what a first comparison experiment should establish before selecting equipment.",
+        "enquiry_quote": "Before selecting equipment, we need to know what to clarify and what a first comparison experiment should establish."
+      }
+    ],
+    "targets": [
+      "water"
+    ],
+    "sample_description": "Petroleum stream, sampled for laboratory water determination",
+    "sample_state": "unknown",
+    "process_context": "production",
+    "conditions": [],
+    "measurement_location": "Close to the process, analyzer outside the process area",
+    "remote_measurement": true,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [],
+    "methods_mentioned": [],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "A fiber based measurement can detect water changes sooner than the current laboratory sampling.",
+        "enquiry_quote": "so that changes can be noticed sooner"
+      }
+    ],
+    "requested_decision": "What to clarify and what a first comparison experiment should establish before selecting equipment.",
+    "unknowns": [
+      "Water concentration level (ppm or %) and the decision threshold",
+      "Phase state and optical appearance of the petroleum stream (clear, turbid, opaque)",
+      "Process temperature, pressure and fouling",
+      "Installation point and distance from the process to the analyzer",
+      "Existing fibers or cabling between process and analyzer",
+      "Current laboratory reference method and its accuracy",
+      "Required accuracy, response time and budget",
+      "Whether the water is dissolved, dispersed or free phase",
+      "Sample variation over time"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / probe, lens",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "radiating sample",
+        "optical_path_or_depth": "any",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "non-contact measurement at a distance",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "scattering media, powder",
+        "optical_path_or_depth": "0.5-1 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample layer",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid film",
+        "optical_path_or_depth": "5-50 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": "Remote analyzer requested but fiber family and link length are not stated: the link cannot be checked yet."
+    },
+    "fiber_findings_required_in_premise_check": [
+      "Remote analyzer requested but fiber family and link length are not stated: the link cannot be checked yet."
+    ],
+    "rule_hints": [
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1; DOCX §5]",
+      "remote_measurement_nir_silica: NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist. [S01 p.5; S02 p.7]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "no_guaranteed_gain",
+      "nothing_confirmed",
+      "fiber_link"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.7.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-18T10:27:51.151905+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 7.8,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 133,
+          "output_tokens": 1721,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.000978
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-18T10:27:58.965872+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 53.5,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10652,
+          "output_tokens": 6224,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.183971
+      },
+      {
+        "claims_checked": 11,
+        "stage": "critic",
+        "timestamp": "2026-10-18T10:28:52.469693+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 6.6,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 9806,
+          "output_tokens": 1477,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001727
+      },
+      {
+        "flags_sent": 2,
+        "stage": "revise",
+        "timestamp": "2026-10-18T10:28:59.056458+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 46.2,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 9601,
+          "output_tokens": 6225,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.179787
+      }
+    ],
+    "prompt_hash": "64053030c027",
+    "git_commit": "b5d8388",
+    "timestamp": "2026-10-18T10:27:58.943970+00:00",
+    "duration_s": 114.2,
+    "cost_usd": 0.3665
+  }
+}
