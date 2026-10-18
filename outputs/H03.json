@@ -1,0 +1,1400 @@
+{
+  "case_id": "H03",
+  "mode": "one_shot",
+  "enquiry": "We already have a fluorescence spectrometer and would like to use it to report glucose concentration and viable biomass directly during fermentation. Our only justification is that fluorescence can be very sensitive. We have not identified a fluorescent target, marker or reference relationship. What should the assistant tell us?",
+  "facts_stated": [
+    {
+      "fact": "The client already has a fluorescence spectrometer.",
+      "enquiry_quote": "We already have a fluorescence spectrometer"
+    },
+    {
+      "fact": "The client wants to report glucose concentration and viable biomass directly during fermentation.",
+      "enquiry_quote": "would like to use it to report glucose concentration and viable biomass directly during fermentation"
+    },
+    {
+      "fact": "The client's only justification is that fluorescence can be very sensitive.",
+      "enquiry_quote": "Our only justification is that fluorescence can be very sensitive."
+    },
+    {
+      "fact": "The client has not identified a fluorescent target, marker or reference relationship.",
+      "enquiry_quote": "We have not identified a fluorescent target, marker or reference relationship."
+    }
+  ],
+  "clarification_questions": [
+    {
+      "id": "Q1",
+      "topic": "pain_goal",
+      "question": "What goes wrong today with glucose and biomass determination, and which fermentation decision should real-time data drive?",
+      "why": "Identifies whether a real-time sensor is needed at all or whether offline sampling suffices.",
+      "assumption_if_unanswered": "Real-time need is unverified; treat offline sampling as the baseline until the decision is defined.",
+      "answer": null
+    },
+    {
+      "id": "Q2",
+      "topic": "target_and_level",
+      "question": "Which exact glucose and biomass levels must be reported, and in what units (ppm or % level)?",
+      "why": "Determines whether the expected signal can be measured at all and whether lab screening is required.",
+      "assumption_if_unanswered": "Level unknown; lab screening establishes whether the targets are ppm or % level.",
+      "answer": null
+    },
+    {
+      "id": "Q3",
+      "topic": "target_and_level",
+      "question": "Does glucose or viable biomass have any fluorescent component, marker, or indicator (e.g. a fluorescent reporter) in your process?",
+      "why": "Fluorescence only measures a defined fluorescent species or justified indicator; without one, the method cannot report these targets directly.",
+      "assumption_if_unanswered": "No fluorescent species assumed; direct fluorescence measurement of glucose and biomass is not justified until a species is identified.",
+      "answer": null
+    },
+    {
+      "id": "Q4",
+      "topic": "sample_form_optics",
+      "question": "What is the sample state and optical appearance of the fermentation broth (clear, turbid, opaque) and does it change over the run?",
+      "why": "Turbidity and opacity change the optical path and probe geometry; a clear broth needs different handling than a dense culture.",
+      "assumption_if_unanswered": "Broth is turbid or opaque and varies over the run; geometry must be tested in the lab.",
+      "answer": null
+    },
+    {
+      "id": "Q5",
+      "topic": "process_conditions",
+      "question": "What are the fermentation conditions (temperature, pressure, sterilization or cleaning method, and how the broth composition varies during the run)?",
+      "why": "Conditions determine probe materials, cleaning compatibility and the spectral variation a model must handle.",
+      "assumption_if_unanswered": "Conditions unknown; sterilization compatibility and broth variation must be documented before any probe is chosen.",
+      "answer": null
+    },
+    {
+      "id": "Q6",
+      "topic": "installation_distance",
+      "question": "Where would the probe be installed, and how far is the spectrometer from the measuring point; are existing fibers used?",
+      "why": "Distance and fiber type determine whether the existing spectrometer can be connected and which wavelengths reach the probe.",
+      "assumption_if_unanswered": "Installation point and distance unknown; fiber compatibility with the existing spectrometer is unverified.",
+      "answer": null
+    },
+    {
+      "id": "Q7",
+      "topic": "reference_method",
+      "question": "What current reference lab method is used for glucose and viable biomass, and what is its accuracy?",
+      "why": "A reference method is needed to validate any spectroscopic prediction and to judge whether the sensor is good enough.",
+      "assumption_if_unanswered": "No reference method defined; no calibration or validation is possible yet.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
+      "topic": "requirements",
+      "question": "What accuracy, response time and budget are required for the sensor?",
+      "why": "Defines whether a single method or a different approach is appropriate and whether a fluorescence-only approach can meet the need.",
+      "assumption_if_unanswered": "Requirements unknown; lab screening is the first step to define feasibility.",
+      "answer": null
+    }
+  ],
+  "assessment": {
+    "decision_status": "premise_not_supported",
+    "status_reason": "Sensitivity alone cannot justify fluorescence for glucose or viable biomass.",
+    "requirements_stated": [
+      "Use existing fluorescence spectrometer",
+      "Report glucose and viable biomass directly during fermentation",
+      "Justification given: fluorescence can be very sensitive",
+      "No fluorescent target or marker identified"
+    ],
+    "key_unknowns": [
+      "Glucose and biomass ranges",
+      "Reference methods and uncertainty",
+      "Broth optics and run variation",
+      "Spectrometer coverage, installation, sterilization"
+    ],
+    "premise_checks": [
+      {
+        "client_claim": "Fluorescence can directly report glucose concentration during fermentation.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "Fluorescence needs a fluorescent species; most chemicals do not fluoresce.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.5",
+                "quote": "However, most chemicals do not exhibit this property.",
+                "url": null
+              }
+            ]
+          },
+          {
+            "text": "The bioprocess example assigns glucose to NIR and Raman, and fluorescence to cofactors and amino acids.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 p.16",
+                "quote": "NADH, tryptophan, and riboflavin",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "Fluorescence can directly report viable biomass.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "Fluorescence is at most an indirect indicator; a relationship to a viable-cell reference must be built.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §5",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "High fluorescence sensitivity is sufficient justification.",
+        "verdict": "contradicted",
+        "explanation": [
+          {
+            "text": "Fluorimetry is rated high sensitivity but low selectivity.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S01 Table 1 (p.6)",
+                "quote": "sensitivity: high; selectivity: low",
+                "url": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "client_claim": "The existing fluorescence spectrometer suits this application.",
+        "verdict": "unverifiable",
+        "explanation": [
+          {
+            "text": "Its wavelengths, probe and fiber link were not stated, so usable coverage cannot be judged.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "DOCX §5",
+                "quote": null,
+                "url": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "report_questions": [
+      {
+        "question": "Which glucose and biomass ranges apply, and must viable cells be distinguished?",
+        "covers": "measured"
+      },
+      {
+        "question": "Which reference methods, uncertainty and sampling times give glucose and viable biomass?",
+        "covers": "reference"
+      },
+      {
+        "question": "How do turbidity, medium, strain and temperature vary between runs?",
+        "covers": "variation"
+      },
+      {
+        "question": "What accuracy, response time, installation point and sterilization apply?",
+        "covers": "requirements"
+      },
+      {
+        "question": "Which excitation and emission ranges does your spectrometer cover?",
+        "covers": "context"
+      }
+    ],
+    "recommendations": [
+      {
+        "method": "NIR spectroscopy",
+        "geometry": "transmission/transflection or diffuse reflection, chosen by broth optics",
+        "role": "primary",
+        "simplicity_rank": 1,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "The bioprocess example states: \"NIR spectroscopy is effective for tracking major components like glucose or glycerol\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "NIR spectroscopy is effective for tracking major components like glucose or glycerol",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "NIR may lack sensitivity below 0.1 percent; glucose levels must be checked.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Glucose range, broth optics and reference are unknown; nothing measured."
+      },
+      {
+        "method": "Raman spectroscopy",
+        "geometry": "Raman probe",
+        "role": "comparison",
+        "simplicity_rank": 2,
+        "cost_complexity": "high",
+        "reason": {
+          "text": "The same example supports Raman for \"specific metabolites like glucose, acetate, or lactate\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "specific metabolites like glucose, acetate, or lactate",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Fluorescence of many organic compounds can overlap and exceed the Raman signal.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.11",
+              "quote": "for many organic compounds, by the superposition of luminescence (fluorescence), which has a significantly higher intensity",
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Signal quality in this broth is unknown."
+      },
+      {
+        "method": "Fluorescence (existing spectrometer)",
+        "geometry": "fluorimetric probe",
+        "role": "alternative",
+        "simplicity_rank": 3,
+        "cost_complexity": "low",
+        "reason": {
+          "text": "Fluorescence can detect cofactors such as \"NADH, tryptophan, and riboflavin\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.16",
+              "quote": "NADH, tryptophan, and riboflavin",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Usable only as an indirect indicator once a reference relationship to viable biomass is established.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "DOCX §5",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "No marker or reference relationship exists yet."
+      },
+      {
+        "method": "NIR + fluorescence",
+        "geometry": "separate or combined probes at one location",
+        "role": "combination",
+        "simplicity_rank": 4,
+        "cost_complexity": "average",
+        "reason": {
+          "text": "For yeast fermentation, NIR with fluorescence \"demonstrated the possibility of more accurately determining the biomass content\".",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.7",
+              "quote": "demonstrated the possibility of more accurately determining the biomass content",
+              "url": null
+            }
+          ]
+        },
+        "caveat": {
+          "text": "Only after each method is assessed alone; a hypothesis to test.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 p.7",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        "confidence": "low",
+        "confidence_reason": "Biomass example, not viable-cell evidence for this process."
+      }
+    ],
+    "method_table_screening": [
+      {
+        "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "Rated for solids/pills, not broth."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "alternative",
+        "reason": "Low-cost turbidity trend for cell density, not viable count."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / probe, lens",
+        "decision": "rejected",
+        "reason": "For radiating samples; broth does not emit."
+      },
+      {
+        "table_row": "Fluorimetry / fluorimetric probe",
+        "decision": "alternative",
+        "reason": "Existing instrument; indicator only after a fluorophore is identified."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline turbidity or absorption screening."
+      },
+      {
+        "table_row": "Fluorimetry / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline search for a fluorescent indicator."
+      },
+      {
+        "table_row": "IR spectroscopy / sample surface",
+        "decision": "rejected",
+        "reason": "Rated for solids."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "recommended",
+        "reason": "Liquid or colloidal broth; glucose candidate."
+      },
+      {
+        "table_row": "NIR spectroscopy / diffuse reflection probe",
+        "decision": "recommended",
+        "reason": "If broth is strongly scattering."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "rejected",
+        "reason": "For solids/powders; no non-contact need stated."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "rejected",
+        "reason": "Low sensitivity and selectivity; no defined absorber."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline glucose band check."
+      },
+      {
+        "table_row": "IR spectroscopy / sample layer",
+        "decision": "rejected",
+        "reason": "Rated for solid films."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline NIR screening of broth samples."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "rejected",
+        "reason": "For solids/powders."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "lab_screening_only",
+        "reason": "Lab check of glucose selectivity; high cost."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "alternative",
+        "reason": "Selective but high cost, mid-IR fibers, strong water absorption."
+      },
+      {
+        "table_row": "Raman spectroscopy / Raman probe",
+        "decision": "recommended",
+        "reason": "Comparison candidate for glucose in aqueous broth."
+      },
+      {
+        "table_row": "Raman spectroscopy / cuvette 90 deg",
+        "decision": "lab_screening_only",
+        "reason": "Offline Raman signal-quality check."
+      }
+    ],
+    "measurement_concept": {
+      "items": [
+        {
+          "aspect": "interface",
+          "text": "NIR transmission/transflection or diffuse reflection probe, chosen by broth optics; Raman and fluorimetric probes for comparison.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "location",
+          "text": "In the fermenter at an agreed point, after representative lab tests.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated; silica fiber ranges are nominal for the fiber class, not a verified configuration for these probes.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "aspect": "fiber_link",
+          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um); RAMAN: Vis-NIR silica covers the nominal range; FLUO: UV-Vis silica covers the nominal range.",
+          "basis": "sourced",
+          "citations": [
+            {
+              "ref": "S02 p.6",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.10",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.11",
+              "quote": null,
+              "url": null
+            },
+            {
+              "ref": "S01 p.12",
+              "quote": null,
+              "url": null
+            }
+          ]
+        }
+      ],
+      "fiber_family": "silica (UV-Vis or Vis-NIR), to be confirmed",
+      "fiber_compatible": null,
+      "architecture": "undecided",
+      "needs_afs_confirmation": [
+        "probe type and geometry",
+        "sterilizable installation",
+        "existing spectrometer coverage"
+      ]
+    },
+    "spectral_ranges": [
+      {
+        "method": "NIR spectroscopy",
+        "nominal_range": "780–2500 nm",
+        "citation": {
+          "ref": "S01 p.10",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      },
+      {
+        "method": "Raman spectroscopy",
+        "nominal_range": "Raman shift (cm-1), recorded at 400–1100 nm",
+        "citation": {
+          "ref": "S01 p.11",
+          "quote": null,
+          "url": null
+        },
+        "note": "State laser excitation separately."
+      },
+      {
+        "method": "Fluorescence",
+        "nominal_range": "UV/Vis excitation; emission species-dependent",
+        "citation": {
+          "ref": "S01 p.12",
+          "quote": null,
+          "url": null
+        },
+        "note": null
+      }
+    ],
+    "risks": [
+      {
+        "category": "calibration_validity",
+        "text": "Medium, strain or process changes can invalidate a calibration.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "physical_variation",
+        "text": "Turbid broth can saturate transmission signals; probe choice, e.g. UV-ATR, follows optical density.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.16",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "evidence_scope",
+        "text": "Optical density is not a viable cell count.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "DOCX §5",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "no_guaranteed_gain",
+        "text": "No method or combination is guaranteed to help.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.7",
+            "quote": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "category": "nothing_confirmed",
+        "text": "Accuracy, update rate, ratings and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
+      }
+    ],
+    "assumptions": [
+      "Broth is aqueous and may become turbid during the run.",
+      "Offline reference methods for glucose and viable cells can be provided."
+    ],
+    "feasibility_plan": {
+      "steps": [
+        {
+          "element": "representative_samples",
+          "text": "Collect broth samples from several runs across agreed glucose, biomass and turbidity ranges.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "spectra_with_reference",
+          "text": "Record NIR, Raman and fluorescence spectra with time-aligned glucose and viable-cell references.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "models_and_validation",
+          "text": "Single-method models first, combined only if justified; validate on held-out runs.",
+          "basis": "proposal",
+          "citations": []
+        },
+        {
+          "element": "comparison",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "basis": "proposal",
+          "citations": []
+        }
+      ],
+      "afs_next_path": "undecided",
+      "afs_next_path_reason": "Targets, ranges and the real-time need must be established first."
+    },
+    "decision_basis": {
+      "text": "Agree numerical acceptance criteria beforehand; choose the simplest configuration meeting them on independent runs.",
+      "basis": "proposal",
+      "citations": []
+    }
+  },
+  "verification": {
+    "sources": [
+      {
+        "path": "premise_checks[0].explanation[0].citations[0]",
+        "ref": "S01 p.5",
+        "quote": "However, most chemicals do not exhibit this property.",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[1].citations[0]",
+        "ref": "S01 p.16",
+        "quote": "NADH, tryptophan, and riboflavin",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "premise_checks[2].explanation[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": "sensitivity: high; selectivity: low",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[3].explanation[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[0].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "NIR spectroscopy is effective for tracking major components like glucose or glycerol",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[0].caveat.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "may lack the sensitivity to detect trace compounds below 0.1 percent",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "specific metabolites like glucose, acetate, or lactate",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[1].caveat.citations[0]",
+        "ref": "S01 p.11",
+        "quote": "for many organic compounds, by the superposition of luminescence (fluorescence), which has a significantly higher intensity",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].reason.citations[0]",
+        "ref": "S01 p.16",
+        "quote": "NADH, tryptophan, and riboflavin",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[2].caveat.citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "recommendations[3].reason.citations[0]",
+        "ref": "S01 p.7",
+        "quote": "demonstrated the possibility of more accurately determining the biomass content",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "recommendations[3].caveat.citations[0]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[0].citations[0]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[2].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[0]",
+        "ref": "S02 p.6",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[1]",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[2]",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "measurement_concept.items[3].citations[3]",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[0].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[1].citations[0]",
+        "ref": "S01 p.16",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[2].citations[0]",
+        "ref": "DOCX §5",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "risks[3].citations[0]",
+        "ref": "S01 p.7",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[0].citation",
+        "ref": "S01 p.10",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[1].citation",
+        "ref": "S01 p.11",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
+        "path": "spectral_ranges[2].citation",
+        "ref": "S01 p.12",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      }
+    ],
+    "flags": [],
+    "counts": {
+      "citations_verified": 9,
+      "citations_page_only": 17
+    },
+    "revised": true,
+    "flags_before_revision": [
+      {
+        "path": "premise_checks[0].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited page S01 p.5 says most chemicals do not exhibit fluorescence, but it says nothing about glucose markers or whether a glucose marker has been identified. Fix: Remove the clause 'no glucose marker has been identified' or cite a source that states it; keep only the statement that most chemicals do not fluoresce."
+      },
+      {
+        "path": "premise_checks[2].explanation[0]",
+        "kind": "context",
+        "detail": "not_supported: The cited pages (including the Table 1 rows) do not rate fluorimetry as high sensitivity and low selectivity in a single statement; the rating is in row TABLE:r18 and TABLE:r19 only, while the long list of other rows is irrelevant to this claim. The S01 p.6 page itself is only a caption without ratings. Fix: Cite only TABLE:r18 and TABLE:r19 for the fluorimetry ratings of high sensitivity and low selectivity."
+      },
+      {
+        "path": "recommendations[1].caveat",
+        "kind": "context",
+        "detail": "not_supported: S01 p.11 states that fluorescence from many organic compounds can superimpose on Raman bands and is more intense, but it does not mention broth components or swamping of the Raman signal in a bioprocess context. Fix: Rephrase as a general statement that luminescence (fluorescence) of many organic compounds can overlap and exceed the Raman signal."
+      },
+      {
+        "path": "recommendations[2].reason",
+        "kind": "context",
+        "detail": "overstated: The page lists NADH, tryptophan, and riboflavin as fluorescence targets for high-sensitivity detection; it does not state that fluorescence tracks metabolic state, only that it can detect these cofactors and amino acids. Fix: State that fluorescence can detect cofactors such as NADH, tryptophan and riboflavin, and only as a possible indirect indicator if a reference is established."
+      },
+      {
+        "path": "risks[1]",
+        "kind": "context",
+        "detail": "not_supported: S01 p.16 discusses choosing UV-Vis probes by optical density and saturation, but does not state that changing turbidity during a run can mimic composition changes. Fix: Restate the risk as the signal saturating in opaque or turbid media, which requires a probe choice such as UV-ATR."
+      },
+      {
+        "path": "measurement_concept.items[2]",
+        "kind": "context",
+        "detail": "different_context: S01 p.10 to p.12 and S02 p.6 give fiber transmission ranges and the NIR range, but the claim applies silica fiber coverage to Raman and fluorescence in a bioprocess setting without the page stating that such fibers are used for those methods in that application. Fix: Qualify that the coverage is the nominal transmission range of the silica fiber class and is not a verified configuration for the Raman or fluorescence probes."
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "check": "decision status + reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "requirements stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "key unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4-10 prioritised questions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendations: cited reason + caveat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combination framed as hypothesis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "nominal spectral range cited",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "standard risk categories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feasibility plan: 4 elements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "decision basis: client-agreed + simplest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no 'high' confidence while unknowns remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "recommendation reasons quoted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fiber issue in premise check + risk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "report length 250-550 words",
+      "passed": false,
+      "detail": "623 words; over budget: Clarification questions 59/55, Recommendation 169/110, Measurement concept 87/45, Spectral range 42/30, Risks and uncertainty 50/48 (citations excluded)"
+    }
+  ],
+  "extraction": {
+    "summary": "The client wants to use an existing fluorescence spectrometer to report glucose concentration and viable biomass directly during fermentation, justified only by fluorescence sensitivity.",
+    "stated_facts": [
+      {
+        "fact": "The client already has a fluorescence spectrometer.",
+        "enquiry_quote": "We already have a fluorescence spectrometer"
+      },
+      {
+        "fact": "The client wants to report glucose concentration and viable biomass directly during fermentation.",
+        "enquiry_quote": "would like to use it to report glucose concentration and viable biomass directly during fermentation"
+      },
+      {
+        "fact": "The client's only justification is that fluorescence can be very sensitive.",
+        "enquiry_quote": "Our only justification is that fluorescence can be very sensitive."
+      },
+      {
+        "fact": "The client has not identified a fluorescent target, marker or reference relationship.",
+        "enquiry_quote": "We have not identified a fluorescent target, marker or reference relationship."
+      }
+    ],
+    "targets": [
+      "glucose concentration",
+      "viable biomass"
+    ],
+    "sample_description": "Fermentation broth (fermentation process as stated)",
+    "sample_state": "unknown",
+    "process_context": "unknown",
+    "conditions": [],
+    "measurement_location": null,
+    "remote_measurement": false,
+    "contact_with_sample": "unknown",
+    "analyzer_distance": null,
+    "existing_equipment": [
+      "fluorescence spectrometer"
+    ],
+    "methods_mentioned": [
+      "FLUO"
+    ],
+    "fibers_mentioned": [],
+    "client_premises": [
+      {
+        "claim": "Fluorescence can directly report glucose concentration during fermentation.",
+        "enquiry_quote": "would like to use it to report glucose concentration and viable biomass directly during fermentation"
+      },
+      {
+        "claim": "Fluorescence can directly report viable biomass.",
+        "enquiry_quote": "report glucose concentration and viable biomass directly"
+      },
+      {
+        "claim": "High fluorescence sensitivity is sufficient justification for the method.",
+        "enquiry_quote": "Our only justification is that fluorescence can be very sensitive."
+      },
+      {
+        "claim": "The existing fluorescence spectrometer is suitable for this application.",
+        "enquiry_quote": "We already have a fluorescence spectrometer and would like to use it"
+      }
+    ],
+    "requested_decision": "Whether the existing fluorescence spectrometer can be used to report glucose and viable biomass during fermentation.",
+    "unknowns": [
+      "Whether glucose or viable biomass has any fluorescent signature or fluorescent marker",
+      "Reference method and its accuracy for glucose and viable biomass",
+      "Target levels (ppm or % level) for glucose and biomass",
+      "Fermentation scale and whether it is production, pilot or research",
+      "Probe type and installation point in the fermenter",
+      "Fluorescence excitation and emission wavelengths of the existing spectrometer",
+      "Temperature, pressure and sterilization conditions",
+      "Response time and accuracy requirements",
+      "Budget"
+    ]
+  },
+  "pre_analysis": {
+    "table_shortlist": [
+      {
+        "row": "UV/Visible spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, pill",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / probe, lens",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "radiating sample",
+        "optical_path_or_depth": "any",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Fluorimetry / fluorimetric probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, solid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Fluorimetry / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10 mm",
+        "sensitivity": "high",
+        "selectivity": "low",
+        "cost": "low",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample surface",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid",
+        "optical_path_or_depth": "10 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / transmission or transflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, colloidal",
+        "optical_path_or_depth": "1-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / diffuse reflection probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "scattering media, powder",
+        "optical_path_or_depth": "0.5-1 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / surface at a distance",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "non-contact measurement at a distance",
+          "only relevant if contact is a problem",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "UV/Visible spectroscopy / ATR probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "0.1-1 um",
+        "sensitivity": "low",
+        "selectivity": "low",
+        "cost": "average",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "10-100 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / sample layer",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid film",
+        "optical_path_or_depth": "5-50 um",
+        "sensitivity": "high",
+        "selectivity": "high",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / cuvette",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "1-5 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "NIR spectroscopy / integrating sphere",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "solid, powder",
+        "optical_path_or_depth": "5-10 mm",
+        "sensitivity": "average",
+        "selectivity": "average",
+        "cost": "average",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR platform",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "IR spectroscopy / ATR probe*",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, paste, soft",
+        "optical_path_or_depth": "1-6 um",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / Raman probe",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid, powder, solid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "sample state unknown: all rows kept"
+        ]
+      },
+      {
+        "row": "Raman spectroscopy / cuvette 90 deg",
+        "cite": "S01 Table 1 (p.6)",
+        "sample_type": "liquid",
+        "optical_path_or_depth": "2-5 mm",
+        "sensitivity": "average",
+        "selectivity": "high",
+        "cost": "high",
+        "notes": [
+          "lab/offline technique: use for lab screening, not in-line",
+          "sample state unknown: all rows kept"
+        ]
+      }
+    ],
+    "fiber_checks": {
+      "per_method": {
+        "NIR": {
+          "nominal_range": "780-2500 nm (nominal method range) [S01 p.10]",
+          "fibers": {
+            "UV_SILICA": "partial (0.78-1.2 um of 0.78-2.5 um)",
+            "VISNIR_SILICA": "partial (0.78-2.4 um of 0.78-2.5 um)",
+            "CIR": "partial (1.1-2.5 um of 0.78-2.5 um)",
+            "PIR": "none",
+            "HWG": "partial (2-2.5 um of 0.78-2.5 um)",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "MIR": {
+          "nominal_range": "4000-400 cm-1 (2.5-25 um) [S01 p.9]",
+          "fibers": {
+            "UV_SILICA": "none",
+            "VISNIR_SILICA": "none",
+            "CIR": "partial (2.5-6.5 um of 2.5-25 um)",
+            "PIR": "partial (3-17 um of 2.5-25 um)",
+            "HWG": "partial (2.5-18 um of 2.5-25 um)",
+            "INF3": "partial (2.5-5.5 um of 2.5-25 um)",
+            "ZRF4": "partial (2.5-4.5 um of 2.5-25 um)"
+          }
+        },
+        "RAMAN": {
+          "nominal_range": "Raman shift in cm-1; signal recorded in the visible / short-wave NIR (400-1100 nm); state the laser excitation separately [S01 p.11]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "full",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "full",
+            "ZRF4": "full"
+          }
+        },
+        "FLUO": {
+          "nominal_range": "UV/Vis excitation and emission; depends on the fluorescent species [S01 p.12]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        },
+        "UVVIS": {
+          "nominal_range": "UV 190-360 nm and visible; depends on target and setup [S01 p.5]",
+          "fibers": {
+            "UV_SILICA": "full",
+            "VISNIR_SILICA": "partial (0.35-0.74 um of 0.19-0.74 um)",
+            "CIR": "none",
+            "PIR": "none",
+            "HWG": "none",
+            "INF3": "partial (0.3-0.74 um of 0.19-0.74 um)",
+            "ZRF4": "partial (0.3-0.74 um of 0.19-0.74 um)"
+          }
+        }
+      },
+      "client_fiber_conflicts": [],
+      "client_fiber_notes": [],
+      "link_unknown": null
+    },
+    "fiber_findings_required_in_premise_check": [],
+    "rule_hints": [
+      "fluorescence_needs_fluorophore: Fluorescence only measures a defined fluorescent species or a justified indicator; most chemicals do not fluoresce. [S01 p.5; S04 p.4; DOCX §5]",
+      "sensitivity_not_selectivity: High sensitivity does not imply selectivity. Fluorimetry and UV/Vis are rated high sensitivity but low selectivity. [S01 Table 1 (p.6); DOCX §5]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+    ],
+    "required_risk_categories": [
+      "calibration_validity",
+      "no_guaranteed_gain",
+      "nothing_confirmed"
+    ]
+  },
+  "run_meta": {
+    "pipeline_version": "0.7.0",
+    "calls": [
+      {
+        "stage": "intake",
+        "timestamp": "2026-10-18T10:11:55.654781+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 8.9,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 123,
+          "output_tokens": 2053,
+          "cache_read_input_tokens": 10425,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001143
+      },
+      {
+        "stage": "assess",
+        "timestamp": "2026-10-18T10:12:04.532681+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 61.3,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 10949,
+          "output_tokens": 7428,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.209239
+      },
+      {
+        "claims_checked": 19,
+        "stage": "critic",
+        "timestamp": "2026-10-18T10:13:05.826368+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-haiku-5-5",
+        "effort": "low",
+        "thinking_level": "low",
+        "duration_s": 5.3,
+        "structured_output": "constrained",
+        "usage": {
+          "input_tokens": 11372,
+          "output_tokens": 973,
+          "cache_read_input_tokens": 744,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.001631
+      },
+      {
+        "flags_sent": 7,
+        "stage": "revise",
+        "timestamp": "2026-10-18T10:13:11.145218+00:00",
+        "max_output_tokens": 16000,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "thinking_level": "medium",
+        "duration_s": 50.4,
+        "structured_output": "prompted_json",
+        "usage": {
+          "input_tokens": 11422,
+          "output_tokens": 6942,
+          "cache_read_input_tokens": 84414,
+          "cache_creation_input_tokens": 0
+        },
+        "cost_usd": 0.201411
+      }
+    ],
+    "prompt_hash": "64053030c027",
+    "git_commit": "b5d8388",
+    "timestamp": "2026-10-18T10:12:04.515629+00:00",
+    "duration_s": 126.0,
+    "cost_usd": 0.4134
+  }
+}

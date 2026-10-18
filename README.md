@@ -58,6 +58,27 @@ Each run writes `outputs/<case>.json` (full labelled data, verification report, 
 compatibility, required risk categories) → assessment (full AFS corpus in the prompt) → deterministic
 verifier (quotes, numbers, source scope) + LLM context critic + rubric → one revision pass.
 
+## Reproduce the submission
+
+The final answers to **H01–H06** are in [`outputs/H01.md`](outputs/H01.md) … [`outputs/H06.md`](outputs/H06.md), with the full labelled data, verification report and rubric in the matching `.json` files. They were **generated once by the assistant from the frozen tag `h-freeze` (commit `b5d8388`) and committed unedited.** No case-specific logic exists anywhere in the code or prompts.
+
+| Stage | Model | Effort |
+|---|---|---|
+| Intake (facts + diagnostic questions) | `claude-haiku-5-5` | low |
+| Assessment | `claude-opus-5-5` | medium |
+| Context critic | `claude-haiku-5-5` | low |
+| Revision | `claude-opus-5-5` | medium |
+
+```bash
+git checkout h-freeze
+make setup && make kb                       # needs the AFS materials in materials/
+MODEL_INTAKE=claude-haiku-5-5 MODEL_CRITIC=claude-haiku-5-5 \
+MODEL_ASSESS=claude-opus-5-5 MODEL_REVISE=claude-opus-5-5 \
+.venv/bin/python -m afs_assistant.cli run-all --set H --phase final
+```
+
+Each output records its model, effort, prompt hash, git commit, timestamp, duration, tokens and cost (`run_meta`). LLM outputs are not bit-for-bit deterministic, so a rerun gives equivalent but not identical text. The development (D01–D08) and adversarial (A01–A08) runs from the same tag are in [`outputs/runs/final/`](outputs/runs/final/), and the summary is in [`outputs/eval/final_summary.md`](outputs/eval/final_summary.md). Every API call is logged in [`outputs/spend.json`](outputs/spend.json).
+
 ## Web app
 
 **Hosted:** https://afs-spectroscopy-assistant.streamlit.app/ (Streamlit Community Cloud; if the app was asleep, the first visit takes about a minute to wake it).
