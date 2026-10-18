@@ -10,7 +10,8 @@ from html import escape
 
 from afs_assistant.kb.load import resolve_ref
 from afs_assistant.kb.text import match_key
-from afs_assistant.render import _INLINE_REF, STATUS_LABEL, sources_used
+from afs_assistant.render import _INLINE_REF, STATUS_LABEL, fiber_sentence, is_rule_item, sources_used
+from afs_assistant.schema import CitationRef
 from afs_assistant.schema import CaseResult
 
 BASIS_LABEL = {
@@ -149,7 +150,9 @@ def report_html(r: CaseResult) -> str:
     section("Premise check & recommendation", "".join(rec) or '<p class="muted">No method recommended at this stage.</p>')
 
     mc = a.measurement_concept
-    items = "".join(claim(i.text, i.basis, i.citations, ck) for i in mc.items)
+    items = "".join(claim(i.text, i.basis, i.citations, ck) for i in mc.items if not is_rule_item(i))
+    if sentence := fiber_sentence(a):  # plain sentence; the detailed rule check is in the side panel
+        items += claim(sentence, "sourced", [CitationRef(ref="S02 p.6")], ck)
     confirm = f'<p class="muted">Needs AFS confirmation: {escape(", ".join(mc.needs_afs_confirmation))}</p>' if mc.needs_afs_confirmation else ""
     section("Measurement concept", items + confirm)
 
@@ -176,7 +179,7 @@ def rule_panel(r: CaseResult) -> str:
         rows.append(f'<div class="rule-row dec-{decision.split()[0]}"><div class="rule-name">{escape(row["row"])}</div>'
                     f'<div class="rule-meta"><b>{escape(decision)}</b> · cost {row["cost"]} · selectivity {row["selectivity"]}</div></div>')
     findings = pre.get("fiber_findings_required_in_premise_check", [])
-    fiber = next((i.text for i in a.measurement_concept.items if i.text.startswith(("Rule check", "No fiber link stated"))), "")
+    fiber = next((i.text for i in a.measurement_concept.items if is_rule_item(i)), "")
     return (
         '<div class="rules"><div class="rule-title">S01 Table 1 shortlist (cheapest first)</div>'
         + "".join(rows)

@@ -175,3 +175,22 @@ def test_any_docx_citation_is_flagged_and_docx_is_not_in_corpus(make_assessment)
     for ref in ("DOCX §3", "DOCX §5"):
         a = make_assessment(premise_checks=claims([st("guidance claim", refs=[ref])]))
         assert any(f.kind == "scope" and "challenge reference" in f.detail for f in flags(a))
+
+
+@needs_cache
+def test_plain_fiber_sentences_pass_number_check_against_s02_p6(make_assessment):
+    """Every possible report sentence: its numbers must be on S02 p.6 (the page it cites)."""
+    from afs_assistant.kb.load import load_facts, resolve_ref
+    from afs_assistant.render import fiber_sentence
+
+    page = match_key(" ".join(c.text for c in resolve_ref("S02 p.6")))
+    item = lambda text: {"aspect": "fiber_link", "text": text, "basis": "sourced", "citations": [{"ref": "S02 p.6", "quote": None, "url": None}]}
+    texts = [f"Rule check of the stated fiber: MIR: {f['name']} none." for f in load_facts()["fibers"]]
+    texts += [f"Rule check of the stated fiber: NIR: {f['name']} partial (x)." for f in load_facts()["fibers"]]
+    texts += ["No fiber link stated. Rule check: MIR: Vis-NIR silica no coverage.", "No fiber link stated; silica fibers suit UV/Vis."]
+    for t in texts:
+        mc = {"items": [item(t)], "fiber_family": "f", "fiber_compatible": None, "architecture": "undecided", "needs_afs_confirmation": []}
+        sentence = fiber_sentence(make_assessment(measurement_concept=mc))
+        assert sentence, t
+        for value, unit in _numbers(sentence):
+            assert _number_known(value, unit, page), (sentence, value, unit)

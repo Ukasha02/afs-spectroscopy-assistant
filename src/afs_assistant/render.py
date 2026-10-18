@@ -40,6 +40,55 @@ def _join(items: list[str], sep: str = "; ") -> str:
     return sep.join(i.strip().rstrip(".;,") for i in items if i.strip())
 
 
+_RULE_PREFIXES = ("Rule check", "No fiber link stated")
+_FIBER_SHORT = {"UV_SILICA": "UV-Vis silica fiber", "VISNIR_SILICA": "Vis-NIR silica fiber", "CIR": "chalcogenide IR fiber",
+                "PIR": "polycrystalline IR fiber", "HWG": "hollow glass waveguide", "INF3": "indium fluoride fiber",
+                "ZRF4": "zirconium fluoride fiber"}
+_METHOD_LABEL = {"MIR": "mid-IR", "NIR": "NIR", "RAMAN": "Raman", "FLUO": "fluorescence", "UVVIS": "UV/Vis"}
+
+
+def is_rule_item(item) -> bool:
+    """The deterministic fiber check appended by the pipeline (shown in detail in the side panel)."""
+    return item.text.startswith(_RULE_PREFIXES)
+
+
+def _fmt_range(lo_um: float, hi_um: float) -> str:
+    """Fiber range as written on S02 p.6 (nm up to 6.5 um, um above)."""
+    if hi_um <= 6.5:
+        return f"{lo_um * 1000:g}–{hi_um * 1000:g} nm"
+    return f"{lo_um * 1000:g} nm–{hi_um:g} µm"
+
+
+def fiber_sentence(a: Assessment) -> str | None:
+    """One plain sentence for the report, built from the rule result (render only).
+
+    - client fiber stated: its S02 p.6 range and whether it can carry the method
+    - no fiber stated, MIR recommended: MIR needs an IR fiber
+    - no fiber stated, no MIR: silica covers UV/Vis and NIR
+    """
+    rule = next((i for i in a.measurement_concept.items if is_rule_item(i)), None)
+    if rule is None:
+        return None
+    if rule.text.startswith("Rule check of the stated fiber"):
+        from afs_assistant.kb.load import load_facts
+
+        fibers = load_facts()["fibers"]
+        for part in rule.text.split(":", 1)[1].split(";"):
+            method, _, rest = part.strip().partition(":")
+            for f in sorted(fibers, key=lambda f: -len(f["name"])):
+                if f["name"] in rest:
+                    rng = _fmt_range(*f["range_um"])
+                    name = _FIBER_SHORT.get(f["id"], f["name"])
+                    label = _METHOD_LABEL.get(method.strip(), method.strip())
+                    if rest.split(f["name"], 1)[1].strip().startswith("none"):
+                        return f"The stated {name} transmits {rng}, so it cannot carry {label}."
+                    return f"The stated {name} transmits {rng}; its fit to the {label} range must be confirmed."
+        return None
+    if "MIR" in rule.text.split("Rule check", 1)[-1] and not rule.text.startswith("No fiber link stated;"):
+        return "No link stated; MIR needs an IR fiber such as chalcogenide or polycrystalline, not silica."
+    return "No link stated; silica fibers cover UV/Vis and NIR."
+
+
 def sources_used(a: Assessment) -> list[str]:
     refs = set(re.findall(r"'ref': '([^']+)'", str(a.model_dump())))
     return sorted(refs, key=lambda r: (r.startswith(("DOCX", "EXTERNAL")), r))
@@ -71,9 +120,11 @@ def report_sections(a: Assessment) -> dict[str, str]:
         rec.append(f"- **{prefix}{r.method} ({r.geometry}).** {_text(r.reason)} {_text(r.caveat)}")
     S["Recommendation"] = "\n".join(rec)
     mc = a.measurement_concept
-    concept = " ".join(_text(i) for i in mc.items)
+    concept = " ".join(_text(i) for i in mc.items if not is_rule_item(i))
+    if sentence := fiber_sentence(a):
+        concept += f" {sentence[:-1]} [S02 p.6]."
     confirm = f" Needs AFS confirmation: {_join(mc.needs_afs_confirmation, ', ')}." if mc.needs_afs_confirmation else ""
-    S["Measurement concept"] = f"**Measurement concept.** {concept}{confirm}"
+    S["Measurement concept"] = f"**Measurement concept.** {concept.strip()}{confirm}"
     ranges = "; ".join(
         f"{e.method}: {e.nominal_range} nominal [{e.citation.ref}]" + (f" ({e.note.strip().rstrip('.')})" if e.note else "") for e in a.spectral_ranges
     )

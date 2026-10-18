@@ -97,6 +97,12 @@ Run locally:
 
 Live mode locally: set `LIVE_ENABLED=true` and `ACCESS_CODE=...` in `.env`. Hosted app secrets: only `KB_REPO` and `KB_TOKEN` (plus `LIVE_ENABLED=false`). On the hosted app, `kb/cache/` is downloaded at startup from a private repo using a read-only token (`KB_REPO`, `KB_TOKEN` in the host's secrets). The AFS texts are never in this public repo. Prototype built for Art Fiber Systems · SchubKI National AI Hackathon 2026; not an official AFS product.
 
+## Known limitations
+
+- **Remote silica links are sometimes judged too cautiously.** When a NIR or UV/Vis method would run over a silica link, the premise check sometimes marks a remote analyzer distance as "unverifiable", although S02 p.7 supports robust 100–300 m silica cables. This was seen in D06 and A08; H01–H06 are not affected. **Planned fix:** a deterministic rule stating that silica links within the S02 p.7 length range are supported for methods inside the silica transmission window, passed to the assessment as a rule hint (and checked by the rubric), so the verdict becomes "supported" or "plausible – to be tested", with the cable length as a clarification question.
+- **Length:** the target is 250–550 words. A few answers run 20–40 words over, mostly in Recommendation and Measurement concept. The rubric reports this openly; outputs are not edited.
+- **Run-to-run variation:** LLM outputs are not bit-for-bit reproducible. Decision statuses were stable across our reruns, but wording and the order of secondary candidates can change.
+
 ## Contributing
 
 - **One branch per feature** (`feat/kb-parsing`, `fix/citations`, …). Open a PR into `main`, and don't push directly to it.
