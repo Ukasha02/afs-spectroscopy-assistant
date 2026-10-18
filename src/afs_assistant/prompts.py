@@ -80,8 +80,9 @@ information for this kind of sample or target (not for an unrelated application,
 method); then frame it as 'only after each method has been assessed on its own; a hypothesis to test'. \
 Otherwise give no combination. If the premise is not supported, say so \
 first in premise_checks (cited) and recommend the alternative to test. Use the simplest sufficient option first.
-6. measurement_concept: one interface item per candidate taken from S01 Table 1 (p.6), the location, the fiber link \
-(checked against the fiber ranges). Every item in pre_analysis.fiber_findings_required_in_premise_check (a fiber that \
+6. measurement_concept: at most 2 items: the interface(s) taken from S01 Table 1 (p.6) and the location (one \
+sentence each). The fiber compatibility check is appended automatically by the rule step: do NOT restate fiber \
+ranges; mention the link only if the client gave facts about it. Every item in pre_analysis.fiber_findings_required_in_premise_check (a fiber that \
 cannot carry the method's range, or an unknown link) MUST appear as a premise check (verdict contradicted or \
 unverifiable, mentioning the fiber or link) AND as a fiber_link risk; needs_afs_confirmation lists what AFS must confirm (probe type, installation, \
 optical configuration).
@@ -107,7 +108,7 @@ requirements_stated <= 35 in total; key_unknowns <= 30 in total; each report que
 reason + caveat <= 40 together; measurement concept items <= 50 in total; spectral range notes <= 15; each risk \
 <= 15; each plan step <= 22; decision basis <= 25. Do not write citations inside the text; put them in the \
 citations field. No repetition between sections. List caps: requirements_stated max 4 items; key_unknowns max 4; \
-report_questions 4-5; measurement_concept items max 3; needs_afs_confirmation max 3 items of max 5 words; \
+report_questions 4-5; measurement_concept items max 2; needs_afs_confirmation max 3 items of max 5 words; \
 risks max 5. Count before answering: if the report would exceed 450 words, shorten the longest items. Hedged, precise verbs ('supports', 'comparison candidate', 'hypothesis to test', 'needs confirmation', \
 'must be built and tested'); never 'will work', 'ensures', 'guarantees'."""
 

@@ -37,6 +37,8 @@ st.markdown(f"<style>{(Path(__file__).parent / 'style.css').read_text()}</style>
 
 LABEL = "Prototype built for Art Fiber Systems · SchubKI National AI Hackathon 2026 · not an official AFS product"
 LIVE_RUNS = int(os.getenv("LIVE_RUNS_PER_SESSION", "3"))
+LIVE_ENABLED = os.getenv("LIVE_ENABLED", "false").strip().lower() == "true"  # off on the hosted app: zero API spend
+LIBRARY_RUN = os.getenv("LIBRARY_RUN", "opus")  # pre-generated outputs of the final model (outputs/runs/<run>/)
 STEPS = ["Intake", "Rule checks", "Assessment", "Verification", "Revision"]
 KB_STATE = ensure_kb()
 
@@ -48,9 +50,12 @@ KB_STATE = ensure_kb()
 @st.cache_data(show_spinner=False)
 def library() -> list[dict]:
     """Pre-generated results: D (development), A (adversarial), H (final evaluation, once frozen)."""
+    run = config.OUTPUTS_DIR / "runs" / LIBRARY_RUN
+    d_dir = run / "D" if (run / "D").exists() else config.OUTPUTS_DIR
+    a_dir = run / "adversarial" if (run / "adversarial").exists() else config.OUTPUTS_DIR / "adversarial"
     groups = [("Final evaluation (H)", config.OUTPUTS_DIR, "H*.json"),
-              ("Development (D)", config.OUTPUTS_DIR, "D*.json"),
-              ("Adversarial (own hard cases)", config.OUTPUTS_DIR / "adversarial", "A*.json")]
+              ("Development (D)", d_dir, "D*.json"),
+              ("Adversarial (own hard cases)", a_dir, "A*.json")]
     items = []
     for group, folder, pattern in groups:
         for p in sorted(folder.glob(pattern)):
@@ -194,6 +199,10 @@ def page_assess() -> None:
 
     st.divider()
     st.subheader("Live run")
+    if not LIVE_ENABLED:
+        st.info("Live runs are switched off on this deployment (no API calls, no cost). Every example above has a "
+                "pre-generated report; the Results library shows them all. The demo video shows a live run.")
+        return
     if KB_STATE == "missing":
         st.warning("The knowledge base is not available on this deployment, so live runs are disabled.")
         return

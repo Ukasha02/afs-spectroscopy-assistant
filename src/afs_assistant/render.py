@@ -63,8 +63,9 @@ def report_sections(a: Assessment) -> dict[str, str]:
     rec = ["### Recommendation", ""]
     for pc in a.premise_checks:
         if pc.verdict != "supported":
-            why = " ".join(_text(s) for s in pc.explanation)
-            rec.append(f"- **Premise: {pc.client_claim}** — {pc.verdict.replace('_', ' ')}. {why}")
+            refs = list(dict.fromkeys(c.ref for s in pc.explanation for c in s.citations))
+            cites = f" [{'; '.join(refs)}]" if refs else ""
+            rec.append(f"- **Premise {pc.verdict.replace('_', ' ')}:** {pc.client_claim.rstrip('.')}{cites}.")
     for r in sorted(a.recommendations, key=lambda r: (_ROLE_ORDER[r.role], r.simplicity_rank)):
         prefix = "Not recommended: " if r.role == "not_recommended" else ""
         rec.append(f"- **{prefix}{r.method} ({r.geometry}).** {_text(r.reason)} {_text(r.caveat)}")

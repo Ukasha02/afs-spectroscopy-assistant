@@ -16,7 +16,7 @@ from afs_assistant.critic import critique
 from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
-PIPELINE_VERSION = "0.6.0"
+PIPELINE_VERSION = "0.7.0"
 Progress = Callable[[str], None] | None  # optional UI hook: called with the step about to run
 
 

@@ -48,8 +48,10 @@ h1, h2, h3 { color: var(--primary); font-weight: 600; letter-spacing: -0.01em; }
 .b-proposal, .lg.b-proposal { border-color: var(--proposal); }
 .tag { font-size: .72rem; color: var(--muted); margin-left: .35rem; border: 1px solid var(--border); border-radius: 3px; padding: 0 .3rem; }
 
-.premise { margin: .5rem 0 .8rem; }
-.premise-head { font-weight: 500; }
+.premise { margin: .4rem 0 .6rem; }
+.premise-head { font-weight: 500; cursor: pointer; list-style: none; }
+.premise-head::-webkit-details-marker { display: none; }
+.premise[open] .premise-head { margin-bottom: .3rem; }
 .verdict { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; padding: .05rem .4rem; border-radius: 3px; margin-right: .35rem; background: var(--surface); border: 1px solid var(--border); color: var(--muted); }
 .v-contradicted .verdict { color: var(--alert); border-color: var(--alert); }
 .v-unverifiable .verdict { color: var(--assume); border-color: var(--assume); }

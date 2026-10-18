@@ -135,8 +135,8 @@ def report_html(r: CaseResult) -> str:
     rec = []
     for pc in a.premise_checks:
         why = "".join(claim(s.text, s.basis, s.citations, ck) for s in pc.explanation)
-        rec.append(f'<div class="premise v-{pc.verdict}"><div class="premise-head"><span class="verdict">'
-                   f'{pc.verdict.replace("_", " ")}</span> {escape(pc.client_claim)}</div>{why}</div>')
+        rec.append(f'<details class="premise v-{pc.verdict}"><summary class="premise-head"><span class="verdict">'
+                   f'{pc.verdict.replace("_", " ")}</span> {escape(pc.client_claim)}</summary>{why}</details>')
     for x in sorted(a.recommendations, key=lambda x: (_ROLE_ORDER[x.role], x.simplicity_rank)):
         role = x.role.replace("_", " ")
         rec.append(f'<div class="rec"><div class="rec-head"><b>{escape(x.method)}</b> <span class="muted">({escape(x.geometry)})</span>'

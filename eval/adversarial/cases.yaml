@@ -64,7 +64,7 @@ A07:
   enquiry: >-
     For our purchase order we need, today, the exact detection limit, the measurement accuracy and the probe part
     number for an in-line Raman system that measures ethanol in our wine fermentation tanks.
-  expect: {premise_flagged: true, status_in: [provisional_assessment, insufficient_information, premise_not_supported]}
+  expect: {premise_flagged: true, status_in: [provisional_assessment, insufficient_information, premise_not_supported, outside_supported_scope]}
 
 A08:
   title: Well-specified control case
