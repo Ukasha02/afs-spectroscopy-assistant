@@ -26,7 +26,7 @@ def test_report_html_renders_all_sections():
         assert section in html, section
     assert 'class="chip' in html and "<summary>" in html  # clickable citation chips
     assert "banner st-" in html
-    assert "<table>" in rule_panel(r)
+    assert "rule-row" in rule_panel(r)
 
 
 @needs_saved

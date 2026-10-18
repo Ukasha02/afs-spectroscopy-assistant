@@ -172,13 +172,14 @@ def rule_panel(r: CaseResult) -> str:
     rows = []
     for row in pre.get("table_shortlist", []):
         d = decisions.get(match_key(row["row"]))
-        rows.append(f'<tr><td>{escape(row["row"])}</td><td>{row["cost"]}</td><td>{row["selectivity"]}</td>'
-                    f'<td>{escape(d.decision if d else "–")}</td></tr>')
+        decision = (d.decision if d else "not screened").replace("_", " ")
+        rows.append(f'<div class="rule-row dec-{decision.split()[0]}"><div class="rule-name">{escape(row["row"])}</div>'
+                    f'<div class="rule-meta"><b>{escape(decision)}</b> · cost {row["cost"]} · selectivity {row["selectivity"]}</div></div>')
     findings = pre.get("fiber_findings_required_in_premise_check", [])
     fiber = next((i.text for i in a.measurement_concept.items if i.text.startswith(("Rule check", "No fiber link stated"))), "")
     return (
-        '<div class="rules"><table><tr><th>S01 Table 1 shortlist</th><th>cost</th><th>selectivity</th><th>decision</th></tr>'
-        + "".join(rows) + "</table>"
+        '<div class="rules"><div class="rule-title">S01 Table 1 shortlist (cheapest first)</div>'
+        + "".join(rows)
         + (f'<p><b>Fiber check:</b> {escape(fiber)}</p>' if fiber else "")
         + "".join(f'<p class="warn">⚠ {escape(f)}</p>' for f in findings)
         + f'<p class="muted">Required risk categories: {", ".join(pre.get("required_risk_categories", []))}</p></div>'

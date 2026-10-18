@@ -77,9 +77,14 @@ details.chip .pop { position: absolute; z-index: 20; left: 0; top: 1.5rem; width
 .pop-check.quote_not_found, .pop-check.unknown_source { color: var(--alert); }
 
 /* ---- panels ---- */
-.rules table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-.rules th, .rules td { text-align: left; border-bottom: 1px solid var(--border); padding: .25rem .4rem; }
-.rules th { color: var(--muted); font-weight: 500; }
+.rules { font-size: .85rem; overflow-wrap: anywhere; }
+.rule-title { color: var(--muted); font-size: .74rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .3rem; }
+.rule-row { border-left: 3px solid var(--border); padding: .2rem 0 .2rem .55rem; margin: .3rem 0; }
+.rule-row.dec-recommended { border-color: var(--accent); }
+.rule-row.dec-alternative { border-color: var(--accent-2); }
+.rule-name { color: var(--text); }
+.rule-meta { color: var(--muted); font-size: .78rem; }
+.rule-meta b { font-weight: 600; color: var(--text); }
 .warn { color: var(--alert); font-size: .88rem; }
 .footer { margin-top: 1.4rem; padding-top: .6rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .76rem; }
 .step-done { color: var(--proposal); }
