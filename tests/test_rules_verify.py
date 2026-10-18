@@ -158,5 +158,20 @@ def test_fiber_conflict_only_without_coverage(extraction):
     nir = extraction.model_copy(update={"methods_mentioned": ["NIR"]})
     fc = rules.fiber_checks(nir)  # NIR over silica: partial (0.78-2.4 of 2.5 um) -> note, not conflict
     assert not fc["client_fiber_conflicts"] and fc["client_fiber_notes"]
-    ok, text = rules.fiber_verdict(["NIR (diffuse reflection)"], nir, fc)
-    assert ok is True and "partial" in text
+    ok, text, refs = rules.fiber_verdict(["NIR (diffuse reflection)"], nir, fc)
+    assert ok is True and "partial" in text and "S01 p.10" in refs  # client named a fiber: detailed check
+    none = nir.model_copy(update={"fibers_mentioned": []})
+    ok, text, refs = rules.fiber_verdict(["NIR"], none, rules.fiber_checks(none))
+    assert ok is None and text == rules.DEFAULT_FIBER_LINE and refs == ["S02 p.6"]  # default: one short line
+    ok, text, refs = rules.fiber_verdict(["MIR ATR"], none, rules.fiber_checks(none))
+    assert "PIR" in text  # MIR recommended: detailed check
+
+
+@needs_cache
+def test_any_docx_citation_is_flagged_and_docx_is_not_in_corpus(make_assessment):
+    from afs_assistant.kb.load import render_corpus
+
+    assert 'cite="DOCX' not in render_corpus()
+    for ref in ("DOCX §3", "DOCX §5"):
+        a = make_assessment(premise_checks=claims([st("guidance claim", refs=[ref])]))
+        assert any(f.kind == "scope" and "challenge reference" in f.detail for f in flags(a))

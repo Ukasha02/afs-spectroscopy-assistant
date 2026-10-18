@@ -23,7 +23,8 @@ process vs clinical), or application, and the claim transfers it without saying 
 - not_supported: the cited pages do not say what the claim says;
 - overstated: the claim is more certain than the page (e.g. 'will work', 'proven', 'ensures' where the page shows \
 an example or a possibility).
-Do not report style issues, missing extra information, or claims that are correct. Be precise: quote the part of \
+When you propose a fix, only suggest AFS source pages (S01-S05, S01 Table 1); never suggest the challenge \
+reference document (DOCX). Do not report style issues, missing extra information, or claims that are correct. Be precise: quote the part of \
 the claim that is wrong. If everything is fine, return an empty list."""
 
 

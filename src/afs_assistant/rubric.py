@@ -58,7 +58,7 @@ def rubric(a: Assessment, case_id: str, required_risks: list[str], fiber_finding
     if not _has(texts.get("spectra_with_reference", ""), r"referen|laborator|\blab\b|assay|label|ground truth", r"tim"):
         content.append("spectra need independent reference + timing")
     several = len(recs) > 1
-    if not _has(texts.get("models_and_validation", ""), r"single" if several else r".", r"held.out|independent|validat"):
+    if not _has(texts.get("models_and_validation", ""), r"single|on its own|alone|\bfirst\b" if several else r".", r"held.out|independent|validat"):
         content.append("single-method first + held-out validation" if several else "held-out validation")
     if not _has(texts.get("comparison", ""), r"error", r"bias"):
         content.append("compare prediction error and bias")

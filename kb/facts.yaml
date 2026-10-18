@@ -1,5 +1,6 @@
 # Curated facts and general rules from the AFS materials, written by the team.
-# - Short paraphrases with citations in the format the assistant uses (S01 p.10, S02 p.6, DOCX §3).
+# - Short paraphrases with citations in the format the assistant uses (S01 p.10, S02 p.6). The challenge
+#   reference document (DOCX) is background only and is never cited.
 # - Drives the deterministic pre-analysis (rules.py) and is shown to the model next to the corpus.
 # - General domain knowledge only. Nothing here may be specific to an evaluation case.
 # - Wavelengths are stored in micrometres (um); display strings keep the source's own units.
@@ -13,7 +14,7 @@ sources:
   S05: {scope: "AFS company flyer", evidence: "business context only; not evidence of technical performance", technical: false}
   S06: {scope: "Link to the laboratory website", evidence: "business context only", technical: false}
   TABLE: {scope: "S01 Table 1 (p.6): qualitative ratings of methods and measurement techniques", evidence: "qualitative ratings from the source, not measured values or product specs", technical: true}
-  DOCX: {scope: "Challenge reference: answer structure, good practice, method overview, worked examples D01/D02", evidence: "guidance on answer quality and a method overview compiled from the sources", technical: true}
+  DOCX: {scope: "Challenge reference document (answer guidance, method overview, worked examples)", evidence: "background only: never cite it; cite the underlying AFS page", technical: false}
 
 methods:
   - id: NIR
@@ -28,9 +29,9 @@ methods:
       - "Most common online method with fiber probes; diffuse reflectance allows measurement without contact, at a distance [S01 p.10]"
     limitations:
       - "Broad overlapping bands; needs chemometrics for quantitative analysis [S01 p.10]"
-      - "Calibration is matrix-specific; physical variation (particle size, temperature, scattering) changes the signal [DOCX §5]"
+      - "Calibration is matrix-specific; physical variation (particle size, temperature, scattering) changes the signal [S01 p.10; S01 p.17]"
       - "May lack sensitivity for trace compounds below about 0.1 percent [S01 p.16]"
-    typical_samples: "powders, dairy; diffuse reflection for scattering samples, transmission/transflection for clear liquids [DOCX §5; S01 p.17-18]"
+    typical_samples: "powders, dairy; diffuse reflection for scattering samples, transmission/transflection for clear liquids [S01 p.17-18]"
 
   - id: MIR
     name: MIR (FTIR) spectroscopy, usually ATR
@@ -45,10 +46,10 @@ methods:
       - "ATR fiber probes allow analysis of liquids and soft solids at a distance from the spectrometer [S01 p.10]"
     limitations:
       - "Strong absorption limits transmission to very thin samples (usually below 50 um); hence ATR [S01 p.5]"
-      - "ATR samples only about 1-6 um deep; contact, fouling and chemical compatibility matter [S01 Table 1 (p.6); DOCX §5]"
+      - "ATR samples only about 1-6 um deep; contact, fouling and chemical compatibility matter [S01 Table 1 (p.6)]"
       - "Needs mid-IR fibers (chalcogenide or polycrystalline silver halide), not silica [S04 p.1; S02 p.6]"
       - "Water absorbs strongly in the IR compared with Raman [S01 p.16]"
-    typical_samples: "liquids, pastes, soft solids in contact with the ATR crystal; leads: water in petroleum, API in polymer extrusion [DOCX §5; S02 p.13-14]"
+    typical_samples: "liquids, pastes, soft solids in contact with the ATR crystal; leads: water in petroleum, API in polymer extrusion [S02 p.13-14]"
 
   - id: RAMAN
     name: Raman spectroscopy
@@ -64,7 +65,7 @@ methods:
     limitations:
       - "Weak signal; fluorescence background can dominate for many organic compounds [S01 p.11]"
       - "High cost [S01 Table 1 (p.6)]"
-      - "Calibration specific to the matrix [DOCX §5]"
+      - "Spectra feed calibration models that are built for the measured samples [S01 p.12]"
     typical_samples: "powders and liquids; pharmaceutical blends (785 nm excitation example), bioprocess metabolites [S01 p.15-16]"
 
   - id: FLUO
@@ -80,7 +81,7 @@ methods:
     limitations:
       - "Low selectivity [S01 Table 1 (p.6)]"
       - "Most chemicals do not fluoresce; mainly used in medicine, biology, biotechnology [S01 p.5]"
-      - "Only for a defined fluorescent species or a justified indicator; not a direct measurement of every analyte [DOCX §5]"
+      - "Only for a defined fluorescent species or a justified indicator; not a direct measurement of every analyte [S01 p.5; S04 p.4]"
     typical_samples: "liquids and solids containing a fluorescent component [S01 Table 1 (p.6); S04 p.4]"
 
   - id: UVVIS
@@ -95,7 +96,7 @@ methods:
       - "Low-cost, robust real-time biomass trend via turbidity [S01 p.16]"
     limitations:
       - "Strong overlap of signals in mixtures; chemometrics needed [S01 p.5]; low selectivity [S01 Table 1 (p.6)]"
-      - "Optical density is not a viable cell count [DOCX §5]"
+      - "Turbidity tracks cell density, not cell viability [S01 p.16]"
     typical_samples: "defined absorbers; cell suspensions; probe choice by optical density: transmission/transflection for clear, UV-ATR for opaque or 'black' fluids [S01 p.16]"
 
 fibers:
@@ -166,35 +167,35 @@ rules:
   - id: fluorescence_needs_fluorophore
     statement: "Fluorescence only measures a defined fluorescent species or a justified indicator; most chemicals do not fluoresce."
     applies_when: "fluorescence is proposed or requested"
-    src: "S01 p.5; S04 p.4; DOCX §5"
+    src: "S01 p.5; S04 p.4"
   - id: sensitivity_not_selectivity
     statement: "High sensitivity does not imply selectivity. Fluorimetry and UV/Vis are rated high sensitivity but low selectivity."
     applies_when: "a method is justified by its sensitivity"
-    src: "S01 Table 1 (p.6); DOCX §5"
+    src: "S01 Table 1 (p.6)"
   - id: calibration_matrix_specific
     statement: "Chemometric calibrations are specific to the matrix; a change of API, excipients or formulation can invalidate them."
     applies_when: "reuse or transfer of an existing calibration or model; a new product or formulation"
-    src: "S01 p.10; DOCX §5"
+    src: "S01 p.10"
   - id: optical_density_not_viability
     statement: "Turbidity / optical density tracks cell density but is not a viable cell count."
     applies_when: "biomass, viable cells or growth are targets"
-    src: "S01 p.16; DOCX §5"
+    src: "S01 p.16"
   - id: evidence_scope
     statement: "A published application or a laboratory / in-vitro study is a reason to test a method, not proof that it works for a new customer, a process, or clinical use."
     applies_when: "the client cites a study or application as proof; clinical, in-vivo or production readiness is claimed"
-    src: "DOCX §3; S03 p.3, p.10, p.14"
+    src: "S03 p.3, p.10, p.14"
   - id: nominal_range_not_instrument_range
     statement: "A nominal method range is not the usable range of a specific instrument, fiber or probe."
     applies_when: "a spectral range is stated"
-    src: "DOCX §3; DOCX §5"
+    src: "guidance"
   - id: combination_is_hypothesis
     statement: "Combining methods can add complementary information, but the gain is a hypothesis to test against the best single method."
     applies_when: "two or more methods are considered"
-    src: "S01 p.7-8; DOCX §5"
+    src: "S01 p.7-8"
   - id: fiber_limits_wavelength
     statement: "The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers."
     applies_when: "a fiber link, remote analyzer, or reuse of existing fiber is mentioned; MIR is considered"
-    src: "S02 p.6; S04 p.1; DOCX §5"
+    src: "S02 p.6; S04 p.1"
   - id: remote_measurement_nir_silica
     statement: "NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist."
     applies_when: "the analyzer must be far from the measuring point"
@@ -218,8 +219,8 @@ rules:
   - id: do_not_invent
     statement: "Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees."
     applies_when: "always"
-    src: "DOCX §3"
+    src: "guidance"
   - id: insufficient_information_is_valid
     statement: "If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step."
     applies_when: "target, matrix or contaminant is undefined"
-    src: "DOCX §3"
+    src: "guidance"

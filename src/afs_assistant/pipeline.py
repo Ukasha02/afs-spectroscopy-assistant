@@ -16,7 +16,7 @@ from afs_assistant.critic import critique
 from afs_assistant.rubric import rubric, rubric_flags
 from afs_assistant.verify import verify, verify_questions
 
-PIPELINE_VERSION = "0.7.0"
+PIPELINE_VERSION = "0.8.0"
 Progress = Callable[[str], None] | None  # optional UI hook: called with the step about to run
 
 
@@ -40,12 +40,11 @@ def _git_commit() -> str:
 def _apply_fiber_verdict(assessment: Assessment, ex, pre: dict) -> Assessment:
     """Fill the fiber verdict from the rule step (not the model) and show it in the concept."""
     methods = [r.method for r in assessment.recommendations if r.role != "not_recommended"]
-    compatible, text = rules.fiber_verdict(methods, ex, pre["fiber_checks"])
+    compatible, text, refs = rules.fiber_verdict(methods, ex, pre["fiber_checks"])
     mc = assessment.measurement_concept
     mc.fiber_compatible = compatible
-    mc.items = [i for i in mc.items if not i.text.startswith(("Rule check", "No fiber link stated. Rule check"))]
+    mc.items = [i for i in mc.items if not i.text.startswith(("Rule check", "No fiber link stated"))]
     if text:
-        refs = ["S02 p.6"] + rules.range_sources(methods)
         mc.items.append(ConceptItem(aspect="fiber_link", text=text, basis="sourced", citations=[CitationRef(ref=r) for r in refs]))
     return assessment
 

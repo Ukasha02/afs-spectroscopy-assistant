@@ -69,7 +69,7 @@ def _facts_refs(node):
     """Yield every citation reference found in facts.yaml (src fields and [..] brackets)."""
     if isinstance(node, dict):
         for key, value in node.items():
-            if key in ("src", "range_src") and isinstance(value, str):
+            if key in ("src", "range_src") and isinstance(value, str) and value != "guidance":
                 yield from load.split_refs(value)
             else:
                 yield from _facts_refs(value)
