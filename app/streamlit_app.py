@@ -233,6 +233,7 @@ def page_assess() -> None:
             if r:
                 st.session_state.live_runs = st.session_state.get("live_runs", 0) + 1
                 st.session_state.last = {"key": key, "result": r}
+                st.rerun()  # redraw so the run counter and the report reflect this run
         last = st.session_state.get("last")
         if last and last["key"] == key:
             show_report(last["result"])
@@ -261,6 +262,7 @@ def page_assess() -> None:
         if r:
             st.session_state.live_runs = st.session_state.get("live_runs", 0) + 1
             st.session_state.last = {"key": key, "result": r, "before": before}
+            st.rerun()
     last = st.session_state.get("last")
     if last and last["key"] == key:
         show_report(last["result"], last.get("before"))

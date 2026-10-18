@@ -43,3 +43,23 @@ def test_app_runs_headless_in_library_mode(monkeypatch):
     at = AppTest.from_file(str(ROOT / "app" / "streamlit_app.py"), default_timeout=60).run()
     assert not at.exception
     assert any("First technical assessment" in t.value for t in at.title)
+
+
+@needs_saved
+def test_live_run_counter_decreases(monkeypatch):
+    """Live mode with the pipeline faked by a saved result: no API call."""
+    from streamlit.testing.v1 import AppTest
+
+    import afs_assistant.pipeline as pipeline
+
+    saved = CaseResult.model_validate_json(SAVED[0].read_text())
+    monkeypatch.setattr(pipeline, "run_case", lambda case_id, enquiry, progress=None: saved)
+    monkeypatch.setenv("LIVE_ENABLED", "true")
+    monkeypatch.setenv("ACCESS_CODE", "test-code")
+    at = AppTest.from_file(str(ROOT / "app" / "streamlit_app.py"), default_timeout=60).run()
+    at.text_input[0].set_value("test-code").run()
+    assert any("3 of 3 live runs left" in c.value for c in at.caption)
+    at.text_area[0].set_value("We want to follow the sugar content of a dark juice concentrate in-line during evaporation.").run()
+    next(b for b in at.button if b.label == "Run assessment").click().run()
+    assert not at.exception
+    assert any("2 of 3 live runs left" in c.value for c in at.caption)
