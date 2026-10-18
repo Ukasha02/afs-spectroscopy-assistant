@@ -53,6 +53,10 @@ def _excerpt(ref: str, quote: str | None) -> str:
     if not chunks:
         return ""
     text = chunks[0].text
+    for marker in ("[Figure/slide content, team transcription]", "[Page content, team transcription]"):
+        if marker in text:  # image-only page: show our transcription, labelled as such
+            text = "Team transcription: " + text.split(marker, 1)[1].strip()
+            break
     if quote:
         pos = match_key(text).find(match_key(quote)[:40])
         if pos > 0:
