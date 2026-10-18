@@ -1,0 +1,22 @@
+[H01] running...
+[H01] premise_not_supported · 104.4s · $0.7154 · flags 0 (before revision 7) · {"citations_verified": 9, "citations_page_only": 7}
+[H02] running...
+[H02] provisional_assessment · 96.8s · $0.3201 · flags 0 (before revision 2) · {"citations_verified": 13, "citations_page_only": 2}
+[H03] running...
+[H03] premise_not_supported · 123.2s · $0.3873 · flags 0 (before revision 5) · {"citations_verified": 11, "citations_page_only": 7}
+[H04] running...
+[H04] premise_not_supported · 122.6s · $0.3651 · flags 0 (before revision 3) · {"citations_verified": 3, "citations_page_only": 17}
+[H05] running...
+[H05] insufficient_information · 96.2s · $0.3060 · flags 0 (before revision 5) · {"citations_verified": 5, "citations_page_only": 14}
+[H06] running...
+[H06] premise_not_supported · 118.6s · $0.3445 · flags 0 (before revision 6) · {"citations_verified": 8, "citations_page_only": 7}
+Spent $19.1639 of $55.00 limit · remaining $35.8361 · 315 calls
+  phase compare: $6.8634
+  phase dev: $0.4285
+  phase final: $2.4914
+  phase final-2: $2.4383
+  phase final-eval: $5.2366
+  phase fixes: $1.7058
+  model claude-haiku-5-5: $0.6007
+  model claude-opus-5-5: $17.4183
+  model claude-sonnet-5-5: $1.1449

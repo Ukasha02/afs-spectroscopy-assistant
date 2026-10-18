@@ -16,97 +16,107 @@
       "enquiry_quote": "want to move the spectrometer out to the control room"
     },
     {
-      "fact": "The client has a leftover chalcogenide infrared fiber cable from an old FTIR project.",
+      "fact": "The client has a chalcogenide infrared fiber cable left over from an old FTIR project.",
       "enquiry_quote": "A chalcogenide infrared fiber cable is left over from an old FTIR project"
-    },
-    {
-      "fact": "The client would like to use the chalcogenide infrared fiber cable as the link to the probe.",
-      "enquiry_quote": "we would like to use it as the link to the probe"
     }
   ],
   "clarification_questions": [
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "What goes wrong today with following the coloured by-product, and what decision should real-time data drive?",
-      "why": "Defines the decision the measurement must support and whether continuous monitoring is needed.",
-      "assumption_if_unanswered": "Decision not defined; the first step is to clarify the control action the data would drive.",
+      "question": "What goes wrong today with the current measurement, and what decision would real-time data from the control room drive?",
+      "why": "Clarifies whether the need is monitoring, control or R&D follow-up, and what the spectrometer relocation must achieve.",
+      "assumption_if_unanswered": "Real-time trend monitoring for operator information; the decision is not yet defined.",
       "answer": null
     },
     {
       "id": "Q2",
       "topic": "target_and_level",
-      "question": "What is the target concentration of the coloured by-product, and at which absorbance wavelength is it measured today?",
-      "why": "Sets whether the target is a trace (ppm) or major (%) component and which spectral range the probe and fiber must transmit.",
-      "assumption_if_unanswered": "Level and wavelength unknown; lab screening establishes the level and the required spectral range.",
+      "question": "Which by-product is measured, at what concentration range, and is its absorbance known at a specific wavelength?",
+      "why": "Determines whether UV/Vis absorbance is selective enough and whether the level is ppm or percent.",
+      "assumption_if_unanswered": "Target level unknown; lab screening establishes whether it is a ppm or percent level and its absorbance band.",
       "answer": null
     },
     {
       "id": "Q3",
       "topic": "sample_form_optics",
-      "question": "Is the fermenter broth clear, turbid, or opaque, and what does it contain besides the coloured by-product, such as cells?",
-      "why": "Determines probe geometry (transmission, transflection, or ATR) and whether scattering affects the absorbance reading.",
-      "assumption_if_unanswered": "Optical properties unknown; a probe geometry cannot be chosen yet, so a lab test on representative broth is needed.",
+      "question": "Is the broth clear, turbid or opaque at the measuring point, and does its colour or cell content change over the run?",
+      "why": "Turbidity and cells scatter light and change the probe geometry and the absorbance signal.",
+      "assumption_if_unanswered": "Broth treated as turbid; a transmission probe would be unsuitable until tested in the lab.",
       "answer": null
     },
     {
       "id": "Q4",
       "topic": "process_conditions",
-      "question": "What are the fermenter conditions at the probe point, including temperature, fouling, and how the probe is cleaned or sterilized?",
-      "why": "Determines probe materials, fouling risk, and whether the fiber and probe can withstand the process environment.",
-      "assumption_if_unanswered": "Process conditions unknown; probe and fiber suitability cannot be judged yet.",
+      "question": "What are the fermenter temperature, pressure and cleaning or sterilization conditions, and does the probe need to withstand steam or CIP?",
+      "why": "Decides the probe materials and whether the fiber and probe can be installed at the vessel.",
+      "assumption_if_unanswered": "Sterilization or CIP exposure unknown; probe robustness to be confirmed before any installation.",
       "answer": null
     },
     {
       "id": "Q5",
       "topic": "installation_distance",
-      "question": "What is the distance from the probe point in the fermenter to the control room, and what fiber type does the current UV/Vis setup use, if any?",
-      "why": "Distance and the existing fiber type decide whether a fiber link is feasible and which fiber must be used for UV/Vis light.",
-      "assumption_if_unanswered": "Distance and current fiber type unknown; the leftover fiber cannot be assessed for reuse until these are known.",
+      "question": "What is the distance from the fermenter probe point to the control room, and where exactly would the probe be installed?",
+      "why": "Sets the required fiber length and whether a silica or other fiber is needed.",
+      "assumption_if_unanswered": "Distance unknown; the fiber length must be confirmed before the link is judged feasible.",
       "answer": null
     },
     {
       "id": "Q6",
-      "topic": "reference_method",
-      "question": "What current reference lab method is used to check the by-product, and what accuracy does it achieve?",
-      "why": "Defines the benchmark the in-line UV/Vis result must match before any sensor decision.",
-      "assumption_if_unanswered": "Reference method and accuracy unknown; a comparison against the lab method must be designed during the trial.",
+      "topic": "installation_distance",
+      "question": "Which wavelength range does the current UV/Vis spectrometer use, and has the chalcogenide fiber's transmission in that range been checked?",
+      "why": "Chalcogenide IR fibers are rated for the mid-IR range, so their transmission in the UV/Vis range must be verified.",
+      "assumption_if_unanswered": "UV/Vis transmission of the chalcogenide fiber is not established; it is not assumed to work until tested.",
       "answer": null
     },
     {
       "id": "Q7",
+      "topic": "reference_method",
+      "question": "What is the current reference lab method for this by-product, and how accurate is it?",
+      "why": "Provides the comparison basis for the lab screening and any in-line trial.",
+      "assumption_if_unanswered": "Reference method unknown; comparison design to be set in the first lab screening.",
+      "answer": null
+    },
+    {
+      "id": "Q8",
       "topic": "requirements",
-      "question": "What accuracy, response time, and budget are required for the in-line measurement?",
-      "why": "Determines whether the remote UV/Vis setup meets the need or whether a different approach is more suitable.",
-      "assumption_if_unanswered": "Requirements not stated; the feasibility plan will be set after the first conversation.",
+      "question": "What accuracy, response time and budget are required for the control-room measurement?",
+      "why": "Determines whether the existing UV/Vis setup with a relocated analyzer is sufficient or a different sensor is needed.",
+      "assumption_if_unanswered": "Requirements unstated; a simple single-method solution is evaluated first.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "premise_not_supported",
-    "status_reason": "Chalcogenide IR fiber does not transmit the UV/Vis range.",
+    "status_reason": "Chalcogenide IR fiber cannot carry UV/Vis light; link must change.",
     "requirements_stated": [
-      "Coloured by-product followed in a fermenter by UV/Vis absorbance",
+      "Coloured by-product followed in a fermenter",
+      "UV/Vis absorbance used today",
       "Spectrometer to move to the control room",
-      "Reuse leftover chalcogenide IR fiber from an FTIR project as link"
+      "Leftover chalcogenide IR fiber (old FTIR project) as link"
     ],
     "key_unknowns": [
-      "By-product identity, level, wavelength",
-      "Broth clarity, cell content",
-      "Link distance",
-      "Reference method, requirements, cleaning or sterilization"
+      "By-product identity, band, level",
+      "Broth turbidity, cell content",
+      "Distance, probe type, sterilization",
+      "Reference method, accuracy, response time"
     ],
     "premise_checks": [
       {
-        "client_claim": "The leftover chalcogenide (CIR) fiber can link the probe to the UV/Vis spectrometer.",
+        "client_claim": "The leftover chalcogenide IR fiber can link the probe to the UV/Vis spectrometer.",
         "verdict": "contradicted",
         "explanation": [
           {
-            "text": "The AFS fiber chart places chalcogenide As-S fibers at 1100–6500 nm and UV-Vis silica fibers at 190–1200 nm, so the CIR fiber cannot carry UV/Vis light.",
+            "text": "Chalcogenide As-S IR fiber transmits from about 1.1 µm upward, so it does not cover the UV/Vis range; UV-Vis silica fiber does.",
             "basis": "sourced",
             "citations": [
               {
                 "ref": "S02 p.6",
+                "quote": "Chalcogenide As-S IR fibers 1100-6500 nm",
+                "url": null
+              },
+              {
+                "ref": "S01 p.5",
                 "quote": null,
                 "url": null
               }
@@ -115,58 +125,64 @@
         ]
       },
       {
-        "client_claim": "A fiber link can bridge the distance from the fermenter to the control room.",
+        "client_claim": "The spectrometer can sit in the control room over a fiber link of the required length.",
         "verdict": "unverifiable",
         "explanation": [
           {
-            "text": "Link length is not stated, so fiber suitability over that distance cannot be confirmed.",
+            "text": "The distance to the control room is not stated, so link suitability over that length cannot be confirmed.",
             "basis": "assumption",
             "citations": []
+          },
+          {
+            "text": "Long silica cables exist for remote process control; UV transmission over the needed length needs AFS confirmation.",
+            "basis": "sourced",
+            "citations": [
+              {
+                "ref": "S02 p.7",
+                "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+                "url": null
+              }
+            ]
           }
         ]
       },
       {
-        "client_claim": "The UV/Vis method keeps its performance after moving the spectrometer.",
+        "client_claim": "UV/Vis absorbance adequately follows the coloured by-product in the broth.",
         "verdict": "plausible_to_be_tested",
         "explanation": [
           {
-            "text": "Fiber optic probes are integrated into reactors and production lines, enabling on-site online analysis and near real-time results.",
+            "text": "UV spectra of mixtures overlap strongly, so chemometric methods are needed for mixture analysis.",
             "basis": "sourced",
             "citations": [
               {
-                "ref": "S01 p.2",
-                "quote": null,
+                "ref": "S01 p.5",
+                "quote": "the strong overlap of spectral signals in UV spectra complicates the analysis of real samples",
                 "url": null
               }
             ]
-          },
-          {
-            "text": "Performance over the new link has not been shown and must be tested.",
-            "basis": "assumption",
-            "citations": []
           }
         ]
       }
     ],
     "report_questions": [
       {
-        "question": "Which by-product, level and wavelength, and which changes must be distinguished?",
+        "question": "Which by-product, at what level, absorbing at which wavelengths?",
         "covers": "measured"
       },
       {
-        "question": "Which reference method, uncertainty and sampling time check the by-product?",
+        "question": "Which reference lab method, uncertainty and sampling timing quantify it?",
         "covers": "reference"
       },
       {
-        "question": "How do broth clarity, cells, bubbles and temperature vary between runs?",
+        "question": "How do turbidity, cell density and broth colour vary within and between runs?",
         "covers": "variation"
       },
       {
-        "question": "What accuracy, response time, sterilization and installation limits apply?",
+        "question": "What distance, probe port, sterilization, accuracy and response time apply?",
         "covers": "requirements"
       },
       {
-        "question": "How far is the control room, and what drives the move?",
+        "question": "What decision should control-room data drive?",
         "covers": "context"
       }
     ],
@@ -178,7 +194,7 @@
         "simplicity_rank": 1,
         "cost_complexity": "low",
         "reason": {
-          "text": "The bioprocess example supports UV transmission or transflection probes for clear, low-OD media.",
+          "text": "The bioprocess example supports this for clear media: \"For highly transparent liquids with low optical density, UV-Transmission or Transflection probes are ideal\".",
           "basis": "sourced",
           "citations": [
             {
@@ -189,32 +205,32 @@
           ]
         },
         "caveat": {
-          "text": "Needs a UV-Vis silica link instead of the CIR cable; overlapping UV signals may need chemometrics.",
+          "text": "Applies only if broth is clear; link must be UV-transmitting silica fiber.",
           "basis": "sourced",
           "citations": [
             {
-              "ref": "S02 p.6",
+              "ref": "S01 p.16",
               "quote": null,
               "url": null
             },
             {
-              "ref": "S01 p.5",
+              "ref": "S02 p.6",
               "quote": null,
               "url": null
             }
           ]
         },
         "confidence": "medium",
-        "confidence_reason": "Method in use; broth optics and link unknown."
+        "confidence_reason": "Client already uses UV/Vis; broth optics, distance and selectivity untested."
       },
       {
-        "method": "UV/Vis absorbance",
+        "method": "UV/Vis absorbance over UV-Vis silica fiber",
         "geometry": "UV-ATR probe",
-        "role": "alternative",
+        "role": "comparison",
         "simplicity_rank": 2,
         "cost_complexity": "average",
         "reason": {
-          "text": "The same example supports UV-ATR for opaque or turbid media.",
+          "text": "For turbid broth: \"In these high -OD scenarios, a UV-ATR (Attenuated Total Reflection) probe is used.\"",
           "basis": "sourced",
           "citations": [
             {
@@ -225,7 +241,7 @@
           ]
         },
         "caveat": {
-          "text": "Only if the broth saturates transmission; UV-ATR is rated low sensitivity.",
+          "text": "The UV/Vis ATR probe is rated low sensitivity and low selectivity.",
           "basis": "sourced",
           "citations": [
             {
@@ -236,120 +252,115 @@
           ]
         },
         "confidence": "low",
-        "confidence_reason": "Broth optical density unknown."
+        "confidence_reason": "Only relevant if broth proves turbid; nothing measured."
       }
     ],
     "method_table_screening": [
-      {
-        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
-        "decision": "recommended",
-        "reason": "Fits current absorbance method in liquid broth."
-      },
-      {
-        "table_row": "UV/Visible spectroscopy / ATR probe",
-        "decision": "alternative",
-        "reason": "Only if broth is too turbid for transmission."
-      },
-      {
-        "table_row": "UV/Visible spectroscopy / cuvette",
-        "decision": "lab_screening_only",
-        "reason": "Lab screening of by-product spectrum."
-      },
       {
         "table_row": "UV/Visible spectroscopy / diffuse reflection probe",
         "decision": "rejected",
         "reason": "Rated for solids and pills, not broth."
       },
       {
+        "table_row": "UV/Visible spectroscopy / transmission or transflection probe",
+        "decision": "recommended",
+        "reason": "Liquid absorbance interface matching the current method if broth is clear."
+      },
+      {
         "table_row": "UV/Visible spectroscopy / probe, lens",
         "decision": "rejected",
-        "reason": "For radiating samples; by-product absorbs."
+        "reason": "For radiating samples; broth is not a light source."
       },
       {
         "table_row": "Fluorimetry / fluorimetric probe",
-        "decision": "rejected",
-        "reason": "No fluorescence of the by-product stated."
+        "decision": "lab_screening_only",
+        "reason": "Only if the by-product proves fluorescent; check in lab."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / cuvette",
+        "decision": "lab_screening_only",
+        "reason": "Offline screening of band and level."
       },
       {
         "table_row": "Fluorimetry / cuvette 90 deg",
-        "decision": "rejected",
-        "reason": "No fluorescent species stated."
-      },
-      {
-        "table_row": "NIR spectroscopy / transmission or transflection probe",
-        "decision": "rejected",
-        "reason": "Colour is an electronic absorption; no reason to change method."
-      },
-      {
-        "table_row": "NIR spectroscopy / diffuse reflection probe",
-        "decision": "rejected",
-        "reason": "No reason to change method."
-      },
-      {
-        "table_row": "NIR spectroscopy / surface at a distance",
-        "decision": "rejected",
-        "reason": "Solid/powder technique."
-      },
-      {
-        "table_row": "NIR spectroscopy / cuvette",
-        "decision": "rejected",
-        "reason": "No reason to change method."
-      },
-      {
-        "table_row": "NIR spectroscopy / integrating sphere",
-        "decision": "rejected",
-        "reason": "Solid/powder lab technique."
-      },
-      {
-        "table_row": "IR spectroscopy / ATR probe*",
-        "decision": "rejected",
-        "reason": "Higher cost; client need is a link, not a new method."
-      },
-      {
-        "table_row": "IR spectroscopy / ATR platform",
-        "decision": "rejected",
-        "reason": "Lab platform, higher cost."
-      },
-      {
-        "table_row": "IR spectroscopy / cuvette",
-        "decision": "rejected",
-        "reason": "No reason to change method."
-      },
-      {
-        "table_row": "IR spectroscopy / sample layer",
-        "decision": "rejected",
-        "reason": "Solid film technique."
+        "decision": "lab_screening_only",
+        "reason": "Offline check for fluorescence of the by-product."
       },
       {
         "table_row": "IR spectroscopy / sample surface",
         "decision": "rejected",
-        "reason": "Solid technique."
+        "reason": "Solid samples; no need shown."
+      },
+      {
+        "table_row": "NIR spectroscopy / transmission or transflection probe",
+        "decision": "rejected",
+        "reason": "No indication colour is visible in NIR; UV/Vis is simpler."
+      },
+      {
+        "table_row": "NIR spectroscopy / diffuse reflection probe",
+        "decision": "rejected",
+        "reason": "No reason to leave the working UV/Vis method."
+      },
+      {
+        "table_row": "NIR spectroscopy / surface at a distance",
+        "decision": "rejected",
+        "reason": "Solids and powders; not broth."
+      },
+      {
+        "table_row": "UV/Visible spectroscopy / ATR probe",
+        "decision": "alternative",
+        "reason": "Option if broth is turbid or opaque."
+      },
+      {
+        "table_row": "IR spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "No need for mid-IR for a coloured target."
+      },
+      {
+        "table_row": "IR spectroscopy / sample layer",
+        "decision": "rejected",
+        "reason": "Solid films; not applicable."
+      },
+      {
+        "table_row": "NIR spectroscopy / cuvette",
+        "decision": "rejected",
+        "reason": "No need shown for NIR."
+      },
+      {
+        "table_row": "NIR spectroscopy / integrating sphere",
+        "decision": "rejected",
+        "reason": "Solids and powders; not applicable."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR platform",
+        "decision": "rejected",
+        "reason": "Offline, high cost; not needed."
+      },
+      {
+        "table_row": "IR spectroscopy / ATR probe*",
+        "decision": "rejected",
+        "reason": "Would suit the CIR fiber but is a different, costlier method without stated need."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
         "decision": "rejected",
-        "reason": "High cost; not justified for a coloured absorber."
+        "reason": "High cost; no need shown beyond UV/Vis."
       },
       {
         "table_row": "Raman spectroscopy / cuvette 90 deg",
         "decision": "rejected",
-        "reason": "High cost; not justified."
+        "reason": "Offline, high cost; not needed."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "UV/Vis transmission or transflection probe in the broth; UV-ATR only if too opaque.",
+          "text": "UV/Vis transmission or transflection probe if broth is clear; UV-ATR probe if turbid.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 Table 1 (p.6)",
-              "quote": null,
-              "url": null
-            },
-            {
-              "ref": "S01 p.16",
               "quote": null,
               "url": null
             }
@@ -357,7 +368,7 @@
         },
         {
           "aspect": "location",
-          "text": "Probe in the fermenter, spectrometer in the control room.",
+          "text": "Probe in the fermenter; spectrometer in the control room, as requested.",
           "basis": "client_fact",
           "citations": []
         },
@@ -379,22 +390,22 @@
           ]
         }
       ],
-      "fiber_family": "UV-Vis silica fiber (client CIR cable not suitable)",
+      "fiber_family": "UV-Vis silica fiber (client's chalcogenide IR fiber unsuitable)",
       "fiber_compatible": false,
       "architecture": "undecided",
       "needs_afs_confirmation": [
-        "UV-Vis fiber over link length",
-        "Probe sterilization compatibility",
-        "Probe path length"
+        "Probe type and geometry",
+        "Fiber length, UV loss",
+        "Sterilizable installation"
       ]
     },
     "spectral_ranges": [
       {
         "method": "UV/Vis absorbance",
-        "nominal_range": "UV 190–360 nm and visible; depends on target and setup",
+        "nominal_range": "UV 190-360 nm and visible; depends on target and setup",
         "citation": {
           "ref": "S01 p.5",
-          "quote": null,
+          "quote": "especially in the UV region (190-360 nm)",
           "url": null
         },
         "note": null
@@ -403,7 +414,7 @@
     "risks": [
       {
         "category": "fiber_link",
-        "text": "The CIR cable cannot carry UV/Vis; link length is unknown.",
+        "text": "Chalcogenide fiber cannot carry UV/Vis; link length unknown.",
         "basis": "sourced",
         "citations": [
           {
@@ -414,14 +425,8 @@
         ]
       },
       {
-        "category": "physical_variation",
-        "text": "Cell turbidity may raise absorbance and mimic the by-product.",
-        "basis": "general_knowledge",
-        "citations": []
-      },
-      {
         "category": "calibration_validity",
-        "text": "Overlapping UV signals need chemometrics; calibration validity under broth changes must be verified.",
+        "text": "Changing broth composition and overlapping UV signals can invalidate a calibration.",
         "basis": "sourced",
         "citations": [
           {
@@ -432,8 +437,20 @@
         ]
       },
       {
+        "category": "physical_variation",
+        "text": "Cell turbidity can saturate a standard transmission setup.",
+        "basis": "sourced",
+        "citations": [
+          {
+            "ref": "S01 p.16",
+            "quote": "the signal in a standard transmission setup becomes saturated because the light cannot penetrate the bulk of the sample",
+            "url": null
+          }
+        ]
+      },
+      {
         "category": "no_guaranteed_gain",
-        "text": "Moving the spectrometer does not guarantee equal performance.",
+        "text": "Relocation may not preserve current signal quality.",
         "basis": "assumption",
         "citations": []
       },
@@ -445,41 +462,42 @@
       }
     ],
     "assumptions": [
-      "The by-product absorbs in the UV/Vis range used today.",
-      "The broth is liquid and accessible to an immersion probe."
+      "Broth treated as possibly turbid until tested",
+      "Real-time trend monitoring is the goal",
+      "Existing spectrometer can couple to a silica fiber probe"
     ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "representative_samples",
-          "text": "Collect broth samples across the agreed by-product range, growth stages and turbidity variation.",
+          "text": "Collect broth samples across the client-agreed by-product range, run phases and turbidity variation.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record spectra through a UV-Vis silica link with time-aligned lab reference results.",
+          "text": "Record UV/Vis spectra via transmission and UV-ATR over silica fiber, with time-aligned reference lab results.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "models_and_validation",
-          "text": "Build a single-method model per probe geometry; validate on held-out fermentation runs.",
+          "text": "Build single-method models per geometry; validate on held-out fermentation runs.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "comparison",
-          "text": "Compare prediction error, bias and ability to follow changes against the client's requirements.",
+          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
           "basis": "proposal",
           "citations": []
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "Link, broth optics and requirements must be clarified first."
+      "afs_next_path_reason": "Target, broth optics and requirements are not yet known."
     },
     "decision_basis": {
-      "text": "Agree numerical acceptance criteria with the client beforehand; choose the simplest configuration meeting them on independent runs.",
+      "text": "Agree numerical acceptance criteria with the client beforehand; choose the simplest probe and fiber link meeting them on independent runs.",
       "basis": "proposal",
       "citations": []
     }
@@ -489,16 +507,30 @@
       {
         "path": "premise_checks[0].explanation[0].citations[0]",
         "ref": "S02 p.6",
+        "quote": "Chalcogenide As-S IR fibers 1100-6500 nm",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
+        "path": "premise_checks[0].explanation[0].citations[1]",
+        "ref": "S01 p.5",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
+        "path": "premise_checks[1].explanation[1].citations[0]",
+        "ref": "S02 p.7",
+        "quote": "Robust 100-300m cables made with Silica fibers of low OH-content (<0.1ppm OH) enable remote industrial process-control",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
         "path": "premise_checks[2].explanation[0].citations[0]",
-        "ref": "S01 p.2",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "ref": "S01 p.5",
+        "quote": "the strong overlap of spectral signals in UV spectra complicates the analysis of real samples",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[0].reason.citations[0]",
@@ -509,14 +541,14 @@
       },
       {
         "path": "recommendations[0].caveat.citations[0]",
-        "ref": "S02 p.6",
+        "ref": "S01 p.16",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
         "path": "recommendations[0].caveat.citations[1]",
-        "ref": "S01 p.5",
+        "ref": "S02 p.6",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -543,13 +575,6 @@
         "score": null
       },
       {
-        "path": "measurement_concept.items[0].citations[1]",
-        "ref": "S01 p.16",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
         "path": "measurement_concept.items[2].citations[0]",
         "ref": "S02 p.6",
         "quote": null,
@@ -571,41 +596,48 @@
         "score": null
       },
       {
-        "path": "risks[2].citations[0]",
+        "path": "risks[1].citations[0]",
         "ref": "S01 p.5",
         "quote": null,
         "status": "page_only",
         "score": null
       },
       {
+        "path": "risks[2].citations[0]",
+        "ref": "S01 p.16",
+        "quote": "the signal in a standard transmission setup becomes saturated because the light cannot penetrate the bulk of the sample",
+        "status": "verified",
+        "score": 100.0
+      },
+      {
         "path": "spectral_ranges[0].citation",
         "ref": "S01 p.5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "quote": "especially in the UV region (190-360 nm)",
+        "status": "verified",
+        "score": 100.0
       }
     ],
     "flags": [],
     "counts": {
-      "citations_page_only": 12,
-      "citations_verified": 2
+      "citations_verified": 7,
+      "citations_page_only": 9
     },
     "revised": true,
     "flags_before_revision": [
       {
         "path": "premise_checks[2].explanation[0]",
         "kind": "context",
-        "detail": "not_supported: S01 p.2 says fiber optic probes are integrated into reactors and production lines for online analysis. It says nothing about testing performance over a new link, so the claim's added requirement is not in the cited page. Fix: Keep only the supported statement: fiber optic probes are integrated into reactors and production lines, enabling on-site online analysis and near real-time results."
+        "detail": "not_supported: S01 p.5 says UV spectra overlap strongly and that chemometric algorithms are needed for mixture analysis. It does not say that selectivity in broth must be checked against a reference. Fix: Restate as: UV spectra of mixtures overlap strongly, so chemometric methods are needed for mixture analysis (S01 p.5)."
       },
       {
-        "path": "risks[1]",
+        "path": "recommendations[1].caveat",
         "kind": "context",
-        "detail": "not_supported: S01 p.16 says cell suspension turbidity correlates with cell density, which is why UV/Vis can monitor biomass. It does not say turbidity can mimic by-product absorbance. Fix: Rephrase as a general risk that not cited to S01 p.16, or cite a source that discusses turbidity interference with absorbance measurements."
+        "detail": "not_supported: The rating that the UV/Vis ATR probe has low sensitivity is supported by S01 Table 1 (TABLE:r14). The cited pages say nothing about fouling or sterilization compatibility, so the requirement to test those is not supported. Fix: Keep the low-sensitivity rating from S01 Table 1 (TABLE:r14) and drop the fouling and sterilization requirement, or attribute it to the team's own judgement rather than to the source pages."
       },
       {
         "path": "risks[2]",
         "kind": "context",
-        "detail": "not_supported: S01 p.5 says strong overlap of UV spectral signals complicates analysis of real samples and makes chemometric algorithms necessary. It does not state that a change in broth can invalidate a calibration. Fix: Limit the statement to: overlapping UV spectral signals complicate analysis and require chemometric algorithms; calibration validity under broth changes needs to be verified separately."
+        "detail": "not_supported: S01 p.16 supports that turbid or highly concentrated media saturate a standard transmission setup. It does not say that turbidity mimics absorbance changes. Fix: Restate as: Cell turbidity can saturate a standard transmission setup because light cannot penetrate the bulk of the sample (S01 p.16)."
       }
     ]
   },
@@ -682,7 +714,7 @@
     }
   ],
   "extraction": {
-    "summary": "The client wants to move a UV/Vis absorbance spectrometer used to follow a coloured by-product in a fermenter out to the control room, using a leftover chalcogenide infrared fiber cable as the link to the probe.",
+    "summary": "The client wants to move an existing UV/Vis absorbance spectrometer out to the control room and link the probe via a leftover chalcogenide infrared fiber, to follow a coloured by-product in a fermenter.",
     "stated_facts": [
       {
         "fact": "The client follows a coloured by-product in a fermenter.",
@@ -697,28 +729,24 @@
         "enquiry_quote": "want to move the spectrometer out to the control room"
       },
       {
-        "fact": "The client has a leftover chalcogenide infrared fiber cable from an old FTIR project.",
+        "fact": "The client has a chalcogenide infrared fiber cable left over from an old FTIR project.",
         "enquiry_quote": "A chalcogenide infrared fiber cable is left over from an old FTIR project"
-      },
-      {
-        "fact": "The client would like to use the chalcogenide infrared fiber cable as the link to the probe.",
-        "enquiry_quote": "we would like to use it as the link to the probe"
       }
     ],
     "targets": [
-      "coloured by-product"
+      "coloured by-product in a fermenter"
     ],
-    "sample_description": "Coloured by-product in a fermenter broth; physical form not stated.",
+    "sample_description": "Fermenter broth containing a coloured by-product (as stated).",
     "sample_state": "unknown",
     "process_context": "unknown",
     "conditions": [],
-    "measurement_location": "fermenter",
+    "measurement_location": "fermenter (probe location implied); analyzer intended in control room",
     "remote_measurement": true,
     "contact_with_sample": "unknown",
     "analyzer_distance": null,
     "existing_equipment": [
       "UV/Vis absorbance spectrometer",
-      "chalcogenide infrared fiber cable from an old FTIR project"
+      "chalcogenide infrared fiber cable (left over from old FTIR project)"
     ],
     "methods_mentioned": [
       "UVVIS"
@@ -728,25 +756,26 @@
     ],
     "client_premises": [
       {
-        "claim": "A chalcogenide infrared fiber cable can serve as the link between the probe and a UV/Vis spectrometer in the control room.",
+        "claim": "A chalcogenide infrared fiber can serve as the link between the probe and a UV/Vis spectrometer in the control room.",
         "enquiry_quote": "we would like to use it as the link to the probe"
       },
       {
-        "claim": "The existing UV/Vis absorbance method can be moved to the control room with the same measurement performance.",
-        "enquiry_quote": "want to move the spectrometer out to the control room"
+        "claim": "The leftover chalcogenide IR fiber is suitable for the planned UV/Vis measurement.",
+        "enquiry_quote": "A chalcogenide infrared fiber cable is left over from an old FTIR project, and we would like to use it as the link to the probe"
       }
     ],
-    "requested_decision": "Decide whether the spectrometer can be moved to the control room with the leftover chalcogenide infrared fiber as the probe link.",
+    "requested_decision": "Whether the existing UV/Vis absorbance setup can be moved to the control room with the leftover chalcogenide IR fiber as the probe link.",
     "unknowns": [
-      "Target concentration and level of the coloured by-product (ppm or %)",
-      "Absorbance wavelength currently used and its spectral range",
-      "Physical state and clarity of the fermenter broth (clear, turbid, opaque)",
-      "Process conditions such as temperature, fouling, and probe cleaning or sterilization",
-      "Distance between the fermenter probe point and the control room",
-      "Fiber type currently used in the UV/Vis link, if any",
+      "Fiber wavelength transmission in the UV/Vis range (chalcogenide IR fiber range is stated for the mid-IR, not UV/Vis)",
+      "Fiber length and connector compatibility",
+      "Probe type and geometry",
+      "Target analyte concentration and level",
+      "Broth optical properties (turbidity, opacity)",
+      "Fermenter temperature, sterilization or cleaning conditions",
+      "Distance between fermenter and control room",
       "Current reference lab method and its accuracy",
-      "Required accuracy, response time, and budget",
-      "Whether the fermenter is a production, pilot, or research setting"
+      "Response time and accuracy requirements",
+      "Whether the by-product is a defined absorber"
     ]
   },
   "pre_analysis": {
@@ -1063,11 +1092,11 @@
       "Link length / distance to the analyzer is not stated: fiber suitability over that distance cannot be confirmed."
     ],
     "rule_hints": [
-      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
-      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1; DOCX §5]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [guidance]",
+      "fiber_limits_wavelength: The fiber determines which wavelengths reach the probe. Silica fibers transmit up to about 2.4 um and cannot carry mid-IR; mid-IR needs chalcogenide, polycrystalline or hollow-waveguide fibers. [S02 p.6; S04 p.1]",
       "remote_measurement_nir_silica: NIR works with standard glass optics and silica fibers, which suits remote online measurement; robust silica cables of 100-300 m exist. [S01 p.5; S02 p.7]",
-      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]",
-      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [DOCX §3]"
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [guidance]",
+      "insufficient_information_is_valid: If the known facts cannot justify a method choice, say so, ask the deciding questions and propose the next step. [guidance]"
     ],
     "required_risk_categories": [
       "calibration_validity",
@@ -1077,87 +1106,87 @@
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.7.0",
+    "pipeline_version": "0.8.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-18T10:33:12.965955+00:00",
+        "timestamp": "2026-10-18T11:27:01.422922+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 13.4,
+        "duration_s": 10.5,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 116,
-          "output_tokens": 3093,
-          "cache_read_input_tokens": 10425,
+          "output_tokens": 2037,
+          "cache_read_input_tokens": 10363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001662
+        "cost_usd": 0.001134
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-18T10:33:27.323763+00:00",
+        "timestamp": "2026-10-18T11:27:12.906993+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 37.7,
+        "duration_s": 46.4,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 11078,
-          "output_tokens": 4395,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 11171,
+          "output_tokens": 5393,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.149095
+        "cost_usd": 0.169179
       },
       {
-        "claims_checked": 11,
+        "claims_checked": 12,
         "stage": "critic",
-        "timestamp": "2026-10-18T10:34:05.109956+00:00",
+        "timestamp": "2026-10-18T11:27:59.311555+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 6.2,
+        "duration_s": 8.0,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 7794,
-          "output_tokens": 1262,
-          "cache_read_input_tokens": 744,
+          "input_tokens": 7177,
+          "output_tokens": 1874,
+          "cache_read_input_tokens": 794,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001418
+        "cost_usd": 0.001663
       },
       {
         "flags_sent": 4,
         "stage": "revise",
-        "timestamp": "2026-10-18T10:34:11.345023+00:00",
+        "timestamp": "2026-10-18T11:28:07.355226+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 42.6,
+        "duration_s": 46.1,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 9445,
-          "output_tokens": 5928,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 9782,
+          "output_tokens": 6249,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.173223
+        "cost_usd": 0.180743
       }
     ],
-    "prompt_hash": "64053030c027",
-    "git_commit": "b5d8388",
-    "timestamp": "2026-10-18T10:33:27.306136+00:00",
-    "duration_s": 100.2,
-    "cost_usd": 0.3254
+    "prompt_hash": "910b15464e48",
+    "git_commit": "d70634c",
+    "timestamp": "2026-10-18T11:27:12.889579+00:00",
+    "duration_s": 111.1,
+    "cost_usd": 0.3527
   }
 }

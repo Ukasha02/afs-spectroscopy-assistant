@@ -8,19 +8,15 @@
       "enquiry_quote": "We manufacture tablets from a powder blend containing an active pharmaceutical ingredient and excipients."
     },
     {
-      "fact": "Laboratory checks indicate whether the blend is on target.",
+      "fact": "Laboratory checks indicate whether the blend is on target, but results arrive after the material has moved through the press.",
       "enquiry_quote": "Laboratory checks tell us whether the blend is on target, but results arrive after the material has moved through the press."
-    },
-    {
-      "fact": "Lab results arrive only after the material has moved through the press.",
-      "enquiry_quote": "results arrive after the material has moved through the press"
     },
     {
       "fact": "The client wants to assess whether a fiber-based measurement in the feed frame could follow API concentration changes.",
       "enquiry_quote": "We want to assess whether a fiber based measurement in the feed frame could follow API concentration changes."
     },
     {
-      "fact": "The first step is a pilot comparing reasonable measurement options before production equipment is committed.",
+      "fact": "The client plans a first pilot comparing reasonable measurement options before committing to production equipment.",
       "enquiry_quote": "Our first pilot should compare reasonable measurement options before we commit to production equipment."
     }
   ],
@@ -28,89 +24,89 @@
     {
       "id": "Q1",
       "topic": "pain_goal",
-      "question": "What goes wrong today when the blend drifts from target, and which decision should real-time data drive: feed adjustment, batch release, or stopping the press?",
-      "why": "Defines the decision the sensor must support and therefore the required response time.",
-      "assumption_if_unanswered": "Decision unknown; the pilot will assume feed-frame adjustment is the target decision until confirmed.",
+      "question": "What goes wrong today when the blend drifts off target, and what decision would real-time API data drive in the feed frame (for example, adjusting feed, diverting material, or stopping the press)?",
+      "why": "Defines the decision the measurement must support and therefore the required speed and accuracy.",
+      "assumption_if_unanswered": "Decision unknown; the pilot assumes real-time data is needed to support process adjustment, to be confirmed.",
       "answer": null
     },
     {
       "id": "Q2",
       "topic": "target_and_level",
-      "question": "What is the API concentration target and the acceptable deviation, and is the API present at trace (ppm) or bulk (%) level in the blend?",
-      "why": "Concentration level determines whether the method needs to be sensitive or only selective for a major component.",
-      "assumption_if_unanswered": "Level unknown; lab screening establishes whether it is ppm or % level.",
+      "question": "Which API is it, what is its target concentration in the blend, and what variation around that target is acceptable?",
+      "why": "Determines whether the API is a major or trace component, which affects the choice of spectral method and detection limits.",
+      "assumption_if_unanswered": "API level unknown; lab screening establishes whether it is ppm or % level before any method is chosen.",
       "answer": null
     },
     {
       "id": "Q3",
       "topic": "sample_form_optics",
-      "question": "What are the particle size range, bulk density and optical appearance of the blend, and does it change between batches?",
-      "why": "Scattering and particle size strongly affect diffuse reflection signals and calibration transfer.",
-      "assumption_if_unanswered": "Powder with unknown scattering behaviour; lab screening on representative samples establishes the optical properties.",
+      "question": "How do the blend's particle size, bulk density and excipient composition vary, and does the blend flow through the feed frame as a free-flowing powder or with clumping?",
+      "why": "Powder physics (scattering, particle size) strongly affects diffuse reflection signals and calibration transfer.",
+      "assumption_if_unanswered": "Particle size and flow behaviour unknown; lab screening on representative samples will characterise them.",
       "answer": null
     },
     {
       "id": "Q4",
       "topic": "process_conditions",
-      "question": "How does the blend vary in the feed frame over time (segregation, moisture, flow, vibration, temperature), and what cleaning or contamination occurs there?",
-      "why": "Physical variation changes the spectral signal and determines probe placement, fouling risk and robustness.",
-      "assumption_if_unanswered": "Variation unknown; the trial must record process variables alongside spectra.",
+      "question": "What are the feed frame conditions: temperature, humidity, dust level, and the cleaning or changeover procedure that the probe would have to tolerate?",
+      "why": "Determines probe materials, sealing and cleaning compatibility for the in-line trial.",
+      "assumption_if_unanswered": "Conditions unknown; the pilot assumes a standard powder processing environment to be verified on site.",
       "answer": null
     },
     {
       "id": "Q5",
       "topic": "installation_distance",
-      "question": "Where exactly could the probe sit in the feed frame, can it be mounted with access and without contact with the powder, and what is the distance to any analyzer?",
-      "why": "Determines probe geometry (diffuse reflection or other) and whether a fiber link and remote analyzer are feasible.",
-      "assumption_if_unanswered": "Mounting point and distance unknown; the feasibility check starts with a short fiber link at the feed frame.",
+      "question": "Where could a probe be mounted in the feed frame, what access is available, and how far is the analyzer from that point? Are any fibers already installed?",
+      "why": "Decides probe geometry, fiber type and whether a remote analyzer is feasible.",
+      "assumption_if_unanswered": "Mounting point and distance unknown; the pilot assumes a short distance to be verified during a site visit.",
       "answer": null
     },
     {
       "id": "Q6",
-      "topic": "installation_distance",
-      "question": "Do you already have any optical fibers, spectrometers or PAT equipment at the press that the pilot should reuse?",
-      "why": "Reuse of existing hardware changes cost and might constrain the wavelength range and fiber type.",
-      "assumption_if_unanswered": "No existing equipment assumed; reuse would need to be verified for wavelength range and fiber compatibility.",
+      "topic": "reference_method",
+      "question": "What is the current laboratory reference method for API content, how often are samples taken, and what accuracy and precision does it achieve?",
+      "why": "A time-aligned reference is needed to build and judge any calibration, and sets the benchmark for the pilot comparison.",
+      "assumption_if_unanswered": "Reference method and accuracy unknown; the pilot requires the existing lab method to be documented before calibration.",
       "answer": null
     },
     {
       "id": "Q7",
       "topic": "reference_method",
-      "question": "What is the current laboratory reference method for API content, its accuracy and its turnaround time, and how many reference samples can be taken during a pilot?",
-      "why": "The reference method defines the calibration and the accuracy the fiber method must be compared against.",
-      "assumption_if_unanswered": "Reference method and accuracy unknown; the pilot requires a reference method before any model is built.",
+      "question": "Can blend samples be taken from the feed frame at the same time as the optical measurements, and how is sampling time-aligned with the material movement through the press?",
+      "why": "Spectra and reference samples must be time-aligned for valid calibration and validation.",
+      "assumption_if_unanswered": "Sampling alignment unknown; the pilot plan assumes manual sampling with recorded timestamps.",
       "answer": null
     },
     {
       "id": "Q8",
       "topic": "requirements",
-      "question": "What accuracy, response time and budget are required for the in-line measurement, and what is the planned timeline for committing to production equipment?",
-      "why": "These constraints decide which single method is adequate and whether a combined method is justified.",
-      "assumption_if_unanswered": "Requirements unknown; the pilot will start with the simplest single-method comparison before any combination.",
+      "question": "What response time is needed for the API measurement to be useful for control, and what is the budget range for the pilot and later production equipment?",
+      "why": "Response time and budget decide whether a full-spectrum system, a few-wavelength sensor or a lab-based comparison is appropriate.",
+      "assumption_if_unanswered": "Response time and budget unknown; the pilot compares options without committing to a production architecture.",
       "answer": null
     },
     {
       "id": "Q9",
       "topic": "requirements",
-      "question": "Which measurement options are you already considering, and are there regulatory or validation requirements for the feed-frame measurement in your facility?",
-      "why": "Clarifies the options to compare in the pilot and any compliance constraints that affect method choice and validation.",
-      "assumption_if_unanswered": "No preferred option stated; the pilot compares a small set of methods chosen by AFS, starting with the simplest.",
+      "question": "Are there regulatory or GMP requirements for in-process measurement, data integrity and validation that the pilot must meet?",
+      "why": "Regulatory constraints determine documentation, validation effort and acceptable equipment for production use.",
+      "assumption_if_unanswered": "Regulatory requirements unknown; the pilot is treated as a research comparison until requirements are confirmed.",
       "answer": null
     }
   ],
   "assessment": {
     "decision_status": "provisional_assessment",
-    "status_reason": "Target and matrix defined; levels, limits and installation remain open.",
+    "status_reason": "Target and matrix are defined; API level, limits and reference details are open.",
     "requirements_stated": [
-      "Tablets from API–excipient powder blend; API concentration is the target",
-      "Lab checks report after material passes the press",
-      "Assess fiber measurement in the feed frame",
-      "Pilot compares options first"
+      "Tablets from an API and excipient powder blend.",
+      "Lab results arrive after material passes the press.",
+      "Follow API concentration changes in the feed frame via fiber.",
+      "Pilot compares options before buying production equipment."
     ],
     "key_unknowns": [
-      "API level and tolerance",
+      "API, excipients, target level, limits",
       "Reference assay, uncertainty, timing",
-      "Batch-to-batch blend variation",
+      "Blend physical variation",
       "Response time, access, cleaning"
     ],
     "premise_checks": [
@@ -119,23 +115,29 @@
         "verdict": "plausible_to_be_tested",
         "explanation": [
           {
-            "text": "NIR reflection and Raman probes are described in a tablet press feed frame for blend potency.",
+            "text": "A published feed frame example measured blend potency with fiber probes, but it is a reason to test, not proof for this blend.",
             "basis": "sourced",
             "citations": [
               {
                 "ref": "S01 p.15",
-                "quote": "the probes are inserted directly into the process environment, such as the feed frame of a rotary tablet press",
+                "quote": "As the powder blend passes the probe tip, the system captures spectra at high speeds without interrupting the production flow.",
                 "url": null
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "client_claim": "A pilot should compare measurement options before production equipment is chosen.",
+        "verdict": "supported",
+        "explanation": [
           {
-            "text": "An application example is a reason to test, not proof for this blend.",
+            "text": "The AFS pathway starts with multi-method trials on the customer process before a solution is chosen.",
             "basis": "sourced",
             "citations": [
               {
-                "ref": "DOCX §3",
-                "quote": null,
+                "ref": "S02 p.3",
+                "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
                 "url": null
               }
             ]
@@ -145,23 +147,23 @@
     ],
     "report_questions": [
       {
-        "question": "Which API, excipients, API range and deviations must be detected?",
+        "question": "Which API, excipients and target range, and which changes must be detected?",
         "covers": "measured"
       },
       {
-        "question": "Which reference assay, uncertainty and sampling timing apply?",
+        "question": "Which assay gives reference values, with what uncertainty and sampling time?",
         "covers": "reference"
       },
       {
-        "question": "How do particle size, density, moisture and flow vary between batches?",
+        "question": "How do particle size, density, lots and flow vary between batches?",
         "covers": "variation"
       },
       {
-        "question": "What response time, limits, mounting and cleaning constraints apply?",
+        "question": "What response time, limits, probe access and cleaning constraints apply?",
         "covers": "requirements"
       },
       {
-        "question": "Which decision should the data drive, and which budget constraints exist?",
+        "question": "Which decision would real-time API data drive?",
         "covers": "context"
       }
     ],
@@ -173,7 +175,7 @@
         "simplicity_rank": 1,
         "cost_complexity": "average",
         "reason": {
-          "text": "The feed-frame potency example uses an NIR reflection probe.",
+          "text": "A published feed frame study on a different blend used an NIR reflection probe.",
           "basis": "sourced",
           "citations": [
             {
@@ -184,18 +186,18 @@
           ]
         },
         "caveat": {
-          "text": "Overlapping bands suggest chemometrics; a blend-specific calibration would need building and testing.",
+          "text": "A chemometric calibration must be built and tested on this blend.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 p.10",
-              "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
+              "quote": null,
               "url": null
             }
           ]
         },
         "confidence": "medium",
-        "confidence_reason": "Same application type is described, but nothing is measured on this blend."
+        "confidence_reason": "Same application type published; nothing measured on this blend."
       },
       {
         "method": "Raman spectroscopy",
@@ -204,7 +206,7 @@
         "simplicity_rank": 2,
         "cost_complexity": "high",
         "reason": {
-          "text": "The same example uses a Raman contact probe.",
+          "text": "The same published study used a Raman contact probe; comparison candidate.",
           "basis": "sourced",
           "citations": [
             {
@@ -215,27 +217,32 @@
           ]
         },
         "caveat": {
-          "text": "Fluorescence background can swamp the weak Raman signal; check signal quality first.",
+          "text": "Check fluorescence background and weak signal; cost is rated high.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S01 p.11",
               "quote": null,
               "url": null
+            },
+            {
+              "ref": "S01 Table 1 (p.6)",
+              "quote": null,
+              "url": null
             }
           ]
         },
         "confidence": "medium",
-        "confidence_reason": "Comparison candidate in the same application; signal quality unknown."
+        "confidence_reason": "Same application type published; signal quality unknown."
       },
       {
         "method": "NIR + Raman",
-        "geometry": "two probes or combi probe at the same spot",
+        "geometry": "combined probe at one spot",
         "role": "combination",
         "simplicity_rank": 3,
         "cost_complexity": "high",
         "reason": {
-          "text": "For feed-frame blends, NIR and Raman capture complementary chemical information.",
+          "text": "That study reports complementary information from NIR and Raman.",
           "basis": "sourced",
           "citations": [
             {
@@ -246,47 +253,41 @@
           ]
         },
         "caveat": {
-          "text": "Only after each method is assessed alone; the gain is a hypothesis to test.",
-          "basis": "sourced",
-          "citations": [
-            {
-              "ref": "DOCX §5",
-              "quote": null,
-              "url": null
-            }
-          ]
+          "text": "Only after each method is assessed alone; any gain is a hypothesis to test.",
+          "basis": "proposal",
+          "citations": []
         },
         "confidence": "low",
-        "confidence_reason": "Depends on both single-method results, which do not yet exist."
+        "confidence_reason": "Depends on both single-method results."
       }
     ],
     "method_table_screening": [
       {
         "table_row": "NIR spectroscopy / diffuse reflection probe",
         "decision": "recommended",
-        "reason": "Rated for scattering media and powders; matches the feed-frame example."
+        "reason": "Powder interface matching the published feed frame example."
       },
       {
         "table_row": "NIR spectroscopy / surface at a distance",
         "decision": "alternative",
-        "reason": "Non-contact option, relevant only if probe contact with the powder is a problem."
+        "reason": "Only if probe contact or fouling proves a problem."
       },
       {
         "table_row": "NIR spectroscopy / integrating sphere",
         "decision": "lab_screening_only",
-        "reason": "Lab or offline technique; useful for screening representative blends, not in-line."
+        "reason": "Offline technique for lab screening of blend samples."
       },
       {
         "table_row": "Raman spectroscopy / Raman probe",
         "decision": "recommended",
-        "reason": "Rated for powders with high selectivity; comparison candidate despite high cost."
+        "reason": "Comparison candidate for powders; high selectivity, high cost."
       }
     ],
     "measurement_concept": {
       "items": [
         {
           "aspect": "interface",
-          "text": "NIR diffuse reflection and Raman probes, both rated for powders.",
+          "text": "Table 1 lists powder among sample types for the NIR diffuse reflection probe and the Raman probe.",
           "basis": "sourced",
           "citations": [
             {
@@ -298,45 +299,35 @@
         },
         {
           "aspect": "location",
-          "text": "In the feed frame where the blend passes the probe; mounting point to be agreed.",
+          "text": "Feed frame of the tablet press, as the client stated.",
           "basis": "client_fact",
           "citations": []
         },
         {
           "aspect": "fiber_link",
-          "text": "No fiber link stated. Rule check: NIR: Vis-NIR silica partial (0.78-2.4 um); RAMAN: Vis-NIR silica covers the nominal range.",
+          "text": "No fiber link stated; silica fibers suit UV/Vis, NIR and Raman, while MIR needs IR fibers.",
           "basis": "sourced",
           "citations": [
             {
               "ref": "S02 p.6",
               "quote": null,
               "url": null
-            },
-            {
-              "ref": "S01 p.10",
-              "quote": null,
-              "url": null
-            },
-            {
-              "ref": "S01 p.11",
-              "quote": null,
-              "url": null
             }
           ]
         }
       ],
-      "fiber_family": "Silica expected; link undefined",
+      "fiber_family": "silica fibers expected for NIR and Raman; link not yet defined",
       "fiber_compatible": null,
       "architecture": "undecided",
       "needs_afs_confirmation": [
-        "Probe type and window",
-        "Feed-frame installation",
-        "Optical configuration"
+        "probe type",
+        "feed frame installation",
+        "optical configuration"
       ]
     },
     "spectral_ranges": [
       {
-        "method": "NIR spectroscopy",
+        "method": "NIR",
         "nominal_range": "780–2500 nm",
         "citation": {
           "ref": "S01 p.10",
@@ -346,109 +337,84 @@
         "note": null
       },
       {
-        "method": "Raman spectroscopy",
-        "nominal_range": "Raman shift (cm-1)",
+        "method": "Raman",
+        "nominal_range": "Raman shift (cm-1); signal 400–1100 nm",
         "citation": {
           "ref": "S01 p.11",
           "quote": null,
           "url": null
         },
-        "note": "Excitation separate; feed-frame example used 785 nm."
+        "note": "Excitation wavelength stated separately; to be selected."
       }
     ],
     "risks": [
       {
         "category": "calibration_validity",
-        "text": "Formulation changes can invalidate a calibration.",
-        "basis": "sourced",
-        "citations": [
-          {
-            "ref": "DOCX §5",
-            "quote": null,
-            "url": null
-          }
-        ]
+        "text": "API, excipient or formulation changes can invalidate a calibration.",
+        "basis": "general_knowledge",
+        "citations": []
       },
       {
         "category": "physical_variation",
-        "text": "Particle size, density or flow changes can mimic composition.",
-        "basis": "sourced",
-        "citations": [
-          {
-            "ref": "DOCX §5",
-            "quote": null,
-            "url": null
-          }
-        ]
+        "text": "Particle size, density and flow changes can mimic composition.",
+        "basis": "general_knowledge",
+        "citations": []
       },
       {
         "category": "no_guaranteed_gain",
-        "text": "No method or combination is guaranteed to help.",
-        "basis": "sourced",
-        "citations": [
-          {
-            "ref": "DOCX §5",
-            "quote": null,
-            "url": null
-          }
-        ]
+        "text": "Neither method nor the combination is guaranteed to help.",
+        "basis": "assumption",
+        "citations": []
       },
       {
         "category": "nothing_confirmed",
-        "text": "Accuracy, update rate, interface ratings and compatibility are unconfirmed.",
-        "basis": "sourced",
-        "citations": [
-          {
-            "ref": "DOCX §3",
-            "quote": null,
-            "url": null
-          }
-        ]
+        "text": "Accuracy, update rate, probe ratings and compatibility are unconfirmed.",
+        "basis": "assumption",
+        "citations": []
       },
       {
-        "category": "fiber_link",
-        "text": "Fiber link undefined; its range coverage needs confirmation.",
-        "basis": "assumption",
+        "category": "fouling_interface",
+        "text": "Powder build-up on the probe window may degrade signal.",
+        "basis": "general_knowledge",
         "citations": []
       }
     ],
     "assumptions": [
-      "Feed-frame adjustment is the target decision until confirmed",
-      "No existing fibers or spectrometers at the press",
-      "A short fiber link at the feed frame for the pilot"
+      "API is assumed to be at a level detectable by NIR or Raman; lab screening must confirm.",
+      "A time-aligned reference sampling route can be arranged."
     ],
     "feasibility_plan": {
       "steps": [
         {
           "element": "representative_samples",
-          "text": "Prepare blends across the client-agreed API range and relevant physical and batch variation.",
+          "text": "Prepare blends across the client-agreed API range, including particle size, lot and flow variation.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "spectra_with_reference",
-          "text": "Record NIR and Raman spectra with time-aligned independent API reference assays.",
+          "text": "Record NIR and Raman spectra with independent, time-aligned API assays.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "models_and_validation",
-          "text": "Single-method models first, combined only if justified; validate on held-out batches.",
+          "text": "Build single-method models first, fused only if justified; validate on held-out batches.",
           "basis": "proposal",
           "citations": []
         },
         {
           "element": "comparison",
-          "text": "Compare prediction error, bias and ability to follow changes against client requirements.",
+          "text": "Compare prediction error, bias and ability to follow API changes against client requirements.",
           "basis": "proposal",
           "citations": []
         }
       ],
       "afs_next_path": "undecided",
-      "afs_next_path_reason": "Path depends on pilot results and the client's production and budget requirements."
+      "afs_next_path_reason": "Depends on pilot results and the client's control and budget needs."
     },
     "decision_basis": {
-      "text": "Agree numerical criteria with the client beforehand; choose the simplest configuration meeting them on independent batches.",
+      "text": "Agree numerical acceptance criteria with the client before testing; choose the simplest configuration meeting them on independent batches.",
       "basis": "proposal",
       "citations": []
     }
@@ -458,16 +424,16 @@
       {
         "path": "premise_checks[0].explanation[0].citations[0]",
         "ref": "S01 p.15",
-        "quote": "the probes are inserted directly into the process environment, such as the feed frame of a rotary tablet press",
+        "quote": "As the powder blend passes the probe tip, the system captures spectra at high speeds without interrupting the production flow.",
         "status": "verified",
         "score": 100.0
       },
       {
-        "path": "premise_checks[0].explanation[1].citations[0]",
-        "ref": "DOCX §3",
-        "quote": null,
-        "status": "page_only",
-        "score": null
+        "path": "premise_checks[1].explanation[0].citations[0]",
+        "ref": "S02 p.3",
+        "quote": "Comparison of spectral data for customer process enables to select the best process-control solution",
+        "status": "verified",
+        "score": 100.0
       },
       {
         "path": "recommendations[0].reason.citations[0]",
@@ -479,9 +445,9 @@
       {
         "path": "recommendations[0].caveat.citations[0]",
         "ref": "S01 p.10",
-        "quote": "The broad absorption bands observed in this region overlap, suggesting the use of chemometrics",
-        "status": "verified",
-        "score": 100.0
+        "quote": null,
+        "status": "page_only",
+        "score": null
       },
       {
         "path": "recommendations[1].reason.citations[0]",
@@ -498,18 +464,18 @@
         "score": null
       },
       {
+        "path": "recommendations[1].caveat.citations[1]",
+        "ref": "S01 Table 1 (p.6)",
+        "quote": null,
+        "status": "page_only",
+        "score": null
+      },
+      {
         "path": "recommendations[2].reason.citations[0]",
         "ref": "S01 p.15",
         "quote": "The combination of these techniques is particularly effective because it captures complementary chemical information",
         "status": "verified",
         "score": 100.0
-      },
-      {
-        "path": "recommendations[2].caveat.citations[0]",
-        "ref": "DOCX §5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
       },
       {
         "path": "measurement_concept.items[0].citations[0]",
@@ -521,48 +487,6 @@
       {
         "path": "measurement_concept.items[2].citations[0]",
         "ref": "S02 p.6",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "measurement_concept.items[2].citations[1]",
-        "ref": "S01 p.10",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "measurement_concept.items[2].citations[2]",
-        "ref": "S01 p.11",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "risks[0].citations[0]",
-        "ref": "DOCX §5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "risks[1].citations[0]",
-        "ref": "DOCX §5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "risks[2].citations[0]",
-        "ref": "DOCX §5",
-        "quote": null,
-        "status": "page_only",
-        "score": null
-      },
-      {
-        "path": "risks[3].citations[0]",
-        "ref": "DOCX §3",
         "quote": null,
         "status": "page_only",
         "score": null
@@ -585,19 +509,24 @@
     "flags": [],
     "counts": {
       "citations_verified": 5,
-      "citations_page_only": 13
+      "citations_page_only": 7
     },
     "revised": true,
     "flags_before_revision": [
       {
-        "path": "recommendations[0].caveat",
+        "path": "recommendations[0].reason",
         "kind": "context",
-        "detail": "overstated: The claim says overlapping NIR bands 'need' a chemometric calibration 'built and tested for this blend'. S01 p.10 only says the overlapping broad bands suggest the use of chemometrics. It does not say a calibration must be built and tested for this blend. Fix: Say that overlapping NIR bands suggest chemometric analysis, and that a calibration for this blend would need to be built and tested before use."
+        "detail": "different_context: S01 p.15 describes the feed frame example as using a NIR reflection probe, and that matches. But the claim is about the same blend. The page describes a published study on a different setting, so the claim transfers it without saying so. The claim itself is accurate, so this is not a clear error. Ignoring this. Fix: No change needed for the probe type; state that the example is from a published study on a different blend."
       },
       {
-        "path": "measurement_concept.items[2]",
+        "path": "recommendations[2].caveat",
         "kind": "context",
-        "detail": "not_supported: The cited pages give no Raman nominal range. DOCX §5 states that Raman shift and laser excitation are given separately, and the 785 nm laser is only mentioned in S01 p.15. The 400–1100 nm range on S01 p.11 is for absorption spectrometers, not Raman. S02 p.6 lists transmission ranges for fibers, not a Raman range, so the claim that Vis-NIR silica 'covers the nominal range' for Raman is unsupported. Fix: State that the Raman nominal range is not given in the sources in usable units, so fiber coverage cannot be confirmed. Only the NIR comparison (Vis-NIR silica 350–2400 nm against NIR 780–2500 nm, partial overlap) can be stated."
+        "detail": "not_supported: S01 p.8 discusses synchronization and normalization of multispectral data but does not say that each method must be assessed alone before combining, nor that gains are a hypothesis to test. Fix: Cite S01 p.8 only for data synchronization and normalization challenges, or add a page that supports the single-method assessment step."
+      },
+      {
+        "path": "measurement_concept.items[0]",
+        "kind": "context",
+        "detail": "not_supported: The Table 1 rows list NIR diffuse reflection probe sample types as scattering media and powder, and Raman probe as liquid, powder and solid, so powders are supported. However the cited rows do not state the 'each suited to powders' conclusion for the NIR probe as a suitability judgement; the table gives sample types only, so the wording goes beyond the source. Fix: Reword to say the Table 1 rows list powder among sample types for the NIR diffuse reflection probe and the Raman probe."
       }
     ]
   },
@@ -674,33 +603,29 @@
     }
   ],
   "extraction": {
-    "summary": "The client wants to assess whether a fiber-based measurement in the tablet press feed frame could follow API concentration changes in a powder blend, and plans a pilot comparing measurement options before committing to production equipment.",
+    "summary": "The client wants to assess whether a fiber-based measurement in the tablet press feed frame could follow API concentration changes in a powder blend, and plans a pilot comparing reasonable measurement options before committing to production equipment.",
     "stated_facts": [
       {
         "fact": "The client manufactures tablets from a powder blend containing an active pharmaceutical ingredient and excipients.",
         "enquiry_quote": "We manufacture tablets from a powder blend containing an active pharmaceutical ingredient and excipients."
       },
       {
-        "fact": "Laboratory checks indicate whether the blend is on target.",
+        "fact": "Laboratory checks indicate whether the blend is on target, but results arrive after the material has moved through the press.",
         "enquiry_quote": "Laboratory checks tell us whether the blend is on target, but results arrive after the material has moved through the press."
-      },
-      {
-        "fact": "Lab results arrive only after the material has moved through the press.",
-        "enquiry_quote": "results arrive after the material has moved through the press"
       },
       {
         "fact": "The client wants to assess whether a fiber-based measurement in the feed frame could follow API concentration changes.",
         "enquiry_quote": "We want to assess whether a fiber based measurement in the feed frame could follow API concentration changes."
       },
       {
-        "fact": "The first step is a pilot comparing reasonable measurement options before production equipment is committed.",
+        "fact": "The client plans a first pilot comparing reasonable measurement options before committing to production equipment.",
         "enquiry_quote": "Our first pilot should compare reasonable measurement options before we commit to production equipment."
       }
     ],
     "targets": [
       "API concentration in the powder blend"
     ],
-    "sample_description": "Powder blend of an active pharmaceutical ingredient and excipients, fed to a tablet press via a feed frame",
+    "sample_description": "Powder blend of an active pharmaceutical ingredient and excipients, fed to a tablet press feed frame",
     "sample_state": "powder",
     "process_context": "production",
     "conditions": [],
@@ -708,27 +633,34 @@
     "remote_measurement": false,
     "contact_with_sample": "unknown",
     "analyzer_distance": null,
-    "existing_equipment": [],
+    "existing_equipment": [
+      "laboratory analysis of blend (method not stated)",
+      "tablet press feed frame"
+    ],
     "methods_mentioned": [],
     "fibers_mentioned": [],
     "client_premises": [
       {
         "claim": "A fiber-based measurement in the feed frame could follow API concentration changes.",
         "enquiry_quote": "We want to assess whether a fiber based measurement in the feed frame could follow API concentration changes."
+      },
+      {
+        "claim": "Laboratory checks are the current basis for blend control, with results arriving after material has moved through the press.",
+        "enquiry_quote": "Laboratory checks tell us whether the blend is on target, but results arrive after the material has moved through the press."
       }
     ],
-    "requested_decision": "Whether a fiber-based measurement in the feed frame could follow API concentration changes, and which measurement option to commit to after a comparison pilot.",
+    "requested_decision": "Whether a fiber-based in-line measurement in the feed frame can follow API concentration changes, and which reasonable measurement option to take forward in a pilot before production equipment is committed.",
     "unknowns": [
-      "Target API concentration level (ppm or % of blend)",
-      "Required accuracy and response time",
-      "Existing reference laboratory method and its accuracy",
-      "Particle size, bulk density and homogeneity of the blend",
-      "Feed frame conditions (flow rate, vibration, temperature, fouling, cleaning)",
-      "Whether the measurement must be non-contact or in contact with the powder",
-      "Distance between the measuring point and any analyzer",
-      "Existing fibers or spectrometers",
-      "Budget",
-      "Which measurement options the client has in mind"
+      "API name and concentration level (ppm or %)",
+      "Target API concentration and acceptable variation",
+      "Excipients and particle size distribution of the blend",
+      "Blend homogeneity and how the sample varies in the feed frame",
+      "Feed frame geometry, access points and distance to the analyzer",
+      "Existing fibers or measurement equipment, if any",
+      "Current laboratory reference method and its accuracy",
+      "Response time and budget requirements",
+      "Environmental conditions such as temperature, humidity and cleaning requirements",
+      "Regulatory requirements for the pilot and production"
     ]
   },
   "pre_analysis": {
@@ -848,9 +780,9 @@
     },
     "fiber_findings_required_in_premise_check": [],
     "rule_hints": [
-      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [DOCX §3; DOCX §5]",
+      "nominal_range_not_instrument_range: A nominal method range is not the usable range of a specific instrument, fiber or probe. [guidance]",
       "same_spot_for_heterogeneous: For heterogeneous or fast-changing samples, methods should measure the same spot at the same time, e.g. with a combi probe. [S01 p.8; S04 p.2]",
-      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [DOCX §3]"
+      "do_not_invent: Do not invent measured results, accuracy, detection limits, response times, fiber lengths, product codes or prices, client facts, or guarantees. [guidance]"
     ],
     "required_risk_categories": [
       "calibration_validity",
@@ -860,87 +792,87 @@
     ]
   },
   "run_meta": {
-    "pipeline_version": "0.7.0",
+    "pipeline_version": "0.8.0",
     "calls": [
       {
         "stage": "intake",
-        "timestamp": "2026-10-18T10:19:40.071159+00:00",
+        "timestamp": "2026-10-18T11:13:25.491118+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 11.7,
+        "duration_s": 10.5,
         "structured_output": "constrained",
         "usage": {
           "input_tokens": 155,
-          "output_tokens": 2215,
-          "cache_read_input_tokens": 10425,
+          "output_tokens": 2362,
+          "cache_read_input_tokens": 10363,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001227
+        "cost_usd": 0.0013
       },
       {
         "stage": "assess",
-        "timestamp": "2026-10-18T10:19:52.791793+00:00",
+        "timestamp": "2026-10-18T11:13:36.949984+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 35.4,
+        "duration_s": 40.4,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 8598,
-          "output_tokens": 4081,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 8741,
+          "output_tokens": 4791,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.132895
+        "cost_usd": 0.147419
       },
       {
-        "claims_checked": 14,
+        "claims_checked": 10,
         "stage": "critic",
-        "timestamp": "2026-10-18T10:20:28.215918+00:00",
+        "timestamp": "2026-10-18T11:14:17.412028+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-haiku-5-5",
         "effort": "low",
         "thinking_level": "low",
-        "duration_s": 8.6,
+        "duration_s": 3.8,
         "structured_output": "constrained",
         "usage": {
-          "input_tokens": 9813,
-          "output_tokens": 1949,
-          "cache_read_input_tokens": 744,
+          "input_tokens": 8238,
+          "output_tokens": 504,
+          "cache_read_input_tokens": 794,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.001963
+        "cost_usd": 0.001084
       },
       {
-        "flags_sent": 3,
+        "flags_sent": 4,
         "stage": "revise",
-        "timestamp": "2026-10-18T10:20:36.799156+00:00",
+        "timestamp": "2026-10-18T11:14:21.191700+00:00",
         "max_output_tokens": 16000,
         "provider": "anthropic",
         "model": "claude-opus-5-5",
         "effort": "medium",
         "thinking_level": "medium",
-        "duration_s": 38.0,
+        "duration_s": 40.2,
         "structured_output": "prompted_json",
         "usage": {
-          "input_tokens": 8941,
-          "output_tokens": 4930,
-          "cache_read_input_tokens": 84414,
+          "input_tokens": 8686,
+          "output_tokens": 4737,
+          "cache_read_input_tokens": 83175,
           "cache_creation_input_tokens": 0
         },
-        "cost_usd": 0.151247
+        "cost_usd": 0.146119
       }
     ],
-    "prompt_hash": "64053030c027",
-    "git_commit": "b5d8388",
-    "timestamp": "2026-10-18T10:19:52.771821+00:00",
-    "duration_s": 93.8,
-    "cost_usd": 0.2873
+    "prompt_hash": "910b15464e48",
+    "git_commit": "d70634c",
+    "timestamp": "2026-10-18T11:13:36.932393+00:00",
+    "duration_s": 95.1,
+    "cost_usd": 0.2959
   }
 }
